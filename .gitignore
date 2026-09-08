@@ -1,0 +1,60 @@
+# LaTeX auxiliary and build files
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.glg
+*.glo
+*.gls
+*.idx
+*.ilg
+*.ind
+*.ist
+*.lof
+*.log
+*.lot
+*.nav
+*.out
+*.run.xml
+*.snm
+*.synctex
+*.synctex.gz
+*.toc
+*.vrb
+*.xdv
+
+# LaTeX-generated directories and caches
+_minted*/
+.build/
+build/
+
+# Common generated document output
+# Keep PDFs unless they are generated in one of the directories above.
+# Uncomment the next line if PDFs should not be committed.
+# *.pdf
+
+# Bibliography and indexing caches are covered by the LaTeX rules above.
+
+# Temporary and backup files
+*.bak
+*.dvi
+*.swp
+*.swo
+*~
+.#*
+
+# Editor and IDE metadata
+.idea/
+.vscode/*.log
+
+# Operating-system files
+.DS_Store
+Thumbs.db
+
+# Python and common computational-math artifacts
+__pycache__/
+*.py[cod]
+.venv/
+venv/
