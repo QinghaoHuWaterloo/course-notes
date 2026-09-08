@@ -1,0 +1,337 @@
+% \documentclass[10pt, twoside]{article}
+\documentclass[9pt, a4paper]{article}
+% =========================================================
+% Packages
+% =========================================================
+
+\usepackage[utf8]{inputenc}
+
+% Mathematics
+\usepackage{amsmath,amssymb,amsthm}
+
+% Springer-like fonts
+% \usepackage{newtxtext}
+% \usepackage{newtxmath}
+
+% Page layout
+\usepackage[
+  paperwidth=160mm,
+  paperheight=240mm,
+  inner=20mm,
+  outer=16mm,
+  top=18mm,
+  bottom=21mm,
+  headheight=14pt,
+  headsep=6mm,
+  footskip=10mm
+]{geometry}
+
+% Headers / footers
+\usepackage{fancyhdr}
+
+% Graphics / diagrams
+\usepackage{graphicx}
+\usepackage{tikz}
+
+\usetikzlibrary{
+  positioning,
+  arrows.meta
+}
+
+% Lists / columns
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{paracol}
+
+% Colors / framed environments
+\usepackage{xcolor}
+\usepackage[framemethod=tikz]{mdframed}
+
+% Paragraph formatting
+\usepackage{indentfirst}
+
+% Dummy text for testing
+\usepackage{blindtext}
+
+% Index
+\usepackage{imakeidx}
+
+% Hyperref should be loaded late
+\usepackage[hidelinks]{hyperref}
+
+% For CS class
+\usepackage{minted}
+\usepackage{xcolor}
+
+\setminted{
+    bgcolor=gray!8,
+    frame=single,
+    framesep=4mm,
+    baselinestretch=1.05,
+    fontsize=\small,
+    breaklines=true
+}
+
+
+% =========================================================
+% Page / Typography Setup
+% =========================================================
+
+\definecolor{sepiabg}{RGB}{244,236,220}
+
+% Uncomment if desired:
+% \pagecolor{sepiabg}
+
+% Paragraphs
+\setlength{\parindent}{1.5em}
+\setlength{\parskip}{0pt}
+
+% Slightly tighter Springer-like display mathematics
+\setlength{\abovedisplayskip}{7pt plus 2pt minus 2pt}
+\setlength{\belowdisplayskip}{7pt plus 2pt minus 2pt}
+\setlength{\abovedisplayshortskip}{4pt plus 2pt}
+\setlength{\belowdisplayshortskip}{5pt plus 2pt minus 2pt}
+
+% Slightly compact lists
+\setlist{
+  topsep=4pt,
+  itemsep=1.5pt,
+  parsep=0pt,
+  partopsep=0pt
+}
+
+
+% =========================================================
+% Headers / Footers
+% =========================================================
+
+\pagestyle{fancy}
+\fancyhf{}
+
+% Even pages: current section
+\fancyhead[LE]{%
+  \small\itshape
+  \nouppercase{\leftmark}
+}
+
+% Odd pages: book / course title
+\fancyhead[RO]{%
+  \small\itshape
+  Honor Algebra
+}
+
+% Centered page number
+\fancyfoot[C]{%
+  \small\thepage
+}
+
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Section name in running header
+\renewcommand{\sectionmark}[1]{%
+  \markboth{\thesection\enspace #1}{}
+}
+
+
+% =========================================================
+% Section Behaviour
+% =========================================================
+
+% Every section begins on a new page
+\let\oldsection\section
+
+\renewcommand{\section}{%
+  \clearpage
+  \oldsection
+}
+
+
+% =========================================================
+% Equation Numbering
+% =========================================================
+
+\numberwithin{equation}{subsection}
+
+
+% =========================================================
+% Index
+% =========================================================
+
+\makeindex[
+  intoc,
+  title=Index
+]
+
+
+% =========================================================
+% Shortcuts for Brackets
+% =========================================================
+
+\newcommand{\paren}[1]{\left(#1\right)}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\bracks}[1]{\left[#1\right]}
+\newcommand{\set}[1]{\left\{#1\right\}}
+
+
+% =========================================================
+% Theorem Environments
+% ONE numbered system
+% =========================================================
+
+\theoremstyle{plain}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+
+\theoremstyle{remark}
+
+\newtheorem*{remark}{Remark}
+
+
+% =========================================================
+% Cambridge-style Semantic Environments
+% =========================================================
+
+\theoremstyle{definition}
+
+\newtheorem*{axiom}{Axiom}
+\newtheorem*{assumption}{Assumption}
+\newtheorem*{notation}{Notation}
+
+
+% =========================================================
+% Index Term Command
+% =========================================================
+
+\newcommand{\term}[1]{%
+  \emph{#1}\index{#1}%
+}
+
+
+% =========================================================
+% Lists
+% =========================================================
+
+\renewcommand{\labelitemi}{--}
+\renewcommand{\labelitemii}{$\circ$}
+\renewcommand{\labelenumi}{(\roman{enumi})}
+
+
+% =========================================================
+% QED Symbol
+% =========================================================
+
+\renewcommand{\qedsymbol}{%
+  \ensuremath{\blacksquare}%
+}
+
+% Alternative:
+% \renewcommand{\qedsymbol}{$\square$}
+
+
+% =========================================================
+% Custom Mathematical Commands
+% =========================================================
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+\newcommand{\ds}{\displaystyle}
+
+% =========================================================
+% Color Commands
+% =========================================================
+
+\newcommand{\blue}[1]{%
+  \textcolor{blue}{#1}%
+}
+
+\newcommand{\red}[1]{%
+  \textcolor{red}{#1}%
+}
+
+
+% =========================================================
+% Figure Helper
+% =========================================================
+
+\newcommand{\mypic}[3]{%
+  \begin{figure}[htbp]
+    \centering
+    \includegraphics[width=#3\textwidth]{#1}
+    \caption{#2}
+  \end{figure}
+}
+
+
+% =========================================================
+% Word Definition Environment
+% =========================================================
+
+\newenvironment{worddef}[1]
+  {%
+    \par
+    \noindent
+    \textbf{#1:}\ 
+    \itshape
+  }
+  {%
+    \par
+    \normalfont
+  }
+
+
+% =========================================================
+% Title
+% =========================================================
+
+\title{%
+  \textbf{Math 135}
+  \\[0.5em]
+  \large Honor Algebra
+}
+
+\author{Qinghao Hu}
+
+\date{\today}
+
+
+% =========================================================
+% Compilation Control
+% =========================================================
+
+% Uncomment and edit to only compile a subset of chapters while drafting:
+% \includeonly{chapters/c1}
+
+
+% =========================================================
+% Document
+% =========================================================
+
+\begin{document}
+
+\maketitle
+
+\clearpage
+
+\tableofcontents
+
+\begin{equation*}
+    \frac{1}{2} + 3
+\end{equation*}
+% Uncomment when you want the index printed:
+% \printindex
+
+\end{document}
