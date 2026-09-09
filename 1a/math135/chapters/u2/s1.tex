@@ -1,0 +1,20 @@
+%!TEX root = ../../../note
+
+\subsection{Introduction to Proof}
+
+\begin{definition}[Proof]
+A proof is a logically valid argument that establishes the truth of a mathematical statement using definitions, axioms, and previously proved results.
+\end{definition}
+
+\begin{proposition}
+For every positive integer $n$, the number $n^2 + 1$ is not a perfect square.
+\begin{proof}
+Let $n$ be a positive integer. The consecutive perfect squares surrounding $n^2 + 1$ are $n^2$ and $(n+1)^2$. Indeed,
+\begin{equation*}
+    n^2 < n^2 + 1 < n^2 + 2n + 1 = (n+1)^2,
+\end{equation*}
+where the second inequality follows from $n > 0$.
+
+Therefore, $n^2 + 1$ lies strictly between two consecutive perfect squares, so it cannot itself be a perfect square.
+\end{proof}
+\end{proposition}

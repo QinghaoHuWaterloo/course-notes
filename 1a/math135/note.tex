@@ -1,5 +1,4 @@
-% \documentclass[10pt, twoside]{article}
-\documentclass[9pt, a4paper]{article}
+\documentclass[10pt, a4paper, twoside]{article}
 % =========================================================
 % Packages
 % =========================================================
@@ -59,9 +58,8 @@
 % Hyperref should be loaded late
 \usepackage[hidelinks]{hyperref}
 
-% For CS class
+% Code listings
 \usepackage{minted}
-\usepackage{xcolor}
 
 \setminted{
     bgcolor=gray!8,
@@ -328,9 +326,8 @@
 
 \tableofcontents
 
-\begin{equation*}
-    \frac{1}{2} + 3
-\end{equation*}
+\include{chapters/c1}
+\include{chapters/c2}
 % Uncomment when you want the index printed:
 % \printindex
 

@@ -1,0 +1,64 @@
+%!TEX root = ../../../note
+
+\subsection{Lecture 1}
+
+\subsubsection{What Is Calculus?}
+Differential and integral calculus are two branches of calculus.
+
+\begin{description}
+    \item[Differential calculus:] The study of slopes and tangent lines.
+    \item[Integral calculus:] The study of areas and accumulation.
+\end{description}
+
+\subsubsection{Numbers}
+The number systems discussed in this lecture include
+\begin{align*}
+    \N &= \set{1,2,3,\ldots}, \\
+    \Z &= \set{\ldots,-1,0,1,\ldots}, \\
+    \Q &= \set{\frac{m}{n} : m,n\in\Z,\ n\ne 0}.
+\end{align*}
+
+The natural numbers are closed under addition. The integers are closed under addition, subtraction, and multiplication, but they are not closed under division; for example, $1/2\notin\Z$. Therefore, we introduce the rational numbers to include quotients of integers with nonzero denominators.
+
+\begin{theorem}[Irrationality of $\sqrt{2}$]
+    The number $\sqrt{2}$ is irrational; equivalently, $\sqrt{2}\notin\Q$.
+    \begin{proof}
+        Suppose, for contradiction, that $\sqrt{2}\in\Q$. Then we can write
+        \begin{equation*}
+            \sqrt{2}=\frac{m}{n},
+            \qquad m,n\in\Z,
+            \qquad n>0,
+            \qquad \gcd(m,n)=1.
+        \end{equation*}
+        Squaring both sides gives
+        \begin{equation*}
+            2=\frac{m^2}{n^2}
+            \qquad\Longrightarrow\qquad
+            m^2=2n^2.
+        \end{equation*}
+
+        Thus, $m^2$ is even, so $m$ is even. Write $m=2\ell$ for some $\ell\in\Z$. Substituting this into the equation above gives
+        \begin{align*}
+            2n^2 &= 4\ell^2, \\
+            n^2 &= 2\ell^2.
+        \end{align*}
+        Therefore, $n^2$ is even, and hence $n$ is even as well.
+
+        This means that both $m$ and $n$ are even, contradicting $\gcd(m,n)=1$. Therefore, $\sqrt{2}\notin\Q$.
+    \end{proof}
+\end{theorem}
+
+The irrational numbers are the real numbers that are not rational:
+\begin{equation*}
+    \R\setminus\Q
+    =\set{x\in\R : x\notin\Q}.
+\end{equation*}
+
+\begin{example}[Decimal representation]
+Every real number has a decimal representation. In general, a decimal expansion can be written as
+\begin{equation*}
+    x=a+\sum_{i=1}^{\infty}\frac{x_i}{10^i},
+    \qquad a\in\Z,
+    \qquad x_i\in\set{0,1,2,\ldots,9}.
+\end{equation*}
+\end{example}
