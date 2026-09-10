@@ -1,4 +1,5 @@
-\documentclass[10pt, a4paper, twoside]{article}
+\documentclass[11pt]{article}
+
 % =========================================================
 % Packages
 % =========================================================
@@ -8,21 +9,12 @@
 % Mathematics
 \usepackage{amsmath,amssymb,amsthm}
 
-% Springer-like fonts
-% \usepackage{newtxtext}
-% \usepackage{newtxmath}
-
 % Page layout
 \usepackage[
-  paperwidth=160mm,
-  paperheight=240mm,
-  inner=20mm,
-  outer=16mm,
-  top=18mm,
-  bottom=21mm,
+  margin=25mm,
   headheight=14pt,
   headsep=6mm,
-  footskip=10mm
+  footskip=12mm
 ]{geometry}
 
 % Headers / footers
@@ -39,8 +31,6 @@
 
 % Lists / columns
 \usepackage{enumitem}
-\usepackage{multicol}
-\usepackage{paracol}
 
 % Colors / framed environments
 \usepackage{xcolor}
@@ -49,40 +39,29 @@
 % Paragraph formatting
 \usepackage{indentfirst}
 
-
-% Index
-\usepackage{imakeidx}
-
 % Hyperref should be loaded late
 \usepackage[hidelinks]{hyperref}
 
-% Code listings
-\usepackage{minted}
 
-\setminted{
-    bgcolor=gray!8,
-    frame=single,
-    framesep=4mm,
-    baselinestretch=1.05,
-    fontsize=\small,
-    breaklines=true
-}
+% =========================================================
+% Assignment Metadata
+% =========================================================
+
+\newcommand{\course}{MATH 147}
+\newcommand{\assignment}{Assignment A1}
+\newcommand{\studentname}{Qinghao Hu}
+\newcommand{\duedate}{\today}
 
 
 % =========================================================
 % Page / Typography Setup
 % =========================================================
 
-\definecolor{sepiabg}{RGB}{244,236,220}
-
-% Uncomment if desired:
-% \pagecolor{sepiabg}
-
 % Paragraphs
 \setlength{\parindent}{1.5em}
-\setlength{\parskip}{0pt}
+\setlength{\parskip}{4pt}
 
-% Slightly tighter Springer-like display mathematics
+% Display mathematics spacing
 \setlength{\abovedisplayskip}{7pt plus 2pt minus 2pt}
 \setlength{\belowdisplayskip}{7pt plus 2pt minus 2pt}
 \setlength{\abovedisplayshortskip}{4pt plus 2pt}
@@ -104,60 +83,19 @@
 \pagestyle{fancy}
 \fancyhf{}
 
-% Even pages: current section
-\fancyhead[LE]{%
-  \small\itshape
-  \nouppercase{\leftmark}
-}
+\fancyhead[L]{\small\itshape \studentname}
+\fancyhead[R]{\small\itshape \course}
+\fancyfoot[C]{\small\thepage}
 
-% Odd pages: book / course title
-\fancyhead[RO]{%
-  \small\itshape
-  Analysis
-}
-
-% Centered page number
-\fancyfoot[C]{%
-  \small\thepage
-}
-
-\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0pt}
-
-% Section name in running header
-\renewcommand{\sectionmark}[1]{%
-  \markboth{\thesection\enspace #1}{}
-}
-
-
-% =========================================================
-% Section Behaviour
-% =========================================================
-
-% Every section begins on a new page
-\let\oldsection\section
-
-\renewcommand{\section}{%
-  \clearpage
-  \oldsection
-}
 
 
 % =========================================================
 % Equation Numbering
 % =========================================================
 
-\numberwithin{equation}{subsection}
-
-
-% =========================================================
-% Index
-% =========================================================
-
-\makeindex[
-  intoc,
-  title=Index
-]
+\numberwithin{equation}{section}
 
 
 % =========================================================
@@ -173,20 +111,19 @@
 
 % =========================================================
 % Theorem Environments
-% ONE numbered system
 % =========================================================
 
 \theoremstyle{plain}
 
-\newtheorem{theorem}{Theorem}[section]
+\newtheorem{theorem}{Theorem}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{corollary}[theorem]{Corollary}
 
 \theoremstyle{definition}
 
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{example}[theorem]{Example}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
 
 \theoremstyle{remark}
 
@@ -194,44 +131,46 @@
 
 
 % =========================================================
-% Cambridge-style Semantic Environments
+% Problem / Solution Environments
 % =========================================================
 
-\theoremstyle{definition}
+% Each problem starts a numbered section titled "Problem N".
+\newcounter{problem}
 
-\newtheorem*{axiom}{Axiom}
-\newtheorem*{assumption}{Assumption}
-\newtheorem*{notation}{Notation}
-
-
-% =========================================================
-% Index Term Command
-% =========================================================
-
-\newcommand{\term}[1]{%
-  \emph{#1}\index{#1}%
+\newenvironment{problem}[1][]{%
+  \refstepcounter{problem}%
+  \bigskip
+  \noindent
+  \begin{mdframed}[
+    linewidth=0.6pt,
+    linecolor=black!55,
+    backgroundcolor=black!3,
+    innertopmargin=6pt,
+    innerbottommargin=6pt,
+    innerleftmargin=8pt,
+    innerrightmargin=8pt,
+    roundcorner=3pt
+  ]
+  \textbf{Problem \theproblem}%
+  \ifx\relax#1\relax\else\ \textbf{(#1)}\fi.\quad
+}{%
+  \end{mdframed}
 }
 
-
-% =========================================================
-% Lists
-% =========================================================
-
-\renewcommand{\labelitemi}{--}
-\renewcommand{\labelitemii}{$\circ$}
-\renewcommand{\labelenumi}{(\roman{enumi})}
+% Solution environment with a QED-style end marker.
+\newenvironment{solution}{%
+  \par\smallskip
+  \noindent\textbf{Solution.}\quad
+}{%
+  \hfill$\blacksquare$\par\medskip
+}
 
 
 % =========================================================
 % QED Symbol
 % =========================================================
 
-\renewcommand{\qedsymbol}{%
-  \ensuremath{\blacksquare}%
-}
-
-% Alternative:
-% \renewcommand{\qedsymbol}{$\square$}
+\renewcommand{\qedsymbol}{\ensuremath{\blacksquare}}
 
 
 % =========================================================
@@ -246,17 +185,13 @@
 
 \newcommand{\ds}{\displaystyle}
 
+
 % =========================================================
 % Color Commands
 % =========================================================
 
-\newcommand{\blue}[1]{%
-  \textcolor{blue}{#1}%
-}
-
-\newcommand{\red}[1]{%
-  \textcolor{red}{#1}%
-}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
 
 
 % =========================================================
@@ -273,43 +208,18 @@
 
 
 % =========================================================
-% Word Definition Environment
-% =========================================================
-
-\newenvironment{worddef}[1]
-  {%
-    \par
-    \noindent
-    \textbf{#1:}\ 
-    \itshape
-  }
-  {%
-    \par
-    \normalfont
-  }
-
-
-% =========================================================
-% Title
+% Title Block
 % =========================================================
 
 \title{%
-  \textbf{Math 147}
-  \\[0.5em]
-  \large Analysis
+  \textbf{\assignment}
+  \\[0.4em]
+  \large \course
 }
 
-\author{Qinghao Hu}
+\author{\studentname}
 
-\date{\today}
-
-
-% =========================================================
-% Compilation Control
-% =========================================================
-
-% Uncomment and edit to only compile a subset of chapters while drafting:
-% \includeonly{chapters/c1}
+\date{\duedate}
 
 
 % =========================================================
@@ -319,16 +229,9 @@
 \begin{document}
 
 \maketitle
-
-\clearpage
-
 \tableofcontents
+\newpage
 
-
-\include{chapters/c1}
-\include{chapters/c2}
-% \include{chapters/c3}
-% Uncomment when you want the index printed:
-% \printindex
+\include{problems/p1}
 
 \end{document}

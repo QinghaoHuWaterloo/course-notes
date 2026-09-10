@@ -1,0 +1,192 @@
+\documentclass[11pt, oneside,usenames,dvipsnames]{article}   
+\usepackage[left=3cm,right=3cm, top=2.5cm,bottom=2.5cm,bindingoffset=0cm]{geometry}                	
+\geometry{letterpaper}                   	
+\usepackage{graphicx}				
+\usepackage{amsmath,amssymb,amsthm}
+
+\usepackage[utf8x]{inputenc}
+
+\usepackage[colorlinks=true,urlcolor=blue]{hyperref}
+
+\usepackage{xcolor}
+
+
+\newcommand{\ls}{\leqslant}
+\newcommand{\gs}{\geqslant}
+
+\usepackage{centernot}
+\usepackage{mathtools}
+
+\def\multiset#1#2{\ensuremath{\left(\kern-.3em\left(\genfrac{}{}{0pt}{}{#1}{#2}\right)\kern-.3em\right)}}
+
+\makeatletter
+\newcommand{\xMapsto}[2][]{\ext@arrow 0599{\Mapstofill@}{#1}{#2}}
+\def\Mapstofill@{\arrowfill@{\Mapstochar\Relbar}\Relbar\Rightarrow}
+\makeatother
+
+\DeclareMathOperator{\re}{Re}
+\DeclareMathOperator{\im}{Im}
+\newcommand{\abs}[1]{\lvert#1\rvert}
+
+
+
+\title{{\large\bf MATH 147 - Fall 2026\\
+Assignment 1}\\
+{\small (due Thursday, September 24 at 5 pm ET on Crowdmark)}
+}
+\author{}
+\date{}						
+% Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+
+\vspace{-2cm}
+
+\medskip
+{\bf Disclaimer:} you might see notes in {\color{blue}blue}/{{\color{red}red} in the assignments throughout the term. Usually, these include either hints, short explanations, or some motivation for the question, etc. 
+
+
+\bigskip
+
+
+
+
+
+\bigskip
+
+
+\noindent {\bf Problem 1.} {\bf (10 points)}
+\begin{itemize}
+	\item[\it (i)] Prove that $\sqrt{3}$ is irrational.
+
+	{\color{blue} Why doesn't similar reasoning  work for $\sqrt{4}$?}
+
+	\item[\it (ii)] Using only the ordered field properties of $\mathbb{R}$, together with the fact that for any $c>0$ there is a positive $x\in\mathbb{R}$  such that $x^2 = c$, prove the arithmetic-geometric mean inequality:
+	$$
+	\sqrt{ab} \leq \frac{a+b}2
+	$$
+	for all $a > 0, b > 0$ in $\mathbb{R}$. 
+	
+\end{itemize}
+
+
+
+
+\medskip
+
+\noindent {\bf Problem 2.} {\bf (15 points)} 
+
+{\color{blue} So far we assumed that the set $\mathbb{N}$ is obviously contained in $\mathbb{R}$. After all, $1$ is
+	a real number (it’s in the axioms), $2$ is just $1+1$ and so real, $3$ is $(1+1)+1$, etc. In this exercise, you will show that there is a rigorous mathematical way to say ``etc.", and define $\mathbb{N}$ as a subset of $\mathbb{R}$.}
+	
+	
+	A set $S\subseteq \mathbb R$ is called \emph{inductive} if $ 1\in S$ and $k \in S$ implies $k+1\in S.$
+\begin{itemize}
+	\item[\it(i)] Determine whether each of the following sets is inductive. Justify your answers.
+	
+	$$
+	\mathbb R,\qquad (0,\infty),\qquad (0,\infty)\setminus \{5\}.
+	$$
+	\item[\it(ii)] Show that if $S$ and $T$ are inductive, then the set $U$ of real numbers that are in both $S$ and $T$ is also inductive.
+	
+	\item[\it(iii)] We define $\mathbb N$ to be the set of real numbers that are in every inductive subset of $\mathbb{R}$. Prove that $\mathbb{N}$ is inductive, that is, prove that $1$ is a natural number and prove that $k+1$ is a natural number if $k$ is a natural number.
+\end{itemize}
+
+
+
+\medskip
+
+\noindent {\bf Problem 3.} {\bf (20 points)}
+The Principle of Strong (or Complete) Induction states the following. Let $P(n)$ be a sequence of statements with $n \in \mathbb{N}$. If
+\begin{itemize}
+	\item[\it (a)] $P(1)$ is true, and 
+	\item[\it (b)] for every $n \in \mathbb{N}$, if all $P(1), \dots, P(n)$ are true, then $P(n+1)$ is true,
+\end{itemize}
+then $P(n)$ is true for all $n \in \mathbb{N}.$
+
+\smallskip
+
+{\color{blue} It might look like the principle of strong induction is much stronger than the ordinary principle of induction, but they are actually equivalent.}
+
+\begin{itemize}
+	\item[\it (i)] Use the Principle of Mathematical Induction to prove the Principle of Strong Induction.
+	\item[\it(ii)]  Let $\{p_n(x)\}_{n \in \mathbb{N} \cup\{0\}}$ be defined recursively by
+	$$
+	p_0(x) = 1,\quad  p_1(x) = x, \quad \text{and}\quad  p_{n+1}(x) = x p_n(x) - p_{n-1}(x) \ \ (n \geq 1).
+	$$
+	Prove that for each $n \in \mathbb{N} \cup\{0\}$, $p_n(x)$ is a degree $n$ polynomial and the coefficient of $x^n$ in $p_n(x)$ is 1.
+	\item[\it(iii)] Let $0 < |t| < 1$.  Prove that
+	$$p_n(t+t^{-1}) = \frac{t^{n+1}- t^{-n-1}}{t-t^{-1}} \quad \forall  n \in \mathbb{N} \cup\{0\}.
+	$$
+	\item[\it(iv)]  Recall that a {\it (real) root} of a polynomial $p(x)$ is a number $c \in \mathbb R$ such that $p(c) = 0$.  Use the formula obtained in {\it(iii)} to prove that all the real roots of $p_n(x)$ (if any) must be contained in the interval $[-2,2]$.
+	
+	{\it Hint:} show that the range of the function $g(t) = t+t^{-1}$ defined on $\{t \in \mathbb R \big| \ 0 <|t| < 1\}$ is exactly $\mathbb R \backslash [-2,2]$. Then use the formula in {\it (iii)} to show that $p_n(t+t^{-1}) \ne 0$ for all such values of $t$. 
+
+\end{itemize}
+
+\medskip
+
+
+
+
+\noindent {\bf Problem 4.} {\bf (20 points)}  
+
+
+\begin{itemize}
+	\item[\it(i)] Suppose that it is true that for each $x > 0$ there is an $n \in \mathbb{N}$ so that $\frac1n < x$. Prove the Archimedean Property using this assumption.
+	
+	{\color{blue} Together with the result proved in class, part {\it (i)} shows that the Archimedean Property is equivalent to the statement that for every $x>0$, there exists $n\in \mathbb{N}$ such that $\frac1n < x.$}
+	\item[\it(ii)] The following statement follows from the Archimedean property (whose proof uses the completeness axiom)
+	$$
+	 \text{if} \  x > 0, \ \text{then there is a natural number} \  N \ \text{so that} \	\frac1N < x.
+	$$
+	Give a proof that does not use the completeness axiom that works when $x$ is rational. Then find a proof that is valid for $x = \sqrt{y}$ where $y>0$ is rational.
+	
+	{\color{blue} This exercise says that although the result for arbitrary real numbers follows from the Archimedean Property, for rationals or square roots of rationals, $N$ can be constructed explicitly without invoking the completeness axiom.}
+	\item[\it(iii)] Let $x$ be any real number. Show that there is an integer $m \in \mathbb{Z}$ so that $m \leq x < m+1$.
+	Also, show that $m$ is unique.
+	
+	{\color{blue} 
+	This integer $m$ is called the integer part of $x$ (or the floor function) and it is denoted by $\lfloor x \rfloor$.
+	}
+
+	\item[\it(iv)] Prove that for any real numbers $x$ and $y$  with $x < y$, there exists a rational number $r \in \mathbb{Q}$ such that $x < r < y.$ 
+\end{itemize}
+
+
+\medskip
+
+
+\noindent {\bf Problem 5.} {\bf (10 points)}
+
+
+
+\begin{itemize}		
+	\item[\it(i)] Let $S$ and $T$ be nonempty bounded above subsets of $\mathbb{R}$. Define a subset $S+ T$ as
+	$$
+	S + T = \{ s + t: s \in S \ \text{and} \ t \in T\}.
+	$$
+	Prove that  $\sup (S + T) = \sup S + \sup T.$
+	\item[\it(ii)] Determine $\inf S$ and $\sup S$ for the set
+	$$
+	S= \left\{\frac1p: \ p \ \text{is a prime number}\right\}.
+	$$ 
+	{{\it Hint:} You can use the fact that there are infinitely many prime numbers, so that, for each $n \in \mathbb{N}$, there is a prime number $p$ such that $p \geq n$.}
+\end{itemize}
+
+
+\medskip
+
+
+\noindent {\bf Problem 6.} {\bf (10 points)} 
+
+\begin{itemize}
+	\item [\it(i)] Using the definition of the limit, prove that $\lim\limits_{n\to \infty} \frac{4n^3+3n}{n^3-6} = 4.$
+	
+	\item[\it(ii)] Let $\{ a_n\}$ be a convergent sequence of integers. Show that there is $n_0 \in \mathbb{N}$ such that $a_n = a_{n_0}$ for all $n \geq n_0$.
+\end{itemize}
+
+
+
+\end{document}

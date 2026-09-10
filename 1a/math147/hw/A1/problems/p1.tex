@@ -1,0 +1,81 @@
+%!TEX root=../assign
+
+\section{Problem 1}
+\begin{enumerate}[label=(\Roman*)]
+    \item \textbf{Prove that $\sqrt{3}$ is irrational.}
+    
+    We need to prove a lemma first before we prove the proposition. 
+     \begin{lemma} \label{lemma 1}
+            For all $n \in \Z$, if $3 \mid n^2$, then $3 \mid n$. 
+
+            \begin{proof}
+                Suppose $3 \nmid n$. There are two cases to discuss.  
+                
+                case 1: $n = 3k + 1$
+
+                According to the definition of divisibility, we have 
+                \begin{equation*}
+                    n = 3k + 1 \quad \exists k \in \Z. 
+                \end{equation*} 
+
+                Taking the square of both sides, it follows that 
+                \begin{equation*}
+                    n^2 = \paren{3k + 1}^2 = 9k^2 + 6k + 1 =  3c + 1 \quad c = 3k^2 + 2k \in \Z.
+                \end{equation*}
+
+                thus, $3 \nmid n^2$.\\
+
+                case 2: $n = 3k + 2$
+
+                According to the definition of divisibility, we have 
+                \begin{equation*}
+                     \exists k \in \Z \text{ s.t } n = 3k + 2  
+                \end{equation*} 
+
+                Taking the square of both sides, it follows that 
+                \begin{equation*}
+                    n^2 = \paren{3k + 2}^2 = 9k^2 + 12k + 4 =  3c + 1 \quad c = 3k^2 + 4k + 1 \in \Z.
+                \end{equation*}
+
+                thus, $3 \nmid n^2$.
+            \end{proof}
+        \end{lemma}
+
+        Here is the proof of the question:
+        \begin{proof}
+            Suppose $\sqrt{3} \in \Q$. 
+
+            Then, according to the definition of rational numbers, 
+            \begin{equation*}
+                \exists m, n \in \Z, n \neq 0 \quad \text{ s.t } \quad \sqrt{3} = \frac{m}{n}. 
+            \end{equation*}
+
+            We assume that $m$ and $n$ have no common factor other than 1. Taking the square of the both sides, we get 
+            \begin{equation*}
+                3 = \frac{m^2}{n^2} \quad \implies \quad m^2 = 3n^2, 
+            \end{equation*}
+
+            which implies that $3 \mid m$ according to the lemma \ref{lemma 1}. 
+            According to the definition of divisibility, 
+            \begin{equation*}
+                \exists k \in \Z \quad \text{ s.t } \quad  m = 3k. 
+            \end{equation*}
+
+            Subbing $m = 3k$ back into $m^2 = 3n^2$, we have 
+           \begin{align*}
+            n^2 &= (3k)^2 / 3 \\
+            &= 9k^2 / 3\\
+            &= 3d, d = k^2 \in \Z. 
+           \end{align*}
+
+           It means that $3 \mid n$. 
+
+           Since $3 \mid n$ and $3 \mid m$, it contradicts the assumption that $n$ and $m$ have no common factor other than 1. 
+           
+           Therefore, $\sqrt{3} \in \R \setminus\Q$. 
+
+        \end{proof}
+
+        \item 
+    
+\end{enumerate}
