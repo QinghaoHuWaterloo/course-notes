@@ -1,6 +1,6 @@
 %!TEX root=../assign
 
-\section{Problem 1}
+\subsection{Problem 1}
 \begin{enumerate}[label=(\Roman*)]
     \item \textbf{Prove that $\sqrt{3}$ is irrational.}
     
@@ -61,7 +61,7 @@
                 \exists k \in \Z \quad \text{ s.t } \quad  m = 3k. 
             \end{equation*}
 
-            Subbing $m = 3k$ back into $m^2 = 3n^2$, we have 
+            Subtituting $m = 3k$ back into $m^2 = 3n^2$, we have 
            \begin{align*}
             n^2 &= (3k)^2 / 3 \\
             &= 9k^2 / 3\\
@@ -76,6 +76,68 @@
 
         \end{proof}
 
-        \item 
-    
+    \item \begin{proof}
+        Suppose $a, b \in \R$ with $a > 0$ and $b > 0$.
+
+        According to the given statement, we have
+        \begin{equation*}
+            \paren{\forall c > 0}\paren{\exists x > 0} x^2 = c.
+        \end{equation*}
+
+        It follows that there exist positive real numbers $a'$ and $b'$ such that
+        \begin{equation*}
+            \paren{a'}^2 = a
+            \quad \text{and} \quad
+            \paren{b'}^2 = b.
+        \end{equation*}
+
+        By the ordered field properties, we have
+        \begin{equation*}
+            \paren{a' - b'}^2 \geq 0.
+        \end{equation*}
+
+        for both $a' - b' \geq 0$ and $b'-a' \geq 0$. 
+
+        Expanding the left side, we get
+        \begin{equation}
+            \paren{a'}^2 - 2a'b' + \paren{b'}^2 \geq 0
+            \quad \implies \quad
+            \frac{\paren{a'}^2 + \paren{b'}^2}{2} \geq a'b'.
+            \label{eq 1.2.1}
+        \end{equation}
+
+        By substituting $\paren{a'}^2 = a$ and $\paren{b'}^2 = b$ into equation $\eqref{eq 1.2.1}$, we have
+        \begin{equation*}
+            \frac{a + b}{2} \geq a'b'.
+        \end{equation*}
+
+        Since $a' > 0$ and $b' > 0$, it follows from the ordered field properties that
+        \begin{equation*}
+            a'b' > 0 \cdot b' = 0.
+        \end{equation*}
+
+        Moreover,
+        \begin{equation*}
+            \paren{a'b'}^2
+            = \paren{a'}^2 \paren{b'}^2
+            = ab > 0 \cdot a'b' = 0.
+        \end{equation*}
+
+        Since $a'b' > 0$ and $ab > 0$, therefore,
+        \begin{equation*}
+            a'b' = \sqrt{ab}.
+        \end{equation*}
+
+        As a result,
+        \begin{equation*}
+            \frac{a + b}{2} \geq \sqrt{ab}.
+        \end{equation*}
+
+        Thus, the inequality has been proved.
+    \end{proof}
+
+    \textbf{Reference:} The ordered field properties were consulted in V. A. Zorich, \textit{Mathematical Analysis I}, Section 2.2.
+    Prove style is modified based on the suggestions from my dear father, Changwei Hu. 
+
+
 \end{enumerate}

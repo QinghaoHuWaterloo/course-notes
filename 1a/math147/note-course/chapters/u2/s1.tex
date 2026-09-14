@@ -62,3 +62,71 @@ Every real number has a decimal representation. In general, a decimal expansion 
     \qquad x_i\in\set{0,1,2,\ldots,9}.
 \end{equation*}
 \end{example}
+
+\begin{example}[Recurring decimal]
+    Is the statement $1.999\cdots = 2$ correct?
+
+    Yes. Let $x=1.999\cdots$. Then
+    \begin{align*}
+        x &= 1.999\cdots, \\
+        10x &= 19.999\cdots, \\
+        9x &= 18, \\
+        x &= 2.
+    \end{align*}
+\end{example}
+
+\subsubsection{Statements and Quantifiers}
+\begin{definition}[Statement]
+    A statement is a sentence that has a definite truth value: it is either true or false.
+\end{definition}
+
+The \textbf{universal quantifier} $\forall$ means ``for all.'' For example,
+\begin{example}
+    The statement
+    \begin{equation*}
+        \forall x \in \R,\quad x^2-x\geq 0
+    \end{equation*}
+    is false; for instance, it fails when $x=\frac12$.
+\end{example}
+
+The \textbf{existential quantifier} $\exists$ means ``there exists.'' For example,
+\begin{example}
+    The statement
+    \begin{equation*}
+        \exists x \in \R,\quad x^2-x\geq 0
+    \end{equation*}
+    is true; for instance, $x=2$ satisfies the inequality.
+\end{example}
+
+\begin{proposition}
+    For every $x\in\R$, there exists $y\in\R$ such that
+    \begin{equation*}
+        x^3-y^3=1.
+    \end{equation*}
+
+    \begin{proof}
+        Let $x\in\R$ and take $y=\sqrt[3]{x^3-1}$. Then
+        \begin{equation*}
+            x^3-y^3=x^3-(x^3-1)=1.
+        \end{equation*}
+    \end{proof}
+\end{proposition}
+
+\begin{proposition}
+    The statement
+    \begin{equation*}
+        \exists y\in\R,\quad \forall x\in\R,\quad x^3-y^3=1
+    \end{equation*}
+    is false.
+
+    Its negation is
+    \begin{equation*}
+        \forall y\in\R,\quad \exists x\in\R,\quad x^3-y^3\neq 1.
+    \end{equation*}
+    To prove the negation, let $y\in\R$ and take $x=y$. Then
+    $x^3-y^3=0\neq 1$.
+\end{proposition}
+
+\begin{remark}
+    The order of quantifiers matters.
+\end{remark}

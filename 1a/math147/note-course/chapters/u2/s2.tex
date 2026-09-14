@@ -1,0 +1,72 @@
+%!TEX root=../../note
+
+\subsection{Mathematical Induction}
+\begin{definition}[Principle of Mathematical Induction]
+    Let $P(n)$ be a statement depending on $n\in\N$. If the following two statements are true:
+    \begin{enumerate}[label=(\arabic*)]
+        \item $P(1)$ is true;
+        \item for every $k\in\N$, if $P(k)$ is true, then $P(k+1)$ is true;
+    \end{enumerate}
+    then
+    \begin{equation*}
+        \forall n\in\N,\quad P(n)
+    \end{equation*}
+    is true.
+\end{definition}
+
+\begin{proposition}[Sum of the First $n$ Natural Numbers]
+    For every $n\in\N$,
+    \begin{equation*}
+        1+2+\cdots+n=\frac{n(n+1)}{2}.
+    \end{equation*}
+
+    \begin{proof}
+        Define $P(n)$ to be the statement
+        \begin{equation*}
+            1+2+\cdots+n=\frac{n(n+1)}{2}.
+        \end{equation*}
+        The base case is $n=1$:
+        \begin{equation*}
+            1=\frac{1(1+1)}{2}.
+        \end{equation*}
+
+        For the inductive step, let $k\in\N$ and assume that $P(k)$ is true. Then
+        \begin{align*}
+            1+2+\cdots+(k+1)
+                &= \frac{k(k+1)}{2}+(k+1) \\
+                &= \frac{k(k+1)+2(k+1)}{2} \\
+                &= \frac{(k+1)(k+2)}{2}.
+        \end{align*}
+        Thus, $P(k+1)$ is true. By the principle of mathematical induction, the proposition follows.
+    \end{proof}
+\end{proposition}
+
+The principle of mathematical induction has the following equivalent set formulation.
+\begin{proposition}
+    Let $S\subseteq\N$. If
+    \begin{enumerate}
+        \item $1\in S$;
+        \item for every $k\in S$, $k+1\in S$;
+    \end{enumerate}
+    then $S=\N$.
+
+    \begin{proof}
+        Define $P(n)$ to be the statement $n\in S$. The two assumptions give the base case $P(1)$ and the inductive implication $P(k)\Rightarrow P(k+1)$. Hence, by mathematical induction, every $n\in\N$ belongs to $S$. Since $S\subseteq\N$, it follows that $S=\N$.
+    \end{proof}
+\end{proposition}
+
+\subsubsection{Well-Ordering Principle}
+\begin{theorem}[Well-Ordering Principle]
+    Every nonempty subset $S$ of $\N$ has a smallest element.
+
+    \begin{proof}
+        Let $S\subseteq\N$ be nonempty. Suppose, for contradiction, that $S$ has no smallest element. Define
+        \begin{equation*}
+            T=\set{n\in\N : \set{1,2,\ldots,n}\cap S=\emptyset}.
+        \end{equation*}
+
+        Since $S$ has no smallest element, $1\notin S$, so $1\in T$. Suppose $k\in T$. If $k+1\notin T$, then $k+1\in S$, while no element of $\set{1,2,\ldots,k}$ belongs to $S$. Thus, $k+1$ would be the smallest element of $S$, a contradiction. Therefore, $k+1\in T$.
+
+        By mathematical induction, $T=\N$. This implies that no natural number belongs to $S$, so $S=\emptyset$, contradicting the assumption that $S$ is nonempty. Therefore, $S$ has a smallest element.
+    \end{proof}
+\end{theorem}

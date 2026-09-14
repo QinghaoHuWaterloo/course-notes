@@ -1,0 +1,76 @@
+%!TEX root=../note
+\subsection{Problem 2}
+\subsubsection{(\rom{1})}
+\begin{definition}
+    A set $S \subseteq \R$ is called inductive if $1 \in S$ and $k \in S$ implies $k + 1 \in S$. 
+\end{definition}
+
+$\R$ is inductive since $1 \in \R$ and for all $x \in \R$, $x + 1 \in \R$. \\
+
+$\paren{0, \infty}$ is inductive since $1 \in \paren{0, \infty}$ and for all $x \in \paren{0, \infty}$, $x + 1 \in \paren{0, \infty}$. \\
+
+$\paren{0, \infty} \setminus \set{5}$ is not inductive since $4 \in \paren{0, \infty} \setminus \set{5} \text{ but } 4 + 1 = 5 \not\in \paren{0, \infty} \setminus \set{5}$. 
+
+\subsubsection{(\rom{2})}
+\begin{proof}
+    Suppose that $S$ and $T$ are inductive sets, and $U = S \cap T$. 
+
+    By the definition of inductive set, we have 
+    \begin{equation} \label{eq1.2.1}
+        1 \in S \quad \text{ and } \quad k \in S \implies k + 1 \in S. 
+    \end{equation}
+
+    and 
+    \begin{equation} \label{eq1.2.2}
+        1 \in T \quad \text{ and } \quad k \in T \implies k + 1 \in T. 
+    \end{equation}
+
+    Since $1$ is in both $S$ and $T$, it means that $1 \in U$. 
+
+    By statements \eqref{eq1.2.1} and \eqref{eq1.2.2}, we get 
+    \begin{equation*}
+        k \in U
+        \iff (k \in S \wedge k \in T) \quad
+        \implies \quad (k+1 \in S \wedge k+1 \in T)
+        \iff k+1 \in U.
+    \end{equation*}
+
+    Thus, $U$ is an inductive set. 
+\end{proof}
+
+\subsubsection{(\rom{3})}
+\begin{proof}
+    Let $\mathcal{I }$ be the collection of all inductive subsets. 
+    We define 
+    \begin{equation*}
+        \N = \bigcap_{S \in \mathcal{I}} S. 
+    \end{equation*}
+
+    Since 
+    \begin{equation*}
+        \paren{\forall S \in \mathcal{I }} 1 \in S, 
+    \end{equation*}
+    it follows that $1 \in \N$. 
+
+    It suffices to show that 
+    \begin{equation*}
+        k \in \N \quad \implies \quad k + 1 \in \N. 
+    \end{equation*}
+
+    Suppose $k \in \N$. By the definition of the intersection of sets, it means that 
+    \begin{equation*}
+        (\forall S \in \mathcal{I })k \in S. 
+    \end{equation*}
+
+    It follows the definition of inductive set that 
+    \begin{equation*}
+        (\forall S \in \mathcal{I })k + 1 \in S, 
+    \end{equation*} 
+
+    which implies 
+    \begin{equation*}
+        k + 1 \in \N.  
+    \end{equation*}
+
+    Thus, $\N$ is inductive. 
+\end{proof}
