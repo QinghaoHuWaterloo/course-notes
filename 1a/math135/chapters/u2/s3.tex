@@ -1,0 +1,57 @@
+%!TEX root= ../../note
+\subsection{Quantifiers and Quantified Statements}
+\subsubsection{Universal Quantifier}
+$\forall$ means "for all", and it is called the universal quantifier.
+
+\begin{example}
+    $$
+    \forall x \in \Z, x \geq 5, 2^n > n^2.
+    $$
+\end{example}
+
+The negation of universal quantifier.
+\begin{align*}
+    \neg \paren{\forall x \in S, P(x)} \equiv \paren{\exists x \in S, \neg P(x)}
+\end{align*}
+
+\subsubsection{Existential quantifier}
+$\exists$ means "there exists", and it is called the existential quantifier.
+\begin{example}
+    \begin{align*}
+        \exists a \in \Z, a^2 + 29a + 209 \leq 0.
+    \end{align*}
+\end{example}
+
+The negation of an existentially quantifier statement (such as $\exists x \in S, P(x)$) is:
+\begin{equation*}
+    \neg \paren{\exists x \in S, P(x)} \equiv \paren{\forall x \in S, \neg P(x)}.
+\end{equation*}
+
+\begin{remark}
+    A quantified statement contains four parts:
+    \begin{itemize}
+        \item variable;
+        \item quantifier;
+        \item domain;
+        \item an open sentence involving the variable (that is either true or false whenever a value of the variable is chosen from the domain).
+    \end{itemize}
+\end{remark}
+
+\subsubsection{Nested Quantifier}
+Consier this statement
+\begin{equation*}
+    \forall x \in \R, \exists y \in \R, x > y.
+\end{equation*}
+
+That is a true statement. (Given $x \in \R$, you could provide $y = x - 1$ to prove the existential statement)
+
+\begin{remark}
+    Order matters! Consider the statement: $\exists y \in \R, \forall x \in \R, x > y.$
+    This says there is a real number $y$ which is smaller than every real number!
+    False!!!
+\end{remark}
+
+To negative a nested quantifier statement, think about it in pieces. For example:
+\begin{align*}
+    \neg \paren{\forall x \in S, \exists y \in T, P(x, y)} &\equiv\\ &\exists x \in S, \forall y \in T, \neg P(x, y).
+\end{align*}

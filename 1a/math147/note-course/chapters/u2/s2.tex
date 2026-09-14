@@ -70,3 +70,43 @@ The principle of mathematical induction has the following equivalent set formula
         By mathematical induction, $T=\N$. This implies that no natural number belongs to $S$, so $S=\emptyset$, contradicting the assumption that $S$ is nonempty. Therefore, $S$ has a smallest element.
     \end{proof}
 \end{theorem}
+
+\begin{proposition}
+    Using the well-ordering principle, prove that for every $n\in\N$,
+    \begin{equation*}
+        1^2 + 2^2 + \cdots + n^2 = \frac{n\paren{n + 1}\paren{2n + 1}}{6}.
+    \end{equation*}
+
+    \begin{proof}
+        Let $P(n)$ denote the statement
+        \begin{equation*}
+            1^2 + 2^2 + \cdots + n^2 = \frac{n(n + 1)(2n + 1)}{6}.
+        \end{equation*}
+        Suppose, for contradiction, that $P(n)$ fails for some $n$; that is,
+        \begin{equation*}
+            \neg\paren{\forall n \in \N,\ P(n)}
+            \quad\text{equivalently}\quad
+            \exists n \in \N,\ \neg P(n).
+        \end{equation*}
+        Then the set
+        \begin{equation*}
+            S := \set{n \in \N : \neg P(n)}
+        \end{equation*}
+        is nonempty. By the well-ordering principle, $S$ has a smallest element $k$. Since $P(1)$ holds, $1\notin S$, so $k > 1$ and hence $k - 1\in\N$.
+
+        By minimality of $k$, we have $k - 1\notin S$, so $P(k - 1)$ is true:
+        \begin{equation*}
+            1^2 + 2^2 + \cdots + (k - 1)^2
+                = \frac{(k - 1)k\paren{2(k - 1) + 1}}{6}
+                = \frac{(k - 1)k(2k - 1)}{6}.
+        \end{equation*}
+        Adding $k^2$ to both sides gives
+        \begin{align*}
+            1^2 + \cdots + (k - 1)^2 + k^2
+                &= \frac{(k - 1)k(2k - 1)}{6} + k^2 \\
+                &= \frac{(k - 1)k(2k - 1) + 6k^2}{6} \\
+                &= \frac{k(k + 1)(2k + 1)}{6},
+        \end{align*}
+        so $P(k)$ is in fact true. This contradicts $k\in S$. Therefore $S=\emptyset$, and $P(n)$ holds for every $n\in\N$.
+    \end{proof}
+\end{proposition}
