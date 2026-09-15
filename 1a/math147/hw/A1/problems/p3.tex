@@ -1,0 +1,40 @@
+%!TEX = ../../root
+\subsection{Problem 3}
+\subsubsection{(\rom{1})}
+
+\begin{proof}
+    Suppose that P(1) is true and 
+    \begin{equation*}
+        \paren{\forall n \in \N} \bracks{\paren{P(1) \wedge P(2) \wedge \cdots \wedge P(n)} \implies P(n + 1)}. 
+    \end{equation*}
+
+    Let 
+    \begin{equation*}
+        T(n) := P(1) \wedge P(2) \wedge \cdots \wedge P(n). 
+    \end{equation*}
+
+    Since $P(1)$ is true, it implies that $T(1)$ is also true. 
+
+    By the assumption of strong induction, we have 
+    \begin{equation*}
+       T(n) \implies P(n + 1), 
+    \end{equation*} 
+    
+    and hence, since $T(n)$ is already assumed, 
+    \begin{equation*}
+        T(n) \wedge P(n + 1). 
+    \end{equation*}
+
+    By the definition of $T(n + 1)$, we get 
+    \begin{equation*}
+        T(n) \quad \implies \quad T(n + 1). 
+    \end{equation*}
+
+    Following the Principle of Mathematical Induction, we get
+    \begin{equation*}
+        \paren{\forall n \in \N} T(n) \quad \implies \quad \paren{\forall n \in \N} P(n). 
+    \end{equation*} 
+
+    Thus, Principle of Strong Mathematical Induction is correct. 
+
+\end{proof}

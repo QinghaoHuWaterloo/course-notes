@@ -77,60 +77,96 @@
         \end{proof}
 
     \item \begin{proof}
-        Suppose $a, b \in \R$ with $a > 0$ and $b > 0$.
+        We define 
+        \begin{equation*}
+            P := \set{x \in \R : x > 0}
+        \end{equation*}
 
+        to be a nonempty subset of $\R$ that satisfies Trichotomy law, Closure under addition, and closure under multiplication.  
+
+        Suppose $a, b \in P$. There are two cases to discuss, which are 
+        \begin{itemize}
+            \item $a > b$. 
+            \item $a = b$. 
+            \item $b < a$. 
+        \end{itemize}
+
+        We will prove case $a > b$ first. 
+        
         According to the given statement, we have
         \begin{equation*}
             \paren{\forall c > 0}\paren{\exists x > 0} x^2 = c.
         \end{equation*}
 
-        It follows that there exist positive real numbers $a'$ and $b'$ such that
+        It follows that there $\exists a', b' \in P$ such that
         \begin{equation*}
             \paren{a'}^2 = a
             \quad \text{and} \quad
             \paren{b'}^2 = b.
         \end{equation*}
 
+        Since $a > b$, it means that 
+        \begin{align*}
+            a - b &= (a')^2 - (b')^2 \\
+            &= \paren{a' - b'} \paren{a' + b' } \in P. 
+        \end{align*}
+
+        We know that $a' + b' \in P$, so $a' - b' \in P$.  
+
         By the ordered field properties, we have
         \begin{equation*}
-            \paren{a' - b'}^2 \geq 0.
+            \paren{a' - b'}^2 \in P \quad \implies \quad \paren{a' - b'}^2 > 0.
         \end{equation*}
 
-        for both $a' - b' \geq 0$ and $b'-a' \geq 0$. 
+        given $a' - b' \in P$ and closure under multiplication. 
 
         Expanding the left side, we get
         \begin{equation}
-            \paren{a'}^2 - 2a'b' + \paren{b'}^2 \geq 0
+            \paren{a'}^2 - 2a'b' + \paren{b'}^2 > 0
             \quad \implies \quad
-            \frac{\paren{a'}^2 + \paren{b'}^2}{2} \geq a'b'.
+            \frac{\paren{a'}^2 + \paren{b'}^2}{2} > a'b'.
             \label{eq 1.2.1}
         \end{equation}
 
         By substituting $\paren{a'}^2 = a$ and $\paren{b'}^2 = b$ into equation $\eqref{eq 1.2.1}$, we have
         \begin{equation*}
-            \frac{a + b}{2} \geq a'b'.
+            \frac{a + b}{2} > a'b'.
         \end{equation*}
 
-        Since $a' > 0$ and $b' > 0$, it follows from the ordered field properties that
+        Since $a' \in P$ and $b' \in P$, it follows from the closure under multiplication that
         \begin{equation*}
-            a'b' > 0 \cdot b' = 0.
+            a'b' \in P \quad \implies \quad a'b' > 0. 
         \end{equation*}
 
         Moreover,
         \begin{equation*}
             \paren{a'b'}^2
             = \paren{a'}^2 \paren{b'}^2
-            = ab > 0 \cdot a'b' = 0.
+            = ab \in P \quad \implies \quad ab > 0
         \end{equation*}
 
-        Since $a'b' > 0$ and $ab > 0$, therefore,
+        Since $a'b' > 0$ and $ab = a'b'$, therefore, $ab$ is a positive square root of $a'b'$. 
         \begin{equation*}
             a'b' = \sqrt{ab}.
         \end{equation*}
 
+        is the only option. 
+
         As a result,
         \begin{equation*}
-            \frac{a + b}{2} \geq \sqrt{ab}.
+            \frac{a + b}{2} > \sqrt{ab}.
+        \end{equation*}
+
+        For $b > a$, it can be proved using similar way as $a > b$ by swapping $a$ with $b$ and $b$ with $a$. 
+
+        For $a = b$, we have 
+        \begin{equation*}
+            \frac{a + b }{2 } = \frac{2a }{2 } = a = \sqrt{a^2} = \sqrt{ab}. 
+        \end{equation*}
+
+        Therefore, we get 
+        \begin{equation*}
+            \frac{a + b }{2} \geq \sqrt{ab}.
         \end{equation*}
 
         Thus, the inequality has been proved.
