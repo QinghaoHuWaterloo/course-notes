@@ -1,0 +1,87 @@
+%!TEX root=../../note
+\subsection{Bounds}
+This is an additional property of real numbers that is not satisfied by rational numbers. 
+
+\begin{definition}
+    [Bounded Sets]
+    Let $S$ be a nonempty subset of $\R$. The set $S$ is said to be 
+    \begin{enumerate}
+        \item bounded above: there exists $u \in \R$ such that $x \leq u$ for all $x \in S$. 
+        \item bounded below: there exists $w \in \R$ such that $w \leq x$ for all $x \in S$. 
+        \item bounded: it is both bounded above and below. 
+        \item unbounded: not bounded. 
+    \end{enumerate}
+\end{definition}
+
+If there exists an upper bound $u_0$ of $S$ such that whenever $u$ is an upper bound for $S$ 
+we have $u_0 \leq u$, then $u_0$ is called the least upper bound, or the supremum, of $S$. 
+\begin{equation*}
+    u_0 := \sup S
+\end{equation*}
+
+If there exists an lower bound $w_0$ of $S$ such that whenever $w$ is a lower bound for $S$ 
+we have $w_0 \geq w$, then $w_0$ is called the greatest lower bound, or the infimum, of $S$.
+\begin{equation*}
+    w_0 := \inf S
+\end{equation*} 
+
+\begin{remark}
+    there can be only one supremum/infimum of a given set $S$ of $\R$. 
+
+    Idea: Suppose $u_1$ and $u_2$ are both supremum of $S$. 
+
+    Since $u_1$ is a supremum and $u_2$ is an upper bound. We get 
+    \begin{equation*}
+        u_1 \leq u_2.
+    \end{equation*}
+
+    Since $u_2$ is a supremum and $u_1$ is an upper bound. We get 
+    \begin{equation*}
+        u_2 \leq u_1. 
+    \end{equation*}
+
+    thus, $u_1 = u_2$. 
+\end{remark}
+
+
+\begin{lemma}
+    An upper bound $u$ of a nonempty set $S$ in $\R$ is the supremum of $S$ if and only if 
+    \begin{equation*}
+        (\forall \epsilon > 0)(\exists x_\epsilon \in S)u - \epsilon < x_\epsilon. 
+    \end{equation*}
+
+    \begin{proof}
+        To start off, we need to prove 
+        \begin{equation*}
+            u = \sup S \implies \forall \epsilon > 0, \exists x_\epsilon \in S, u - \epsilon < x_\epsilon. 
+        \end{equation*}
+        Suppose $u = \sup S$.
+        
+        Let $\epsilon > 0$, then 
+        \begin{equation*}
+            u - \epsilon < u, 
+        \end{equation*} 
+
+        which means $u - \epsilon$ is not a upper bound of $S$. 
+
+        Thus, $\exists x_\epsilon \in S$ such that 
+        \begin{equation*}
+            u - \epsilon < x_\epsilon. 
+        \end{equation*}
+
+        Then, we need to prove that in a reverse way. 
+        
+        Suppose for every $\epsilon > 0, \exists x_\epsilon \in S, u - \epsilon < x_\epsilon$.  
+        Assume $u$ is not the supremum, then, say $w = \sup S$. Then, 
+        \begin{equation*}
+            w < u \implies u - w > 0. 
+        \end{equation*}
+
+        Take $\epsilon = u - w$, by hypothesis, $\exists x_\epsilon$ such that 
+
+        $$u - \epsilon < x_\epsilon \implies u - (u - w) < x_\epsilon \implies w < x_\epsilon$$. 
+
+        which is a contradiction. Since $w = \sup S$, therefore $u = \sup S$. 
+
+    \end{proof}
+\end{lemma}

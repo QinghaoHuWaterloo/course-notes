@@ -161,3 +161,79 @@ the completeness axiom.
         \end{cases}
     \]
 \end{definition}
+\begin{theorem}
+    \begin{enumerate} [label = (\alph*)]
+        \item $\abs{ab} = \abs{a}\abs{b}, \forall a, b \in \R$
+        \item $\abs{a }^2 = a^2, \forall a \in \R$
+        \item $\paren{\forall c > 0}\bracks{(\abs{a } \leq c) \iff (-c \leq a \leq c)}$
+        \item $\paren{\forall a \in \R}-\abs{a } \leq a \leq \abs{a}$
+
+    \end{enumerate}
+
+    You can prove all of them by cases. 
+\end{theorem}
+
+\begin{proposition}
+    [Triangle Inequality]
+    If $a, b \in \R$, then $\abs{a + b } \leq \abs{a } + \abs{b }$. 
+    \begin{proof}
+        Let $a, b \in \R$. We know that 
+        \begin{align*}
+            -\abs{a } \leq a \leq \abs{a}. \\
+            -\abs{b } \leq b \leq \abs{b}.
+        \end{align*}
+
+        thus, 
+        \begin{align*}
+            &-\abs{a } - \abs{b } \leq a + b \leq \abs{a } + \abs{ b} \\
+            &\iff - \paren{\abs{a } + \abs{b}} \leq a + b \leq \abs{a} + \abs{b}
+        \end{align*}
+
+        then we apply the absolute value theorem (c), we get 
+        \begin{equation*}
+            \abs{a + b } \leq \abs{a} + \abs{b}. 
+        \end{equation*}
+
+    \end{proof}
+\end{proposition}
+
+\begin{corollary}
+    \begin{enumerate}
+        \item $\abs{\abs{a } - \abs{b}} \leq \abs{a - b}. $
+        \item $\abs{a - b } \leq \abs{a } + \abs{b}$
+    \end{enumerate}
+
+    \begin{enumerate}
+        \item \begin{proof}
+            Let $a, b \in \R$. We know 
+            \begin{align*}
+                a = a - b + b &\implies \abs{a} = \abs{(a - b) + b} \leq \abs{a - b} + \abs{b} \\
+                &\implies \abs{a } - \abs{b } \leq \abs{a - b}
+            \end{align*}
+
+            \begin{align*}
+                b = b - a + a &\implies \abs{b } = \abs{(b - a) + a } \leq \abs{b - a } + \abs{a }\\
+                &\implies \abs{b } - \abs{a } \leq \abs{a - b}. \\
+                &\implies \abs{a } - \abs{b } \geq - \abs{a - b}
+            \end{align*}
+
+            thus, 
+            \begin{equation*}
+                -\abs{a - b } \leq \abs{a } - \abs{b } \leq \abs{a - b }
+            \end{equation*}
+            
+            Therefore, 
+            \begin{equation*}
+                \abs{\abs{a } - \abs{b }} \leq \abs{a - b}
+            \end{equation*}
+        \end{proof}
+
+        \item \begin{proof}
+            Let $a, b \in \R$. We know 
+            \begin{align*}
+                \abs{a - b} = \abs{a + \paren{-b }} \leq \abs{a} + \abs{-b } \leq \abs{a } + \abs{b}. 
+            \end{align*}
+        \end{proof}
+
+    \end{enumerate}
+\end{corollary}
