@@ -1,0 +1,106 @@
+%!TEX root=../../note
+\subsection{Implication}
+\begin{definition}
+    The truth value for $A implies B"$, written symbolically as $A \implies B$, is defined by the truth table 
+    \begin{center}
+        \begin{tabular}{c|c|c}
+        $A$ & $B$ & $A \implies B$ \\
+        \hline
+        T & T & T \\
+        T & F & F \\
+        F & T & T \\
+        F & F & T
+        \end{tabular}
+    \end{center}
+
+    We also refer to $A \implies B$ as an implication. 
+
+    Just for fun. Instructor does not talk about it. 
+    \begin{equation*}
+        A \implies B \equiv \neg (A \wedge \neg B) \equiv \neg A \vee B. 
+    \end{equation*}
+\end{definition}
+
+Hypothesis: Assume to be true: A
+
+Conclusion: B
+
+\begin{example}
+    \begin{equation*}
+        \paren{\forall x \in \R}\bracks{\paren{x > 2 } \implies \paren{x^2 > 4}}
+    \end{equation*}
+\end{example}
+
+\begin{remark}
+    Interesting. 
+    \begin{equation*}
+        (A \vee B) \implies C \equiv (A \implies C) \wedge (B \implies C)
+    \end{equation*}
+\end{remark}
+
+\subsection{Converse and Contrapositive}
+\subsubsection{Converse}
+The $B \implies A$ is called the converse of $A \implies B$. 
+\begin{center}
+    \begin{tabular}{c|c|c|c}
+        $A$ & $B$ & $A \implies B$ & $B \implies A$ \\
+        \hline
+        T & T & T & T \\
+        T & F & F & T \\
+        F & T & T & F \\
+        F & F & T & T
+    \end{tabular}
+\end{center}
+\begin{remark}
+    $(A \implies B) \not\equiv (B \implies A)$ (not logical equivalent) 
+\end{remark}
+
+\subsubsection{Contrapositive}
+The implication $(\neg B) \implies (\neg A)$ is called the contrapositive of $A \implies B$. 
+\begin{center}
+\begin{tabular}{c|c|c|c|c|c}
+$A$ & $B$ & $\neg A$ & $\neg B$ & $A \implies B$ & $(\neg B) \implies (\neg A)$ \\
+\hline
+T & T & F & F & T & T \\
+T & F & F & T & F & F \\
+F & T & T & F & T & T \\
+F & F & T & T & T & T
+\end{tabular}
+\end{center}
+
+\begin{remark}
+    $(A \implies B) \equiv ((\neg B) \implies (\neg A))$
+\end{remark}
+
+An implication is also logically equvalent to another type of compound statement, as shown in the following truth table: 
+\begin{center}
+\begin{tabular}{c|c|c|c|c}
+$A$ & $B$ & $\neg A$ & $A \implies B$ & $\neg A \vee B$ \\
+\hline
+T & T & F & T & T \\
+T & F & F & F & F \\
+F & T & T & T & T \\
+F & F & T & T & T
+\end{tabular}
+\end{center}
+
+\begin{remark}
+    The negation of an implication is not an implication. 
+\end{remark}
+
+\subsubsection{If and Only If}
+\begin{definition}
+    The truth value for "A if and only if B", written symbolically as $A \iff B$, is defined by the truth table. 
+
+    \begin{center}
+    \begin{tabular}{c|c|c}
+    $A$ & $B$ & $A \iff B$ \\
+    \hline
+    T & T & T \\
+    T & F & F \\
+    F & T & F \\
+    F & F & T
+    \end{tabular}
+    \end{center}
+
+\end{definition}
