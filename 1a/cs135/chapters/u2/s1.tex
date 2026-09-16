@@ -1,1 +1,283 @@
-\subsection{t1}
+\subsection{Values and Expressions}
+In ordinary mathematics, we usually write operators between their operands:
+$2+3$, $6/2$, or $x^2$.  This is called \term{infix notation}.  Racket
+instead uses a uniform notation for arithmetic and function application.
+
+\subsubsection{Beginning Student source files}
+In DrRacket, select the \term{Beginning Student} language.  When writing a
+Racket source file, the corresponding language declaration is written at the
+beginning of the file:
+\begin{minted}{text}
+#lang htdp/bsl
+\end{minted}
+The declaration chooses the language; it is not an expression that evaluates
+to a number or Boolean value.  The expressions and definitions come after it:
+\begin{minted}{text}
+#lang htdp/bsl
+
+(define x 7)
+(define y 11)
+(+ x y)       ; evaluates to 18
+\end{minted}
+The line beginning with a semicolon is a comment.  In the examples below, the
+language declaration is omitted when only an individual expression is shown.
+
+\begin{definition}[Prefix notation]
+A Racket expression is fully parenthesized, and its operator is written first:
+\begin{minted}{text}
+(+ 2 3)
+(/ 6 2)
+(sqr x)
+(expt x 2)
+\end{minted}
+The expression after the operator is its argument list.  The parentheses make
+the grouping explicit, so we do not need a separate precedence convention.
+The operator-first idea is also called \term{Polish notation}.  For example,
+classical Polish notation writes $2+3$ as \texttt{+ 2 3}, without parentheses.
+Racket uses a parenthesized form of this idea, \texttt{(+ 2 3)}, so the
+parentheses explicitly show where the expression begins and ends.  Thus it is
+helpful to think of Racket's prefix notation as parenthesized Polish notation,
+while using \term{prefix notation} as the standard CS135 term.
+
+For example, the mathematical expressions
+\[
+  8-2+3 \qquad\text{and}\qquad 8-(2\mathbin{\cdot}3)
+\]
+become, respectively,
+\begin{minted}{text}
+(+ (- 8 2) 3)
+(- 8 (* 2 3))
+\end{minted}
+\end{definition}
+
+\subsubsection{Evaluating an expression}
+Evaluation is a process of substitution.  Each step replaces a subexpression
+by its value, and the result is still a valid (but simpler) Racket program.  A
+substitution step chooses the leftmost, innermost subexpression with no
+parentheses inside it.  We write the yields symbol $\Rightarrow$ between steps.
+
+\begin{example}
+\begin{align*}
+&(* (/ 6 2) (+ 1 2)) \\
+&\Rightarrow (* 3 (+ 1 2)) \\
+&\Rightarrow (* 3 3) \\
+&\Rightarrow 9.
+\end{align*}
+\end{example}
+
+\subsubsection{Basic arithmetic operators}
+The arithmetic operators $+$, $-$, $*$, and $/$ accept two or more values in
+a single step (except that $-$ also supports one argument for negation).
+\begin{align*}
+  &( +\ 11\ 12\ 13) \Rightarrow 36, \\
+  &( /\ 720\ 5\ 4\ 3\ 2\ 1) \Rightarrow 6, \\
+  &(-\ 144) \Rightarrow -144, \qquad (-\ {-21}) \Rightarrow 21.
+\end{align*}
+In actual Racket syntax, spaces separate the arguments:
+\begin{minted}{text}
+(+ 11 12 13)
+(/ 720 5 4 3 2 1)
+(- 144)
+(- -21)
+\end{minted}
+Thus, for example, $(+\ 72)$ is an error: addition requires at least two
+arguments.
+
+\subsection{Exact numbers}
+The first number systems in CS135 are exact.  Exactness means that the value
+is represented without rounding; for example, $3/2$ is not silently replaced
+by a decimal approximation.
+
+\begin{definition}[Natural numbers]
+The natural numbers are defined recursively by
+\[
+  0\in\N, \qquad n\in\N\Longrightarrow n+1\in\N.
+\]
+CS135 writes the type as \texttt{Nat} in Racket discussions.  Starting at
+zero is especially convenient for computer science.
+\end{definition}
+
+\begin{definition}[Integers]
+The integers are
+\[
+  \Z=\{\ldots,-3,-2,-1,0,1,2,3,\ldots\}.
+\]
+CS135 writes \texttt{Int} for this type, which extends \texttt{Nat} by adding
+negative numbers.
+\end{definition}
+
+\begin{definition}[Rational numbers]
+The rational numbers are numbers of the form $p/q$, where $p,q\in\Z$ and
+$q\ne0$.  CS135 writes \texttt{Rat}.  Racket represents rational numbers
+exactly: \texttt{(/ 3 2)} evaluates to the exact number $3/2$.  Here
+\texttt{(/ 3 2)} is an expression performing division, while \texttt{3/2}
+is a literal way to write the resulting number.
+\end{definition}
+
+In Racket, exact \texttt{Nat}, \texttt{Int}, and \texttt{Rat} values can be
+arbitrarily large or small, limited only by available memory.  ``Arbitrarily''
+does not mean infinitely large: every physical computer has finite memory.
+
+\subsubsection{Integer division and type relationships}
+The operators \texttt{quotient} and \texttt{remainder} perform integer
+division without producing a rational number:
+\begin{minted}{text}
+(quotient 17 5)  ; 3
+(remainder 17 5) ; 2
+\end{minted}
+They consume two \texttt{Int}s and produce an \texttt{Int}; applying them to
+rational values is an error.
+
+The types form a subtype chain:
+\[
+  \texttt{Nat}\subseteq\texttt{Int}\subseteq\texttt{Rat}.
+\]
+Thus every natural number is an integer, and every integer is rational.  If an
+operator works for a type, it automatically works for its subtypes; an
+operator may still have additional restrictions, as \texttt{remainder} does.
+The subtype idea will recur throughout computer science.
+
+\subsubsection{Other numerical operators}
+The operators \texttt{max} and \texttt{min} select the largest and smallest
+argument:
+\begin{align*}
+  &\texttt{(max 4 8 -9 3)} \Rightarrow 8, &
+  &\texttt{(min 4 8 -9 3)} \Rightarrow -9.
+\end{align*}
+Unlike $+$, $*$, and $/$, each also accepts a single argument:
+\[
+  \texttt{(max 9)}\Rightarrow9, \qquad
+  \texttt{(min 9)}\Rightarrow9.
+\]
+Exponentiation is written with \texttt{sqr} and \texttt{expt}:
+\[
+  \texttt{(sqr 12)}\Rightarrow 12^2=144, \qquad
+  \texttt{(expt 3 4)}\Rightarrow 3^4=81.
+\]
+
+\subsubsection{Real numbers}
+The rationals are enough for addition, subtraction, multiplication, division,
+and integer powers.  But $\sqrt{2}=2^{1/2}$ is irrational, so we need the real
+numbers $\R$.  An irrational real number cannot be represented exactly in
+finite memory.  We return to this distinction between exact and inexact
+numbers in Lecture 02.
+
+\subsection{Constant definitions}
+A mathematical variable may change as we work, but a Racket name introduced
+with \texttt{define} is a \term{constant}: it is defined once and does not
+change.
+\begin{minted}{text}
+(define x 7)
+(define y 11)
+\end{minted}
+The first definition binds the value $7$ to the name \texttt{x}; the second
+binds $11$ to \texttt{y}.  We can then write, for example,
+\begin{minted}{text}
+(+ (sqr x) (* 6 x y) (sqr y) (* 9 x) (- (* 3 y)) -100)
+\end{minted}
+
+A definition is evaluated by substitution.  For instance,
+\begin{minted}{text}
+(define y (+ x 4))
+\end{minted}
+first substitutes the previously defined value of \texttt{x}, giving
+\texttt{(+ 7 4)}, and then evaluates that expression to $11$ before binding
+$11$ to \texttt{y}.  A name must be defined before it is used, and a name
+cannot be redefined once it has been defined.
+
+Meaningful constants also prevent \term{magic numbers}, whose purpose is
+otherwise hidden in a program:
+\begin{minted}{text}
+(define lightspeed 299792458)
+(define hours-in-day 24)
+(define feet-in-mile 5280)
+(define life-the-universe-and-everything 42)
+\end{minted}
+
+\subsection{Boolean expressions}
+In mathematics, the statement $x<5$ describes a condition on a possibly
+unknown $x$.  In Racket, a constant such as \texttt{x} already has a value, so
+\texttt{(< x 5)} is an expression asking whether that value is less than $5$.
+For example:
+\begin{minted}{text}
+(define x 4)
+(< x 6)  ; true
+(> x 6)  ; false
+(= x 7)  ; false
+(>= 5 x) ; true
+(<= 5 x) ; false
+\end{minted}
+The comparison operators \texttt{<}, \texttt{>}, \texttt{<=}, \texttt{>=}, and
+\texttt{=} consume numbers and produce a Boolean value.  The type is
+\texttt{Bool}, whose only values are \texttt{true} and \texttt{false}.
+
+\subsubsection{Combining Boolean values}
+The operators \texttt{and}, \texttt{or}, and \texttt{not} combine Boolean
+expressions:
+\begin{itemize}
+  \item \texttt{and} is true exactly when all its arguments are true;
+  \item \texttt{or} is true when at least one argument is true;
+  \item \texttt{not} reverses a Boolean value.
+\end{itemize}
+Both \texttt{and} and \texttt{or} require at least two arguments, whereas
+\texttt{not} takes one.  For example,
+\begin{align*}
+&\texttt{(and (or (< 2 3) (> 1 5)) (not (< 10 15)) (<= 5 5))} \\
+&\Rightarrow \texttt{(and (or true (> 1 5)) (not (< 10 15)) (<= 5 5))} \\
+&\Rightarrow \texttt{(and true (not true) (<= 5 5))} \\
+&\Rightarrow \texttt{(and true false (<= 5 5))} \\
+&\Rightarrow \texttt{false}.
+\end{align*}
+
+\subsubsection{Short-circuit evaluation}
+The definitions of \texttt{and} and \texttt{or} let Racket stop early.  If
+one argument of \texttt{and} is false, the whole expression is false; if one
+argument of \texttt{or} is true, the whole expression is true.  This is called
+\term{short-circuit evaluation}:
+\begin{align*}
+  &\texttt{(or (< 2 3) (> 1 5))}
+     \Rightarrow \texttt{(or true (> 1 5))}\Rightarrow\texttt{true},\\
+  &\texttt{(and true (not true) (<= 5 5))}
+     \Rightarrow \texttt{(and true false (<= 5 5))}\Rightarrow\texttt{false}.
+\end{align*}
+
+\subsubsection{De Morgan's laws}
+For Boolean expressions $A$ and $B$, the familiar set-theoretic identities
+are also valid:
+\begin{align*}
+\texttt{(not (and A B))}
+  &\equiv \texttt{(or (not A) (not B))},\\
+\texttt{(not (or A B))}
+  &\equiv \texttt{(and (not A) (not B))}.
+\end{align*}
+For example,
+\begin{align*}
+&\texttt{(not (or (< 2 3) (> 1 5)))} \\
+&\equiv \texttt{(and (not (< 2 3)) (not (> 1 5)))} \\
+&\equiv \texttt{(and (>= 2 3) (<= 1 5))}.
+\end{align*}
+
+\subsection{Lecture 01 summary}
+Lecture 01 builds the first layer of a mathematical model of computation:
+values and expressions, then constants and Boolean expressions.  The next
+lectures add functions, conditional expressions, and recursion; together these
+will form a complete small model of a computer.  Lists will later make it
+possible to organize data and study algorithms and data structures.
+
+The main ideas to remember are:
+\begin{itemize}
+  \item write mathematical operations in fully parenthesized prefix notation;
+  \item evaluate by valid substitution steps until a value is reached;
+  \item distinguish exact \texttt{Nat}, \texttt{Int}, and \texttt{Rat} values;
+  \item treat \texttt{define}d names as constants; and
+  \item use Boolean expressions to represent true-or-false questions.
+\end{itemize}
+
+\subsubsection{Allowed constructs}
+The Lecture 01 allowed-constructs list is:
+\begin{minted}{text}
+( ) + - * / = < > <= >= and define expt false max min not or
+quotient remainder sqr true Bool Int Nat Rat
+\end{minted}
+Assignments may permit the constructs from a particular lecture, together
+with any restrictions stated on the assignment's first page.

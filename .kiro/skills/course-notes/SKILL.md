@@ -1,6 +1,6 @@
 ---
 name: course-notes
-description: Organize course LaTeX notes with minimal context and cost-aware Luna/Terra routing
+description: Organize course LaTeX notes with minimal context and cost-aware Haiku/Sonnet routing
 ---
 
 # Course note organizer
@@ -20,9 +20,9 @@ Organize the LaTeX course notes requested in `$ARGUMENTS`. If the course, target
 2. Read another file only to resolve a concrete macro, symbol, label, reference, or dependency. Never preload the whole repository or unrelated courses.
 3. Classify once and route without debate:
    - **Low risk:** spelling, punctuation, spacing, indentation, or a known local formatting fix. Use no subagent.
-   - **Medium risk:** substantial prose cleanup or local LaTeX structure/style, with technical meaning fixed. Call exactly one subagent with `model: gpt-5.6-luna` for a short edit plan.
-   - **High risk:** definitions, theorem statements, proof logic, technical claims, assumptions, formulas, unknown macros, labels/references, or cross-file effects. Call exactly one subagent with `model: gpt-5.6-terra` for evidence-based risk findings.
-   - Call both only for a multi-file task that changes technical meaning: Luna proposes the minimal wording/structure change, then Terra reviews only semantic and cross-file risks. Do not ask them the same question.
+   - **Medium risk:** substantial prose cleanup or local LaTeX structure/style, with technical meaning fixed. Call exactly one subagent with `model: claude-haiku-4.5` for a short edit plan.
+   - **High risk:** definitions, theorem statements, proof logic, technical claims, assumptions, formulas, unknown macros, labels/references, or cross-file effects. Call exactly one subagent with `model: claude-sonnet-5` for evidence-based risk findings.
+   - Call both only for a multi-file task that changes technical meaning: Haiku proposes the minimal wording/structure change, then Sonnet reviews only semantic and cross-file risks. Do not ask them the same question.
 4. Give a subagent only the task, allowed paths, relevant line ranges or short excerpts, immutable items, and current risk. Require output no longer than needed in this form: `issues: [{path, line, reason, minimal_action}]; missing_context; build_needed`.
 5. Apply one minimal patch. Do not perform opportunistic cleanup.
 
