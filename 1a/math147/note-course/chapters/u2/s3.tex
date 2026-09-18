@@ -75,24 +75,24 @@ the completeness axiom.
         \item If $u \in \R$ and $b \neq 0$ with $u \cdot b = b$, then $u = 1$.
         \item If $a \in \R$, then $a \cdot 0 = 0$.
     \end{enumerate}
-
-    \begin{proof}
-        \begin{enumerate}[label = \alph*)]
-            \item
-            \[
-                z = z + 0 = z + (a - a) = (z + a) + (-a) = a + (-a) = 0.
-            \]
-            \item Multiplying $u \cdot b = b$ by $b^{-1}$,
-            \[
-                u = u \cdot 1 = u \cdot \paren{b \cdot b^{-1}} = (u \cdot b) \cdot b^{-1} = b \cdot b^{-1} = 1.
-            \]
-            \item
-            \[
-                a \cdot 0 = a \cdot \paren{1 + (-1)} = a \cdot 1 + a \cdot (-1) = a + (-a) = 0.
-            \]
-        \end{enumerate}
-    \end{proof}
 \end{theorem}
+
+\begin{proof}
+    \begin{enumerate}[label = \alph*)]
+        \item
+        \[
+            z = z + 0 = z + (a - a) = (z + a) + (-a) = a + (-a) = 0.
+        \]
+        \item Multiplying $u \cdot b = b$ by $b^{-1}$,
+        \[
+            u = u \cdot 1 = u \cdot \paren{b \cdot b^{-1}} = (u \cdot b) \cdot b^{-1} = b \cdot b^{-1} = 1.
+        \]
+        \item
+        \[
+            a \cdot 0 = a \cdot \paren{1 + (-1)} = a \cdot 1 + a \cdot (-1) = a + (-a) = 0.
+        \]
+    \end{enumerate}
+\end{proof}
 
 \begin{definition}[The Order Properties of $\R$]
     There is a nonempty subset $P$ of $\R$, called the set of \textbf{positive real
@@ -131,24 +131,25 @@ the completeness axiom.
 
 \begin{example}
     Prove that if $a \in \R$ and $a \neq 0$, then $a^2 > 0$.
-    \begin{proof}
-        Since $a \neq 0$, the trichotomy law gives two cases.
-
-        \textbf{Case 1: $a \in P$.} By closure under multiplication,
-        \begin{equation*}
-            a^2 = a \cdot a \in P, \qquad\text{so } a^2 > 0.
-        \end{equation*}
-
-        \textbf{Case 2: $a \notin P$.} Since $a \neq 0$, trichotomy gives $-a \in P$, so by closure under multiplication $(-a)(-a) \in P$. It remains to show that $a^2 = (-a)(-a)$:
-        \begin{align*}
-            a + (-a) = 0
-                &\implies (-a)\paren{a + (-a)} = (-a) \cdot 0 = 0 \\
-                &\implies (-a)(a) + (-a)(-a) = 0 \\
-                &\implies (-a)(-a) = -\paren{(-a)a} = -(-a^2) = a^2.
-        \end{align*}
-        Hence $a^2 = (-a)(-a) \in P$, so $a^2 > 0$. In either case $a^2 > 0$.
-    \end{proof}
 \end{example}
+
+\begin{proof}
+    Since $a \neq 0$, the trichotomy law gives two cases.
+
+    \textbf{Case 1: $a \in P$.} By closure under multiplication,
+    \begin{equation*}
+        a^2 = a \cdot a \in P, \qquad\text{so } a^2 > 0.
+    \end{equation*}
+
+    \textbf{Case 2: $a \notin P$.} Since $a \neq 0$, trichotomy gives $-a \in P$, so by closure under multiplication $(-a)(-a) \in P$. It remains to show that $a^2 = (-a)(-a)$:
+    \begin{align*}
+        a + (-a) = 0
+            &\implies (-a)\paren{a + (-a)} = (-a) \cdot 0 = 0 \\
+            &\implies (-a)(a) + (-a)(-a) = 0 \\
+            &\implies (-a)(-a) = -\paren{(-a)a} = -(-a^2) = a^2.
+    \end{align*}
+    Hence $a^2 = (-a)(-a) \in P$, so $a^2 > 0$. In either case $a^2 > 0$.
+\end{proof}
 
 \subsubsection{The Absolute Value}
 \begin{definition}
@@ -175,65 +176,62 @@ the completeness axiom.
 
 \begin{proposition}
     [Triangle Inequality]
-    If $a, b \in \R$, then $\abs{a + b } \leq \abs{a } + \abs{b }$. 
-    \begin{proof}
-        Let $a, b \in \R$. We know that 
-        \begin{align*}
-            -\abs{a } \leq a \leq \abs{a}. \\
-            -\abs{b } \leq b \leq \abs{b}.
-        \end{align*}
-
-        thus, 
-        \begin{align*}
-            &-\abs{a } - \abs{b } \leq a + b \leq \abs{a } + \abs{ b} \\
-            &\iff - \paren{\abs{a } + \abs{b}} \leq a + b \leq \abs{a} + \abs{b}
-        \end{align*}
-
-        then we apply the absolute value theorem (c), we get 
-        \begin{equation*}
-            \abs{a + b } \leq \abs{a} + \abs{b}. 
-        \end{equation*}
-
-    \end{proof}
+    If $a, b \in \R$, then $\abs{a + b } \leq \abs{a } + \abs{b }$.
 \end{proposition}
+
+\begin{proof}
+    Let $a, b \in \R$. We know that
+    \begin{align*}
+        -\abs{a } \leq a \leq \abs{a}. \\
+        -\abs{b } \leq b \leq \abs{b}.
+    \end{align*}
+
+    thus,
+    \begin{align*}
+        &-\abs{a } - \abs{b } \leq a + b \leq \abs{a } + \abs{ b} \\
+        &\iff - \paren{\abs{a } + \abs{b}} \leq a + b \leq \abs{a} + \abs{b}
+    \end{align*}
+
+    then we apply the absolute value theorem (c), we get
+    \begin{equation*}
+        \abs{a + b } \leq \abs{a} + \abs{b}.
+    \end{equation*}
+\end{proof}
 
 \begin{corollary}
     \begin{enumerate}
         \item $\abs{\abs{a } - \abs{b}} \leq \abs{a - b}. $
         \item $\abs{a - b } \leq \abs{a } + \abs{b}$
     \end{enumerate}
-
-    \begin{enumerate}
-        \item \begin{proof}
-            Let $a, b \in \R$. We know 
-            \begin{align*}
-                a = a - b + b &\implies \abs{a} = \abs{(a - b) + b} \leq \abs{a - b} + \abs{b} \\
-                &\implies \abs{a } - \abs{b } \leq \abs{a - b}
-            \end{align*}
-
-            \begin{align*}
-                b = b - a + a &\implies \abs{b } = \abs{(b - a) + a } \leq \abs{b - a } + \abs{a }\\
-                &\implies \abs{b } - \abs{a } \leq \abs{a - b}. \\
-                &\implies \abs{a } - \abs{b } \geq - \abs{a - b}
-            \end{align*}
-
-            thus, 
-            \begin{equation*}
-                -\abs{a - b } \leq \abs{a } - \abs{b } \leq \abs{a - b }
-            \end{equation*}
-            
-            Therefore, 
-            \begin{equation*}
-                \abs{\abs{a } - \abs{b }} \leq \abs{a - b}
-            \end{equation*}
-        \end{proof}
-
-        \item \begin{proof}
-            Let $a, b \in \R$. We know 
-            \begin{align*}
-                \abs{a - b} = \abs{a + \paren{-b }} \leq \abs{a} + \abs{-b } \leq \abs{a } + \abs{b}. 
-            \end{align*}
-        \end{proof}
-
-    \end{enumerate}
 \end{corollary}
+
+\begin{proof}[Proof of (1)]
+    Let $a, b \in \R$. We know
+    \begin{align*}
+        a = a - b + b &\implies \abs{a} = \abs{(a - b) + b} \leq \abs{a - b} + \abs{b} \\
+        &\implies \abs{a } - \abs{b } \leq \abs{a - b}
+    \end{align*}
+
+    \begin{align*}
+        b = b - a + a &\implies \abs{b } = \abs{(b - a) + a } \leq \abs{b - a } + \abs{a }\\
+        &\implies \abs{b } - \abs{a } \leq \abs{a - b}. \\
+        &\implies \abs{a } - \abs{b } \geq - \abs{a - b}
+    \end{align*}
+
+    thus,
+    \begin{equation*}
+        -\abs{a - b } \leq \abs{a } - \abs{b } \leq \abs{a - b }
+    \end{equation*}
+
+    Therefore,
+    \begin{equation*}
+        \abs{\abs{a } - \abs{b }} \leq \abs{a - b}
+    \end{equation*}
+\end{proof}
+
+\begin{proof}[Proof of (2)]
+    Let $a, b \in \R$. We know
+    \begin{align*}
+        \abs{a - b} = \abs{a + \paren{-b }} \leq \abs{a} + \abs{-b } \leq \abs{a } + \abs{b}.
+    \end{align*}
+\end{proof}

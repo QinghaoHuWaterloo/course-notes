@@ -14,13 +14,14 @@
     \end{equation*}
 
     Since $P(1)$ is true, it implies that $T(1)$ is also true. 
+    We also assume $T(n)$ is true. 
 
     By the assumption of strong induction, we obtain
     \begin{equation*}
        T(n) \implies P(n + 1), 
     \end{equation*} 
     
-    and hence, since $T(n)$ is already assumed, 
+    and hence, since $T(n)$ is already assumed to be true, 
     \begin{equation*}
         T(n) \wedge P(n + 1). 
     \end{equation*}
@@ -37,4 +38,158 @@
 
     Thus, Principle of Strong Mathematical Induction is correct. 
 
+\end{proof}
+
+\subsubsection{(\rom{2})}
+
+\begin{proof}
+    We define$S$ is a set such that 
+    \begin{equation*}
+        S := \set{n \in \N \cup \set{0} :  p_n(x) \text{ is a degree $n$ polynomial and the coefficient of } x^n \text{ in } p_n(x) \text{ is }1}
+    \end{equation*}
+
+    We know $0 \in S$ is true since $p_0(x) = 1x^0 = 1 \cdot 1 = 1$ is a degree 0 polynominal and the coefficient of $x^0$ is $1$. 
+    
+    We also know that $1 \in S$ is true since $p_1(x) = 1 \cdot x$ is a degree 1 polynominal and the coefficient of $x$ is 1. 
+
+    It is suffice to show that 
+    \begin{equation*}
+        (n - 1 \in S) \wedge (n \in S) \implies (n + 1 \in S). 
+    \end{equation*}
+
+    Suppose $n - 1 \in S$ and $n \in S$ are true. We define 
+    \begin{equation*}
+        p_{n - 1}(x) = x^{n - 1} + q(x) \quad \text{and} \quad p_{n} = x^n + r(x), 
+    \end{equation*} 
+
+    where 
+    \begin{equation*}
+        \deg r \leq n - 1 \quad \text{and} \quad \deg q \leq n - 2. 
+    \end{equation*}
+
+    Then, by the given statement 
+    \begin{align*}
+        p_{n + 1}(x) &= x \cdot p_{n}(x) - p_{n - 1}(x) \\
+        &= x \cdot \paren{x^{n} + r(x)} - (x^{n - 1} + q(x)) \\
+        &= x^{n + 1} + xr(x) - x^{n - 1} - q(x). 
+    \end{align*}
+
+    Since the term $xr(x) - x^{n - 1} - q(x)$ has at msot degree $n$, the term $x^{n + 1}$ cannot be canceled. 
+    Therefore, $p_{n + 1}(x)$ is a degree $n + 1$ polynominal and the coefficient of $x^{n + 1}$ is $1$ 
+    
+    Thus, by the Principle of Complete Mathematical Induction, 
+    \begin{equation*}
+        \forall n \in \N \cup \set{0}, n \in S, 
+    \end{equation*}
+
+    which implies that the given statement is true. 
+
+\end{proof}
+
+\subsubsection{\rom{3}}
+\begin{proof}
+    Let $0 < \abs{t} < 1$ and define statement 
+    \begin{equation*}
+        T(n): p_n(t + t^{-1}) = \frac{t^{n + 1} - t^{-n-1}}{t - t^{-1}}. 
+    \end{equation*}
+
+    We know that $T(0)$ is true since 
+    \begin{equation*}
+        p_0(t + t^{-1}) = \frac{t^{0 + 1} - t^{0 - 1}}{t - t^{-1}} = \frac{t - t^{-1}}{t - t^{-1}} = 1.  
+    \end{equation*}
+
+    We also know that $T(1)$ is true since 
+    \begin{equation*}
+        p_1(t + t^{-1}) = \frac{t^{1 + 1} - t^{-1 - 1}}{t - t^{-1}} = \frac{t^2 - t^{-2}}{t - t^{-1}} = \frac{\paren{t^1 - t^{-1}} \paren{t^1 + t^{-1}}}{t - t^{-1}} =  t + t^{-1}.  
+    \end{equation*}
+
+    Suppose that $T(n - 1)$ and $T(n)$ are true. 
+    It suffices to show that 
+    \begin{equation*}
+        \paren{T(n - 1) \wedge T(n)} \implies T(n + 1). 
+    \end{equation*}
+
+    Following from the given statement, 
+    \begin{align*}
+        p_{n + 1}(t + t^{-1}) &= \paren{t + t^{-1}} p_n(t + t^{-1}) - p_{n - 1}(t + t^{-1}) \\
+        &= \paren{t + t^{-1}} \cdot  \frac{t^{n + 1} - t^{-n - 1}}{t - t^{-1}} - \frac{t^{n - 1 + 1} - t^{-(n - 1) - 1}}{t - t^{-1}} \\
+        &= \paren{t + t^{-1}} \cdot  \frac{t^{n + 1} - t^{-n - 1}}{t - t^{-1}} - \frac{t^{n} - t^{-n}}{t - t^{-1}} \\
+        &= \frac{t^{n + 2} - t^{-n + 2}}{t - t^{-1}} \\
+        &= \frac{t^{(n + 1) + 1} - t^{-(n + 1) - 1}}{t - t^{-1}}
+    \end{align*}
+
+    This implies $T(n + 1)$ is true. 
+
+    By the Principle of Complete Mathematical Induction, we get 
+    \begin{equation*}
+        (\forall n \in \N\cup\set{0})T(n). 
+    \end{equation*}
+
+    Thus, 
+    \begin{equation*}
+        (\forall n \in \N\cup\set{0})\bracks{p_n(t + t^{-1}) = \frac{t^{n + 1} - t^{-n-1}}{t - t^{-1}}}.
+    \end{equation*}
+\end{proof}
+
+\subsubsection{\rom{4}}
+\begin{proof}
+    Given function 
+    \begin{equation*}
+        g: D \to \R, g(t) := t + t^{-1}
+    \end{equation*}
+    where 
+    \begin{equation*}
+        D := \set{x \in \R : 0 < \abs{x } < 1}. 
+    \end{equation*}
+
+    We also define 
+    \begin{equation*}
+        R := \set{g(t) : t \in D}. 
+    \end{equation*}
+
+    In order to show that 
+    \begin{equation*}
+        R = \paren{-\infty, -2} \cup \paren{2, \infty}, 
+    \end{equation*}
+
+    we need to prove both 
+    \begin{align}
+         &R \subseteq \paren{-\infty, -2} \cup \paren{2, \infty} \label{3.4.1}\\ 
+         &R \supseteq \paren{-\infty, -2} \cup \paren{2, \infty} \label{3.4.2}
+    \end{align}
+
+    Let us start with the proof of \eqref{3.4.1}
+
+    For all $y \in R$, we have $x \in D$ such that 
+    \begin{equation*}
+        y = x + \frac{1}{x}. 
+    \end{equation*}
+
+    Since $x \neq 0$, we get 
+    \begin{equation*}
+         y = x + \frac{1}{x} \iff xy = x^2 + 1 \iff 0 = x^2 - yx + 1. 
+    \end{equation*}
+
+    By the definition of the set $D$, element x must be in real number set. So the equation
+    \begin{equation*}
+        0 = x^2 - yx + 1
+    \end{equation*}
+
+    must have real roots. Therefore, 
+    \begin{equation*}
+        (-y)^2 - 4*(1)*(1) \geq 0 \implies y^2 - 4 \geq 0 \implies y^2 \geq 4 \implies \abs{y} \geq 2. 
+    \end{equation*}
+
+    However, $\abs{y} \neq 2$ since 
+    \begin{equation*}
+        x = \frac{-(-y) \pm \sqrt{(-y)^2 - 4 \cdot a \cdot 1}}{2 \cdot 1} = \frac{-(2) \pm \sqrt{(-2)^2 - 4 \cdot a \cdot 1}}{2 \cdot 1} = \frac{-2}{2} = -1
+    \end{equation*}
+
+    and 
+     \begin{equation*}
+        x = \frac{-(-y) \pm \sqrt{(-y)^2 - 4 \cdot a \cdot 1}}{2 \cdot 1} = \frac{-(-2) \pm \sqrt{(2)^2 - 4 \cdot a \cdot 1}}{2 \cdot 1} = \frac{2}{2} = 1
+    \end{equation*}
+
+    which makes $x \notin D$. 
+    Thus, $\abs{y} > 2$, which also implies $R \subseteq \paren{-\infty, -2} \cup \paren{2, \infty} \label{3.4.1}$.
 \end{proof}

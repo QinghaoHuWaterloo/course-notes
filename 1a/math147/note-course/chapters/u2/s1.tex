@@ -22,31 +22,32 @@ The natural numbers are closed under addition. The integers are closed under add
 
 \begin{theorem}[Irrationality of $\sqrt{2}$]
     The number $\sqrt{2}$ is irrational; equivalently, $\sqrt{2}\notin\Q$.
-    \begin{proof}
-        Suppose, for contradiction, that $\sqrt{2}\in\Q$. Then we can write
-        \begin{equation*}
-            \sqrt{2}=\frac{m}{n},
-            \qquad m,n\in\Z,
-            \qquad n>0,
-            \qquad \gcd(m,n)=1.
-        \end{equation*}
-        Squaring both sides gives
-        \begin{equation*}
-            2=\frac{m^2}{n^2}
-            \qquad\Longrightarrow\qquad
-            m^2=2n^2.
-        \end{equation*}
-
-        Thus, $m^2$ is even, so $m$ is even. Write $m=2\ell$ for some $\ell\in\Z$. Substituting this into the equation above gives
-        \begin{align*}
-            2n^2 &= 4\ell^2, \\
-            n^2 &= 2\ell^2.
-        \end{align*}
-        Therefore, $n^2$ is even, and hence $n$ is even as well.
-
-        This means that both $m$ and $n$ are even, contradicting $\gcd(m,n)=1$. Therefore, $\sqrt{2}\notin\Q$.
-    \end{proof}
 \end{theorem}
+
+\begin{proof}
+    Suppose, for contradiction, that $\sqrt{2}\in\Q$. Then we can write
+    \begin{equation*}
+        \sqrt{2}=\frac{m}{n},
+        \qquad m,n\in\Z,
+        \qquad n>0,
+        \qquad \gcd(m,n)=1.
+    \end{equation*}
+    Squaring both sides gives
+    \begin{equation*}
+        2=\frac{m^2}{n^2}
+        \qquad\Longrightarrow\qquad
+        m^2=2n^2.
+    \end{equation*}
+
+    Thus, $m^2$ is even, so $m$ is even. Write $m=2\ell$ for some $\ell\in\Z$. Substituting this into the equation above gives
+    \begin{align*}
+        2n^2 &= 4\ell^2, \\
+        n^2 &= 2\ell^2.
+    \end{align*}
+    Therefore, $n^2$ is even, and hence $n$ is even as well.
+
+    This means that both $m$ and $n$ are even, contradicting $\gcd(m,n)=1$. Therefore, $\sqrt{2}\notin\Q$.
+\end{proof}
 
 The irrational numbers are the real numbers that are not rational:
 \begin{equation*}
@@ -103,14 +104,14 @@ The \textbf{existential quantifier} $\exists$ means ``there exists.'' For exampl
     \begin{equation*}
         x^3-y^3=1.
     \end{equation*}
-
-    \begin{proof}
-        Let $x\in\R$ and take $y=\sqrt[3]{x^3-1}$. Then
-        \begin{equation*}
-            x^3-y^3=x^3-(x^3-1)=1.
-        \end{equation*}
-    \end{proof}
 \end{proposition}
+
+\begin{proof}
+    Let $x\in\R$ and take $y=\sqrt[3]{x^3-1}$. Then
+    \begin{equation*}
+        x^3-y^3=x^3-(x^3-1)=1.
+    \end{equation*}
+\end{proof}
 
 \begin{proposition}
     The statement

@@ -19,27 +19,27 @@
     \begin{equation*}
         1+2+\cdots+n=\frac{n(n+1)}{2}.
     \end{equation*}
-
-    \begin{proof}
-        Define $P(n)$ to be the statement
-        \begin{equation*}
-            1+2+\cdots+n=\frac{n(n+1)}{2}.
-        \end{equation*}
-        The base case is $n=1$:
-        \begin{equation*}
-            1=\frac{1(1+1)}{2}.
-        \end{equation*}
-
-        For the inductive step, let $k\in\N$ and assume that $P(k)$ is true. Then
-        \begin{align*}
-            1+2+\cdots+(k+1)
-                &= \frac{k(k+1)}{2}+(k+1) \\
-                &= \frac{k(k+1)+2(k+1)}{2} \\
-                &= \frac{(k+1)(k+2)}{2}.
-        \end{align*}
-        Thus, $P(k+1)$ is true. By the principle of mathematical induction, the proposition follows.
-    \end{proof}
 \end{proposition}
+
+\begin{proof}
+    Define $P(n)$ to be the statement
+    \begin{equation*}
+        1+2+\cdots+n=\frac{n(n+1)}{2}.
+    \end{equation*}
+    The base case is $n=1$:
+    \begin{equation*}
+        1=\frac{1(1+1)}{2}.
+    \end{equation*}
+
+    For the inductive step, let $k\in\N$ and assume that $P(k)$ is true. Then
+    \begin{align*}
+        1+2+\cdots+(k+1)
+            &= \frac{k(k+1)}{2}+(k+1) \\
+            &= \frac{k(k+1)+2(k+1)}{2} \\
+            &= \frac{(k+1)(k+2)}{2}.
+    \end{align*}
+    Thus, $P(k+1)$ is true. By the principle of mathematical induction, the proposition follows.
+\end{proof}
 
 The principle of mathematical induction has the following equivalent set formulation.
 \begin{proposition}
@@ -49,64 +49,64 @@ The principle of mathematical induction has the following equivalent set formula
         \item for every $k\in S$, $k+1\in S$;
     \end{enumerate}
     then $S=\N$.
-
-    \begin{proof}
-        Define $P(n)$ to be the statement $n\in S$. The two assumptions give the base case $P(1)$ and the inductive implication $P(k)\Rightarrow P(k+1)$. Hence, by mathematical induction, every $n\in\N$ belongs to $S$. Since $S\subseteq\N$, it follows that $S=\N$.
-    \end{proof}
 \end{proposition}
+
+\begin{proof}
+    Define $P(n)$ to be the statement $n\in S$. The two assumptions give the base case $P(1)$ and the inductive implication $P(k)\Rightarrow P(k+1)$. Hence, by mathematical induction, every $n\in\N$ belongs to $S$. Since $S\subseteq\N$, it follows that $S=\N$.
+\end{proof}
 
 \subsubsection{Well-Ordering Principle}
 \begin{theorem}[Well-Ordering Principle]
     Every nonempty subset $S$ of $\N$ has a smallest element.
-
-    \begin{proof}
-        Let $S\subseteq\N$ be nonempty. Suppose, for contradiction, that $S$ has no smallest element. Define
-        \begin{equation*}
-            T=\set{n\in\N : \set{1,2,\ldots,n}\cap S=\emptyset}.
-        \end{equation*}
-
-        Since $S$ has no smallest element, $1\notin S$, so $1\in T$. Suppose $k\in T$. If $k+1\notin T$, then $k+1\in S$, while no element of $\set{1,2,\ldots,k}$ belongs to $S$. Thus, $k+1$ would be the smallest element of $S$, a contradiction. Therefore, $k+1\in T$.
-
-        By mathematical induction, $T=\N$. This implies that no natural number belongs to $S$, so $S=\emptyset$, contradicting the assumption that $S$ is nonempty. Therefore, $S$ has a smallest element.
-    \end{proof}
 \end{theorem}
+
+\begin{proof}
+    Let $S\subseteq\N$ be nonempty. Suppose, for contradiction, that $S$ has no smallest element. Define
+    \begin{equation*}
+        T=\set{n\in\N : \set{1,2,\ldots,n}\cap S=\emptyset}.
+    \end{equation*}
+
+    Since $S$ has no smallest element, $1\notin S$, so $1\in T$. Suppose $k\in T$. If $k+1\notin T$, then $k+1\in S$, while no element of $\set{1,2,\ldots,k}$ belongs to $S$. Thus, $k+1$ would be the smallest element of $S$, a contradiction. Therefore, $k+1\in T$.
+
+    By mathematical induction, $T=\N$. This implies that no natural number belongs to $S$, so $S=\emptyset$, contradicting the assumption that $S$ is nonempty. Therefore, $S$ has a smallest element.
+\end{proof}
 
 \begin{proposition}
     Using the well-ordering principle, prove that for every $n\in\N$,
     \begin{equation*}
         1^2 + 2^2 + \cdots + n^2 = \frac{n\paren{n + 1}\paren{2n + 1}}{6}.
     \end{equation*}
-
-    \begin{proof}
-        Let $P(n)$ denote the statement
-        \begin{equation*}
-            1^2 + 2^2 + \cdots + n^2 = \frac{n(n + 1)(2n + 1)}{6}.
-        \end{equation*}
-        Suppose, for contradiction, that $P(n)$ fails for some $n$; that is,
-        \begin{equation*}
-            \neg\paren{\forall n \in \N,\ P(n)}
-            \quad\text{equivalently}\quad
-            \exists n \in \N,\ \neg P(n).
-        \end{equation*}
-        Then the set
-        \begin{equation*}
-            S := \set{n \in \N : \neg P(n)}
-        \end{equation*}
-        is nonempty. By the well-ordering principle, $S$ has a smallest element $k$. Since $P(1)$ holds, $1\notin S$, so $k > 1$ and hence $k - 1\in\N$.
-
-        By minimality of $k$, we have $k - 1\notin S$, so $P(k - 1)$ is true:
-        \begin{equation*}
-            1^2 + 2^2 + \cdots + (k - 1)^2
-                = \frac{(k - 1)k\paren{2(k - 1) + 1}}{6}
-                = \frac{(k - 1)k(2k - 1)}{6}.
-        \end{equation*}
-        Adding $k^2$ to both sides gives
-        \begin{align*}
-            1^2 + \cdots + (k - 1)^2 + k^2
-                &= \frac{(k - 1)k(2k - 1)}{6} + k^2 \\
-                &= \frac{(k - 1)k(2k - 1) + 6k^2}{6} \\
-                &= \frac{k(k + 1)(2k + 1)}{6},
-        \end{align*}
-        so $P(k)$ is in fact true. This contradicts $k\in S$. Therefore $S=\emptyset$, and $P(n)$ holds for every $n\in\N$.
-    \end{proof}
 \end{proposition}
+
+\begin{proof}
+    Let $P(n)$ denote the statement
+    \begin{equation*}
+        1^2 + 2^2 + \cdots + n^2 = \frac{n(n + 1)(2n + 1)}{6}.
+    \end{equation*}
+    Suppose, for contradiction, that $P(n)$ fails for some $n$; that is,
+    \begin{equation*}
+        \neg\paren{\forall n \in \N,\ P(n)}
+        \quad\text{equivalently}\quad
+        \exists n \in \N,\ \neg P(n).
+    \end{equation*}
+    Then the set
+    \begin{equation*}
+        S := \set{n \in \N : \neg P(n)}
+    \end{equation*}
+    is nonempty. By the well-ordering principle, $S$ has a smallest element $k$. Since $P(1)$ holds, $1\notin S$, so $k > 1$ and hence $k - 1\in\N$.
+
+    By minimality of $k$, we have $k - 1\notin S$, so $P(k - 1)$ is true:
+    \begin{equation*}
+        1^2 + 2^2 + \cdots + (k - 1)^2
+            = \frac{(k - 1)k\paren{2(k - 1) + 1}}{6}
+            = \frac{(k - 1)k(2k - 1)}{6}.
+    \end{equation*}
+    Adding $k^2$ to both sides gives
+    \begin{align*}
+        1^2 + \cdots + (k - 1)^2 + k^2
+            &= \frac{(k - 1)k(2k - 1)}{6} + k^2 \\
+            &= \frac{(k - 1)k(2k - 1) + 6k^2}{6} \\
+            &= \frac{k(k + 1)(2k + 1)}{6},
+    \end{align*}
+    so $P(k)$ is in fact true. This contradicts $k\in S$. Therefore $S=\emptyset$, and $P(n)$ holds for every $n\in\N$.
+\end{proof}

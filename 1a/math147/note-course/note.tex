@@ -34,7 +34,8 @@
 
 \usetikzlibrary{
   positioning,
-  arrows.meta
+  arrows.meta,
+  shadows
 }
 
 % Lists / columns
@@ -71,7 +72,7 @@
 %Page Color Set
 \definecolor{sepiabg}{RGB}{230, 235, 220}
 \definecolor{sepiabg}{RGB}{244,236,220} 
-\pagecolor{sepiabg}
+% \pagecolor{sepiabg}
 
 
 % =========================================================
@@ -179,21 +180,27 @@
 % =========================================================
 % Theorem Environments
 % ONE numbered system
+% Head is bold (not italic) and sits on its own line, body is
+% upright -- matches the colour-template notes rather than
+% amsthm's italic-head / run-in-body defaults
 % =========================================================
 
-\theoremstyle{plain}
+\newtheoremstyle{noteblock}
+  {0pt}{0pt}%
+  {\normalfont}%
+  {}%
+  {\bfseries}{}%
+  {\newline}%
+  {}
 
-\newtheorem{theorem}{Theorem}[section]
+\theoremstyle{noteblock}
+
+\newtheorem{theorem}{Theorem}[subsection]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{corollary}[theorem]{Corollary}
-
-\theoremstyle{definition}
-
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{example}[theorem]{Example}
-
-\theoremstyle{remark}
 
 \newtheorem*{remark}{Remark}
 
@@ -202,11 +209,90 @@
 % Cambridge-style Semantic Environments
 % =========================================================
 
-\theoremstyle{definition}
+\theoremstyle{noteblock}
 
 \newtheorem*{axiom}{Axiom}
 \newtheorem*{assumption}{Assumption}
 \newtheorem*{notation}{Notation}
+
+
+% =========================================================
+% Coloured Environment Boxes
+% (mdframed styling on top of the theorem environments above
+%  -- numbering / counters / wording are untouched)
+% =========================================================
+
+% Colours sampled directly from the reference notes.
+\definecolor{thmAccent}{RGB}{250,180,44}   % Theorem     - amber
+\definecolor{thmFill}{RGB}{254,247,231}
+\definecolor{defAccent}{RGB}{20,163,230}   % Definition  - cyan/blue
+\definecolor{defFill}{RGB}{231,245,252}
+\definecolor{lemAccent}{RGB}{237,28,36}    % Lemma       - red
+\definecolor{lemFill}{RGB}{254,242,237}
+\definecolor{propAccent}{RGB}{0,166,80}    % Proposition - green
+\definecolor{propFill}{RGB}{230,246,229}
+\definecolor{corAccent}{RGB}{91,52,154}    % Corollary   - purple
+\definecolor{corFill}{RGB}{235,227,244}
+\definecolor{proofAccent}{RGB}{76,126,200} % Proof rule  - blue
+\colorlet{exampleAccent}{black!45}         % Example rule - grey
+
+% "Boxed" style: full border + drop shadow, sharp corners.
+% Used for theorem / lemma / definition.
+\newcommand{\boxedNote}[3]{%
+  \surroundwithmdframed[
+    linecolor=#2, backgroundcolor=#3, linewidth=1.2pt,
+    roundcorner=0pt,
+    shadow=true, shadowsize=4pt, shadowcolor=black!40,
+    skipabove=10pt, skipbelow=10pt,
+    innertopmargin=7pt, innerbottommargin=7pt,
+    innerleftmargin=9pt, innerrightmargin=9pt
+  ]{#1}%
+}
+
+% "Sidebar" style: thick left bar only, tinted fill, no border or
+% shadow. Used for proposition / corollary.
+\newcommand{\sidebarNote}[3]{%
+  \surroundwithmdframed[
+    topline=false, bottomline=false, rightline=false, leftline=true,
+    linecolor=#2, linewidth=3pt, backgroundcolor=#3,
+    roundcorner=0pt,
+    skipabove=8pt, skipbelow=8pt,
+    innertopmargin=6pt, innerbottommargin=6pt,
+    innerleftmargin=9pt, innerrightmargin=6pt
+  ]{#1}%
+}
+
+\boxedNote{theorem}{thmAccent}{thmFill}
+\boxedNote{lemma}{lemAccent}{lemFill}
+\boxedNote{definition}{defAccent}{defFill}
+
+\sidebarNote{proposition}{propAccent}{propFill}
+\sidebarNote{corollary}{corAccent}{corFill}
+
+\surroundwithmdframed[
+  topline=false, bottomline=false, rightline=false, leftline=true,
+  linecolor=exampleAccent, linewidth=1.2pt, backgroundcolor=white,
+  skipabove=6pt, skipbelow=6pt,
+  innertopmargin=3pt, innerbottommargin=3pt,
+  innerleftmargin=8pt, innerrightmargin=4pt
+]{example}
+
+% Proof head: bold, non-italic, on its own line (matches the other
+% note boxes instead of amsthm's italic "Proof." run-in default).
+% Must be redefined before surroundwithmdframed wraps it below.
+\renewenvironment{proof}[1][\proofname]{%
+  \par\noindent{\bfseries #1}\par\nopagebreak\normalfont\noindent\ignorespaces
+}{%
+  \par\hfill\qedsymbol\par
+}
+
+\surroundwithmdframed[
+  topline=false, bottomline=false, rightline=false, leftline=true,
+  linecolor=proofAccent, linewidth=1.6pt, backgroundcolor=white,
+  skipabove=6pt, skipbelow=6pt,
+  innertopmargin=3pt, innerbottommargin=3pt,
+  innerleftmargin=8pt, innerrightmargin=4pt
+]{proof}
 
 
 % =========================================================

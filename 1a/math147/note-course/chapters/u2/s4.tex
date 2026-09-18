@@ -45,43 +45,42 @@ we have $w_0 \geq w$, then $w_0$ is called the greatest lower bound, or the infi
 
 
 \begin{lemma}
-    An upper bound $u$ of a nonempty set $S$ in $\R$ is the supremum of $S$ if and only if 
+    An upper bound $u$ of a nonempty set $S$ in $\R$ is the supremum of $S$ if and only if
     \begin{equation*}
-        (\forall \epsilon > 0)(\exists x_\epsilon \in S)u - \epsilon < x_\epsilon. 
+        (\forall \epsilon > 0)(\exists x_\epsilon \in S)u - \epsilon < x_\epsilon.
+    \end{equation*}
+\end{lemma}
+
+\begin{proof}
+    To start off, we need to prove
+    \begin{equation*}
+        u = \sup S \implies \forall \epsilon > 0, \exists x_\epsilon \in S, u - \epsilon < x_\epsilon.
+    \end{equation*}
+    Suppose $u = \sup S$.
+
+    Let $\epsilon > 0$, then
+    \begin{equation*}
+        u - \epsilon < u,
     \end{equation*}
 
-    \begin{proof}
-        To start off, we need to prove 
-        \begin{equation*}
-            u = \sup S \implies \forall \epsilon > 0, \exists x_\epsilon \in S, u - \epsilon < x_\epsilon. 
-        \end{equation*}
-        Suppose $u = \sup S$.
-        
-        Let $\epsilon > 0$, then 
-        \begin{equation*}
-            u - \epsilon < u, 
-        \end{equation*} 
+    which means $u - \epsilon$ is not a upper bound of $S$.
 
-        which means $u - \epsilon$ is not a upper bound of $S$. 
+    Thus, $\exists x_\epsilon \in S$ such that
+    \begin{equation*}
+        u - \epsilon < x_\epsilon.
+    \end{equation*}
 
-        Thus, $\exists x_\epsilon \in S$ such that 
-        \begin{equation*}
-            u - \epsilon < x_\epsilon. 
-        \end{equation*}
+    Then, we need to prove that in a reverse way.
 
-        Then, we need to prove that in a reverse way. 
-        
-        Suppose for every $\epsilon > 0, \exists x_\epsilon \in S, u - \epsilon < x_\epsilon$.  
-        Assume $u$ is not the supremum, then, say $w = \sup S$. Then, 
-        \begin{equation*}
-            w < u \implies u - w > 0. 
-        \end{equation*}
+    Suppose for every $\epsilon > 0, \exists x_\epsilon \in S, u - \epsilon < x_\epsilon$.
+    Assume $u$ is not the supremum, then, say $w = \sup S$. Then,
+    \begin{equation*}
+        w < u \implies u - w > 0.
+    \end{equation*}
 
-        Take $\epsilon = u - w$, by hypothesis, $\exists x_\epsilon$ such that 
+    Take $\epsilon = u - w$, by hypothesis, $\exists x_\epsilon$ such that
 
-        $$u - \epsilon < x_\epsilon \implies u - (u - w) < x_\epsilon \implies w < x_\epsilon$$. 
+    $$u - \epsilon < x_\epsilon \implies u - (u - w) < x_\epsilon \implies w < x_\epsilon$$.
 
-        which is a contradiction. Since $w = \sup S$, therefore $u = \sup S$. 
-
-    \end{proof}
-\end{lemma}
+    which is a contradiction. Since $w = \sup S$, therefore $u = \sup S$.
+\end{proof}
