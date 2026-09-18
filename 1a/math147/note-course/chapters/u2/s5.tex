@@ -1,0 +1,88 @@
+\subsection{The Completeness Property of $\R$}
+\begin{axiom}
+    Every nonempty set of real numbers that has an upper bound also have a supremum in $\R$. 
+\end{axiom}
+\begin{corollary}
+    Every nonempty set of real numbers that has an upper bound also have a supremum in $\R$. 
+\end{corollary}
+\begin{proof}
+    Let $w$ be a lower bound for $S$, that means $w \leq s, \forall s \in S$. As a consequence, $-w \geq -s$. 
+
+    Define $S' = \set{-s : s \in S}$. Thus, $$-w \geq -s, \forall s \in S\implies -w $$ is an upper bound for $S'$.  
+
+    \begin{equation*}
+        \text{Axiom} \implies \text{$S'$ has a supremum.}
+    \end{equation*}
+    Says 
+    \begin{equation*}
+        u := \sup S' \in \R
+    \end{equation*}
+
+    We need to prove that $-u = \inf S$. 
+    \begin{itemize}
+        \item Lower bound: $$u \geq -s, \forall x \in S \implies -u \leq S, \forall s \in S$$
+        \item Now, $-w \geq u$ by its definition. Thus, $$w \leq -u \implies -u$$ is the greatest lower bound. 
+    \end{itemize} 
+\end{proof}
+
+\begin{example}
+    \begin{equation*}
+        S = \set{\paren{1 + \frac{1}{n }}^n : n \in \N}
+    \end{equation*}
+    
+    You can try $1 < \paren{1 + \frac{1}{n }}^n < 3$. 
+
+
+\end{example}
+
+\subsection{The Archimedean Property}
+How to prove that the set $\N$ is not bounded in $\R$? We need two things:
+\begin{itemize}
+    \item Completeness of $\R$. 
+    \item The inductive property of $\N$. 
+\end{itemize}
+
+\begin{definition}
+    [Archimedean Property]
+    If $x \in \R$, then there exists $n_x \in \N$ such that $x \leq n_x$. 
+\end{definition}
+\begin{proof}
+    Suppose by contradiction, assume $\exists x \in \R$ such that $x > n, \forall n \in \N$. 
+
+    $x$ well become the upper bound of $\N$. 
+
+    $1 \in \N \implies \N \neq \emptyset$.
+    
+    This means $\N$ has a supremum in $\R$. 
+
+    Says $u = \sup \N$. We know that 
+    \begin{equation*}
+        u - 1 < u \implies u - 1
+    \end{equation*}
+    is not an upper bound. 
+
+    \begin{equation*}
+        \exists m \in N s.t. u - 1 < m
+    \end{equation*}
+    \begin{equation*}
+        \implies u < m + 1. 
+    \end{equation*}
+
+    which is a contradiction. 
+\end{proof}
+
+\begin{proposition}
+    There exists a real number such that $x$ such that $x^2 = 2$. 
+\end{proposition}
+\begin{proof}
+    Define 
+    \begin{equation*}
+        S = \set{t \in \R : t \geq 0, t^2 < 2}
+    \end{equation*}
+    We have $1 \in S$ and $2$ is an upper bound. 
+
+    $\exists x \in \R $ such that $x = \sup S$. 
+
+    Assume contradiction 
+    
+\end{proof}

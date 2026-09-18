@@ -84,3 +84,42 @@ we have $w_0 \geq w$, then $w_0$ is called the greatest lower bound, or the infi
 
     which is a contradiction. Since $w = \sup S$, therefore $u = \sup S$.
 \end{proof}
+
+\begin{example}
+    Consider the set $S = \set{x \in \R : 0 \leq x \leq 1}$
+    \begin{itemize}
+        \item $\sup S = 1.$
+        \begin{proof}
+        Since $x < 1, \forall x \in S \implies \text{ one is an upper bound. }$ 
+        
+        say $u = \sup S$. $0 \leq u \neq 1$.
+        
+        thus, 
+        \begin{equation*}
+            0 \leq u < 1 \implies 1 - u > 0
+        \end{equation*}
+
+        take $\epsilon = \frac{1 - u }{2}$. thus, 
+        \begin{equation*}
+            u < u + \epsilon \implies u < u + \frac{1 - u }{2} = \frac{u + 1}{2} < 1. 
+        \end{equation*}
+        \begin{equation*}
+            \implies \frac{u + 1}{2} \in S \implies u < \frac{u + 1}{2}. 
+        \end{equation*}
+
+        which is a contradiction. 
+        \end{proof}
+        \item $\inf S = 0$
+        \begin{proof}
+            Since $x \geq 0, \forall x \in S, 0$ is an lower bound. 
+            Assume $w = \inf S \neq 0$. Then 
+            \begin{equation*}
+                w > 0. 
+            \end{equation*}
+
+            Because $0 \in S$, so $w$ must be in the $S$, which is a contradiction.
+            $w \leq 0$.  
+
+        \end{proof}
+    \end{itemize}
+\end{example}

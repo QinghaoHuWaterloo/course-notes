@@ -1,0 +1,116 @@
+%!TEX root=../../note
+\subsection{Proving Universally Quantified Statements}
+A \textbf{proposition} is a true statement that has been proved to be true. A \textbf{theorem}
+is a particularly significant proposition. A \textbf{lemma} is a subsidiary proposition. 
+A \textbf{corollary} is a proposition that follows almost immediately from a theorem. 
+
+\begin{example}
+    \begin{equation*}
+        C^2 = A^2 + B^2 - 2AB\cos \theta 
+    \end{equation*}
+\end{example}
+
+Let's do our first prove. 
+\begin{proposition}
+    \begin{equation*}
+        \forall x \in \R, x^2 + 1 \geq 2x. 
+    \end{equation*}
+\end{proposition}
+\begin{proof}
+    Let $x$ be an arbitrary real number. Therefore, $x - 1$ must also be a real number, and hence 
+    \begin{equation*}
+        (x - 1)^2 \geq 0.
+    \end{equation*}
+
+    Expanding the terms on the left side. We get 
+    \begin{equation*}
+        x^2 - 2x + 1 \geq 0. 
+    \end{equation*}
+
+    Adding $2x$ to both sides yields 
+    \begin{equation*}
+        x^2 + 1 \geq 2x. 
+    \end{equation*}
+\end{proof}
+
+\begin{proposition}
+    Prove that
+    \begin{equation*}
+        \forall x, y \in \R, x^4 + x^2y + y^2 \geq 5x^2y - 3y^2. 
+    \end{equation*}
+\end{proposition}
+\begin{proof}
+    Let $x$ and $y$ be arbitrary real numbers. Then $x^2 - 2y$ is also a real number. So 
+    \begin{equation*}
+        (x^2 - 2y)^2 \geq 0. 
+    \end{equation*}
+
+    Expanding, we get 
+    \begin{equation*}
+        x^4 - 4x^2y + 4y^2 \geq 0. 
+    \end{equation*}
+
+    Adding $5x^2y$ to both sides, we have 
+    \begin{equation*}
+        x^4 + x^2y + 4y^2 \geq 5x^2y. 
+    \end{equation*}
+
+    Now, subtract $3y^2$ from both sides: 
+    \begin{equation*}
+        x^4 + x^2y + y^2 \geq 5x^2y - 3y^2. 
+    \end{equation*}
+\end{proof}
+
+\textbf{Exercises}
+\begin{proposition}
+    Prove $$\forall \theta \in \R, \sin 3\theta = 3\sin \theta - 4\sin^3 \theta$$
+\end{proposition}
+
+
+Prove that $$\forall x, y \in \R, \max(x, y) = \frac{x + y + \abs{x - y }}{2}. $$
+
+\begin{proof}
+    \textbf{Case 1: } If $x \geq y$, then $\max(x, y) = x,$ and $x - y \geq 0$, so $\abs{x - y } = x - y$. 
+
+    Then 
+    \begin{equation*}
+        \frac{x + y + \abs{x - y }}{2} = \frac{x + y + x - y }{2 } = \frac{2x }{2 } = x = \max(x, y)
+    \end{equation*}
+
+    So the claim holds when $x \geq y$. 
+
+    \textbf{Case 2: }
+    If $x < y$, then $\max(x, y) = y$, and $x - y < 0$. So 
+    \begin{equation*}
+        \abs{x - y } = -(x - y) = y - x. 
+    \end{equation*}
+
+    Then 
+    \begin{equation*}
+        \frac{x + y + \abs{x - y }}{2} = \frac{x + y + y - x }{2} = \frac{2y}{2} = y = \max(x, y). 
+    \end{equation*}
+
+    
+\end{proof}
+\begin{example}
+    Here is an example:
+    \begin{proposition}
+        Disprove: 
+        \begin{equation*}
+            \forall x \in \R, (x^2 - 1)^2 > 0. 
+        \end{equation*}
+    \end{proposition}
+    \begin{proof}
+        Let $x = 1$, Then 
+        \begin{equation*}
+            \paren{x^2 - 1}^2 = (1 - 1)^2 = 0 \not> 0. 
+        \end{equation*}
+
+        Therefore, it is not the case. 
+    \end{proof}
+\end{example}
+
+\textbf{Exercise}
+\begin{proposition}
+    Prove $\forall x \in \R, \abs{x - 3 } + 2\abs{x + 2} \geq 5$
+\end{proposition}
