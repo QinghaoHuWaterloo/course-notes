@@ -1,0 +1,54 @@
+%!TEX root=../../note
+\subsection{Functions}
+\subsubsection{Define functions in Racket}
+How to define 
+\begin{equation*}
+    f(x) = x^2 + 3x + 4
+\end{equation*}
+in the Racket. 
+
+\begin{minted}{rust}
+    #lang htdp/bsl
+    (define (f x) (+ (sqr x) (* 3 x) 4))
+\end{minted}
+
+\begin{remark}
+    When you apply the function, all the parameter get replace at the first time. 
+\end{remark}
+
+\begin{definition}
+    [Predicates]
+    Functions that produce Bool values.
+    By convention, the names of predicates end in a "?".  
+\end{definition}
+\begin{example}
+    \begin{minted}{rust}
+        (define (hot? t) (> t 30))
+    \end{minted}
+\end{example}
+
+\begin{definition}[Identifiers]
+Function names and parameters are identifiers and must follow certain rules.
+
+\begin{itemize}
+    \item Identifiers may contain letters, numbers, and special characters such as
+    \texttt{-}, \texttt{\_}, \texttt{.}, \texttt{?}, and \texttt{=}.
+
+    \item Identifiers cannot contain spaces, brackets of any kind, or quotation marks.
+
+    \item Identifiers must contain at least one non-numeric character.
+\end{itemize}
+
+Parameter order matters. 
+\begin{minted}{rust}
+    (define (g x y) (- x y))
+    (define (g y x) (- x y))
+\end{minted}
+
+Function definition are always in simplest form. 
+
+Constant definition is simplest when the left is in simplest form.
+
+"And" and "or" are short circuits. They are not functions. 
+
+\end{definition}
