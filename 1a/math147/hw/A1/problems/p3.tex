@@ -1,4 +1,4 @@
-%!TEX = ../../root
+% !TEX root = ../../assign.tex
 \subsection{Problem 3}
 \subsubsection{(\rom{1})}
 
@@ -133,63 +133,11 @@
 
 \subsubsection{\rom{4}}
 \begin{proof}
-    Given function 
+    Suppose $g: D \to \R$ where 
     \begin{equation*}
-        g: D \to \R, g(t) := t + t^{-1}
+        D \subseteq \R, D := 
     \end{equation*}
-    where 
-    \begin{equation*}
-        D := \set{x \in \R : 0 < \abs{x } < 1}. 
-    \end{equation*}
-
-    We also define 
-    \begin{equation*}
-        R := \set{g(t) : t \in D}. 
-    \end{equation*}
-
-    In order to show that 
-    \begin{equation*}
-        R = \paren{-\infty, -2} \cup \paren{2, \infty}, 
-    \end{equation*}
-
-    we need to prove both 
-    \begin{align}
-         &R \subseteq \paren{-\infty, -2} \cup \paren{2, \infty} \label{3.4.1}\\ 
-         &R \supseteq \paren{-\infty, -2} \cup \paren{2, \infty} \label{3.4.2}
-    \end{align}
-
-    Let us start with the proof of \eqref{3.4.1}
-
-    For all $y \in R$, we have $x \in D$ such that 
-    \begin{equation*}
-        y = x + \frac{1}{x}. 
-    \end{equation*}
-
-    Since $x \neq 0$, we get 
-    \begin{equation*}
-         y = x + \frac{1}{x} \iff xy = x^2 + 1 \iff 0 = x^2 - yx + 1. 
-    \end{equation*}
-
-    By the definition of the set $D$, element x must be in real number set. So the equation
-    \begin{equation*}
-        0 = x^2 - yx + 1
-    \end{equation*}
-
-    must have real roots. Therefore, 
-    \begin{equation*}
-        (-y)^2 - 4*(1)*(1) \geq 0 \implies y^2 - 4 \geq 0 \implies y^2 \geq 4 \implies \abs{y} \geq 2. 
-    \end{equation*}
-
-    However, $\abs{y} \neq 2$ since 
-    \begin{equation*}
-        x = \frac{-(-y) \pm \sqrt{(-y)^2 - 4 \cdot a \cdot 1}}{2 \cdot 1} = \frac{-(2) \pm \sqrt{(-2)^2 - 4 \cdot a \cdot 1}}{2 \cdot 1} = \frac{-2}{2} = -1
-    \end{equation*}
-
-    and 
-     \begin{equation*}
-        x = \frac{-(-y) \pm \sqrt{(-y)^2 - 4 \cdot a \cdot 1}}{2 \cdot 1} = \frac{-(-2) \pm \sqrt{(2)^2 - 4 \cdot a \cdot 1}}{2 \cdot 1} = \frac{2}{2} = 1
-    \end{equation*}
-
-    which makes $x \notin D$. 
-    Thus, $\abs{y} > 2$, which also implies $R \subseteq \paren{-\infty, -2} \cup \paren{2, \infty} \label{3.4.1}$.
 \end{proof}
+
+
+

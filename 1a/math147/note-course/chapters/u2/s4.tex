@@ -13,34 +13,34 @@ This is an additional property of real numbers that is not satisfied by rational
     \end{enumerate}
 \end{definition}
 
-If there exists an upper bound $u_0$ of $S$ such that whenever $u$ is an upper bound for $S$ 
-we have $u_0 \leq u$, then $u_0$ is called the least upper bound, or the supremum, of $S$. 
+If there exists an upper bound $u_0$ of $S$ such that whenever $u$ is an upper bound for $S$
+we have $u_0 \leq u$, then $u_0$ is called the least upper bound, or the supremum, of $S$.
 \begin{equation*}
     u_0 := \sup S
 \end{equation*}
 
-If there exists an lower bound $w_0$ of $S$ such that whenever $w$ is a lower bound for $S$ 
+If there exists a lower bound $w_0$ of $S$ such that whenever $w$ is a lower bound for $S$
 we have $w_0 \geq w$, then $w_0$ is called the greatest lower bound, or the infimum, of $S$.
 \begin{equation*}
     w_0 := \inf S
-\end{equation*} 
+\end{equation*}
 
 \begin{remark}
-    there can be only one supremum/infimum of a given set $S$ of $\R$. 
+    There can be only one supremum/infimum of a given set $S$ of $\R$.
 
-    Idea: Suppose $u_1$ and $u_2$ are both supremum of $S$. 
+    Idea: Suppose $u_1$ and $u_2$ are both suprema of $S$.
 
-    Since $u_1$ is a supremum and $u_2$ is an upper bound. We get 
+    Since $u_1$ is a supremum and $u_2$ is an upper bound, we get
     \begin{equation*}
         u_1 \leq u_2.
     \end{equation*}
 
-    Since $u_2$ is a supremum and $u_1$ is an upper bound. We get 
+    Since $u_2$ is a supremum and $u_1$ is an upper bound, we get
     \begin{equation*}
-        u_2 \leq u_1. 
+        u_2 \leq u_1.
     \end{equation*}
 
-    thus, $u_1 = u_2$. 
+    Thus, $u_1 = u_2$.
 \end{remark}
 
 
@@ -63,63 +63,54 @@ we have $w_0 \geq w$, then $w_0$ is called the greatest lower bound, or the infi
         u - \epsilon < u,
     \end{equation*}
 
-    which means $u - \epsilon$ is not a upper bound of $S$.
+    which means $u - \epsilon$ is not an upper bound of $S$.
 
     Thus, $\exists x_\epsilon \in S$ such that
     \begin{equation*}
         u - \epsilon < x_\epsilon.
     \end{equation*}
 
-    Then, we need to prove that in a reverse way.
+    Now we prove the converse.
 
     Suppose for every $\epsilon > 0, \exists x_\epsilon \in S, u - \epsilon < x_\epsilon$.
-    Assume $u$ is not the supremum, then, say $w = \sup S$. Then,
+    Assume $u$ is not the supremum; say $w = \sup S$. Then,
     \begin{equation*}
         w < u \implies u - w > 0.
     \end{equation*}
 
-    Take $\epsilon = u - w$, by hypothesis, $\exists x_\epsilon$ such that
-
-    $$u - \epsilon < x_\epsilon \implies u - (u - w) < x_\epsilon \implies w < x_\epsilon$$.
-
-    which is a contradiction. Since $w = \sup S$, therefore $u = \sup S$.
+    Take $\epsilon = u - w$. By hypothesis, $\exists x_\epsilon \in S$ such that
+    \begin{equation*}
+        u - \epsilon < x_\epsilon \implies u - (u - w) < x_\epsilon \implies w < x_\epsilon.
+    \end{equation*}
+    But $x_\epsilon \in S$ and $w = \sup S$ means $w$ is an upper bound for $S$, so $x_\epsilon \leq w$ — contradicting $w < x_\epsilon$. Therefore $u$ must in fact be the supremum, i.e., $u = \sup S$.
 \end{proof}
 
 \begin{example}
-    Consider the set $S = \set{x \in \R : 0 \leq x \leq 1}$
+    Consider the set $S = \set{x \in \R : 0 \leq x \leq 1}$.
     \begin{itemize}
-        \item $\sup S = 1.$
+        \item $\sup S = 1$.
         \begin{proof}
-        Since $x < 1, \forall x \in S \implies \text{ one is an upper bound. }$ 
-        
-        say $u = \sup S$. $0 \leq u \neq 1$.
-        
-        thus, 
+        Since $x < 1$ for all $x \in S$, $1$ is an upper bound.
+
+        Say $u = \sup S$, so $0 \leq u \leq 1$. Suppose $u \neq 1$; then
         \begin{equation*}
-            0 \leq u < 1 \implies 1 - u > 0
+            0 \leq u < 1 \implies 1 - u > 0.
         \end{equation*}
 
-        take $\epsilon = \frac{1 - u }{2}$. thus, 
+        Take $\epsilon = \frac{1 - u}{2}$. Thus,
         \begin{equation*}
-            u < u + \epsilon \implies u < u + \frac{1 - u }{2} = \frac{u + 1}{2} < 1. 
+            u < u + \epsilon \implies u < u + \frac{1 - u}{2} = \frac{u + 1}{2} < 1,
         \end{equation*}
-        \begin{equation*}
-            \implies \frac{u + 1}{2} \in S \implies u < \frac{u + 1}{2}. 
-        \end{equation*}
-
-        which is a contradiction. 
+        so $\frac{u+1}{2} \in S$. But $u$ is an upper bound for $S$, so it should satisfy $\frac{u+1}{2} \leq u$ — yet we just showed $u < \frac{u+1}{2}$, a contradiction.
         \end{proof}
-        \item $\inf S = 0$
+        \item $\inf S = 0$.
         \begin{proof}
-            Since $x \geq 0, \forall x \in S, 0$ is an lower bound. 
-            Assume $w = \inf S \neq 0$. Then 
+            Since $x \geq 0$ for all $x \in S$, $0$ is a lower bound.
+            Assume $w = \inf S \neq 0$. Then
             \begin{equation*}
-                w > 0. 
+                w > 0.
             \end{equation*}
-
-            Because $0 \in S$, so $w$ must be in the $S$, which is a contradiction.
-            $w \leq 0$.  
-
+            Since $w$ is a lower bound for $S$ and $0 \in S$, we must have $w \leq 0$, contradicting $w > 0$.
         \end{proof}
     \end{itemize}
 \end{example}

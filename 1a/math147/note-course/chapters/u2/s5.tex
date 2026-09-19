@@ -1,28 +1,29 @@
 \subsection{The Completeness Property of $\R$}
-\begin{axiom}
-    Every nonempty set of real numbers that has an upper bound also have a supremum in $\R$. 
+\begin{axiom}[Completeness Property]
+    Every nonempty set of real numbers that has an upper bound also has a supremum in $\R$.
 \end{axiom}
 \begin{corollary}
-    Every nonempty set of real numbers that has an upper bound also have a supremum in $\R$. 
+    Every nonempty set of real numbers that has a lower bound also has an infimum in $\R$.
 \end{corollary}
 \begin{proof}
-    Let $w$ be a lower bound for $S$, that means $w \leq s, \forall s \in S$. As a consequence, $-w \geq -s$. 
+    Let $S \subseteq \R$ be nonempty with a lower bound $w$, that is, $w \leq s$ for all $s \in S$. As a consequence, $-w \geq -s$ for all $s \in S$.
 
-    Define $S' = \set{-s : s \in S}$. Thus, $$-w \geq -s, \forall s \in S\implies -w $$ is an upper bound for $S'$.  
-
+    Define $S' = \set{-s : s \in S}$. Then $S'$ is nonempty, and
     \begin{equation*}
-        \text{Axiom} \implies \text{$S'$ has a supremum.}
-    \end{equation*}
-    Says 
-    \begin{equation*}
-        u := \sup S' \in \R
+        -w \geq -s, \ \forall s \in S \implies -w \text{ is an upper bound for } S'.
     \end{equation*}
 
-    We need to prove that $-u = \inf S$. 
+    By the Completeness Axiom, $S'$ has a supremum. Say
+    \begin{equation*}
+        u := \sup S' \in \R.
+    \end{equation*}
+
+    We claim that $-u = \inf S$.
     \begin{itemize}
-        \item Lower bound: $$u \geq -s, \forall x \in S \implies -u \leq S, \forall s \in S$$
-        \item Now, $-w \geq u$ by its definition. Thus, $$w \leq -u \implies -u$$ is the greatest lower bound. 
-    \end{itemize} 
+        \item \textbf{Lower bound:} Since $u = \sup S' \geq -s$ for all $s \in S$, we get $-u \leq s$ for all $s \in S$. So $-u$ is a lower bound for $S$.
+        \item \textbf{Greatest lower bound:} Let $w$ be any lower bound for $S$. As shown above, $-w$ is then an upper bound for $S'$, so $u = \sup S' \leq -w$, which gives $w \leq -u$.
+    \end{itemize}
+    Thus $-u$ is a lower bound for $S$ that is at least as large as every other lower bound, so $-u = \inf S$.
 \end{proof}
 
 \begin{example}
@@ -36,10 +37,10 @@
 \end{example}
 
 \subsection{The Archimedean Property}
-How to prove that the set $\N$ is not bounded in $\R$? We need two things:
+We now prove that $\N$ is not bounded above in $\R$. The proof combines two ingredients:
 \begin{itemize}
-    \item Completeness of $\R$. 
-    \item The inductive property of $\N$. 
+    \item Completeness of $\R$.
+    \item The inductive property of $\N$ (that $\N$ is closed under $+1$).
 \end{itemize}
 
 \begin{definition}
@@ -47,42 +48,66 @@ How to prove that the set $\N$ is not bounded in $\R$? We need two things:
     If $x \in \R$, then there exists $n_x \in \N$ such that $x \leq n_x$. 
 \end{definition}
 \begin{proof}
-    Suppose by contradiction, assume $\exists x \in \R$ such that $x > n, \forall n \in \N$. 
+    Suppose, for contradiction, that $\exists x \in \R$ such that $x > n$ for all $n \in \N$.
 
-    $x$ well become the upper bound of $\N$. 
+    Then $x$ is an upper bound for $\N$. Since $1 \in \N$, $\N \neq \emptyset$, so by the Completeness Axiom, $\N$ has a supremum in $\R$.
 
-    $1 \in \N \implies \N \neq \emptyset$.
-    
-    This means $\N$ has a supremum in $\R$. 
-
-    Says $u = \sup \N$. We know that 
+    Say $u = \sup \N$. Since
     \begin{equation*}
-        u - 1 < u \implies u - 1
+        u - 1 < u,
     \end{equation*}
-    is not an upper bound. 
-
+    $u - 1$ is not an upper bound for $\N$. Hence
     \begin{equation*}
-        \exists m \in N s.t. u - 1 < m
+        \exists m \in \N \text{ such that } u - 1 < m,
     \end{equation*}
+    which gives
     \begin{equation*}
-        \implies u < m + 1. 
+        u < m + 1.
     \end{equation*}
+    But $m + 1 \in \N$ (since $\N$ is closed under $+1$), so $m + 1 \leq u$, contradicting $u < m+1$.
 
-    which is a contradiction. 
+    Therefore no such $x$ exists; that is, for every $x \in \R$ there exists $n_x \in \N$ with $x \leq n_x$.
 \end{proof}
 
 \begin{proposition}
-    There exists a real number such that $x$ such that $x^2 = 2$. 
+    There exists a real number $x$ such that $x^2 = 2$.
 \end{proposition}
 \begin{proof}
-    Define 
+    Define
     \begin{equation*}
-        S = \set{t \in \R : t \geq 0, t^2 < 2}
+        S = \set{t \in \R : t \geq 0, t^2 < 2}.
     \end{equation*}
-    We have $1 \in S$ and $2$ is an upper bound. 
+    We have $1 \in S$, so $S \neq \emptyset$, and $2$ is an upper bound for $S$ (if $t > 2$ then $t^2 > 4 > 2$, so $t \notin S$). By the Completeness Axiom, $S$ has a supremum in $\R$.
 
-    $\exists x \in \R $ such that $x = \sup S$. 
+    Let $x = \sup S$. Note $x \geq 1 > 0$. We show $x^2 = 2$ by ruling out $x^2 < 2$ and $x^2 > 2$.
 
-    Assume contradiction 
-    
+    \textbf{Case 1: $x^2 < 2$.} We find $n \in \N$ large enough that $x + \frac{1}{n} \in S$, contradicting that $x$ is an upper bound for $S$. Since $x \geq 1$,
+    \begin{equation*}
+        \paren{x + \frac{1}{n}}^2 = x^2 + \frac{2x}{n} + \frac{1}{n^2} \leq x^2 + \frac{2x}{n} + \frac{1}{n} = x^2 + \frac{2x+1}{n}.
+    \end{equation*}
+    Since $x^2 < 2$, choose $n \in \N$ (by the Archimedean Property) large enough that
+    \begin{equation*}
+        \frac{2x+1}{n} < 2 - x^2.
+    \end{equation*}
+    Then
+    \begin{equation*}
+        \paren{x + \frac{1}{n}}^2 < x^2 + (2 - x^2) = 2,
+    \end{equation*}
+    so $x + \frac{1}{n} \in S$. But $x + \frac{1}{n} > x = \sup S$, a contradiction. Hence $x^2 \geq 2$.
+
+    \textbf{Case 2: $x^2 > 2$.} We find $n \in \N$ large enough that $x - \frac{1}{n}$ is an upper bound for $S$ smaller than $x$, contradicting that $x = \sup S$. Since
+    \begin{equation*}
+        \paren{x - \frac{1}{n}}^2 = x^2 - \frac{2x}{n} + \frac{1}{n^2} > x^2 - \frac{2x}{n},
+    \end{equation*}
+    choose $n \in \N$ large enough that
+    \begin{equation*}
+        \frac{2x}{n} < x^2 - 2.
+    \end{equation*}
+    Then
+    \begin{equation*}
+        \paren{x - \frac{1}{n}}^2 > x^2 - (x^2 - 2) = 2.
+    \end{equation*}
+    So for any $t \in S$, we have $t^2 < 2 < \paren{x - \frac{1}{n}}^2$. Since both $t \geq 0$ and $x - \frac{1}{n} \geq 0$ (as $x \geq 1$ and $n$ is large), taking square roots of $t^2 < \paren{x-\frac1n}^2$ gives $t < x - \frac{1}{n}$. Thus $x - \frac{1}{n}$ is an upper bound for $S$ smaller than $x = \sup S$, a contradiction. Hence $x^2 \leq 2$.
+
+    Combining both cases, $x^2 = 2$.
 \end{proof}

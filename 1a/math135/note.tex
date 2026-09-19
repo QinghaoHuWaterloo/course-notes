@@ -1,8 +1,244 @@
-% Style: qhnotes package (~/references/template/sty). See its README for options.
 \documentclass[10pt, twoside]{article}
-\usepackage[color, watermark]{qhnotes}
+% =========================================================
+% Packages
+% =========================================================
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta,shadows}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{paracol}
+\usepackage{xcolor}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage{indentfirst}
+\usepackage{imakeidx}
+\usepackage{fancyhdr}
+\usepackage{eso-pic}
+\usepackage[hidelinks]{hyperref}
 
-\course{Honor Algebra}
+% =========================================================
+% Page layout (qhnotes "small" paper default)
+% =========================================================
+\usepackage[
+  paperwidth=160mm,
+  paperheight=240mm,
+  inner=20mm,
+  outer=16mm,
+  top=18mm,
+  bottom=21mm,
+  headheight=14pt,
+  headsep=6mm,
+  footskip=10mm
+]{geometry}
+
+% =========================================================
+% Watermark (light diagonal name on every page)
+% =========================================================
+\AddToShipoutPictureFG{%
+  \AtPageCenter{%
+    \makebox(0,0){%
+      \begin{tikzpicture}[overlay]
+        \node[rotate=45, opacity=0.13, text=black,
+              font=\fontsize{0.12\paperwidth}{0.12\paperwidth}\selectfont\bfseries\sffamily]
+          at (0,0) {Qinghao Hu};
+      \end{tikzpicture}%
+    }%
+  }%
+}
+
+% =========================================================
+% Paragraphs / display math spacing / lists
+% =========================================================
+\setlength{\parindent}{1.5em}
+\setlength{\parskip}{0pt}
+\setlength{\abovedisplayskip}{7pt plus 2pt minus 2pt}
+\setlength{\belowdisplayskip}{7pt plus 2pt minus 2pt}
+\setlength{\abovedisplayshortskip}{4pt plus 2pt}
+\setlength{\belowdisplayshortskip}{5pt plus 2pt minus 2pt}
+\setlist{
+  topsep=4pt,
+  itemsep=1.5pt,
+  parsep=0pt,
+  partopsep=0pt
+}
+
+% =========================================================
+% Headers / Footers (twoside: even = section, odd = course title)
+% =========================================================
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\small\itshape\nouppercase{\leftmark}}
+\fancyhead[RO]{\small\itshape Honor Algebra}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\renewcommand{\sectionmark}[1]{\markboth{\thesection\enspace #1}{}}
+
+% =========================================================
+% Section behaviour: every section starts on a new page
+% =========================================================
+\let\oldsection\section
+\renewcommand{\section}{\clearpage\oldsection}
+
+% =========================================================
+% Equation numbering
+% =========================================================
+\numberwithin{equation}{subsection}
+
+% =========================================================
+% Index
+% =========================================================
+\makeindex[intoc, title=Index]
+
+% =========================================================
+% Bracket shortcuts / number sets / colour helpers
+% =========================================================
+\newcommand{\paren}[1]{\left(#1\right)}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\bracks}[1]{\left[#1\right]}
+\newcommand{\set}[1]{\left\{#1\right\}}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\ds}{\displaystyle}
+
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+
+% =========================================================
+% Figure helper
+% =========================================================
+\newcommand{\mypic}[3]{%
+  \begin{figure}[htbp]
+    \centering
+    \includegraphics[width=#3\textwidth]{#1}
+    \caption{#2}
+  \end{figure}
+}
+
+% =========================================================
+% QED symbol
+% =========================================================
+\renewcommand{\qedsymbol}{\ensuremath{\blacksquare}}
+
+% =========================================================
+% Index term command
+% =========================================================
+\newcommand{\term}[1]{\emph{#1}\index{#1}}
+
+% =========================================================
+% Word definition environment
+% =========================================================
+\newenvironment{worddef}[1]
+  {\par\noindent\textbf{#1:}\ \itshape}
+  {\par\normalfont}
+
+% =========================================================
+% Lists
+% =========================================================
+\renewcommand{\labelitemi}{--}
+\renewcommand{\labelitemii}{$\circ$}
+\renewcommand{\labelenumi}{(\roman{enumi})}
+
+% =========================================================
+% Theorem environments -- ONE shared counter.
+% Head is bold (not italic) and sits on its own line, body is
+% upright -- matches the reference notes rather than amsthm's
+% italic-head / run-in-body defaults.
+% =========================================================
+\newtheoremstyle{noteblock}
+  {0pt}{0pt}%
+  {\normalfont}%
+  {}%
+  {\bfseries}{}%
+  {\newline}%
+  {}
+\theoremstyle{noteblock}
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem*{remark}{Remark}
+\newtheorem*{axiom}{Axiom}
+\newtheorem*{assumption}{Assumption}
+\newtheorem*{notation}{Notation}
+
+% =========================================================
+% Coloured environment boxes (mdframed on top of the theorem
+% environments above)
+% =========================================================
+\definecolor{thmAccent}{RGB}{250,180,44}   % Theorem     - amber
+\definecolor{thmFill}{RGB}{254,247,231}
+\definecolor{defAccent}{RGB}{20,163,230}   % Definition  - cyan/blue
+\definecolor{defFill}{RGB}{231,245,252}
+\definecolor{lemAccent}{RGB}{237,28,36}    % Lemma       - red
+\definecolor{lemFill}{RGB}{254,242,237}
+\definecolor{propAccent}{RGB}{0,166,80}    % Proposition - green
+\definecolor{propFill}{RGB}{230,246,229}
+\definecolor{corAccent}{RGB}{91,52,154}    % Corollary   - purple
+\definecolor{corFill}{RGB}{235,227,244}
+\definecolor{proofAccent}{RGB}{76,126,200} % Proof rule  - blue
+\colorlet{exampleAccent}{black!45}         % Example rule - grey
+
+% "Boxed": full border + drop shadow, sharp corners.
+\newcommand{\boxedNote}[3]{%
+  \surroundwithmdframed[
+    linecolor=#2, backgroundcolor=#3, linewidth=1.2pt,
+    roundcorner=0pt,
+    shadow=true, shadowsize=4pt, shadowcolor=black!40,
+    skipabove=10pt, skipbelow=10pt,
+    innertopmargin=7pt, innerbottommargin=7pt,
+    innerleftmargin=9pt, innerrightmargin=9pt
+  ]{#1}%
+}
+% "Sidebar": thick left bar only, tinted fill, no border or shadow.
+\newcommand{\sidebarNote}[3]{%
+  \surroundwithmdframed[
+    topline=false, bottomline=false, rightline=false, leftline=true,
+    linecolor=#2, linewidth=3pt, backgroundcolor=#3,
+    roundcorner=0pt,
+    skipabove=8pt, skipbelow=8pt,
+    innertopmargin=6pt, innerbottommargin=6pt,
+    innerleftmargin=9pt, innerrightmargin=6pt
+  ]{#1}%
+}
+
+\boxedNote{theorem}{thmAccent}{thmFill}
+\boxedNote{lemma}{lemAccent}{lemFill}
+\boxedNote{definition}{defAccent}{defFill}
+\sidebarNote{proposition}{propAccent}{propFill}
+\sidebarNote{corollary}{corAccent}{corFill}
+
+\surroundwithmdframed[
+  topline=false, bottomline=false, rightline=false, leftline=true,
+  linecolor=exampleAccent, linewidth=1.2pt, backgroundcolor=white,
+  skipabove=6pt, skipbelow=6pt,
+  innertopmargin=3pt, innerbottommargin=3pt,
+  innerleftmargin=8pt, innerrightmargin=4pt
+]{example}
+
+% Proof head: bold, non-italic, on its own line.
+% Must be redefined before surroundwithmdframed wraps it.
+\renewenvironment{proof}[1][\proofname]{%
+  \par\noindent{\bfseries #1}\par\nopagebreak\normalfont\noindent\ignorespaces
+}{%
+  \par\hfill\qedsymbol\par
+}
+\surroundwithmdframed[
+  topline=false, bottomline=false, rightline=false, leftline=true,
+  linecolor=proofAccent, linewidth=1.6pt, backgroundcolor=white,
+  skipabove=6pt, skipbelow=6pt,
+  innertopmargin=3pt, innerbottommargin=3pt,
+  innerleftmargin=8pt, innerrightmargin=4pt
+]{proof}
 
 \title{\textbf{Math 135}\\[0.5em]\large Please give me feedback! I am at the first row. }
 \author{Qinghao Hu}
