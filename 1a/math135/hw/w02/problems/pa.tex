@@ -10,43 +10,46 @@
         \geq 2pr.
     \]
 \end{problem}
+
 \begin{solution}
-    Expanding the bracks, we get 
-    \begin{equation*}
-        2p^2 + 26r^2 + 5q^2 + 4pq - 10qr \geq 2pr.  
-    \end{equation*}
+    Suppose $p, q, r$ are all arbitrary real numbers in $\R$. 
 
-    Adding both sides by $2pr$, we get 
-    \begin{equation*}
-        2p^2 + 26r^2 + 5q^2 + 4pq - 10qr + 2pr \geq 0. 
-    \end{equation*}
-
-    Through arrangement, we get 
-    \begin{equation*}
-        (p^2 + 2pr + r^2) + (p^2 + 4pq + 4q^2) + (q^2 - 10qr + 25r^2) \geq 0. 
-    \end{equation*}
-
-    Applying the square of a binomial, we get 
-    \begin{equation*}
-        \paren{p + r}^2 + \paren{p + 2q}^2 + \paren{q - 5r}^2 \geq 0. 
-    \end{equation*}
-    Since $p + r$, $p + 2q$ and $q - 5r$ are all in $\R$, so we have 
+    According to the real numbers property, we have 
     \begin{equation*}
         \paren{p + r}^2 \geq 0 \quad (p + 2q)^2 \geq 0 \quad (q - 5r)^2 \geq 0,  
     \end{equation*}
 
-    which means 
+    Adding all the inequilities together, we get 
     \begin{equation*}
         \paren{p + r}^2 + \paren{p + 2q}^2 + \paren{q - 5r}^2 \geq 0. 
     \end{equation*}
-    holds. 
 
-    Therefore, we can assert
+    Following from the square of binomial, 
+    \begin{equation*}
+         (p^2 + 2pr + r^2) + (p^2 + 4pq + 4q^2) + (q^2 - 10qr + 25r^2) \geq 0. 
+    \end{equation*}
+
+    Expanding the parenthesis, we have 
+    \begin{equation*}
+         p^2 + 2pr + r^2 + p^2 + 4pq + 4q^2 + q^2 - 10qr + 25r^2 \geq 0. 
+    \end{equation*}
+
+    Simplifying the inequility, this yields:
+    \begin{equation*}
+        2p^2 + 26r^2 + 5q^2 + 4pq - 10qr + 2pr \geq 0. 
+    \end{equation*}
+    
+    Substracting $2pr$ for both sides, we have 
+    \begin{equation*}
+        2p^2 + 26r^2 + 5q^2 + 4pq - 10qr \geq -2pr. 
+    \end{equation*}
+
+    Factoring $2$ out of $2p^2 + 26r^2$ and $q$ out of  $5q^2 + 4pq - 10qr$, we get 
     \[
-        \forall p,q,r\in\mathbb{R},
-        \qquad
         2(p^2+13r^2)
         +q(5q+4p-10r)
         \geq 2pr.
     \]
+
+    Therefore, the original inequility is true. 
 \end{solution}
