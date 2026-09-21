@@ -1,6 +1,6 @@
 %!TEX root=../../note
 \subsection{Bounds}
-This is an additional property of real numbers that is not satisfied by rational numbers. 
+Bounds make sense in any ordered set. The special feature of $\R$ is that every nonempty set bounded above has a supremum in $\R$; this need not hold in $\Q$.
 
 \begin{definition}
     [Bounded Sets]
@@ -52,37 +52,24 @@ we have $w_0 \geq w$, then $w_0$ is called the greatest lower bound, or the infi
 \end{lemma}
 
 \begin{proof}
-    To start off, we need to prove
+    First suppose $u=\sup S$. Let $\epsilon>0$. Since
     \begin{equation*}
-        u = \sup S \implies \forall \epsilon > 0, \exists x_\epsilon \in S, u - \epsilon < x_\epsilon.
+        u-\epsilon<u,
     \end{equation*}
-    Suppose $u = \sup S$.
-
-    Let $\epsilon > 0$, then
+    the number $u-\epsilon$ cannot be an upper bound: otherwise it would be an upper bound smaller than $u$. By the definition of upper bound, there is therefore some $x_\epsilon\in S$ such that
     \begin{equation*}
-        u - \epsilon < u,
+        u-\epsilon<x_\epsilon\leq u.
     \end{equation*}
 
-    which means $u - \epsilon$ is not an upper bound of $S$.
-
-    Thus, $\exists x_\epsilon \in S$ such that
+    Conversely, suppose $u$ is an upper bound and that for every $\epsilon>0$ there exists $x_\epsilon\in S$ with $u-\epsilon<x_\epsilon$. If $u$ were not the least upper bound, there would be another upper bound $w<u$. Choose
     \begin{equation*}
-        u - \epsilon < x_\epsilon.
+        \epsilon=u-w>0.
     \end{equation*}
-
-    Now we prove the converse.
-
-    Suppose for every $\epsilon > 0, \exists x_\epsilon \in S, u - \epsilon < x_\epsilon$.
-    Assume $u$ is not the supremum; say $w = \sup S$. Then,
+    The assumed condition then yields
     \begin{equation*}
-        w < u \implies u - w > 0.
+        w=u-\epsilon<x_\epsilon,
     \end{equation*}
-
-    Take $\epsilon = u - w$. By hypothesis, $\exists x_\epsilon \in S$ such that
-    \begin{equation*}
-        u - \epsilon < x_\epsilon \implies u - (u - w) < x_\epsilon \implies w < x_\epsilon.
-    \end{equation*}
-    But $x_\epsilon \in S$ and $w = \sup S$ means $w$ is an upper bound for $S$, so $x_\epsilon \leq w$ — contradicting $w < x_\epsilon$. Therefore $u$ must in fact be the supremum, i.e., $u = \sup S$.
+    contradicting that $w$ is an upper bound. Hence $u=\sup S$.
 \end{proof}
 
 \begin{example}
@@ -90,27 +77,15 @@ we have $w_0 \geq w$, then $w_0$ is called the greatest lower bound, or the infi
     \begin{itemize}
         \item $\sup S = 1$.
         \begin{proof}
-        Since $x < 1$ for all $x \in S$, $1$ is an upper bound.
-
-        Say $u = \sup S$, so $0 \leq u \leq 1$. Suppose $u \neq 1$; then
+        Every $x\in S$ satisfies $x\leq1$, so $1$ is an upper bound. To see directly that no smaller number works, let $u<1$. If $u<0$, then $0\in S$ lies above $u$. If $0\leq u<1$, set $x=(u+1)/2$. Then
         \begin{equation*}
-            0 \leq u < 1 \implies 1 - u > 0.
+            u<x=\frac{u+1}{2}<1,
         \end{equation*}
-
-        Take $\epsilon = \frac{1 - u}{2}$. Thus,
-        \begin{equation*}
-            u < u + \epsilon \implies u < u + \frac{1 - u}{2} = \frac{u + 1}{2} < 1,
-        \end{equation*}
-        so $\frac{u+1}{2} \in S$. But $u$ is an upper bound for $S$, so it should satisfy $\frac{u+1}{2} \leq u$ — yet we just showed $u < \frac{u+1}{2}$, a contradiction.
+        so $x\in S$ lies above $u$. Thus every number below $1$ fails to be an upper bound, and $\sup S=1$.
         \end{proof}
         \item $\inf S = 0$.
         \begin{proof}
-            Since $x \geq 0$ for all $x \in S$, $0$ is a lower bound.
-            Assume $w = \inf S \neq 0$. Then
-            \begin{equation*}
-                w > 0.
-            \end{equation*}
-            Since $w$ is a lower bound for $S$ and $0 \in S$, we must have $w \leq 0$, contradicting $w > 0$.
+            Since $x\geq0$ for all $x\in S$, $0$ is a lower bound. If $w>0$, then $0\in S$ satisfies $0<w$, so $w$ is not a lower bound. Thus no number greater than $0$ is a lower bound, and $\inf S=0$.
         \end{proof}
     \end{itemize}
 \end{example}

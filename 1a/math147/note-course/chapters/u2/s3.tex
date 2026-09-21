@@ -89,15 +89,17 @@ the completeness axiom.
         \]
         \item
         \[
-            a \cdot 0 = a \cdot \paren{1 + (-1)} = a \cdot 1 + a \cdot (-1) = a + (-a) = 0.
+            a\cdot0=a\cdot(0+0)=a\cdot0+a\cdot0.
         \]
+        Adding $-(a\cdot0)$ to both sides, and using associativity, gives
+        $0=a\cdot0$.
     \end{enumerate}
 \end{proof}
 
 \begin{definition}[The Order Properties of $\R$]
     There is a nonempty subset $P$ of $\R$, called the set of \textbf{positive real
     numbers}, that satisfies the following properties.
-    \begin{enumerate}[label=\textbf{F1\arabic*.}, leftmargin=3em]
+    \begin{enumerate}[label=\textbf{O\arabic*.}, leftmargin=3em]
         \item \textbf{Trichotomy law.}
         For every $a \in \R$, exactly one of the following holds:
         \begin{equation*}
@@ -164,15 +166,44 @@ the completeness axiom.
 \end{definition}
 \begin{theorem}
     \begin{enumerate} [label = (\alph*)]
-        \item $\abs{ab} = \abs{a}\abs{b}, \forall a, b \in \R$
-        \item $\abs{a }^2 = a^2, \forall a \in \R$
-        \item $\paren{\forall c > 0}\bracks{(\abs{a } \leq c) \iff (-c \leq a \leq c)}$
-        \item $\paren{\forall a \in \R}-\abs{a } \leq a \leq \abs{a}$
+        \item $\abs{ab} = \abs{a}\abs{b}$ for all $a, b \in \R$.
+        \item $\abs{a}^2 = a^2$ for all $a \in \R$.
+        \item For $a \in \R$ and $c>0$,
+        \[\abs{a} \leq c \iff -c \leq a \leq c.\]
+        \item For every $a \in \R$,
+        \[-\abs{a} \leq a \leq \abs{a}.\]
 
     \end{enumerate}
 
-    You can prove all of them by cases. 
 \end{theorem}
+
+\begin{proof}
+    The definition immediately gives $\abs{-a}=\abs{a}$: if $a\geq0$,
+    then $-a\leq0$, and if $a<0$, then $-a>0$. It also gives
+    \begin{equation*}
+        -\abs{a}\leq a\leq\abs{a},
+    \end{equation*}
+    proving (d). In the two cases $a\geq0$ and $a<0$, respectively,
+    $\abs{a}^2=a^2$ is immediate; this proves (b).
+
+    For (a), there are four sign combinations. If $a,b\geq0$, then
+    $ab\geq0$, so $\abs{ab}=ab=\abs a\abs b$. If $a\geq0>b$, then
+    $ab\leq0$, so $\abs{ab}=-ab=a(-b)=\abs a\abs b$. The case
+    $b\geq0>a$ is the same with the roles reversed. Finally, if $a,b<0$,
+    then $ab>0$, and
+    \begin{equation*}
+        \abs{ab}=ab=(-a)(-b)=\abs a\abs b.
+    \end{equation*}
+
+    Finally let $c>0$. Suppose first that $\abs a\leq c$. If $a\geq0$,
+    then $\abs a=a$, so $a\leq c$; also $-c<0\leq a$. If $a<0$, then
+    $\abs a=-a$, so $-a\leq c$, equivalently $-c\leq a$; also $a<0<c$.
+    Hence $-c\leq a\leq c$ in either case.
+
+    Conversely, suppose $-c\leq a\leq c$. If $a\geq0$, then
+    $\abs a=a\leq c$. If $a<0$, multiplying $-c\leq a$ by $-1$ reverses
+    the inequality and gives $-a\leq c$, hence $\abs a\leq c$. This proves (c).
+\end{proof}
 
 \begin{proposition}
     [Triangle Inequality]
@@ -186,13 +217,14 @@ the completeness axiom.
         -\abs{b } \leq b \leq \abs{b}.
     \end{align*}
 
-    thus,
+    Thus,
     \begin{align*}
         &-\abs{a } - \abs{b } \leq a + b \leq \abs{a } + \abs{ b} \\
         &\iff - \paren{\abs{a } + \abs{b}} \leq a + b \leq \abs{a} + \abs{b}
     \end{align*}
 
-    then we apply the absolute value theorem (c), we get
+    If $\abs{a}+\abs{b}=0$, then the displayed bounds give $a+b=0$, so the
+    claim is immediate. Otherwise, part (c) of the preceding theorem gives
     \begin{equation*}
         \abs{a + b } \leq \abs{a} + \abs{b}.
     \end{equation*}
@@ -214,11 +246,12 @@ the completeness axiom.
 
     \begin{align*}
         b = b - a + a &\implies \abs{b } = \abs{(b - a) + a } \leq \abs{b - a } + \abs{a }\\
-        &\implies \abs{b } - \abs{a } \leq \abs{a - b}. \\
+        &\implies \abs{b } - \abs{a } \leq \abs{b-a}
+            = \abs{-(a-b)}=\abs{a-b}. \\
         &\implies \abs{a } - \abs{b } \geq - \abs{a - b}
     \end{align*}
 
-    thus,
+    Thus,
     \begin{equation*}
         -\abs{a - b } \leq \abs{a } - \abs{b } \leq \abs{a - b }
     \end{equation*}
@@ -232,6 +265,7 @@ the completeness axiom.
 \begin{proof}[Proof of (2)]
     Let $a, b \in \R$. We know
     \begin{align*}
-        \abs{a - b} = \abs{a + \paren{-b }} \leq \abs{a} + \abs{-b } \leq \abs{a } + \abs{b}.
+        \abs{a - b} = \abs{a + \paren{-b }} \leq \abs{a} + \abs{-b }
+        = \abs{a } + \abs{b}.
     \end{align*}
 \end{proof}

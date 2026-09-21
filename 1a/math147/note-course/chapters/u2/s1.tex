@@ -39,12 +39,12 @@ The natural numbers are closed under addition. The integers are closed under add
         m^2=2n^2.
     \end{equation*}
 
-    Thus, $m^2$ is even, so $m$ is even. Write $m=2\ell$ for some $\ell\in\Z$. Substituting this into the equation above gives
+    Thus $m^2$ is even. An odd integer has an odd square, so $m$ must be even. Write $m=2\ell$ for some $\ell\in\Z$. Substituting this into the equation above gives
     \begin{align*}
         2n^2 &= 4\ell^2, \\
         n^2 &= 2\ell^2.
     \end{align*}
-    Therefore, $n^2$ is even, and hence $n$ is even as well.
+    Therefore $n^2$ is even, and the same parity argument shows that $n$ is even.
 
     This means that both $m$ and $n$ are even, contradicting $\gcd(m,n)=1$. Therefore, $\sqrt{2}\notin\Q$.
 \end{proof}
@@ -56,12 +56,13 @@ The irrational numbers are the real numbers that are not rational:
 \end{equation*}
 
 \begin{example}[Decimal representation]
-Every real number has a decimal representation. In general, a decimal expansion can be written as
+Every nonnegative real number has a decimal representation of the form
 \begin{equation*}
     x=a+\sum_{i=1}^{\infty}\frac{x_i}{10^i},
-    \qquad a\in\Z,
+    \qquad a\in\N\cup\set{0},
     \qquad x_i\in\set{0,1,2,\ldots,9}.
 \end{equation*}
+Negative real numbers are the negatives of such expansions. Some numbers have two decimal representations, for example $1.999\cdots=2.000\cdots$.
 \end{example}
 
 \begin{example}[Recurring decimal]

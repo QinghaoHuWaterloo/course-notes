@@ -1,0 +1,213 @@
+\section{Q1}
+\subsection{(a)}
+
+\begin{problem}
+    Let $K$, $L$, and $M$ be statement variables and suppose that the
+    following logical expression is TRUE:
+    \[
+        \neg\left(
+            \bigl(L \lor (\neg M)\bigr)
+            \implies (\neg K)
+        \right)
+        \land (\neg L).
+    \]
+    Determine with justification all possible truth value combinations of
+    $K$, $L$, and $M$.
+\end{problem}
+
+\begin{solution}
+According to the extra lecture, we have already proved that
+\begin{equation*}
+\paren{A \implies B } \equiv \neg A \vee B.
+\end{equation*}
+
+
+Therefore, we have 
+\begin{equation*}
+    \left(
+        \bigl(L \lor (\neg M)\bigr)
+        \implies (\neg K)
+    \right) 
+    \quad
+    \equiv 
+    \quad
+    \paren{
+        \neg \paren{
+            L \vee \paren{\neg M }
+        } \vee
+        \paren{\neg K}
+    }. 
+\end{equation*}
+
+Then, by De Morgan's law, we get 
+\begin{equation*}
+    \paren{
+        \neg \paren{
+            L \vee \paren{\neg M }
+        } \vee
+        \paren{\neg K}
+    }
+    \quad
+    \equiv
+    \quad
+    \paren{
+        \paren{\neg L \wedge M} \vee \paren{\neg K}
+    }.
+\end{equation*}
+
+Thus, we have 
+\begin{equation*}
+    \neg \paren{\paren{\neg L \wedge M} \vee \paren{\neg K}} \wedge \paren{\neg L}.
+\end{equation*}
+
+Applying De Morgan's law again, we get 
+\begin{equation*}
+     \neg \paren{\paren{\neg L \wedge M} \vee \paren{\neg K}} \wedge \paren{\neg L} 
+     \quad \equiv \quad 
+    \paren{
+        \neg \paren{\neg L \wedge M} 
+        \wedge 
+        \neg \paren{\neg K}
+    } \wedge \paren{\neg L}.
+\end{equation*}
+
+Applying De Morgan's law once more, we have 
+\begin{equation*}
+    \paren{
+        \neg \paren{\neg L \wedge M} 
+        \wedge 
+        \neg \paren{\neg K}
+    } \wedge \paren{\neg L} 
+    \quad \equiv \quad 
+    \paren{
+        \paren{L \vee \neg M} \wedge K
+    } \wedge 
+    \paren{\neg L}.
+\end{equation*}
+
+By the associative law, this is equivalent to 
+\begin{equation*}
+    \paren{L \vee \neg M} \wedge K \wedge \paren{\neg L}. 
+\end{equation*}
+
+As a final step, we construct a truth table:
+
+\begin{center}
+\begin{tabular}{c|c|c|c|c|c|c}
+$L$ & $M$ & $K$ & $\neg L$
+& $L \vee \neg M$
+& $(L \vee \neg M) \wedge K$
+& $(L \vee \neg M) \wedge K \wedge (\neg L)$ \\
+\hline
+T & T & T & F & T & T & F\\
+T & T & F & F & T & F & F \\
+T & F & T & F & T & T & F \\
+T & F & F & F & T & F & F \\
+F & T & T & T & F & F & F \\
+F & T & F & T & F & F & F \\
+F & F & T & T & T & T & T \\
+F & F & F & T & T & F & F
+\end{tabular}
+\end{center}
+
+Therefore, there is only one possible combination of truth values for $K$, $L$, and $M$.
+
+Namely,
+\begin{itemize}
+    \item $L$ is false,
+    \item $M$ is false,
+    \item and $K$ is true.
+\end{itemize}
+
+\end{solution}
+\newpage
+\subsection{(b)}
+\begin{problem}
+    Let $G$, $H$, and $J$ be statement variables. Use a truth table to
+    prove that
+    \[
+        H \land (G \iff J)
+        \equiv
+        \bigl(G \land (H \land J)\bigr)
+        \lor
+        \neg\bigl(H \implies (G \lor J)\bigr).
+    \]
+\end{problem}
+
+\begin{solution}
+    Here is the truth table for $H \wedge (G \iff J)$
+    \[
+    \begin{array}{c|c|c|c|c}
+    H & G & J & G \iff J & H \wedge (G \iff J) \\
+    \hline
+    T & T & T & T & T\\
+    T & T & F & F &  F\\
+    T & F & T & F & F \\
+    T & F & F & T & T \\
+    F & T & T & T & F \\
+    F & T & F & F & F \\
+    F & F & T & F & F \\
+    F & F & F & T & F
+    \end{array}
+    \]
+
+    Here is the truth table for $\bigl(G \land (H \land J)\bigr)
+    \lor
+    \neg\bigl(H \implies (G \lor J)\bigr)$
+    \[
+    \begin{array}{c|c|c|c|c}
+    H & G & J & H \wedge J & G \wedge (H \wedge J) \\
+    \hline
+    T & T & T & T & T\\
+    T & T & F & F & F\\
+    T & F & T & F & F\\
+    T & F & F & F & F\\
+    F & T & T & F & F\\
+    F & T & F & F & F\\
+    F & F & T & F & F\\
+    F & F & F & F & F
+    \end{array}
+    \]
+
+    \[
+    \begin{array}{c|c|c|c|c|c}
+    H & G & J & G \vee J
+    & H \implies (G \vee J)
+    & \neg\bigl(H \implies (G \vee J)\bigr) \\
+    \hline
+    T & T & T & T & T & F \\
+    T & T & F & T & T & F \\
+    T & F & T & T & T & F \\
+    T & F & F & F & F & T \\
+    F & T & T & T & T & F \\
+    F & T & F & T & T & F \\
+    F & F & T & T & T & F \\
+    F & F & F & F & T & F
+    \end{array}
+    \]
+
+    \[
+    \begin{array}{c|c|c|c}
+    H & G & J &
+    \bigl(G \land (H \land J)\bigr)
+    \lor
+    \neg\bigl(H \implies (G \lor J)\bigr)
+    \\
+    \hline
+    T & T & T & T\\
+    T & T & F & F\\
+    T & F & T & F\\
+    T & F & F & T\\
+    F & T & T & F\\
+    F & T & F & F\\
+    F & F & T & F\\
+    F & F & F & F
+    \end{array}
+    \]
+
+    Since $H \wedge (G \iff J)$ and $\bigl(G \land (H \land J)\bigr)
+    \lor
+    \neg\bigl(H \implies (G \lor J)\bigr)$ have the same truth table value. 
+    Thus, these two statements are equivalent. 
+
+\end{solution}

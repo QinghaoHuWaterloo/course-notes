@@ -1,0 +1,135 @@
+%!TEX root=../../assign.tex
+\subsection{Problem 4}
+\subsubsection{\rom{1}}
+\begin{proof}
+    Suppose 
+    \begin{equation*}
+        \paren{\forall x > 0 }\paren{\exists n \in \N } \frac{1}{n} < x. 
+    \end{equation*}
+
+    Multiplying both sides by $\frac{n}{x}$, 
+    \begin{equation*}
+        \frac{1}{x} < n. 
+    \end{equation*}
+
+    Since every positive real number has a positive multiplicative inverse。 we have 
+    \begin{equation*}
+        \paren{\forall x > 0}\paren{\exists x' > 0} x \cdot x' = 1. \quad \implies \quad x' = \frac{1}{x} > 0
+    \end{equation*}
+
+    This yields 
+    \begin{equation*}
+        \paren{\forall x > 0}\paren{\exists x' > 0}\paren{\exists n \in \N} \frac{1}{x} = x' < n, 
+    \end{equation*}
+
+    Now, Since we also have 
+    \begin{equation*}
+        \paren{\forall x' > 0 }\paren{\exists x > 0 }x' = \frac{1}{x} > 0, 
+    \end{equation*}
+
+    this yields
+    \begin{equation*}
+        \paren{\forall x' > 0 }\paren{\exists n \in \N} x' < n. 
+    \end{equation*}
+
+    Thus, the Archimedean property is proved. 
+\end{proof}
+
+\subsubsection{\it{ii}}
+\textbf{Proof for the case for $x \in \Q$}
+
+We need to prove 
+\begin{equation*}
+    \paren{\forall x \in \Q}\bracks{\paren{x > 0}\implies \paren{\exists n \in \N}\frac{1}{n} < x}. 
+\end{equation*}
+\begin{proof}
+    Since $x \in \Q$, by the definition
+    \begin{equation*}
+        \paren{\forall x \in \Q}(\exists m, d \in \Z) \bracks{d \neq 0 \implies x = \frac{m }{d}}. 
+    \end{equation*}
+
+    Since $x > 0$, which implies $m \neq 0$. 
+
+    Consider the case where both $m$ and $d$ are positive first. We have 
+    \begin{equation*}
+        \frac{1}{n} < \frac{m }{d} \quad \implies \quad d < mn. 
+    \end{equation*}
+
+    Since $d \geq 1$ and $m \geq 1$, we can set 
+    \begin{equation*}
+        n = d + 1. 
+    \end{equation*}
+
+    This yields, 
+    \begin{equation*}
+        d \leq md < m(d + 1) = md + m. 
+    \end{equation*}
+
+    Therefore, 
+    \begin{equation*}
+        d < mn \quad \implies \quad \frac{1}{n} < \frac{m }{d}. 
+    \end{equation*}
+
+    Thus, the original claim holds. 
+
+    Consider the case where $m, d < 0$. 
+
+    Since 
+    \begin{equation*}
+        \frac{m  }{d} = \frac{-m }{-d}, 
+    \end{equation*}
+    we are able to make 
+    \begin{equation*}
+        m' = -m \quad \text{and} \quad d' = -d
+    \end{equation*}
+
+    Then treat them as the case where $m$ and $d$ are both positive. 
+\end{proof}
+
+\textbf{Proove for the case where $x > 0, x = \sqrt{y}, \exists y \in \Q$}. 
+We need to prove 
+\begin{equation*}
+    \paren{\forall x > 0}\bracks{\bracks{\paren{\exists y \in \Q}\bracks{y > 0 \wedge x = \sqrt{y}}} \implies \paren{\exists n \in \N } \frac{1}{n} < x}.
+\end{equation*}
+\begin{proof}
+    Let 
+    \begin{equation*}
+        y = \frac{m }{d}, \exists m \in \Z, \exists d \in \Z, d \neq 0. 
+    \end{equation*}
+
+    Since $y > 0$, which implies 
+    \begin{equation*}
+        m \neq 0, 
+    \end{equation*}
+
+    and we have two cases to discuss. They are 
+    \begin{equation*}
+        \paren{m \geq 1}\wedge\paren{d \geq 1} \quad \text{and} \quad \paren{m \leq -1}\wedge\paren{d \leq -1}. 
+    \end{equation*}
+
+    \begin{itemize}
+        \item Case $\paren{m \geq 1}\wedge\paren{d \geq 1}$: 
+        \begin{align*}
+            \paren{\exists n \in \N}\frac{1}{n} < x &\Leftrightarrow \paren{\exists n \in \N}\frac{1}{n} < \sqrt{y} = \sqrt{\frac{m }{d}} \\
+            &\Leftrightarrow \paren{n \in \N } \frac{1}{n^2} < \frac{m }{d} \\
+            &\Leftrightarrow \paren{\exists n \in \N } d < mn^2,  
+        \end{align*}
+
+        Since $m \geq 1$, we can select $n = \paren{d + 1}$. We have 
+        \begin{equation*}
+            mn^2 = m\paren{d + 1}^2 = m\paren{d^2 + 2d + 1} = md^2 + 2md + m > d
+        \end{equation*}
+
+        Thus, the claim hold. 
+        \item Case $\paren{m \leq -1}\wedge \paren{d \leq -1}$
+        
+        Since $y > 0$, we are able to multiple $y$ by $\frac{-1}{-1} = 1$, where we have 
+        \begin{equation*}
+            y = \frac{m }{d} \cdot 1 = \frac{m }{d} \cdot \frac{-1}{-1} = \frac{-m }{-d}, -m \geq 1, -d \geq 1. 
+        \end{equation*}
+
+        Then, we treat this case similar to the last case. 
+    \end{itemize}
+
+    Thus, the claim holds. 
+\end{proof}

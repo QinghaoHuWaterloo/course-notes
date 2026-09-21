@@ -1,0 +1,130 @@
+%!TEX root=../w02.tex
+\section{Q4}
+\begin{itemize}
+    \item \textbf{(a)}
+    \begin{problem}
+        Prove the following statement:
+        \[
+            \forall x\in\mathbb{R},
+            \qquad
+            2|5x+15|-4|3x-18|\leq 90.
+        \]
+    \end{problem}
+
+    \begin{solution}
+        Let us take a look at the absolute value first. 
+
+        First, we find under what condition, $5x + 15 \geq 0$. 
+
+        By substracting $15$ to both sides and dividing 5, we get 
+        \begin{align*}
+            5x &\geq -15 \\
+            x &\geq -3
+        \end{align*}
+
+        Therefore, when $x \geq -3$, $5x + 15 \geq 0$. 
+
+        When $x < -3$, $5x + 15 < 0$. 
+
+        Next, we find under which condition, $3x - 18 \geq 0$. 
+
+         By adding $18$ to both sides and dividing 3, we get 
+         \begin{align*}
+            3x &\geq 18 \\
+            x &\geq 6
+        \end{align*}
+
+        Therefore, when $x \geq 6$, $3x - 18 \geq 0$. 
+
+        When $x < 6$, $3x - 18 < 0$. 
+
+        There are three cases to consider:
+    \begin{itemize}
+        \item $x < -3$
+        
+        Under this condition, both $5x + 15$ and $3x - 18$ are less than 0. So we have 
+        \begin{equation*}
+            2\bracks{-\paren{5x + 15}} - 4\bracks{-\paren{3x - 18}} \leq 90. 
+        \end{equation*}
+
+        Expanding the parenthesises, we have
+        \begin{equation*}
+            2 \bracks{-5x - 15} - 4\bracks{-3x + 18} \leq 90. 
+        \end{equation*} 
+
+        Expanding the brackets, we have 
+        \begin{equation*}
+            -10x - 30 + 12x - 72 \leq 90. 
+        \end{equation*}
+
+        Simplifying and substracting 90 for the both sides, we get 
+        \begin{equation*}
+            2x - 192 \leq 0. 
+        \end{equation*}
+
+        Adding 192 to the both sides and dividing $2$, we have 
+        \begin{equation*}
+            x \leq 81. 
+        \end{equation*}
+
+        This statement holds true since $x < -3 \leq 81$. 
+
+        \item $-3 \leq x < 6$
+        
+        Under this condition, $5x + 15$ is positive, $3x - 18$ is negative. 
+
+        So we have 
+        \begin{equation*}
+            2\abs{5x + 15} - 4\abs{3x - 18} = 2\paren{5x - 15} - 4 \bracks{-\paren{3x - 18}}
+        \end{equation*}
+
+        Expanding the bracks, we have 
+        \begin{equation*}
+            10x + 30 - 4\bracks{-3x + 18} = 10x - 30 + 12x - 72. 
+        \end{equation*}
+
+        Simplifying, we get 
+        \begin{equation*}
+            22x - 42
+        \end{equation*}
+
+        Since $x < 6$ we get 
+        \begin{equation*}
+            22x - - 42 < 22\paren{6} - 42 = 90. 
+        \end{equation*}
+
+        Therefore, the inequility holds for $-3 \leq x < 6$. 
+
+        \item  Case 3: $x \geq 6$. 
+        
+        Under this condition, both $5c + 15$ and $3x - 18$ are positive. 
+
+        So we have 
+        \begin{equation*}
+            2\abs{5x + 15} - 4\abs{3x - 18} = 2\paren{5x - 15} - 4 \paren{3x - 18}
+        \end{equation*}
+
+        Expanding the bracks, we have
+        \begin{equation*}
+            10x + 30 - 12x + 72
+        \end{equation*}
+
+        Simplifying, we get 
+        \begin{equation*}
+            -2x + 102
+        \end{equation*}
+
+        Since $x \geq 6$, we have 
+        \begin{equation*}
+            -2x + 102 \leq -2\paren{6} + 102 = 90. 
+        \end{equation*} 
+
+        Since this inequility holds for $x < -3$, $-3 \leq x < 6$, and $x \geq 6$. Therefore, it holds for all x in real number set. 
+    \end{itemize}
+
+
+
+    \end{solution}
+
+    
+\end{itemize}

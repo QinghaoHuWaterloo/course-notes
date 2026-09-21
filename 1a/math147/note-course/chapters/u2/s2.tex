@@ -108,7 +108,9 @@ The principle of mathematical induction has the following equivalent set formula
         1^2 + \cdots + (k - 1)^2 + k^2
             &= \frac{(k - 1)k(2k - 1)}{6} + k^2 \\
             &= \frac{(k - 1)k(2k - 1) + 6k^2}{6} \\
-            &= \frac{k(k + 1)(2k + 1)}{6},
+            &= \frac{k\bigl((k-1)(2k-1)+6k\bigr)}{6} \\
+            &= \frac{k(2k^2+3k+1)}{6}
+             = \frac{k(k+1)(2k+1)}{6},
     \end{align*}
     so $P(k)$ is in fact true. This contradicts $k\in S$. Therefore $S=\emptyset$, and $P(n)$ holds for every $n\in\N$.
 \end{proof}

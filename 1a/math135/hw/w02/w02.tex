@@ -1,0 +1,51 @@
+% =========================================================
+% Homework -- style lives in sty/qhhomework.sty
+% =========================================================
+\documentclass[11pt, a4paper]{article}
+\usepackage{qhhomework}  % options: screen (narrow tablet page), watermark
+
+% ---------- Bracket shortcuts ----------
+\newcommand{\paren}[1]{\left(#1\right)}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\bracks}[1]{\left[#1\right]}
+\newcommand{\set}[1]{\left\{#1\right\}}
+
+% ---------- Number sets ----------
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\ds}{\displaystyle}
+
+% ---------- Colour helpers ----------
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+
+% ---------- Figure helper: \mypic{file}{caption}{width fraction} ----------
+\newcommand{\mypic}[3]{%
+  \begin{figure}[htbp]
+    \centering
+    \includegraphics[width=#3\textwidth]{#1}
+    \caption{#2}
+  \end{figure}
+}
+
+\course{MATH 135}
+\assignment{W02}
+\student{Qinghao Hu}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\include{problems/p1}
+\include{problems/p2}
+\include{problems/p3}
+\include{problems/p4}
+\include{problems/pa}
+
+\end{document}
