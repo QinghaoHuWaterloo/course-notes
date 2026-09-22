@@ -43,7 +43,14 @@ Compile with: `latexmk -pdf -interaction=nonstopmode note.tex` from the project
 root. Use `latexmk -C note.tex` first if you need a truly clean rebuild (clears
 aux/log/fls cache) — do this if you see weird stale-looking warnings.
 
-## Preamble facts (don't re-read note.tex's preamble unless you suspect it changed)
+## Shared-style facts (don't re-read `note.tex` unless you suspect it changed)
+
+`note.tex` loads the installed `qhnotes` package with `color, watermark`
+options. `note.tex` itself defines `\paren{}`, `\abs{}`, `\norm{}`,
+`\bracks{}`, `\set{}`, `\R`, `\N`, `\Z`, `\Q`, `\C`, `\ds`, `\blue`,
+`\red`, and `\mypic`; keep those shortcuts local to the document and reuse
+them rather than defining additional variants. Do not copy the package
+preamble into `note.tex`.
 
 - Theorem environments, one shared counter numbered by subsection: `theorem`,
   `lemma`, `proposition`, `corollary`, `definition`, `example` (all boxed or
@@ -54,7 +61,7 @@ aux/log/fls cache) — do this if you see weird stale-looking warnings.
   new environments.**
 - `proof` is redefined (bold non-italic head, own line, blue sidebar box, QED
   symbol is `\blacksquare`).
-- Macros: `\R \N \Z \Q \C` (blackboard bold), `\paren{}` = `\left(\right)`,
+- Shortcuts: `\R \N \Z \Q \C` (blackboard bold), `\paren{}` = `\left(\right)`,
   `\abs{}` = `\left|\right|`, `\norm{}`, `\bracks{}` = `\left[\right]`,
   `\set{}` = `\left\{\right\}`, `\ds` = `\displaystyle`. Don't add new macros
   unless truly necessary; reuse these.
