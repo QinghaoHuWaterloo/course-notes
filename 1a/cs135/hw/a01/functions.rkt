@@ -5,7 +5,7 @@
 ;; ***************************************************
 ;; Qinghao Hu (21239903)
 ;; CS 135 Fall 2026
-;; Assignment 02
+;; Assignment 01, Question 2
 ;; ***************************************************
 ;;
 
@@ -15,7 +15,7 @@
 
 ;; Calculate the surface area of a doughnut
 (define (doughnut-surface-area r z)
-  (* 4 (* r z) (sqr pi))
+  (* 4 (sqr pi) r z)
 )
 
 ;;
