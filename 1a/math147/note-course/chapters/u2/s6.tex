@@ -1,6 +1,6 @@
 %!TEX root=../../../note
 \subsection{Limits}
-A sequence of real numbers in a function defined on the set $N = \set{1, 2, 3, \cdots}$ of natural numbers whose range is contained 
+A sequence of real numbers is a function defined on the set $N = \set{1, 2, 3, \cdots}$ of natural numbers, whose range is contained 
 in the set $\R$ of real numbers. 
 \begin{equation*}
     X: \N \to \R
@@ -12,7 +12,7 @@ Notation: $\set{x_n }, \set{x_n }_{n = 1}^{\infty}$
 
 \begin{definition}
     A sequence $\set{x_n }$ in $\R$ is said to converge to $a \in \R$, or $a$ is said to be a limit of $\set{x_n }$ 
-    , it for every $\epsilon > 0$ there exists a natural number $n_\epsilon \in \N$ such that for all $n \geq n_\epsilon$
+    , if for every $\epsilon > 0$ there exists a natural number $n_\epsilon \in \N$ such that for all $n \geq n_\epsilon$
     the term $x_n$ satisfy 
     \begin{equation*}
         \abs{x_n - a} < \epsilon. 
@@ -23,3 +23,61 @@ Notation: $\set{x_n }, \set{x_n }_{n = 1}^{\infty}$
         \lim_{n \to \infty} x_n = a. 
     \end{equation*}
 \end{definition}
+
+\begin{remark}[Reading the definition]
+    In plain language: for every tolerance $\epsilon > 0$, all sufficiently late terms of the sequence lie inside the interval
+    $\paren{a - \epsilon, a + \epsilon}$. Here $\epsilon$ is the tolerance, or precision level, we demand of the approximation
+    $x_n \approx a$; the index $n_\epsilon$ tells us how late ``sufficiently late'' means, and in general depends on $\epsilon$.
+    The phrase ``for all $n \geq n_\epsilon$'' says that once the sequence enters the $\epsilon$-band at index $n_\epsilon$, it
+    stays inside that band for every later index -- it does not escape and re-enter. Since $n_\epsilon$ depends on $\epsilon$,
+    tightening the tolerance (taking $\epsilon$ smaller) typically forces $n_\epsilon$ to be larger: the sequence may need to
+    wait longer before it settles into a narrower band around $a$.
+\end{remark}
+
+The same ``eventually close'' idea appears in the $\epsilon$--$\delta$ definition of a function limit. Consider the oscillating function
+\[
+    f(x)=x\sin\paren{\frac1x}\qquad (x\ne0).
+\]
+Its oscillations become more frequent near $0$, but their amplitude is at most $|x|$, so the graph is squeezed toward the limiting value $0$.
+
+\begin{center}
+\begin{tikzpicture}[x=2.4cm,y=2.2cm,>=Stealth]
+    % The epsilon-band and the delta-neighbourhood.
+    \fill[red!8] (-0.9,-0.35) rectangle (0.9,0.35);
+    \draw[densely dashed,red!75!black] (-0.9,0.35) -- (0.9,0.35) node[right] {$\epsilon$};
+    \draw[densely dashed,red!75!black] (-0.9,-0.35) -- (0.9,-0.35) node[right] {$-\epsilon$};
+    \draw[densely dashed,blue!70!black] (-0.35,-0.85) -- (-0.35,0.85) node[above] {$a-\delta$};
+    \draw[densely dashed,blue!70!black] (0.35,-0.85) -- (0.35,0.85) node[above] {$a+\delta$};
+
+    % Axes and the graph of x sin(1/x).
+    \draw[->] (-0.95,0) -- (0.98,0) node[right] {$x$};
+    \draw[->] (0,-0.9) -- (0,0.93) node[above] {$y$};
+    \draw[very thick,teal!70!black,domain=0.025:0.9,samples=600,smooth]
+        plot (\x,{\x*sin((1/\x) r)});
+    \draw[very thick,teal!70!black,domain=-0.9:-0.025,samples=600,smooth]
+        plot (\x,{\x*sin((1/\x) r)});
+    \fill (0,0) circle (0.7pt);
+    \node[below] at (0,-0.12) {$a=L=0$};
+    \node[teal!70!black,anchor=south west] at (0.47,0.67) {$f(x)=x\sin(1/x)$};
+    \node[blue!70!black,below] at (0,-0.88) {$|x-a|<\delta$};
+\end{tikzpicture}
+\end{center}
+
+\begin{remark}[Proof idea]
+    We want to control $|f(x)-L| = \abs{x\sin\paren{1/x}}$. Since $|\sin(\theta)| \leq 1$ for every real $\theta$, the factor
+    $\sin(1/x)$ never contributes more than a factor of $1$, so $|f(x)| \leq |x|$: the size of $f(x)$ is bounded directly by
+    the size of $x$ itself. This means we can make $|f(x)-L|$ small simply by making $|x-a|=|x|$ small, with no loss in the
+    bound. Choosing $\delta=\epsilon$ then closes the chain of inequalities exactly, with no slack to spare.
+\end{remark}
+
+For a given $\epsilon>0$, choose $\delta=\epsilon$. If
+\[
+    0<|x-a|=|x|<\delta,
+\]
+then
+\[
+    |f(x)-L|=\abs{x\sin\paren{\frac1x}}
+    \leq |x| \qquad \text{(since } |\sin(\theta)| \leq 1 \text{ for all } \theta \in \R \text{)}
+    <\delta=\epsilon.
+\]
+Thus every $x$ in the $\delta$-neighbourhood of $a=0$ (apart from $a$ itself) has its function value inside the $\epsilon$-band around $L=0$.

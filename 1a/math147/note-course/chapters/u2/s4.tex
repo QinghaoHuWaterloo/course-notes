@@ -4,26 +4,42 @@ Bounds make sense in any ordered set. The special feature of $\R$ is that every 
 
 \begin{definition}
     [Bounded Sets]
-    Let $S$ be a nonempty subset of $\R$. The set $S$ is said to be 
+    Let $S$ be a nonempty subset of $\R$. The set $S$ is said to be
     \begin{enumerate}
-        \item bounded above: there exists $u \in \R$ such that $x \leq u$ for all $x \in S$. 
-        \item bounded below: there exists $w \in \R$ such that $w \leq x$ for all $x \in S$. 
-        \item bounded: it is both bounded above and below. 
-        \item unbounded: not bounded. 
+        \item bounded above if there exists $u \in \R$ such that $x \leq u$ for all $x \in S$.
+        \item bounded below if there exists $w \in \R$ such that $w \leq x$ for all $x \in S$.
+        \item bounded if it is both bounded above and below.
+        \item unbounded if it is not bounded.
     \end{enumerate}
 \end{definition}
 
-If there exists an upper bound $u_0$ of $S$ such that whenever $u$ is an upper bound for $S$
-we have $u_0 \leq u$, then $u_0$ is called the least upper bound, or the supremum, of $S$.
-\begin{equation*}
-    u_0 := \sup S
-\end{equation*}
+\begin{definition}
+    [Supremum]
+    If there exists an upper bound $u_0$ of $S$ such that whenever $u$ is an upper bound for $S$
+    we have $u_0 \leq u$, then $u_0$ is called the least upper bound, or the supremum, of $S$.
+    \begin{equation*}
+        u_0 := \sup S.
+    \end{equation*}
+\end{definition}
 
-If there exists a lower bound $w_0$ of $S$ such that whenever $w$ is a lower bound for $S$
-we have $w_0 \geq w$, then $w_0$ is called the greatest lower bound, or the infimum, of $S$.
-\begin{equation*}
-    w_0 := \inf S
-\end{equation*}
+\begin{definition}
+    [Infimum]
+    If there exists a lower bound $w_0$ of $S$ such that whenever $w$ is a lower bound for $S$
+    we have $w_0 \geq w$, then $w_0$ is called the greatest lower bound, or the infimum, of $S$.
+    \begin{equation*}
+        w_0 := \inf S.
+    \end{equation*}
+\end{definition}
+
+\begin{remark}
+    [Practical recipe]
+    To show that $u = \sup S$, it suffices to check two things:
+    \begin{enumerate}
+        \item $u$ is an upper bound for $S$; and
+        \item no number smaller than $u$ is an upper bound for $S$.
+    \end{enumerate}
+    Condition (2) is awkward to verify directly, since it quantifies over all real numbers smaller than $u$. The lemma below rephrases it as an equivalent, checkable condition: for every $\epsilon>0$ there exists $x\in S$ with $u-\epsilon<x\leq u$, i.e.\ $S$ contains points arbitrarily close to $u$ from below. The analogous recipe, with inequalities reversed, applies to $\inf S$.
+\end{remark}
 
 \begin{remark}
     There can be only one supremum/infimum of a given set $S$ of $\R$.
@@ -40,52 +56,69 @@ we have $w_0 \geq w$, then $w_0$ is called the greatest lower bound, or the infi
         u_2 \leq u_1.
     \end{equation*}
 
-    Thus, $u_1 = u_2$.
+    Since $u_1 \leq u_2$ and $u_2 \leq u_1$, we conclude $u_1 = u_2$. Hence the supremum, when it exists, is unique; the same argument (with inequalities reversed) shows the infimum is unique.
 \end{remark}
 
+\begin{remark}
+    [Proof idea]
+    An upper bound $u$ fails to be the \emph{least} upper bound exactly when some smaller number is still an upper bound, i.e.\ when there is a "gap" between $u$ and the set $S$. The $\epsilon$-condition below rules this out: it says that no matter how small a margin $\epsilon>0$ we allow, $S$ still has a point within that margin of $u$, so no smaller number can be an upper bound. This turns the definition of supremum (a comparison against \emph{every} upper bound) into a directly checkable statement about $S$ itself.
+\end{remark}
 
 \begin{lemma}
     An upper bound $u$ of a nonempty set $S$ in $\R$ is the supremum of $S$ if and only if
     \begin{equation*}
-        (\forall \epsilon > 0)(\exists x_\epsilon \in S)u - \epsilon < x_\epsilon.
+        (\forall \epsilon > 0)(\exists x_\epsilon \in S)\ u - \epsilon < x_\epsilon.
     \end{equation*}
 \end{lemma}
 
 \begin{proof}
-    First suppose $u=\sup S$. Let $\epsilon>0$. Since
+    ($\Rightarrow$) Suppose $u=\sup S$. Let $\epsilon>0$. Since
     \begin{equation*}
         u-\epsilon<u,
     \end{equation*}
-    the number $u-\epsilon$ cannot be an upper bound: otherwise it would be an upper bound smaller than $u$. By the definition of upper bound, there is therefore some $x_\epsilon\in S$ such that
+    the number $u-\epsilon$ cannot be an upper bound: otherwise it would be an upper bound smaller than $u$, contradicting that $u$ is the \emph{least} upper bound. Since $u - \epsilon$ is not an upper bound, by the definition of upper bound there is some $x_\epsilon\in S$ such that
     \begin{equation*}
         u-\epsilon<x_\epsilon\leq u.
     \end{equation*}
 
-    Conversely, suppose $u$ is an upper bound and that for every $\epsilon>0$ there exists $x_\epsilon\in S$ with $u-\epsilon<x_\epsilon$. If $u$ were not the least upper bound, there would be another upper bound $w<u$. Choose
+    ($\Leftarrow$) Conversely, suppose $u$ is an upper bound and that for every $\epsilon>0$ there exists $x_\epsilon\in S$ with $u-\epsilon<x_\epsilon$. If $u$ were not the least upper bound, there would be another upper bound $w<u$. Choose
     \begin{equation*}
         \epsilon=u-w>0.
     \end{equation*}
-    The assumed condition then yields
+    The assumed condition then yields some $x_\epsilon \in S$ with
     \begin{equation*}
         w=u-\epsilon<x_\epsilon,
     \end{equation*}
-    contradicting that $w$ is an upper bound. Hence $u=\sup S$.
+    contradicting that $w$ is an upper bound (since $x_\epsilon \in S$ exceeds $w$). Hence no such $w$ exists, and $u=\sup S$.
 \end{proof}
+
+\begin{remark}
+    The $\epsilon$-characterization above is the key practical tool for verifying suprema, and it will be used repeatedly: to confirm $u=\sup S$, exhibit, for each $\epsilon>0$, a point of $S$ lying in $\paren{u-\epsilon,\,u}$.
+\end{remark}
 
 \begin{example}
     Consider the set $S = \set{x \in \R : 0 \leq x \leq 1}$.
     \begin{itemize}
         \item $\sup S = 1$.
         \begin{proof}
-        Every $x\in S$ satisfies $x\leq1$, so $1$ is an upper bound. To see directly that no smaller number works, let $u<1$. If $u<0$, then $0\in S$ lies above $u$. If $0\leq u<1$, set $x=(u+1)/2$. Then
-        \begin{equation*}
-            u<x=\frac{u+1}{2}<1,
-        \end{equation*}
-        so $x\in S$ lies above $u$. Thus every number below $1$ fails to be an upper bound, and $\sup S=1$.
+        Every $x\in S$ satisfies $x\leq1$, so $1$ is an upper bound. To see directly that no smaller number works, let $u<1$. We consider two cases.
+        \begin{itemize}
+            \item If $u<0$, then $0\in S$ and $0>u$, so $0 \in S$ lies above $u$ and $u$ is not an upper bound.
+            \item If $0\leq u<1$, set $x=(u+1)/2$. Then
+            \begin{equation*}
+                u<x=\frac{u+1}{2}<1,
+            \end{equation*}
+            so $x\in S$ and $x>u$, so again $u$ is not an upper bound.
+        \end{itemize}
+        In either case, $u$ fails to be an upper bound. Thus every number below $1$ fails to be an upper bound, and $1$ is the \emph{least} upper bound, i.e.\ $\sup S=1$.
         \end{proof}
         \item $\inf S = 0$.
         \begin{proof}
-            Since $x\geq0$ for all $x\in S$, $0$ is a lower bound. If $w>0$, then $0\in S$ satisfies $0<w$, so $w$ is not a lower bound. Thus no number greater than $0$ is a lower bound, and $\inf S=0$.
+            Since $x\geq0$ for all $x\in S$, $0$ is a lower bound. If $w>0$, then $0\in S$ satisfies $0<w$, so $w$ is not a lower bound. Thus no number greater than $0$ is a lower bound, and $0$ is the \emph{greatest} lower bound, i.e.\ $\inf S=0$.
         \end{proof}
     \end{itemize}
 \end{example}
+
+\begin{remark}
+    In this example, $\sup S = 1$ and $\inf S = 0$ are both \emph{achieved} by elements of $S$: since $1 \in S$, it is also the maximum of $S$, and since $0 \in S$, it is also the minimum of $S$. This is a special feature of $S=[0,1]$, not a general fact about suprema and infima. A supremum is by definition the \emph{least upper bound}, and need not belong to $S$; only when the least upper bound happens to lie in $S$ does it also serve as the maximum. For instance, the open interval $\paren{0,1}$ still has $\sup\paren{0,1}=1$ and $\inf\paren{0,1}=0$, but neither value belongs to the set, so $\paren{0,1}$ has no maximum and no minimum. Similarly, ``bounded above,'' ``bounded below,'' ``bounded,'' and ``unbounded'' are properties of the \emph{set} $S$, whereas $\sup S$ and $\inf S$ (when they exist) are specific \emph{real numbers} associated to $S$.
+\end{remark}

@@ -14,6 +14,10 @@
     is true.
 \end{definition}
 
+\begin{remark}[How to use induction in practice]
+    To prove that $P(n)$ holds for every $n\in\N$ by induction, it suffices to carry out two steps: first, verify the \emph{base case} $P(1)$ directly; second, carry out the \emph{inductive step} by fixing an arbitrary $k\in\N$, assuming $P(k)$ holds (the \emph{inductive hypothesis}), and using this assumption to deduce $P(k+1)$. Once both steps are complete, the principle of mathematical induction guarantees $P(n)$ for all $n\in\N$ — no further verification of individual cases is needed.
+\end{remark}
+
 Here is an example: 
 \begin{proposition}[Sum of the First $n$ Natural Numbers]
     For every $n\in\N$,
@@ -62,16 +66,27 @@ The principle of mathematical induction has the following equivalent set formula
     Every nonempty subset $S$ of $\N$ has a smallest element.
 \end{theorem}
 
+\begin{remark}[Proof idea]
+    We argue by contradiction: suppose $S$ has no smallest element. We want to show this forces $S=\emptyset$, contradicting the hypothesis that $S$ is nonempty. The natural tool is induction, so we build a set $T$ designed to capture, for each $n$, whether $S$ has been "avoided" up through $n$; showing $T=\N$ by induction will then show $S$ is empty.
+\end{remark}
+
 \begin{proof}
     Let $S\subseteq\N$ be nonempty. Suppose, for contradiction, that $S$ has no smallest element. Define
     \begin{equation*}
         T=\set{n\in\N : \set{1,2,\ldots,n}\cap S=\emptyset}.
     \end{equation*}
+    That is, $T$ consists of exactly those $n\in\N$ for which none of $1,2,\ldots,n$ lies in $S$ — informally, $n\in T$ means $S$ has "not yet been seen" by the time we reach $n$. If we can show $T=\N$, then in particular no natural number lies in $S$ (since every $n\in\N$ would satisfy $n\in T$, forcing $n\notin S$), giving $S=\emptyset$ and the desired contradiction. We show $T=\N$ by induction on $n$.
 
-    Since $S$ has no smallest element, $1\notin S$, so $1\in T$. Suppose $k\in T$. If $k+1\notin T$, then $k+1\in S$, while no element of $\set{1,2,\ldots,k}$ belongs to $S$. Thus, $k+1$ would be the smallest element of $S$, a contradiction. Therefore, $k+1\in T$.
+    \textbf{Base case.} Since $S$ has no smallest element and $1$ is the smallest element of $\N$, we must have $1\notin S$ (otherwise $1$ would be the smallest element of $S$). Hence $\set{1}\cap S=\emptyset$, so $1\in T$.
+
+    \textbf{Inductive step.} Suppose $k\in T$, i.e., $\set{1,2,\ldots,k}\cap S=\emptyset$. We show $k+1\in T$. Suppose, for contradiction, that $k+1\notin T$; then $\set{1,2,\ldots,k+1}\cap S\neq\emptyset$. Since $\set{1,\ldots,k}\cap S=\emptyset$ by the inductive hypothesis, the only way for $\set{1,\ldots,k+1}\cap S$ to be nonempty is if $k+1\in S$. But then $k+1\in S$ while none of $1,2,\ldots,k$ lie in $S$, so $k+1$ would be the smallest element of $S$ — contradicting our assumption that $S$ has no smallest element. Hence $k+1\in T$.
 
     By mathematical induction, $T=\N$. This implies that no natural number belongs to $S$, so $S=\emptyset$, contradicting the assumption that $S$ is nonempty. Therefore, $S$ has a smallest element.
 \end{proof}
+
+\begin{remark}[Practical use of well-ordering]
+    In practice, the well-ordering principle is most often invoked as follows: to show a property $P(n)$ holds for every $n\in\N$, argue by contradiction. If $P(n)$ failed for some $n$, the set of counterexamples $\set{n\in\N : \neg P(n)}$ would be a nonempty subset of $\N$, and the well-ordering principle would guarantee it has a least element $k$. One then derives a contradiction using the minimality of $k$ — typically by showing that $P(k-1)$ must hold (since $k-1$ is smaller than $k$ and hence not a counterexample) and that $P(k-1)$ forces $P(k)$, contradicting $k$ being a counterexample. This is exactly the strategy used in the proposition below.
+\end{remark}
 
 \begin{proposition}
     Using the well-ordering principle, prove that for every $n\in\N$,
@@ -80,6 +95,17 @@ The principle of mathematical induction has the following equivalent set formula
     \end{equation*}
 \end{proposition}
 
+\begin{remark}[Proof idea]
+    We prove the claim by minimal counterexample. Suppose the formula failed for some $n$; collect all such failures into a set $S=\set{n\in\N:\neg P(n)}$ — this is the natural set to consider because if we can rule out $S$ being nonempty, then $P(n)$ holds for every $n$. Since $S\subseteq\N$, the well-ordering principle (rather than induction directly) is the right tool to extract a concrete least counterexample $k=\min S$. We then show $P(k-1)\Rightarrow P(k)$ by direct computation, so $k$ cannot actually be a counterexample — a contradiction.
+\end{remark}
+
+\begin{remark}[Why $\min$, not $\sup$]
+    It is worth pausing on why we take the \emph{minimum} of $S$ here rather than some supremum-type argument. The well-ordering principle applies specifically to nonempty subsets of $\N$ (not to general subsets of $\R$), and it guarantees the existence of a smallest element that actually \emph{belongs to} $S$ — this is what allows us to write $k=\min S\in S$ and conclude $\neg P(k)$. This is a stronger statement than merely having an infimum: for a general subset of $\R$, an infimum need not belong to the set, so we could not conclude $\neg P(\inf S)$. Here, because $S\subseteq\N$ and $S$ is nonempty, well-ordering hands us an actual least element $k$ with $\neg P(k)$ true, which is exactly what is needed to test $P$ at $k$ and at $k-1$.
+
+    It is also worth noting that induction and the well-ordering principle are logically equivalent ways of expressing the same underlying fact about $\N$: the proof of the well-ordering principle above used induction, and here we use well-ordering to reprove a statement ($P(n)$ for all $n$) that could equally well have been proved by direct induction on $n$. The two techniques are simply different packagings of the same idea.
+\end{remark}
+
+\mdfsetup{nobreak=true}
 \begin{proof}
     Let $P(n)$ denote the statement
     \begin{equation*}
@@ -114,3 +140,8 @@ The principle of mathematical induction has the following equivalent set formula
     \end{align*}
     so $P(k)$ is in fact true. This contradicts $k\in S$. Therefore $S=\emptyset$, and $P(n)$ holds for every $n\in\N$.
 \end{proof}
+\mdfsetup{nobreak=false}
+
+\begin{remark}[General pattern: minimal counterexample via well-ordering]
+    To show $P(n)$ holds for all $n\in\N$: assume the counterexample set $S=\set{n:\neg P(n)}$ is nonempty, let $k=\min S$ (which exists by well-ordering), show $P(k-1)$ holds by minimality of $k$, then show $P(k-1)\Rightarrow P(k)$ — contradicting $k\in S$.
+\end{remark}

@@ -3,6 +3,7 @@
 \begin{axiom}[Completeness Property]
     Every nonempty set of real numbers that has an upper bound also has a supremum in $\R$.
 \end{axiom}
+
 \begin{corollary}
     Every nonempty set of real numbers that has a lower bound also has an infimum in $\R$.
 \end{corollary}
@@ -26,6 +27,10 @@
     \end{itemize}
     Thus $-u$ is a lower bound for $S$ that is at least as large as every other lower bound, so $-u = \inf S$.
 \end{proof}
+
+\begin{remark}
+    Recall the sup/inf recipe from the previous section: to verify $u = \sup S$, check (i) $u$ is an upper bound for $S$, and (ii) no number smaller than $u$ is an upper bound for $S$ (equivalently, the $\epsilon$-characterization: for every $\epsilon>0$ there is $x_\epsilon\in S$ with $u-\epsilon<x_\epsilon$). We will use this recipe repeatedly below, most notably in the Archimedean Property and in the existence of $\sqrt2$.
+\end{remark}
 
 \begin{example}
     \begin{equation*}
@@ -54,14 +59,18 @@
 \subsubsection{The Archimedean Property}
 We now prove that $\N$ is not bounded above in $\R$. The proof combines two ingredients:
 \begin{itemize}
-    \item Completeness of $\R$.
-    \item The inductive property of $\N$ (that $\N$ is closed under $+1$).
+    \item Completeness of $\R$: this is what lets us form $u = \sup \N$ in the first place. Note carefully that $u$ here is the supremum of $\N$ \emph{regarded as a subset of $\R$} — completeness says nothing about whether $u$ itself is a natural number, and indeed the entire argument below is designed to show that assuming $\N$ is bounded above (so that such a $u$ exists) leads to a contradiction.
+    \item The inductive property of $\N$ (that $\N$ is closed under $+1$): this is the purely arithmetic fact that lets us manufacture a natural number strictly larger than $u$, which is what breaks the supremum.
 \end{itemize}
 
 \begin{definition}
     [Archimedean Property]
     If $x \in \R$, then there exists $n_x \in \N$ such that $x \leq n_x$. 
 \end{definition}
+
+\begin{remark}[Proof idea]
+    We argue by contradiction: suppose some real number $x$ exceeds every natural number, so that $\N$ is bounded above by $x$. Completeness then hands us $u=\sup\N\in\R$. The key move is that $u-1$, being strictly less than $u$, cannot itself be an upper bound for $\N$ (since $u$ is the \emph{least} upper bound) — this forces some natural number $m$ to lie strictly beyond $u-1$. But then $m+1$ is again a natural number (by the inductive property) sitting strictly beyond $u$, which contradicts $u$ being an upper bound for $\N$ in the first place. So no such $x$ can exist.
+\end{remark}
 \begin{proof}
     Suppose, for contradiction, that $\exists x \in \R$ such that $x > n$ for all $n \in \N$.
 
@@ -71,7 +80,7 @@ We now prove that $\N$ is not bounded above in $\R$. The proof combines two ingr
     \begin{equation*}
         u - 1 < u,
     \end{equation*}
-    $u - 1$ is not an upper bound for $\N$. Hence
+    and $u$ is the \emph{least} upper bound of $\N$, no number strictly smaller than $u$ can be an upper bound for $\N$ (an upper bound smaller than the least upper bound would contradict its minimality). Applying this general principle to $u-1$, we conclude that $u - 1$ is not an upper bound for $\N$. Hence
     \begin{equation*}
         \exists m \in \N \text{ such that } u - 1 < m,
     \end{equation*}
@@ -79,14 +88,82 @@ We now prove that $\N$ is not bounded above in $\R$. The proof combines two ingr
     \begin{equation*}
         u < m + 1.
     \end{equation*}
-    But $m + 1 \in \N$ (since $\N$ is closed under $+1$), so $m + 1 \leq u$, contradicting $u < m+1$.
+    But $m + 1 \in \N$ (since $\N$ is closed under $+1$), and $u$ is an upper bound for $\N$, so $m + 1 \leq u$. This contradicts $u < m+1$: we have simultaneously $u < m+1$ and $m+1 \leq u$.
 
     Therefore no such $x$ exists; that is, for every $x \in \R$ there exists $n_x \in \N$ with $x \leq n_x$.
 \end{proof}
 
+\[
+    \boxed{\text{Completeness} + \text{closure of }\N\text{ under }+1 \Longrightarrow \text{Archimedean Property}}
+\]
+
+\begin{remark}
+    The step ``$u-1<u$, so $u-1$ is not an upper bound'' is exactly the $\epsilon$-characterization of the supremum from the previous section, applied with $\epsilon=1$: if $u=\sup S$, then for every $\epsilon>0$, $u-\epsilon$ fails to be an upper bound for $S$, so some element of $S$ exceeds $u-\epsilon$. Here $S=\N$ and $\epsilon=1$ give the natural number $m$ with $u-1<m$.
+\end{remark}
+
+\begin{corollary}
+    The following are consequences of the Archimedean Property:
+    \begin{enumerate}[label=(\alph*)]
+        \item If
+        \[
+            S = \left\{ \frac{1}{n} \mid n \in \mathbb{N} \right\},
+        \]
+        then
+        \[
+            \inf S = 0.
+        \]
+
+        \item If $t > 0$, there exists $n_t \in \mathbb{N}$ such that
+        \[
+            0 < \frac{1}{n_t} < t.
+        \]
+
+        \item If $y > 0$, there exists $n_y \in \mathbb{N}$ such that
+        \[
+            n_y - 1 \leq y < n_y.
+        \]
+    \end{enumerate}
+\end{corollary}
+
+\begin{remark}[Proof idea]
+    Part (a) uses the sup/inf recipe: $0$ is clearly a lower bound for $S$, and part (b) shows no larger number can be, since $1/n$ can be made smaller than any prescribed $t>0$. Part (b) is a direct rescaling of the Archimedean Property: bound $1/t$ above by some natural number $m$, then $n_t=m+1$ works. Part (c) is the most subtle: we want the \emph{first} natural number strictly to the right of $y$, so we collect \emph{all} candidates into a set $A=\set{n\in\N:y<n}$ and take the least element of $A$ — this is a well-ordering argument, not a supremum argument (see the remark following the proof for why).
+\end{remark}
+\begin{proof}
+    \begin{enumerate}[label=(\alph*)]
+        \item Clearly $0$ is a lower bound for $S$. Let $b>0$. By part (b), there exists $n\in\N$ such that $1/n<b$. Since $1/n\in S$, this means $b$ is not a lower bound for $S$. As $b>0$ was arbitrary, no number greater than $0$ is a lower bound for $S$. Combined with $0$ being a lower bound, $\inf S=0$.
+
+        \item By the Archimedean Property, choose $m\in\N$ with $1/t\leq m$. Then $n_t=m+1\in\N$ satisfies $n_t>m\geq1/t$, so $n_t>1/t$, and dividing by $n_t>0$ gives $0<1/n_t<t$.
+
+        \item We want the least natural number lying strictly to the right of $y$. To find it, we collect every natural number with this property into the set
+        \[
+            A=\set{n\in\N:y<n},
+        \]
+        and then take the smallest element of $A$; this smallest element is automatically the \emph{first} natural number beyond $y$, which is precisely what we need to pin $y$ between two consecutive integers.
+
+        By the Archimedean Property, $A$ is nonempty (some natural number exceeds $y$). Since $A\subseteq\N$ is nonempty, the Well-Ordering Principle guarantees that $A$ has a least element; let $n_y=\min A$. Then $n_y\in A$, so $y<n_y$.
+
+        It remains to show $n_y-1\leq y$. Suppose instead that $n_y-1>y$. Since $y>0$ and $n_y\geq1$ (as $n_y\in\N$), if $n_y=1$ then $n_y-1=0>y$ is impossible because $y>0$; so $n_y\geq2$ and $n_y-1\in\N$. Then $n_y-1\in\N$ together with $n_y-1>y$ shows $n_y-1\in A$. But $n_y-1<n_y$, contradicting that $n_y$ is the \emph{least} element of $A$. Hence $n_y-1\leq y$, and combined with $y<n_y$ we obtain
+        \[
+            n_y-1\leq y<n_y.
+        \]
+    \end{enumerate}
+\end{proof}
+
+\begin{remark}
+    Part (c) is a \emph{minimum} argument, not a supremum argument, and this distinction matters. The set $A=\set{n\in\N:y<n}$ is a subset of $\N$, and in general $A$ is \emph{unbounded above} in $\R$: if $y$ is not itself a boundary case, every sufficiently large natural number also lies in $A$. So $\sup A$ would not even be a finite real number, and asking for $\sup A$ would be the wrong tool here. What we actually need is the \emph{least} element of $A$, and the Well-Ordering Principle supplies this regardless of whether $A$ is bounded above — it only requires $A$ to be a nonempty subset of $\N$. This is in direct contrast to the supremum arguments used elsewhere in this section (for $\sup\N$ in the Archimedean Property, and for $\sup S$ in the existence of $\sqrt2$ below), where the relevant sets are subsets of $\R$ and boundedness above is essential.
+\end{remark}
+
 \begin{proposition}
     There exists a real number $x$ such that $x^2 = 2$.
 \end{proposition}
+
+\begin{remark}[Proof idea]
+    We want to build $\sqrt2$ directly as a supremum. Consider
+    \[
+        S = \set{t \in \R : t \geq 0, t^2 < 2},
+    \]
+    the set of all nonnegative reals whose square undershoots $2$. Intuitively, $S$ consists of all the ``candidates'' for $\sqrt2$ from below, and its supremum $x=\sup S$ should sit exactly at the boundary between squares less than $2$ and squares greater than $2$ — that is, $x^2$ should equal $2$ precisely. To prove this rigorously, we rule out the two ways $x$ could fail to be $\sqrt2$: if $x^2<2$, then $x$ is not yet at the boundary and can be nudged slightly to the right while staying in $S$, contradicting that $x$ is an upper bound; if $x^2>2$, then $x$ has overshot the boundary and can be nudged slightly to the left while remaining an upper bound for $S$, contradicting that $x$ is the \emph{least} upper bound. Both nudges are constructed using the Archimedean Property to choose $n\in\N$ large enough. Note that $x=\sup S$ is a genuine completeness argument: $S\subseteq\R$ is bounded above, and we need the \emph{least upper bound} of a set of reals, not a well-ordering argument as in part (c) above.
+\end{remark}
 \begin{proof}
     Define
     \begin{equation*}
@@ -96,114 +173,185 @@ We now prove that $\N$ is not bounded above in $\R$. The proof combines two ingr
 
     Let $x = \sup S$. Note $x \geq 1 > 0$. We show $x^2 = 2$ by ruling out $x^2 < 2$ and $x^2 > 2$.
 
-    \textbf{Case 1: $x^2 < 2$.} We find $n \in \N$ large enough that $x + \frac{1}{n} \in S$, contradicting that $x$ is an upper bound for $S$. Since $x \geq 1$ and $n\geq1$,
-    \begin{equation*}
-        \paren{x + \frac{1}{n}}^2 = x^2 + \frac{2x}{n} + \frac{1}{n^2} \leq x^2 + \frac{2x}{n} + \frac{1}{n} = x^2 + \frac{2x+1}{n}.
-    \end{equation*}
-    Since $x^2 < 2$, the Archimedean Property lets us choose $n\in\N$ large enough that
+    \textbf{Case 1: $x^2 < 2$.} We find $n \in \N$ large enough that $x + \frac{1}{n} \in S$, contradicting that $x$ is an upper bound for $S$.
+
+    \textit{Step 1 (bound the perturbed square).} Since $x \geq 1$ and $n\geq1$,
+    \begin{align*}
+        \paren{x + \frac{1}{n}}^2 &= x^2 + \frac{2x}{n} + \frac{1}{n^2} \\
+        &\leq x^2 + \frac{2x}{n} + \frac{1}{n} \\
+        &= x^2 + \frac{2x+1}{n}.
+    \end{align*}
+
+    \textit{Step 2 (choose $n$ via the Archimedean Property).} Since $x^2 < 2$, the quantity $2-x^2$ is a fixed positive number, so the Archimedean Property lets us choose $n\in\N$ large enough that
     \begin{equation*}
         \frac{2x+1}{n} < 2 - x^2.
     \end{equation*}
-    Then
+
+    \textit{Step 3 (derive the contradiction).} Combining Steps 1 and 2,
     \begin{equation*}
         \paren{x + \frac{1}{n}}^2 < x^2 + (2 - x^2) = 2,
     \end{equation*}
-    so $x + \frac{1}{n} \in S$. But $x + \frac{1}{n} > x = \sup S$, a contradiction. Hence $x^2 \geq 2$.
+    so $x + \frac{1}{n} \in S$. But $x + \frac{1}{n} > x = \sup S$, contradicting that $x$ is an upper bound for $S$. Hence $x^2 \geq 2$.
 
-    \textbf{Case 2: $x^2 > 2$.} We find $n \in \N$ large enough that $x - \frac{1}{n}$ is an upper bound for $S$ smaller than $x$, contradicting that $x = \sup S$. Since
+    \[
+        \boxed{
+        \begin{array}{c}
+            x^2<2 \Longrightarrow x\text{ can be moved slightly to the right} \\
+            \text{and remain in }S \Longrightarrow x\neq\sup S.
+        \end{array}
+        }
+    \]
+
+    \textbf{Case 2: $x^2 > 2$.} We find $n \in \N$ large enough that $x - \frac{1}{n}$ is an upper bound for $S$ smaller than $x$, contradicting that $x = \sup S$.
+
+    \textit{Step 1 (bound the perturbed square).} Since $1/n^2>0$,
     \begin{equation*}
-        \paren{x - \frac{1}{n}}^2 = x^2 - \frac{2x}{n} + \frac{1}{n^2} > x^2 - \frac{2x}{n},
+        \paren{x - \frac{1}{n}}^2 = x^2 - \frac{2x}{n} + \frac{1}{n^2} > x^2 - \frac{2x}{n}.
     \end{equation*}
-    the Archimedean Property lets us choose $n\in\N$ large enough that
+
+    \textit{Step 2 (choose $n$ via the Archimedean Property).} Since $x^2>2$, the quantity $x^2-2$ is a fixed positive number, so the Archimedean Property lets us choose $n\in\N$ large enough that
     \begin{equation*}
         \frac{2x}{n} < x^2 - 2.
     \end{equation*}
-    Then
+
+    \textit{Step 3 (derive the contradiction).} Combining Steps 1 and 2,
     \begin{equation*}
         \paren{x - \frac{1}{n}}^2 > x^2 - (x^2 - 2) = 2.
     \end{equation*}
-    So for any $t \in S$, we have $t^2 < 2 < \paren{x - \frac{1}{n}}^2$. Also $x-1/n\geq0$ because $x\geq1$ and $n\geq1$. Since $u\mapsto u^2$ is strictly increasing on $[0,\infty)$, this implies $t < x-\frac1n$. Thus $x - \frac{1}{n}$ is an upper bound for $S$ smaller than $x = \sup S$, a contradiction. Hence $x^2 \leq 2$.
+    So for any $t \in S$, we have $t^2 < 2 < \paren{x - \frac{1}{n}}^2$. Also $x-1/n\geq0$ because $x\geq1$ and $n\geq1$. Since $u\mapsto u^2$ is strictly increasing on $[0,\infty)$, this implies $t < x-\frac1n$. Thus $x - \frac{1}{n}$ is an upper bound for $S$ smaller than $x = \sup S$, contradicting that $x$ is the \emph{least} upper bound. Hence $x^2 \leq 2$.
+
+    \[
+        \boxed{
+        \begin{array}{c}
+            x^2>2 \Longrightarrow x\text{ can be moved slightly to the left} \\
+            \text{and remain an upper bound for }S \Longrightarrow x\neq\sup S.
+        \end{array}
+        }
+    \]
 
     Combining both cases, $x^2 = 2$.
 \end{proof}
 
-\subsubsection{Dense of $\Q$}
+\subsubsection{Density of $\Q$}
+
 \begin{remark}
     Consider the set
-    \[  
-        T=\{r\in\mathbb{Q}: r^2<2\}.
+    \[
+        T=\{r\in\mathbb{Q}: r^2<2\},
     \]
-    Then \(T\neq\varnothing\), and \(T\) is bounded above in \(\mathbb{Q}\). For example,
-    \[        0\in T
-            \qquad\text{and}\qquad
-            r<2 \quad \text{for every } r\in T.
-    \]
+    which mirrors the set $S$ used above to construct $\sqrt2$, but restricted to rational numbers. As before, $T\neq\varnothing$ and $T$ is bounded above in $\Q$: for instance $0\in T$, and every $r\in T$ satisfies $r<2$.
 
-    If \(T\) is regarded as a subset of \(\mathbb{R}\), then by the completeness of
-    \(\mathbb{R}\), the supremum
+    If $T$ is instead regarded as a subset of $\R$, completeness of $\R$ guarantees that the supremum
     \[
-        y=\sup_{\mathbb{R}} T
+        y=\sup_{\R} T
     \]
-    exists.
+    exists. Running exactly the same case-split argument as in the proof above (with $T$ in place of $S$) shows that $y^2=2$, so $y=\sqrt2$.
 
-    We can prove that
-    \[
-        y^2=2.
-    \]
-    Hence
-    \[
-        y=\sqrt{2}.
-    \]
-    Since
-    \[
-        \sqrt{2}\notin\mathbb{Q},
-    \]
-    it follows that \(T\) has no supremum in \(\mathbb{Q}\).
+    But $\sqrt2\notin\Q$, so this candidate supremum $y$ is not itself a rational number. Since $y$ was the \emph{only} possible least upper bound of $T$ in $\R$, no rational number can serve as a least upper bound of $T$ in $\Q$ either — that is, $T$ has no supremum in $\Q$.
 
-    Therefore, there exists a nonempty subset \(T\subset\mathbb{Q}\) which is
-    bounded above in \(\mathbb{Q}\), but which has no least upper bound in
-    \(\mathbb{Q}\). Thus \(\mathbb{Q}\) is not complete.
+    We have therefore produced a nonempty subset $T\subset\Q$ that is bounded above in $\Q$ but has no least upper bound in $\Q$. Thus $\Q$ is \emph{not} complete: completeness genuinely depends on $\R$ containing irrational numbers like $\sqrt2$ to serve as suprema for sets like $T$.
 \end{remark}
 
 \begin{theorem}
     If $x$ and $y$ are any real numbers with $x < y$, then there exists a rational number $r \in \Q$ such that $x < r < y$. 
 \end{theorem}
+
+\begin{remark}[Proof idea]
+    We first treat the case $0<x<y$. The idea is to build a rational number of the form $m/n$ landing strictly between $x$ and $y$. First we choose $n\in\N$ large enough (via the Archimedean Property) that $1/n<y-x$; this makes consecutive multiples of $1/n$ closer together than the gap $y-x$, which guarantees that at least one multiple of $1/n$ will fall inside $(x,y)$. Then we choose $m$ to be the integer just to the right of $xn$, using the integer-location result (part (c) above) applied to $xn$. A short computation shows $xn<m<yn$, and dividing by $n$ places $r=m/n$ strictly between $x$ and $y$. The general case $x\leq0$ is reduced to the positive case by shifting both $x$ and $y$ up by a large enough integer $k$, applying the positive case, and shifting back down.
+\end{remark}
 \begin{proof}
-    Suppose $x$ and $y$ are arbitrary real numbers where $x < y$. We have  
+    First suppose that $0<x<y$. Then $y-x>0$. By the Archimedean Property, there exists $n\in\N$ such that
     \begin{equation*}
-        x < y \iff y - x > 0. 
+        \frac1n<y-x.
+    \end{equation*}
+    This choice of $n$ ensures that consecutive multiples of $1/n$ are spaced closer together than the gap between $x$ and $y$, so some multiple of $1/n$ ought to land inside $(x,y)$; we now locate it explicitly. Multiplying $1/n<y-x$ by $n>0$ shows that
+    \begin{equation*}
+        xn+1<yn.
     \end{equation*}
 
-    According to the Archimedean Property, it follows that 
+    We now find a natural number between $xn$ and $xn+1$. Since $xn>0$, part~(c) of the preceding corollary (with $y$ there replaced by $xn$) gives some $m\in\N$ with
     \begin{equation*}
-        \paren{\exists n \in \N}\frac{1}{n } < y - x. \iff yn - xn > 1 \iff yn > 1 + xn. 
+        m-1\leq xn<m.
     \end{equation*}
+    Equivalently,
+    \begin{equation*}
+        xn<m\leq xn+1.
+    \end{equation*}
+    This is exactly why part (c) is invoked here: $m$ is, by construction, the first natural number strictly to the right of $xn$, so $xn<m$ holds automatically. Combining this with $xn+1<yn$ obtained above, we have
+    \begin{equation*}
+        xn<m<yn,
+    \end{equation*}
+    where the left inequality is immediate from $m>xn$, and the right inequality follows since $m\leq xn+1<yn$. Dividing throughout by $n>0$, we get
+    \begin{equation*}
+        x<\frac{m}{n}<y.
+    \end{equation*}
+    Since $m\in\Z$ and $n\in\N$, $m/n\in\Q$. This proves the theorem when $0<x<y$.
 
-    
+    Now suppose that $x\leq0$. Choose $k\in\N$ such that $-x<k$ (possible by the Archimedean Property). Then adding $k$ to $x<y$ and to $-x<k$ gives
+    \begin{equation*}
+        0<x+k<y+k.
+    \end{equation*}
+    By the positive case just proved, there exists $q\in\Q$ such that $x+k<q<y+k$. Let $r=q-k$. Since $q\in\Q$ and $k\in\N\subseteq\Q$, we have $r\in\Q$, and subtracting $k$ from each part of $x+k<q<y+k$ gives
+    \begin{equation*}
+        x<r<y.
+    \end{equation*}
 \end{proof}
 
 \begin{corollary}
-    If $x$ and $y$ are any real numbers with $x < y$, then there exists an irrational number $z$ such that $x < r < y$. 
+    If $x$ and $y$ are any real numbers with $x < y$, then there exists an irrational number $z$ such that $x < z < y$.
 \end{corollary}
+
+\begin{remark}[Proof idea]
+    Rescale the interval $(x,y)$ by dividing by $\sqrt2$, obtaining $(a,b)$ with $a=x/\sqrt2$ and $b=y/\sqrt2$. Apply the density of $\Q$ to find a nonzero rational $r\in(a,b)$. Then $z=\sqrt2\,r$ lands back in $(x,y)$, and $z$ must be irrational: if it were rational, $\sqrt2=z/r$ would be a ratio of rationals and hence rational, contradicting the irrationality of $\sqrt2$.
+\end{remark}
+\begin{proof}
+    Set $a=x/\sqrt2$ and $b=y/\sqrt2$. Since $\sqrt2>0$, we have $a<b$. Choose a nonzero rational number $r$ with $a<r<b$: if $b\leq0$, choose $r\in\Q$ with $a<r<b$; if $a\geq0$, choose $r\in\Q$ with $a<r<b$; and if $a<0<b$, choose $r\in\Q$ with $0<r<b$. In each case, the density theorem provides such an $r$, and $r\neq0$.
+
+    Let $z=\sqrt2r$. Multiplying $a<r<b$ by $\sqrt2$ gives $x<z<y$. If $z$ were rational, then $\sqrt2=z/r$ would be rational, a contradiction. Thus $z$ is irrational.
+\end{proof}
 
 \begin{corollary}
     Let $x, y \in \R$, with $x < y$. Then there exists infinitely many rationals between $x$ and $y$. 
 \end{corollary}
 
+\begin{remark}[Proof idea]
+    Apply the density theorem repeatedly: once we have a rational $r_k$ strictly between $x$ and $y$, the theorem applied to the (still nonempty) interval $(r_k,y)$ produces a new rational $r_{k+1}$ strictly between $r_k$ and $y$. Iterating this produces an infinite strictly increasing sequence of distinct rationals, all lying in $(x,y)$.
+\end{remark}
+\begin{proof}
+    Choose $r_1\in\Q$ with $x<r_1<y$. Having chosen $r_k\in\Q$ with $x<r_k<y$, apply the density theorem to $r_k<y$ to choose $r_{k+1}\in\Q$ such that
+    \[
+        r_k<r_{k+1}<y.
+    \]
+    This produces infinitely many distinct rational numbers $r_1,r_2,\ldots$ in $(x,y)$.
+\end{proof}
+
 Are there more rational or irrational numbers? To answer this question, we need to know in what sense. 
 \begin{definition}
-    [Cardinality] Size of the set. 
+    [Cardinality]
+    A function $f:A\to B$ is a \emph{bijection} if it is both injective (one-to-one) and surjective (onto). We say that $A$ and $B$ have the same \emph{cardinality}, written
+    \[
+        |A|=|B|,
+    \]
+    if there exists a bijection $f:A\to B$. Thus, cardinality records the size of a set up to a bijection.
 \end{definition}
 
 \begin{definition}
-    Two sets have the same cardinality if there is a 1 - 1 (injective) and onto (surjective) function between sets. 
+    A set $S$ is \emph{finite} if $S=\varnothing$ or if there is a bijection
+    \[
+        \{1,2,\ldots,n\}\to S
+    \]
+    for some $n\in\N$. A set $S$ is \emph{countably infinite} if there is a bijection $f:\N\to S$.
 \end{definition}
 \begin{example}
     \begin{enumerate}[label = (\alph*)]
-        \item $\N$ and the set of even natural numbers. 
-        \item $\N$ and $\Z$. 
+        \item The function $f:\N\to\{2,4,6,\ldots\}$ defined by $f(n)=2n$ is a bijection. Thus the set of even natural numbers has the same cardinality as $\N$.
+        \item The function $g:\N\to\Z$ defined by
+        \[
+            g(1)=0,\qquad g(2k)=k,\qquad g(2k+1)=-k \quad (k\in\N)
+        \]
+        is a bijection. Thus $\Z$ has the same cardinality as $\N$.
     \end{enumerate}
 \end{example}
 \begin{definition}
-    $S$ is called countable if $S$ has the same cardinality as $\N$. Otherwise, $S$ is called uncountable. 
+    A set $S$ is \emph{countable} if it is finite or countably infinite. A set is \emph{uncountable} if it is not countable.
 \end{definition}
