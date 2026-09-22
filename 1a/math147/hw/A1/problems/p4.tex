@@ -86,7 +86,7 @@ We need to prove
     Then treat them as the case where $m$ and $d$ are both positive. 
 \end{proof}
 
-\textbf{Proove for the case where $x > 0, x = \sqrt{y}, \exists y \in \Q$}. 
+\textbf{Prove for the case where $x > 0, x = \sqrt{y}, \exists y \in \Q$}. 
 We need to prove 
 \begin{equation*}
     \paren{\forall x > 0}\bracks{\bracks{\paren{\exists y \in \Q}\bracks{y > 0 \wedge x = \sqrt{y}}} \implies \paren{\exists n \in \N } \frac{1}{n} < x}.
@@ -132,4 +132,37 @@ We need to prove
     \end{itemize}
 
     Thus, the claim holds. 
+\end{proof}
+
+\subsubsection{\rom{3}}
+\begin{proof}
+    Suppose $x$ is an arbitrary positive number in $\R$. We define the set 
+    \begin{equation*}
+        T := \set{m \in \N : x < m}. 
+    \end{equation*}
+
+    By Archimedean Property, we know that $T \neq \emptyset$. By well ordering principle, since $T \neq \emptyset$ and $T \subset \N$, $T$ has a least element. We define 
+    \begin{equation*}
+        k := \min T. 
+    \end{equation*}
+
+    Since $k$ is the least element in $T$, which means 
+    \begin{equation*}
+        k > x \quad \text{and} \quad k - 1 \not\in T. 
+    \end{equation*}
+
+    The definition of set $T$ implies 
+    \begin{equation*}
+        k - 1 \leq x. 
+    \end{equation*}
+
+    Thus, we have 
+    \begin{equation*}
+        k - 1 \leq x < k. 
+    \end{equation*}
+
+    Let $n = k - 1$, we replace $k$ by $n$. 
+    \begin{equation*}
+        n \leq x < n + 1. 
+    \end{equation*}
 \end{proof}
