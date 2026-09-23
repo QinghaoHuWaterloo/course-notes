@@ -1,0 +1,74 @@
+%!TEX root=../note.tex
+\section{Sets}
+\subsection{Sets Notation}
+There are three ways to describe a set:
+\begin{itemize}
+    \item List them: $\set{2, 3, 4, 6}$. 
+    \item Select by property: $\set{n \in \Z : 0 < n < 10, n \text{even}}$. 
+    \item Generate values: $\set{2k : k \in \set{1, 2, 3, 4}}$. 
+\end{itemize}
+
+\subsubsection{Set builder notation: selection}
+\begin{equation*}
+    \set{x \in U : P(x)}
+\end{equation*}
+contains exactly the elements of $U$ satisfying $P$. 
+
+The empty set $\emptyset$ contains no elements. For a finite set S, $\abs{S }$ is its number of elements. 
+
+\begin{equation*}
+    \abs{\emptyset} = 0 \qquad \abs{\set{\emptyset}} = 1. 
+\end{equation*}
+
+\subsubsection{Set builder notation: generation}
+\begin{equation*}
+    \set{f(x) : x \in U}
+\end{equation*}
+contains the outputs, not necessarily the inputs. 
+\begin{example}
+    $$\set{x^2 : x \in \set{-2, -1, 0, 1, 2}} = \set{0, 1, 4}$$
+\end{example}
+
+Repeated outputs appear only once. 
+
+\subsubsection{Combine generations and selection}
+$$\set{f(x) : x \in U, P(x)}. $$
+
+First restrict the inputs using $P$; then form their outputs. 
+\begin{example}
+    $$\set{3a : a \in \Z, 2 \mid a } = \set{6k : k \in \Z}$$
+\end{example}
+
+For real $a \leq b$:
+\begin{gather*}
+    \bracks{a, b } = \set{x \in \R : a \leq x \leq b}, \\
+    \paren{a, b } = \set{x \in \R : a < x < b}, \\
+    \left [ a, b \right ) = \set{x \in \R : a \leq x < b}, \\
+    \left ( a, b \right ] = \set{x \in \R : a < x \leq b}, 
+\end{gather*}
+
+\subsubsection{Union and Intersection}
+\begin{gather*}
+    S \cup T = \set{x : x \in S \vee x \in T} \\
+    S \cap T = \set{x : x \in S \wedge x \in T}
+\end{gather*}
+
+\subsubsection{Difference and Complement}
+\begin{gather*}
+    S - T = \set{x: x \in S, x \not\in T} \\
+    \bar{S} =  U - S. 
+\end{gather*}
+
+\subsubsection{Operations on intervals}
+Let $A = \left [-1, 2 \right )$ and $B = \left (0, 4 \right ]$. 
+\begin{gather*}
+    A \cup B = \bracks{-1, 4} \qquad A \cap B = \paren{0 2}, \\
+    A - B = \bracks{-1, 0 } \qquad B - A = \bracks{2, 4}. 
+\end{gather*}
+\subsubsection{Useful Identity}
+\begin{gather*}
+    S \cup \emptyset = S, \qquad S \cap \emptyset = \emptyset , \\
+    S \cup U = U, \qquad S \cap U = S, \\
+    S \cup S = S, \qquad S \cap S = S, \\
+    S \cup \bar{S} = U, \qquad S \cap \bar{S} = \emptyset. 
+\end{gather*}
