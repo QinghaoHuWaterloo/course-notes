@@ -1,0 +1,199 @@
+%!TEX root=../../note.tex
+\begin{definition}
+    \begin{equation*}
+        \paren{a \mid b } \iff \paren{\exists k, b = ak}
+    \end{equation*}
+\end{definition}
+\subsection{Proof by Contrapositive, Elimination}
+\begin{definition}
+    [Proof by Contrapositive]
+    Since $\paren{A \implies B} \equiv \paren{\neg B \implies \neg A }$, 
+    we can prove $\paren{A \implies B}$ by proving that $\paren{\paren{\neg B} \implies \paren{\neg A}}$. 
+    This method is useful when a direct proof of $A \implies B$ is awkward, but assuming
+    $\neg B$ gives a concrete hypothesis that is easier to work with. 
+\end{definition}
+
+\begin{example}
+    Here is an example of contrapositive proof. 
+    \begin{proposition}
+        For all integer $x$, if $4 \nmid x$ then $36 \nmid 3x$. 
+    \end{proposition}
+
+    \begin{proof}
+        The contrapositive is 
+        \begin{equation*}
+            \paren{36 \mid 3x } \implies \paren{4 \mid x}. 
+        \end{equation*}
+
+        Let $x$ be arbitrary integer. Assume that $36 \mid 3x$. Thus, there exists an integer $k$ 
+        such that $3x = 36k$. 
+
+        Thus 
+        \begin{equation*}
+            x = 12k = 4 \cdot \paren{3k} \text{ and } 3k \in \Z. 
+        \end{equation*}
+
+        Therefore, by the contrapositive method, 
+        \begin{equation*}
+            \paren{\forall x \in \Z }\bracks{4 \nmid x \implies 36 \nmid 3x}. 
+        \end{equation*}
+    \end{proof}
+\end{example}
+
+\begin{example}
+    Here is another example. 
+    \begin{proposition}
+        \begin{equation*}
+            \paren{\forall a, b \in \R} \bracks{\paren{ab \in \R \setminus Q} \implies \paren{a \in \R \setminus \Q \vee b \in \R \setminus \Q}}
+        \end{equation*}
+    \end{proposition}
+
+    \begin{proof}
+        The contrapositive is 
+        $\forall a, b \in \R$, if $a \in \Q$ and $b \in \Q$, then $ab \in \Q$. 
+
+        Let $a, b$ be arbitrary in $\R$. Assume that $a, b$ are both rational. 
+
+        Then $\exists p, q, r, s \in \Z$ such that $$a = \frac{p }{q}$$ and $$b = \frac{r }{s }$$ and $$q \neq 0$$ and $$s \neq 0$$. 
+    
+        Thus, 
+        \begin{equation*}
+            a \cdot b = \frac{pr}{qs} \qquad \text{ and }\qquad qs \neq 0. 
+        \end{equation*}
+
+        where $pr, qs \in \Z$. 
+
+        By the contrapositive 
+        \begin{equation*}
+            \forall a, b \in \R, (ab \not\in \Q) \implies \paren{a \not\in \Q \vee b \not\in \Q}. 
+        \end{equation*}
+    \end{proof}
+\end{example}
+
+\begin{definition}
+    [Elimination Method]
+    Let $A, B, C$ be statement variables. 
+    \begin{equation*}
+        \paren{A \Rightarrow \paren{B \vee C}} \equiv \paren{\paren{A \wedge \neg B} \Rightarrow C}
+    \end{equation*}
+    This is useful when the conclusion is a disjunction $B \vee C$: instead of proving the
+    disjunction directly, we assume one disjunct fails ($\neg B$) and show the other ($C$)
+    must then hold. 
+
+    You can prove this, or alternative 
+    \begin{equation*}
+        \paren{ A \wedge \neg C } \implies B. 
+    \end{equation*}
+\end{definition}
+
+\begin{example}
+    Here is an example: 
+    \begin{proposition}
+        Prove that for all $x \in \R$, if $\abs{2x - 6 }= 4$, then $x > 3$ or $x = 1$. 
+    \end{proposition}
+    \begin{proof}
+        The elimination form is 
+        \begin{equation*}
+            \forall x \in \R, \paren{\abs{2x - 6} = 4} \wedge \paren{x \leq 3 } \implies x = 1.  
+        \end{equation*}
+
+        Let $x$ be an arbitrary real number. Assume $\abs{2x - 6} = 4$ and $ x \leq 3$, and prove $x = 1$. 
+
+        Since $\abs{2x - 6} = 4$, thus 
+        \begin{equation*}
+            2x -6 = \pm 4. 
+        \end{equation*}
+
+        So $2x = 10$ or $2x = 2$, meaning 
+        \begin{equation*}
+            x = 5 \qquad \text{or} \qquad x = 1.  
+        \end{equation*}
+
+        But since $x \leq 3$, so 
+        \begin{equation*}
+            x = 1. 
+        \end{equation*}
+    \end{proof}
+\end{example}
+
+\begin{proposition}
+    \begin{equation*}
+        \forall a, b, c \in \Z. \paren{\forall x \in \Z, a \mid \paren{bx + c }} \implies \paren{a \mid \paren{c - 2b}}. 
+    \end{equation*}
+\end{proposition}
+\begin{proof}
+    Let $a, b, c$ be arbitrary integers. Assume for all $x \in \Z, a \mid \paren{bx + c}$. 
+    
+    Since $a \mid \paren{bx + c }$ is true for all integers $x$. 
+
+    \begin{remark}[Proof idea]
+        The hypothesis holds for \emph{every} integer $x$, so we may instantiate it at any
+        $x$ we like. Choosing $x = -2$ makes $bx + c$ collapse to $c - 2b$, which is exactly
+        the divisibility claim we want — no other reasoning is needed once $x = -2$ is
+        substituted. 
+    \end{remark}
+
+    When $x = -2$, we get 
+    \begin{equation*}
+        a \mid (b \paren{-2 } + c), 
+    \end{equation*}
+
+    that is 
+    \begin{equation*}
+        a \mid (c - 2b). 
+    \end{equation*}
+\end{proof}
+
+\begin{proposition}
+    [Divisibility of Integer Combinations (DIC)]
+    Let $a, b, c \in \Z$. If $a \mid b$ and $a \mid c$, then for all $x, y \in \Z$, 
+    \begin{equation*}
+        a \mid \paren{bx + cy}. 
+    \end{equation*}
+\end{proposition}
+\begin{remark}[Proof idea]
+    Divisibility means $b$ and $c$ are each an integer multiple of $a$. Any integer
+    combination $bx + cy$ is then a sum of multiples of $a$, hence itself a multiple of
+    $a$ — this is exactly what licenses factoring $a$ out below.
+\end{remark}
+\begin{proof}
+    Let $a, b, c \in \Z$. Assume $a \mid b$ and $a \mid c$. Then there exist integers
+    $k_1, k_2$ such that 
+    \begin{equation*}
+        b = ak_1 \qquad \text{and} \qquad c = ak_2. 
+    \end{equation*}
+
+    Let $x, y \in \Z$ be arbitrary. Then 
+    \begin{equation*}
+        bx + cy = ak_1x + ak_2y = a\paren{k_1x + k_2y}. 
+    \end{equation*}
+
+    Since $k_1x + k_2y \in \Z$, this shows $a \mid \paren{bx + cy}$. 
+\end{proof}
+
+\begin{proposition}
+    [Converse of DIC]
+    Let $a, b, c \in \Z$. If for all $x, y \in \Z$, $a \mid \paren{bx + cy}$, then $a \mid b$
+    and $a \mid c$. 
+\end{proposition}
+\begin{remark}[Proof idea]
+    The hypothesis holds for \emph{every} choice of $x, y$, so we are free to pick whichever
+    values isolate $b$ and $c$ on their own: $\paren{x, y} = \paren{1, 0}$ leaves $bx + cy = b$,
+    and $\paren{x, y} = \paren{0, 1}$ leaves $bx + cy = c$. 
+\end{remark}
+\begin{proof}
+    Let $a, b, c$ be arbitrary integers. Assume that for all $x, y \in \Z$, 
+    $a \mid \paren{bx + cy}$. 
+
+    Taking $x = 1, y = 0$, we get 
+    \begin{equation*}
+        a \mid \paren{b \cdot 1 + c \cdot 0}, \quad \text{that is,} \quad a \mid b. 
+    \end{equation*}
+
+    Taking $x = 0, y = 1$, we get 
+    \begin{equation*}
+        a \mid \paren{b \cdot 0 + c \cdot 1}, \quad \text{that is,} \quad a \mid c. 
+    \end{equation*}
+
+    Therefore $a \mid b$ and $a \mid c$. 
+\end{proof}

@@ -1,0 +1,119 @@
+%!TEX root=../../note.tex
+
+\subsection{Limits of Sequences}
+
+A sequence of real numbers is a function $X:\N\to\R$. We write $x_n=X(n)$ for its $n$th term and denote the sequence by $\set{x_n}_{n=1}^{\infty}$.
+
+\begin{definition}
+    A sequence $\set{x_n}$ in $\R$ converges to $a\in\R$ if, for every $\epsilon>0$, there is an index $n_\epsilon\in\N$ such that
+    \[
+        n\geq n_\epsilon \quad\Longrightarrow\quad \abs{x_n-a}<\epsilon.
+    \]
+    We then write $\lim_{n\to\infty}x_n=a$.
+\end{definition}
+
+\begin{remark}[Reading the definition]
+    For every tolerance $\epsilon>0$, all sufficiently late terms lie in $(a-\epsilon,a+\epsilon)$. The index $n_\epsilon$ may depend on $\epsilon$. Once $n\geq n_\epsilon$, the inequality must hold for every later term, even if earlier terms lie outside the interval.
+\end{remark}
+
+The points below show $x_n=1/n$. For the illustrated tolerance $\epsilon=0.3$, every term from $n_\epsilon=4$ onward lies in the shaded band around $a=0$.
+
+\begin{center}
+\begin{tikzpicture}[x=0.55cm,y=2.4cm,>=Stealth]
+    \fill[red!8] (0,0) rectangle (11,0.3);
+    \draw[densely dashed,red!75!black] (0,0.3) -- (11,0.3) node[right] {$a+\epsilon$};
+    \draw[->] (0,0) -- (11.5,0) node[right] {$n$};
+    \draw[->] (0,0) -- (0,1.15) node[above] {$x_n$};
+    \node[left] at (0,0) {$a=0$};
+    \draw[densely dashed,blue!70!black] (4,0) -- (4,0.95);
+    \node[below] at (4,0) {$n_\epsilon=4$};
+    \foreach \n in {1,...,10} {
+        \fill[teal!70!black] (\n,{1/\n}) circle (1.7pt);
+    }
+    \node[teal!70!black,anchor=west] at (1.3,0.85) {$x_n=1/n$};
+\end{tikzpicture}
+\end{center}
+
+For $a\in\R$, the $\epsilon$-neighbourhood of $a$ is
+\[
+    V_\epsilon(a)=\set{x\in\R:\abs{x-a}<\epsilon}=(a-\epsilon,a+\epsilon).
+\]
+Thus $x_n\to a$ precisely when, for every $\epsilon>0$, there is $n_\epsilon\in\N$ such that $x_n\in V_\epsilon(a)$ for all $n\geq n_\epsilon$.
+
+\begin{example}
+    Prove that $\lim_{n\to\infty}\frac1n=0$.
+\end{example}
+\mdfsetup{nobreak=true}
+\begin{proof}
+    Let $\epsilon>0$. By the Archimedean Property, choose $n_\epsilon\in\N$ with $1/n_\epsilon<\epsilon$. For every $n\geq n_\epsilon$,
+    \[
+        \abs{\frac1n-0}=\frac1n\leq\frac1{n_\epsilon}<\epsilon.
+    \]
+    Hence $1/n\to0$.
+\end{proof}
+\mdfsetup{nobreak=false}
+
+\begin{example}
+    Prove that $\lim_{n\to\infty}\frac{4n+3}{n+1}=4$.
+\end{example}
+\begin{proof}
+    Let $\epsilon>0$. By the Archimedean Property, choose $n_\epsilon\in\N$ with $1/n_\epsilon<\epsilon$. For every $n\geq n_\epsilon$,
+    \[
+        \abs{\frac{4n+3}{n+1}-4}
+        =\frac1{n+1}\leq\frac1n\leq\frac1{n_\epsilon}<\epsilon.
+    \]
+    Therefore the sequence converges to $4$.
+\end{proof}
+
+\begin{proposition}
+    If $x,y\in\R$ and $\abs{x-y}<\epsilon$ for every $\epsilon>0$, then $x=y$.
+\end{proposition}
+\begin{remark}[Proof idea]
+    If $x\ne y$, their distance is positive. Choose $\epsilon$ to be half that distance; the assumed inequality must then fail.
+\end{remark}
+\begin{proof}
+    Suppose $x\ne y$. Then $\epsilon=\abs{x-y}/2>0$, but $\abs{x-y}>\epsilon$, contradicting the hypothesis.
+\end{proof}
+
+\begin{theorem}
+    A sequence in $\R$ can have at most one limit.
+\end{theorem}
+\begin{remark}[Proof idea]
+    If two limits existed, a sufficiently late term would be close to both. The triangle inequality then makes the two proposed limits arbitrarily close to each other.
+\end{remark}
+\begin{proof}
+    Suppose $x_n\to a$ and $x_n\to b$. Given $\epsilon>0$, choose $n_1,n_2\in\N$ so that $\abs{x_n-a}<\epsilon/2$ whenever $n\geq n_1$ and $\abs{x_n-b}<\epsilon/2$ whenever $n\geq n_2$. For $n\geq\max\set{n_1,n_2}$, the triangle inequality gives
+    \[
+        \abs{a-b}\leq\abs{a-x_n}+\abs{x_n-b}<\frac\epsilon2+\frac\epsilon2=\epsilon.
+    \]
+    This holds for every $\epsilon>0$, so the preceding proposition gives $a=b$.
+\end{proof}
+
+\subsubsection{Divergence}
+A sequence diverges if it does not converge to any real number. For example, consider $\set{x_n}=\set{0,1,0,1,\ldots}$, with $x_n=0$ for odd $n$ and $x_n=1$ for even $n$.
+
+Both $0$ and $1$ keep appearing arbitrarily late, so the terms cannot all remain close to one proposed limit.
+
+Suppose $x_n\to a$ and take $\epsilon=1/2$. There is an $n_\epsilon$ such that $\abs{x_n-a}<1/2$ for every $n\geq n_\epsilon$. Choose an odd and an even index beyond $n_\epsilon$. The odd term gives $\abs{a}<1/2$, hence $-1/2<a<1/2$. The even term gives $\abs{1-a}<1/2$, hence $1/2<a<3/2$. These intervals do not overlap, a contradiction. Thus this sequence diverges.
+
+\begin{definition}
+    A sequence $\set{x_n}$ is bounded if there is an $M\in\R$ such that $\abs{x_n}\leq M$ for every $n\in\N$.
+\end{definition}
+
+\begin{theorem}
+    Every convergent sequence of real numbers is bounded.
+\end{theorem}
+\begin{remark}[Proof idea]
+    Convergence bounds every sufficiently late term near the limit. Only finitely many earlier terms remain, and their absolute values have a maximum.
+\end{remark}
+\begin{proof}
+    Suppose $x_n\to a$. Taking $\epsilon=1$, choose $n_1\in\N$ so that $\abs{x_n-a}<1$ for all $n\geq n_1$. For these terms, the triangle inequality gives
+    \[
+        \abs{x_n}\leq\abs{x_n-a}+\abs{a}<1+\abs{a}.
+    \]
+    The remaining terms form a finite set. Thus
+    \[
+        M=\max\set{\abs{x_1},\ldots,\abs{x_{n_1-1}},1+\abs{a}}
+    \]
+    bounds every term of the sequence (when $n_1=1$, take $M=1+\abs{a}$).
+\end{proof}

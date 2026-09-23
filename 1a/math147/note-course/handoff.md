@@ -17,12 +17,11 @@ this file — do not paraphrase it away, sub-agents need it close to verbatim.
 
 ```
 note.tex              <- root file, compile this one. Currently has
-                          \includeonly{chapters/c2} so only c2 (+ its
-                          \input files) actually renders. Update this if
-                          you add/enable more chapters later.
+                          no active \includeonly, so all chapters render.
 chapters/
   c1.tex               <- \input{u1/s1.tex}, course logistics, NOT math content
-  c2.tex               <- \input{u2/s1.tex .. s6.tex}, \section{Foundations of Calculus}
+  c2.tex               <- \input{u2/s1.tex .. s5.tex}, \section{Foundations of Calculus}
+  c3.tex               <- \input{u3/s1.tex}, \section{Sequences and Limits}
                           THIS is the real analysis material.
   u1/s1.tex            <- course logistics (contact info, schedule) — out of scope
   u2/s1.tex            <- Lecture 1: N/Z/Q, sqrt(2) irrational, quantifiers
@@ -31,10 +30,11 @@ chapters/
   u2/s4.tex            <- Bounds: sup/inf definitions, epsilon-characterization
   u2/s5.tex            <- Completeness, Archimedean Property, sqrt(2) exists,
                           density of Q — HIGHEST PRIORITY section, most care here
-  u2/s6.tex            <- Limits of sequences, epsilon-delta, one tikz figure
+  u3/s1.tex            <- Limits of sequences, examples, uniqueness, divergence,
+                          boundedness
 ```
 
-Each `u2/sN.tex` is one lecture / one `\subsection`. **Edit one file per
+Each `uN/sN.tex` is one lecture / one `\subsection`. **Edit one file per
 session** — that's the natural unit, keeps diffs reviewable, and keeps token
 cost down (no need to reload the whole project into context, just this file +
 this handoff).
@@ -69,7 +69,7 @@ preamble into `note.tex`.
   similar single-line display must be checked for width**. Long one-liners in
   `\boxed{}` WILL overflow. Wrap in `\begin{array}{c} ... \\ ... \end{array}`
   with manual linebreaks if the boxed content is more than ~6-7 words.
-- Each `sN.tex` file ends with (or in s6.tex's case, starts with) a
+- Each `sN.tex` file has a
   `%!TEX root=...` comment — formatting is inconsistent across files
   (sometimes `../../note`, sometimes `../../note.tex`, sometimes leading
   space). Preserve whatever that specific file already has, don't normalize it.
@@ -131,7 +131,7 @@ preamble into `note.tex`.
 
 ## Status as of last session (2026-09-21)
 
-All 6 files in `chapters/u2/` (s1–s6) have already been edited once per this
+The original 6 files in `chapters/u2/` (s1–s6) were edited once per this
 spec. Baseline was 21 pages; edited version is 29 pages. Build is clean (only
 4 pre-existing harmless unresolved refs from the c1/u1 stub, unrelated to c2
 content, and one cosmetic ~2.5pt overfull hbox in s5.tex that's not worth
@@ -141,6 +141,13 @@ avoid re-adding proof-idea remarks etc. that are already there.
 
 `chapters/u1/s1.tex` and `chapters/c1.tex` (course logistics) have NOT been
 touched — they're out of scope for this spec (no theorems/proofs to enrich).
+
+## Status update (2026-09-23)
+
+The former `u2/s6.tex` sequence-limit introduction is now in `u3/s1.tex`.
+The continuous-function limit example was replaced by a graph of the discrete
+sequence $1/n$ entering an epsilon band. `c2.tex` ends at `u2/s5.tex`, while `c3.tex` includes
+the combined sequence lecture. The root currently builds all chapters.
 
 ---
 
@@ -264,7 +271,7 @@ choose n large enough that 1/n < y-x (spacing smaller than interval length);
 choose m as the integer just right of nx; m/n lands strictly between x and y.
 This picture should appear before/during the proof.
 
-### 16. Limits section (s6.tex)
+### 16. Limits section (now u3/s1.tex)
 Keep the formal epsilon definition but add a plain-language interpretation:
 "for every tolerance epsilon>0, all sufficiently late terms lie inside
 (a-epsilon, a+epsilon)." Clarify roles of epsilon, n_epsilon, "for all

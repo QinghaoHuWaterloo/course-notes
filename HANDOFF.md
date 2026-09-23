@@ -24,9 +24,10 @@ self-contained account of the concepts and reasoning over a transcript.
 ```
 1a/
   math135/                 Honor Algebra course notes
-    note.tex                document root
-    chapters/cN.tex         chapter assembly files
-    chapters/uN/sN.tex      unit/lecture source files
+    note.tex                document root (qhnotes `color` option only, no watermark)
+    chapters/cN.tex         chapter assembly files (c1-c4; c4 covers proof techniques)
+    chapters/uN/sN.tex      unit/lecture source files; `remark` environment in active use
+                            for proof-idea notes (see u2/u3/u4)
     hw/                     homework sources and their build artifacts
   math147/
     note-course/            Analysis course notes
@@ -50,8 +51,8 @@ scratch work, build files, or copied source slides into a note chapter.
 
 | Course | Scope / source root | Build command | Important local rule |
 | --- | --- | --- | --- |
-| MATH 135 | `1a/math135/note.tex` | `latexmk -pdf -interaction=nonstopmode note.tex` | Narrow, two-sided page layout; theorem/proof environments are styled boxes. |
-| MATH 147 | `1a/math147/note-course/note.tex` | `latexmk -pdf -interaction=nonstopmode note.tex` | Read `note-course/handoff.md` first. `\includeonly{chapters/c2}` currently limits the build. |
+| MATH 135 | `1a/math135/note.tex` | `latexmk -pdf -interaction=nonstopmode note.tex` | Narrow, two-sided page layout; theorem/proof environments are styled boxes; `remark` (optional `[Proof idea]` title) is available and used for proof-idea notes and substitution/instantiation justifications. |
+| MATH 147 | `1a/math147/note-course/note.tex` | `latexmk -pdf -interaction=nonstopmode note.tex` | Read `note-course/handoff.md` first. All chapters currently build. |
 | CS 135 | `1a/cs135/` | — | Discontinued archive. Do not extend, polish, or use as a template unless explicitly asked. |
 
 Run each command from the relevant course directory. Do not assume that a
