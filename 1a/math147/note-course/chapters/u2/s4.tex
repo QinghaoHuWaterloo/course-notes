@@ -93,32 +93,31 @@ Bounds make sense in any ordered set. The special feature of $\R$ is that every 
 \end{proof}
 
 \begin{remark}
-    The $\epsilon$-characterization above is the key practical tool for verifying suprema, and it will be used repeatedly: to confirm $u=\sup S$, exhibit, for each $\epsilon>0$, a point of $S$ lying in $\paren{u-\epsilon,\,u}$.
+    The $\epsilon$-characterization above is the key practical tool for verifying suprema, and it will be used repeatedly: to confirm $u=\sup S$, exhibit, for each $\epsilon>0$, a point of $S$ satisfying $u-\epsilon<x\leq u$.
 \end{remark}
 
 \begin{example}
-    Consider the set $S = \set{x \in \R : 0 \leq x \leq 1}$.
+    Consider the set $S = \set{x \in \R : 0 \leq x < 1}$.
     \begin{itemize}
         \item $\sup S = 1$.
         \begin{proof}
-        Every $x\in S$ satisfies $x\leq1$, so $1$ is an upper bound. To see directly that no smaller number works, let $u<1$. We consider two cases.
-        \begin{itemize}
-            \item If $u<0$, then $0\in S$ and $0>u$, so $0 \in S$ lies above $u$ and $u$ is not an upper bound.
-            \item If $0\leq u<1$, set $x=(u+1)/2$. Then
+            Every $x\in S$ satisfies $x<1$, so $1$ is an upper bound. Let $u=\sup S$, which exists by completeness since $S$ is nonempty and bounded above. Because $1$ is an upper bound, $u\leq1$. Suppose $u\neq1$, so $u<1$. Choose
             \begin{equation*}
-                u<x=\frac{u+1}{2}<1,
+                \epsilon=\frac{1-u}{2}>0.
             \end{equation*}
-            so $x\in S$ and $x>u$, so again $u$ is not an upper bound.
-        \end{itemize}
-        In either case, $u$ fails to be an upper bound. Thus every number below $1$ fails to be an upper bound, and $1$ is the \emph{least} upper bound, i.e.\ $\sup S=1$.
+            Then
+            \begin{equation*}
+                u<u+\epsilon=\frac{u+1}{2}<1.
+            \end{equation*}
+            Also $u\geq0$ since $0\in S$, so $u+\epsilon\geq0$. Thus $u+\epsilon\in S$, contradicting that $u$ is an upper bound for $S$. Therefore $u=1$, i.e.\ $\sup S=1$.
         \end{proof}
         \item $\inf S = 0$.
         \begin{proof}
-            Since $x\geq0$ for all $x\in S$, $0$ is a lower bound. If $w>0$, then $0\in S$ satisfies $0<w$, so $w$ is not a lower bound. Thus no number greater than $0$ is a lower bound, and $0$ is the \emph{greatest} lower bound, i.e.\ $\inf S=0$.
+            Since $x\geq0$ for all $x\in S$, $0$ is a lower bound. Let $w=\inf S$. Because $0$ is a lower bound, $w\geq0$. Suppose $w\neq0$, so $w>0$. But $0\in S$, and a lower bound $w$ must satisfy $w\leq0$, a contradiction. Therefore $w=0$, i.e.\ $\inf S=0$.
         \end{proof}
     \end{itemize}
 \end{example}
 
 \begin{remark}
-    In this example, $\sup S = 1$ and $\inf S = 0$ are both \emph{achieved} by elements of $S$: since $1 \in S$, it is also the maximum of $S$, and since $0 \in S$, it is also the minimum of $S$. This is a special feature of $S=[0,1]$, not a general fact about suprema and infima. A supremum is by definition the \emph{least upper bound}, and need not belong to $S$; only when the least upper bound happens to lie in $S$ does it also serve as the maximum. For instance, the open interval $\paren{0,1}$ still has $\sup\paren{0,1}=1$ and $\inf\paren{0,1}=0$, but neither value belongs to the set, so $\paren{0,1}$ has no maximum and no minimum. Similarly, ``bounded above,'' ``bounded below,'' ``bounded,'' and ``unbounded'' are properties of the \emph{set} $S$, whereas $\sup S$ and $\inf S$ (when they exist) are specific \emph{real numbers} associated to $S$.
+    In this example, $S=[0,1)$ has $\sup S=1$ but no maximum, because $1\notin S$. Its infimum $0$ does belong to $S$, so $0$ is also its minimum. A supremum is the \emph{least upper bound}, whether or not it belongs to the set; it is a maximum only when it does belong to the set. Similarly, ``bounded above,'' ``bounded below,'' ``bounded,'' and ``unbounded'' are properties of the \emph{set} $S$, whereas $\sup S$ and $\inf S$ (when they exist) are specific \emph{real numbers} associated to $S$.
 \end{remark}

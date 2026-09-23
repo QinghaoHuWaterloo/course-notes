@@ -1,0 +1,167 @@
+%!TEX root=../../../assign.tex
+\subsection{Problem 5}
+\subsubsection{(i)}
+\begin{proof}
+Suppose
+\begin{equation*}
+S \subset \R, S \neq \emptyset \qquad \text{and} \qquad T \subset \R, T \neq \emptyset,
+\end{equation*}
+and suppose $S$ and $T$ are bounded above.
+
+We define 
+\begin{equation*}
+    S + T := \set{s + t : s \in S \text{ and } t \in T}. 
+\end{equation*}
+
+It suffices to show that 
+\begin{equation*}
+    \sup \paren{S + T} \leq \sup S + \sup T, 
+\end{equation*}
+
+and 
+\begin{equation*}
+    \sup \paren{S + T} \geq \sup S + \sup T. 
+\end{equation*}
+
+We starts with the first one. 
+
+By the definition, we have 
+\begin{equation*}
+    \paren{\forall s \in S }\sup S \geq s \qquad \text{and} \qquad \paren{\forall t \in T }\sup T \geq t. 
+\end{equation*}
+
+Adding them together 
+\begin{equation*}
+    \sup S + \sup T \geq s + t
+\end{equation*}
+for every $s \in S$ and $t \in T$.
+
+Hence, $\sup S + \sup T$ is an upper bound of $S + T$. Since $\sup \paren{S + T }$ is the least upper bound of $S + T$, we have 
+\begin{equation*}
+    \sup \paren{S + T} \leq \sup S + \sup T. 
+\end{equation*}
+
+Next, let us prove the second one. 
+
+Let $t \in T$ be arbitrary. For every $s \in S$, we have
+\begin{equation*}
+    s + t \in S + T.
+\end{equation*}
+
+We already know 
+\begin{equation*}
+    \sup \paren{S + T} \geq s + t. 
+\end{equation*}
+
+This yields 
+\begin{equation*}
+    \sup \paren{S + T } - t \geq s
+\end{equation*}
+for every $s \in S$.
+
+Since $\sup \paren{S + T } - t$ is an upper bound of $S$, 
+\begin{equation*}
+    \sup \paren{S + T } - t \geq \sup S. 
+\end{equation*}
+
+Moreover, 
+\begin{equation*}
+    \sup \paren{S + T } - \sup S \geq t. 
+\end{equation*}
+
+Since $t \in T$ was arbitrary, $\sup \paren{S + T } - \sup S$ is an upper bound of $T$. Hence,
+\begin{equation*}
+    \sup \paren{S + T } - \sup S \geq \sup T. 
+\end{equation*}
+
+Hence, we proved 
+\begin{equation*}
+    \sup \paren{S + T } \geq \sup S + \sup T. 
+\end{equation*}
+
+Thus, the claim holds. 
+\end{proof}
+
+\newpage
+\subsubsection{\rom{2}}
+\begin{proof}
+    Suppose 
+    \begin{equation*}
+        S := \set{\frac{1}{p} : p \text{ is a prime number}}. 
+    \end{equation*}
+
+    We claim $\sup S = \frac{1}{2}$ and $\inf S = 0$. 
+
+    In order to show $\inf S = 0$, it suffices to prove that 
+    \begin{equation*}
+        \inf S \leq 0 \qquad \text{and} \qquad \inf S \geq 0. 
+    \end{equation*}
+
+    We start with the first one. Suppose, for contradiction, $w = \inf S > 0$. By Archimedean Property, 
+    \begin{equation*}
+        \paren{\exists n \in \N }0 < \frac{1}{n} < w. 
+    \end{equation*}
+
+    Since for each $n \in \N$, there is a prime number $p$ such that $p \geq n$. We get 
+    \begin{equation*}
+        \paren{\forall n \in \N}\paren{\exists p \in \text{ prime number set}} p \geq n. 
+    \end{equation*}
+
+    Hence, 
+    \begin{equation*}
+        \paren{\exists n \in \N }\paren{\exists p \in \text{prime number set}}0 < \frac{1}{p} \leq \frac{1}{n} < w. 
+    \end{equation*}
+
+    By hypothesis 
+    \begin{equation*}
+        \paren{\exists s \in S} 0 < \frac{1}{p} < w. 
+    \end{equation*}
+
+    This contradicts that $w$ is a greatest lower bound, since $w$ is not even a lower bound. 
+
+    Let us take a look at the second one. 
+
+    Suppose, for contradiction,  $w = \inf S < 0$. 
+
+   Since $0$ is already a lower bound of $S$, $w$ must not be a greatest lower bound. 
+
+   The claim holds. \\
+
+   In order to show that $\sup S = \frac{1}{2}$, we want to show that 
+   \begin{equation*}
+        \sup S \geq \frac{1}{2} \qquad \text{and} \qquad \sup S \leq \frac{1}{2}. 
+   \end{equation*}
+
+   Suppose, for contradiction, $w = \sup S < \frac{1}{2}$. 
+   
+   There exists an $\epsilon$ such that 
+   \begin{equation*}
+        w < w + \epsilon. 
+   \end{equation*}
+
+   We pick the $\epsilon = \frac{1}{2} - w$.
+   
+   \begin{equation*}
+        w < w + \epsilon = w + \frac{1}{2} - w = \frac{1 }{2}. 
+   \end{equation*}
+   
+   Since $2$ is prime. so $\frac{1}{2}$ is in $S$. $w$ is not an upper bound. This contradicts to the fact that $w$ is a least upper bound. \\
+
+   Suppose, for contradiction, $w = \sup S > \frac{1}{2}. $
+
+   Since $2$ is the least prime number, for all prime number p, 
+   \begin{equation*}
+        p \geq 2. 
+   \end{equation*}
+
+   Hence, 
+   \begin{equation*}
+    \frac{1}{p} \leq \frac{1}{2}. 
+   \end{equation*}
+
+   Therefore, $\frac{1}{2}$ is an upper bound. 
+
+   It contradicts to our assumption that $w > \frac{1}{2}$ is a least upper bound. 
+
+   Therefore, the claim holds. 
+\end{proof}
