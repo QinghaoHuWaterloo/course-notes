@@ -16,15 +16,17 @@
     Since $P(1)$ is true, it implies that $T(1)$ is also true. 
     We also assume $T(n)$ is true. 
 
-    By the assumption of strong induction, we obtain
+    By the assumption, we obtain
     \begin{equation*}
        T(n) \implies P(n + 1), 
     \end{equation*} 
     
     and hence, since $T(n)$ is already assumed to be true, 
     \begin{equation*}
-        T(n) \wedge P(n + 1). 
+        T(n) \wedge P(n + 1)
     \end{equation*}
+
+    is also true. 
 
     By the definition of $T(n + 1)$, it follows that 
     \begin{equation*}
@@ -142,24 +144,25 @@
     \begin{equation*}
         g: D \to \R, \quad g(t) := t + t^{-1}
     \end{equation*}
+    
     where 
     \begin{equation*}
         D := \set{x \in \R : 0 < \abs{x } < 1}. 
     \end{equation*}
 
-    Let $y \in \operatorname{rng}(g)$, then 
+    Let $y$ be arbitrary in $\operatorname{rng}(g)$, then 
     \begin{equation*}
-        \paren{\exists x \in D}y = t + t^{-1}. 
+        \paren{\exists t \in D}y = t + t^{-1}. 
     \end{equation*}
 
     Since $t \neq 0$, we get 
     \begin{equation*}
-         y = x + \frac{1}{x} \iff xy = x^2 + 1 \iff 0 = x^2 - yx + 1. 
+         y = t + \frac{1}{t} \iff ty = t^2 + 1 \iff 0 = t^2 - yt + 1. 
     \end{equation*}
 
-    By the definition of the set $D$, element d must be in real number set. So the equation
+    By the definition of the set $D$, element t must be in real number set. So the equation
     \begin{equation*}
-        0 = x^2 - yx + 1
+        0 = t^2 - yt + 1
     \end{equation*}
 
     must have real roots. Therefore, 
@@ -177,7 +180,7 @@
         t = \frac{-(-y) \pm \sqrt{(-y)^2 - 4 \cdot a \cdot 1}}{2 \cdot 1} = \frac{-(-2) \pm \sqrt{(2)^2 - 4 \cdot a \cdot 1}}{2 \cdot 1} = \frac{2}{2} = 1
     \end{equation*}
 
-    which makes $x \notin D$. 
+    which makes $t \notin D$. 
     Thus, $\abs{y} > 2$, which also implies $\operatorname{rng}(g) = \paren{-\infty, -2} \cup \paren{2, \infty}$.
 
     We want to show that $$\paren{\forall t \in \paren{-1, 0} \cup \paren{0, 1}}p_n\paren{t + t^{-1}} \neq 0$$. 
@@ -201,12 +204,12 @@
 
     Since $x = g(t) = t + t^{-1}$, this yields 
     \begin{equation*}
-        (\forall x \in \operatorname{rng }(g))p_n(x) \neq 0 \quad \implies ((\forall x \in \R \setminus \bracks{2, 2})p_n(x) \neq 0 )
+        (\forall x \in \operatorname{rng }(g))p_n(x) \neq 0 \quad \implies ((\forall x \in \R \setminus \bracks{-2, 2})p_n(x) \neq 0 )
     \end{equation*} 
 
     It follows that 
     $$
-        (\forall x \in \bracks{2, 2})p_n(x) = 0 
+        (\forall x \in \bracks{-2, 2})p_n(x) = 0 
     $$
 
     Thus, the claim has been proved. 
