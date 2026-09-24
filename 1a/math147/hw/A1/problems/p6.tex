@@ -1,0 +1,95 @@
+%!TEX root=../../assign.tex
+
+\subsection{P6}
+
+\subsubsection{\rom{1}}
+\begin{proof}
+    let $\epsilon > 0$ be arbitrary in $\R$, we want to find $n_0 $ in $\N$ such that for all $n \geq n_0$ in $\N$, 
+    \begin{equation*}
+        \abs{x_n - 4} < \epsilon. 
+    \end{equation*} 
+
+    By Archidemean Property, there exists a $n$ in $\N$ such that 
+    \begin{equation*}
+        \frac{1}{n} < \frac{\epsilon}{60}. 
+    \end{equation*}
+
+    This equals to 
+    \begin{equation*}
+        \frac{60}{n} < \epsilon. 
+    \end{equation*}
+
+    Indeed, when $n \geq 2$, $n^3 - 6 \geq \frac{1}{4}n^3$. 
+
+    We have 
+    \begin{align*}
+        \abs{\frac{4n^3 + 3n}{n^3 - 6} - 4} &= \abs{\frac{
+            3n + 24
+        }{
+            n^3 - 6
+        }} <= 
+        \abs{
+            \frac{
+                3n + 12n
+            }{n^3 - 6}
+        } 
+        =
+        \frac{
+            3n + 12n
+        }{n^3 - 6} \\
+        & \leq \frac{
+            15n
+        }{
+            \frac{1}{4}n^3
+        } = 
+        \frac{60n}{
+            n^3
+        } = \frac{60}{n^2} \leq 
+        \frac{
+            60
+        }{n
+        } < \epsilon. 
+    \end{align*}
+
+    when $n \geq \max \paren{n_0, 2}$. 
+
+    Therefore, we prove 
+    \begin{equation*}
+        \paren{\forall \epsilon \in \R }\paren{\exists n \in \N } \bracks{\paren{\forall n \geq n_0} \implies \paren{\abs{\frac{
+            4n^3 + 3n
+        }{
+            n^3 - 6
+        } - 4} < \epsilon}}. 
+    \end{equation*}
+\end{proof}
+
+\subsubsection{\rom{2}}
+\begin{proof}
+    Suppose $\set{a_n}$ be a convergent sequence of integers. 
+
+    If $a_n \neq a_{n_0}$,  
+    \begin{equation*}
+        \abs{a_n - a_{n_0}} \geq 1. 
+    \end{equation*}
+
+    By hypothesis, since $\set{a_n}$ is a convergent sequence, 
+    \begin{equation*}
+        \paren{\forall \epsilon > 0} \paren{\exists n_0 \in \N }\bracks{\paren{\forall n \geq n_0} \implies \paren{\abs{a_n - L} < \epsilon}}
+    \end{equation*}
+
+    We pick $\epsilon = \frac{1}{2}$. By definition, there exists $N$ in $\N$ such that 
+    \begin{equation*}
+        \paren{\forall n \geq N}\abs{x_n - L} < \frac{1}{2}. 
+    \end{equation*}
+
+    Suppose $n, m \geq N$, we have 
+    \begin{equation*}
+        \abs{a_n - a_m } \leq \abs{a_n - L} + \abs{a_m - L} < \frac{1}{2} + \frac{1}{2} = 1. 
+    \end{equation*} 
+
+    Since when $a_n \neq a_m$, there difference must be greater or equal to $1$. 
+
+    Hence, $\abs{a_n - a_m} = 0$. 
+
+    Thus, there exists a $n_0$ in $\N$ such that for all $n \geq N, a_n = a_{n_0}$. 
+\end{proof}
