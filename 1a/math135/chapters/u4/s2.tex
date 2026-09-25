@@ -1,10 +1,14 @@
 %!TEX root=../../note.tex
-\begin{definition}
-    \begin{equation*}
-        \paren{a \mid b } \iff \paren{\exists k, b = ak}
-    \end{equation*}
-\end{definition}
 \subsection{Proof by Contrapositive, Elimination}
+Several examples below use divisibility.
+\begin{definition}[Divisibility]
+    Let $a, b \in \Z$. We say $a$ \textbf{divides} $b$, written $a \mid b$, if
+    \begin{equation*}
+        \exists k \in \Z, b = ak.
+    \end{equation*}
+    Otherwise we write $a \nmid b$.
+\end{definition}
+
 \begin{definition}
     [Proof by Contrapositive]
     Since $\paren{A \implies B} \equiv \paren{\neg B \implies \neg A }$, 
@@ -16,24 +20,26 @@
 \begin{example}
     Here is an example of contrapositive proof. 
     \begin{proposition}
-        For all integer $x$, if $4 \nmid x$ then $36 \nmid 3x$. 
+        For every integer $x$, if $4 \nmid x$ then $36 \nmid 3x$.
     \end{proposition}
 
     \begin{proof}
-        The contrapositive is 
+        The hypothesis $4 \nmid x$ says only what $x$ is \emph{not}, which is hard to use directly,
+        so we prove the contrapositive
         \begin{equation*}
-            \paren{36 \mid 3x } \implies \paren{4 \mid x}. 
+            \paren{36 \mid 3x } \implies \paren{4 \mid x}.
         \end{equation*}
 
-        Let $x$ be arbitrary integer. Assume that $36 \mid 3x$. Thus, there exists an integer $k$ 
-        such that $3x = 36k$. 
+        Let $x$ be an arbitrary integer. Assume that $36 \mid 3x$. Thus, there exists an integer $k$
+        such that $3x = 36k$.
 
-        Thus 
+        Dividing both sides by $3$,
         \begin{equation*}
-            x = 12k = 4 \cdot \paren{3k} \text{ and } 3k \in \Z. 
+            x = 12k = 4 \cdot \paren{3k} \text{ and } 3k \in \Z,
         \end{equation*}
+        so $4 \mid x$.
 
-        Therefore, by the contrapositive method, 
+        Therefore, by the contrapositive method,
         \begin{equation*}
             \paren{\forall x \in \Z }\bracks{4 \nmid x \implies 36 \nmid 3x}. 
         \end{equation*}
@@ -44,26 +50,30 @@
     Here is another example. 
     \begin{proposition}
         \begin{equation*}
-            \paren{\forall a, b \in \R} \bracks{\paren{ab \in \R \setminus Q} \implies \paren{a \in \R \setminus \Q \vee b \in \R \setminus \Q}}
+            \paren{\forall a, b \in \R} \bracks{\paren{ab \in \R \setminus \Q} \implies \paren{a \in \R \setminus \Q \vee b \in \R \setminus \Q}}
         \end{equation*}
     \end{proposition}
 
     \begin{proof}
-        The contrapositive is 
-        $\forall a, b \in \R$, if $a \in \Q$ and $b \in \Q$, then $ab \in \Q$. 
+        Irrationality is a ``not'' condition, while rationality gives us fractions to compute with.
+        By De Morgan's Law, the negation of the conclusion is ``$a \in \Q$ and $b \in \Q$'', so the
+        contrapositive is:
+        $\forall a, b \in \R$, if $a \in \Q$ and $b \in \Q$, then $ab \in \Q$.
 
-        Let $a, b$ be arbitrary in $\R$. Assume that $a, b$ are both rational. 
+        Let $a, b$ be arbitrary in $\R$. Assume that $a, b$ are both rational.
 
-        Then $\exists p, q, r, s \in \Z$ such that $$a = \frac{p }{q}$$ and $$b = \frac{r }{s }$$ and $$q \neq 0$$ and $$s \neq 0$$. 
-    
-        Thus, 
+        Then there exist $p, q, r, s \in \Z$ with $q \neq 0$ and $s \neq 0$ such that
         \begin{equation*}
-            a \cdot b = \frac{pr}{qs} \qquad \text{ and }\qquad qs \neq 0. 
+            a = \frac{p}{q} \qquad \text{and} \qquad b = \frac{r}{s}.
         \end{equation*}
 
-        where $pr, qs \in \Z$. 
+        Thus,
+        \begin{equation*}
+            a \cdot b = \frac{pr}{qs} \qquad \text{ and }\qquad qs \neq 0,
+        \end{equation*}
+        where $pr, qs \in \Z$. Hence $ab \in \Q$.
 
-        By the contrapositive 
+        By the contrapositive,
         \begin{equation*}
             \forall a, b \in \R, (ab \not\in \Q) \implies \paren{a \not\in \Q \vee b \not\in \Q}. 
         \end{equation*}
@@ -80,9 +90,9 @@
     disjunction directly, we assume one disjunct fails ($\neg B$) and show the other ($C$)
     must then hold. 
 
-    You can prove this, or alternative 
+    Since $B \vee C \equiv C \vee B$, we may instead eliminate $C$ and prove
     \begin{equation*}
-        \paren{ A \wedge \neg C } \implies B. 
+        \paren{ A \wedge \neg C } \implies B.
     \end{equation*}
 \end{definition}
 
@@ -92,9 +102,9 @@
         Prove that for all $x \in \R$, if $\abs{2x - 6 }= 4$, then $x > 3$ or $x = 1$. 
     \end{proposition}
     \begin{proof}
-        The elimination form is 
+        The negation of $x > 3$ is $x \leq 3$, so the elimination form is
         \begin{equation*}
-            \forall x \in \R, \paren{\abs{2x - 6} = 4} \wedge \paren{x \leq 3 } \implies x = 1.  
+            \forall x \in \R, \bracks{\paren{\abs{2x - 6} = 4} \wedge \paren{x \leq 3 }} \implies x = 1.
         \end{equation*}
 
         Let $x$ be an arbitrary real number. Assume $\abs{2x - 6} = 4$ and $ x \leq 3$, and prove $x = 1$. 
@@ -109,31 +119,28 @@
             x = 5 \qquad \text{or} \qquad x = 1.  
         \end{equation*}
 
-        But since $x \leq 3$, so 
+        Since $x \leq 3$, the value $x = 5$ is ruled out, so
         \begin{equation*}
-            x = 1. 
+            x = 1.
         \end{equation*}
     \end{proof}
 \end{example}
 
 \begin{proposition}
     \begin{equation*}
-        \forall a, b, c \in \Z. \paren{\forall x \in \Z, a \mid \paren{bx + c }} \implies \paren{a \mid \paren{c - 2b}}. 
+        \forall a, b, c \in \Z, \paren{\forall x \in \Z, a \mid \paren{bx + c }} \implies \paren{a \mid \paren{c - 2b}}.
     \end{equation*}
 \end{proposition}
+\begin{remark}[Proof idea]
+    The hypothesis holds for \emph{every} integer $x$, so we may instantiate it at any
+    $x$ we like. Choosing $x = -2$ makes $bx + c$ collapse to $c - 2b$, which is exactly
+    the divisibility claim we want --- no other reasoning is needed once $x = -2$ is
+    substituted.
+\end{remark}
 \begin{proof}
-    Let $a, b, c$ be arbitrary integers. Assume for all $x \in \Z, a \mid \paren{bx + c}$. 
-    
-    Since $a \mid \paren{bx + c }$ is true for all integers $x$. 
+    Let $a, b, c$ be arbitrary integers. Assume for all $x \in \Z, a \mid \paren{bx + c}$.
 
-    \begin{remark}[Proof idea]
-        The hypothesis holds for \emph{every} integer $x$, so we may instantiate it at any
-        $x$ we like. Choosing $x = -2$ makes $bx + c$ collapse to $c - 2b$, which is exactly
-        the divisibility claim we want — no other reasoning is needed once $x = -2$ is
-        substituted. 
-    \end{remark}
-
-    When $x = -2$, we get 
+    Since this holds for every integer $x$, it holds in particular when $x = -2$, so we get
     \begin{equation*}
         a \mid (b \paren{-2 } + c), 
     \end{equation*}

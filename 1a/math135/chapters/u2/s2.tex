@@ -1,4 +1,4 @@
-%!TEX root = ../../../note
+%!TEX root = ../../note
 \subsection{Sets}
 \begin{definition}[Set]
     A \textbf{set} is a well-defined, unordered collection of distinct objects. Each object that appears 
@@ -6,13 +6,14 @@
 \end{definition}
 
 For a finite set, we can denote it by listing its elements, separated by commas,
-surrounding the entire list by braces (or by $\set{}$).  
+surrounding the entire list by braces $\{\ \}$.
 
 \begin{example}
-    The set containing the elements 2, 7, and -3 can be denoted by 
+    The set containing the elements $2$, $7$, and $-3$ can be denoted by
     \begin{equation*}
-        \set{7, -3, 2}. 
+        \set{7, -3, 2}.
     \end{equation*}
+    The order of listing is irrelevant, so $\set{2, 7, -3}$ is the same set.
 \end{example}
 
 \begin{example}
@@ -25,8 +26,16 @@ surrounding the entire list by braces (or by $\set{}$).
         \item $\Z = \set{\cdots, -1, 0, 1, \cdots}$
         \item $\Q = \set{\frac{a }{b } : a, b \in \Z, b \neq 0}$
     \end{itemize}
-    Fact: $\abs{\N} = \aleph_0, \quad \abs{\R} = \aleph_1 \quad \aleph_1 = 2^{\aleph_0}$. 
+    An element may itself be a set: $\set{1, 2, \set{1, 2, 3}}$ has exactly three elements,
+    namely $1$, $2$, and $\set{1, 2, 3}$.
 \end{example}
+
+\begin{remark}
+    Infinite sets can have different sizes: $\abs{\N} = \aleph_0$ while $\abs{\R} = 2^{\aleph_0}$,
+    and $2^{\aleph_0} > \aleph_0$. Whether $2^{\aleph_0}$ equals the next size $\aleph_1$ is the
+    \emph{continuum hypothesis}, which can be neither proved nor disproved from the standard
+    axioms, so $\abs{\R} = \aleph_1$ should not be written as a fact.
+\end{remark}
 
 \begin{definition}
     The \textbf{parity} of an integer is \textbf{even} if the integer is a multiple of 2, and \textbf{odd} otherwise. 

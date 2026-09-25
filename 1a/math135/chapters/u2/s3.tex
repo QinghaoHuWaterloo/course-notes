@@ -1,28 +1,35 @@
 %!TEX root= ../../note
 \subsection{Quantifiers and Quantified Statements}
 \subsubsection{Universal Quantifier}
-$\forall$ means "for all", and it is called the universal quantifier.
+$\forall$ means ``for all'', and it is called the universal quantifier.
+The statement $\forall x \in S, P(x)$ is true when $P(x)$ is true for \emph{every} element $x$ of $S$.
 
 \begin{example}
-    $$
-    \forall x \in \Z, x \geq 5, 2^n > n^2.
-    $$
+    ``Every integer $n \geq 5$ satisfies $2^n > n^2$'' can be written as
+    \begin{equation*}
+        \forall n \in \set{n \in \Z : n \geq 5},\ 2^n > n^2.
+    \end{equation*}
+    Checking $n = 5, 6, 7$ is not a proof: a universal statement must hold for every $n$ in the domain.
+    (The domain matters: the statement fails at $n = 3$, since $8 < 9$.)
 \end{example}
 
-The negation of universal quantifier.
+The negation of a universally quantified statement is
 \begin{align*}
-    \neg \paren{\forall x \in S, P(x)} \equiv \paren{\exists x \in S, \neg P(x)}
+    \neg \paren{\forall x \in S, P(x)} \equiv \paren{\exists x \in S, \neg P(x)}.
 \end{align*}
+So a single counterexample is enough to show that a universal statement is false.
 
-\subsubsection{Existential quantifier}
-$\exists$ means "there exists", and it is called the existential quantifier.
+\subsubsection{Existential Quantifier}
+$\exists$ means ``there exists'', and it is called the existential quantifier.
+The statement $\exists x \in S, P(x)$ is true when $P(x)$ is true for \emph{at least one} $x \in S$.
 \begin{example}
     \begin{align*}
         \exists a \in \Z, a^2 + 29a + 209 \leq 0.
     \end{align*}
+    This is true: one witness is enough, and $a = -14$ gives $196 - 406 + 209 = -1 \leq 0$.
 \end{example}
 
-The negation of an existentially quantifier statement (such as $\exists x \in S, P(x)$) is:
+The negation of an existentially quantified statement (such as $\exists x \in S, P(x)$) is
 \begin{equation*}
     \neg \paren{\exists x \in S, P(x)} \equiv \paren{\forall x \in S, \neg P(x)}.
 \end{equation*}
@@ -37,21 +44,24 @@ The negation of an existentially quantifier statement (such as $\exists x \in S,
     \end{itemize}
 \end{remark}
 
-\subsubsection{Nested Quantifier}
-Consier this statement
+\subsubsection{Nested Quantifiers}
+Consider the statement
 \begin{equation*}
     \forall x \in \R, \exists y \in \R, x > y.
 \end{equation*}
 
-That is a true statement. (Given $x \in \R$, you could provide $y = x - 1$ to prove the existential statement)
+This statement is true: given any $x \in \R$, we may choose $y = x - 1$, and then $x > y$.
+Note that $y$ is allowed to depend on $x$.
 
 \begin{remark}
-    Order matters! Consider the statement: $\exists y \in \R, \forall x \in \R, x > y.$
-    This says there is a real number $y$ which is smaller than every real number!
-    False!!!
+    Order matters! Consider the statement $\exists y \in \R, \forall x \in \R, x > y$.
+    It says there is a single real number $y$ which is smaller than every real number,
+    including $y$ itself. This is false: taking $x = y$ gives $y > y$.
 \end{remark}
 
-To negative a nested quantifier statement, think about it in pieces. For example:
+To negate a nested quantified statement, negate one quantifier at a time from the outside in:
+each $\forall$ becomes $\exists$, each $\exists$ becomes $\forall$, and the open sentence is negated.
+For example,
 \begin{align*}
     \neg \paren{\forall x \in S, \exists y \in T, P(x, y)} &\equiv\\ &\exists x \in S, \forall y \in T, \neg P(x, y).
 \end{align*}

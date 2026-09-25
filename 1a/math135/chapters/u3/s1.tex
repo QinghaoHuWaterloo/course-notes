@@ -1,7 +1,7 @@
 %!TEX root=../../note
 \subsection{Truth Table and Negation}
 \begin{definition}
-    The truth value for "not $A$", written symbolically as $\neg A$, is defined by the truth table given below. 
+    The truth value for ``not $A$'', written symbolically as $\neg A$, is defined by the truth table given below.
 
     \[
     \begin{array}{c|c}
@@ -15,7 +15,16 @@
     We also refer to $\neg A$ as the negation of $A$. 
 \end{definition}
 
-We can use the truth table to prove that an argument is equal to another argument. 
+Here $A$ is a \textbf{statement variable}: it stands for an arbitrary statement, so a truth table
+must list every possible truth value of $A$.
+
+\begin{definition}[Logical equivalence]
+    Two compound statements are \textbf{logically equivalent}, written $\equiv$, if they have the
+    same truth value in every row of their truth table, that is, for every assignment of truth values
+    to their statement variables.
+\end{definition}
+
+So a truth table can prove that two statements are logically equivalent.
 
 \begin{example}
     Given the truth table for $A, \neg A, \neg \paren{\neg A}$, 
@@ -28,12 +37,8 @@ We can use the truth table to prove that an argument is equal to another argumen
         \end{array}
     \]
 
-    This truth table serves as a proof that $A \equiv \neg \paren{\neg A}$. 
+    The first and last columns agree in every row, so this truth table serves as a proof that $A \equiv \neg \paren{\neg A}$.
 \end{example}
-
-\begin{remark}
-    "A" is considered a statement variable. 
-\end{remark}
 
 \subsection{Conjunction and Disjunction}
 \begin{definition}
@@ -58,7 +63,8 @@ We can use the truth table to prove that an argument is equal to another argumen
     We also refer to $A \wedge B$ as the conjunction of $A$ and $B$. 
 \end{definition}
 
-If we have three component statement, we need $2^3$ rows to cover all the possibility. 
+Each statement variable has two possible truth values, so with three statement variables we need
+$2^3 = 8$ rows to cover all the possibilities (and $2^n$ rows for $n$ variables).
 
 \begin{example}
     The compound statement 
@@ -91,12 +97,11 @@ If we have three component statement, we need $2^3$ rows to cover all the possib
 \end{remark}
 
 \begin{example}
-    The Compound statement: 
+    The compound statement
     \begin{equation*}
-        (2 + 3 = 6) \vee (\pi + 2 \geq 5),
+        (2 + 3 = 6) \vee (\pi + 2 \geq 5)
     \end{equation*}
-    is true since one of the statements is true. 
-
+    is true, since its second component $\pi + 2 \geq 5$ is true.
 \end{example}
 
 \begin{example}
@@ -115,17 +120,18 @@ If we have three component statement, we need $2^3$ rows to cover all the possib
     \mathrm{F} & \mathrm{F} & \mathrm{F} & \mathrm{T} & \mathrm{T} & \mathrm{T} & \mathrm{T}
     \end{array}
     \]
+    The columns for $\neg(A \vee B)$ and $\neg A \wedge \neg B$ agree in all four rows.
 \end{example}
 
-A similar equivalence is 
+A similar equivalence is
 \begin{equation*}
-    \neg (A \wedge B) \equiv \paren{\paren{\neg A} \vee \paren{\neg B}}. 
+    \neg (A \wedge B) \equiv \paren{\paren{\neg A} \vee \paren{\neg B}}.
 \end{equation*}
 
-These things together are called DeMorgan's Law. 
+Together, these two equivalences are called De Morgan's Laws: negating swaps $\wedge$ and $\vee$.
 \begin{theorem}
-    [DeMorgan's Law]
-    For statement variable $A$ and $B$, we have 
+    [De Morgan's Laws]
+    For statement variables $A$ and $B$, we have
     \begin{align*}
          \neg (A \vee B) \equiv (\neg A \wedge \neg B) \\
         \neg (A \wedge B) \equiv (\neg A \vee \neg B)
@@ -138,7 +144,7 @@ These things together are called DeMorgan's Law.
     \textbf{Commutative Laws}
     \begin{align*}
         A \vee B \equiv B \vee A \\
-        B \wedge A \equiv A \wedge B
+        A \wedge B \equiv B \wedge A
     \end{align*}
 
     \textbf{Associative Laws}

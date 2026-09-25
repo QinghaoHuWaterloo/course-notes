@@ -1,7 +1,7 @@
 %!TEX root=../../note
 \subsection{Implication}
 \begin{definition}
-    The truth value for $A implies B"$, written symbolically as $A \implies B$, is defined by the truth table 
+    The truth value for ``$A$ implies $B$'', written symbolically as $A \implies B$, is defined by the truth table
     \begin{center}
         \begin{tabular}{c|c|c}
         $A$ & $B$ & $A \implies B$ \\
@@ -13,34 +13,33 @@
         \end{tabular}
     \end{center}
 
-    We also refer to $A \implies B$ as an implication. 
-
-    Just for fun. Instructor does not talk about it. 
-    \begin{equation*}
-        A \implies B \equiv \neg (A \wedge \neg B) \equiv \neg A \vee B. 
-    \end{equation*}
+    We also refer to $A \implies B$ as an implication.
 \end{definition}
 
-Hypothesis: Assume to be true: A
-
-Conclusion: B
+In $A \implies B$, the statement $A$ is the \textbf{hypothesis} (what we assume to be true) and
+$B$ is the \textbf{conclusion} (what we must then show). The only way for an implication to be false
+is a true hypothesis with a false conclusion. When $A$ is false, $A \implies B$ is true no matter
+what $B$ is (it is \emph{vacuously} true).
 
 \begin{example}
     \begin{equation*}
         \paren{\forall x \in \R}\bracks{\paren{x > 2 } \implies \paren{x^2 > 4}}
     \end{equation*}
+    This is true. If $x > 2$, then $x > 0$, so $x^2 = x \cdot x > 2x > 4$. If $x \leq 2$, the
+    hypothesis is false, so the implication is vacuously true for that $x$.
 \end{example}
 
 \begin{remark}
-    Interesting. 
+    An implication with an ``or'' in its hypothesis splits into two implications:
     \begin{equation*}
-        (A \vee B) \implies C \equiv (A \implies C) \wedge (B \implies C)
+        (A \vee B) \implies C \equiv (A \implies C) \wedge (B \implies C).
     \end{equation*}
+    This is the logic behind a proof by cases.
 \end{remark}
 
 \subsection{Converse and Contrapositive}
 \subsubsection{Converse}
-The $B \implies A$ is called the converse of $A \implies B$. 
+The implication $B \implies A$ is called the converse of $A \implies B$.
 \begin{center}
     \begin{tabular}{c|c|c|c}
         $A$ & $B$ & $A \implies B$ & $B \implies A$ \\
@@ -52,11 +51,13 @@ The $B \implies A$ is called the converse of $A \implies B$.
     \end{tabular}
 \end{center}
 \begin{remark}
-    $(A \implies B) \not\equiv (B \implies A)$ (not logical equivalent) 
+    $(A \implies B) \not\equiv (B \implies A)$: the two columns differ in the second and third rows.
+    For instance, $\forall x \in \R, (x > 2) \implies (x^2 > 4)$ is true, but its converse
+    $\forall x \in \R, (x^2 > 4) \implies (x > 2)$ is false (take $x = -3$).
 \end{remark}
 
 \subsubsection{Contrapositive}
-The implication $(\neg B) \implies (\neg A)$ is called the contrapositive of $A \implies B$. 
+The implication $(\neg B) \implies (\neg A)$ is called the contrapositive of $A \implies B$.
 \begin{center}
 \begin{tabular}{c|c|c|c|c|c}
 $A$ & $B$ & $\neg A$ & $\neg B$ & $A \implies B$ & $(\neg B) \implies (\neg A)$ \\
@@ -69,10 +70,11 @@ F & F & T & T & T & T
 \end{center}
 
 \begin{remark}
-    $(A \implies B) \equiv ((\neg B) \implies (\neg A))$
+    $(A \implies B) \equiv ((\neg B) \implies (\neg A))$: an implication and its contrapositive
+    always have the same truth value.
 \end{remark}
 
-An implication is also logically equvalent to another type of compound statement, as shown in the following truth table: 
+An implication is also logically equivalent to a disjunction, as shown in the following truth table:
 \begin{center}
 \begin{tabular}{c|c|c|c|c}
 $A$ & $B$ & $\neg A$ & $A \implies B$ & $\neg A \vee B$ \\
@@ -83,14 +85,20 @@ F & T & T & T & T \\
 F & F & T & T & T
 \end{tabular}
 \end{center}
+That is, $A \implies B \equiv \neg A \vee B$.
 
 \begin{remark}
-    The negation of an implication is not an implication. 
+    The negation of an implication is not an implication. Negating $\neg A \vee B$ with De Morgan's Law
+    gives
+    \begin{equation*}
+        \neg (A \implies B) \equiv A \wedge \neg B,
+    \end{equation*}
+    which matches the only row where $A \implies B$ is false.
 \end{remark}
 
 \subsubsection{If and Only If}
 \begin{definition}
-    The truth value for "A if and only if B", written symbolically as $A \iff B$, is defined by the truth table. 
+    The truth value for ``$A$ if and only if $B$'', written symbolically as $A \iff B$, is defined by the truth table
 
     \begin{center}
     \begin{tabular}{c|c|c}
@@ -104,3 +112,9 @@ F & F & T & T & T
     \end{center}
 
 \end{definition}
+
+Thus $A \iff B$ is true exactly when $A$ and $B$ have the same truth value, and
+\begin{equation*}
+    (A \iff B) \equiv (A \implies B) \wedge (B \implies A).
+\end{equation*}
+To prove an ``if and only if'' statement, we prove an implication and its converse.
