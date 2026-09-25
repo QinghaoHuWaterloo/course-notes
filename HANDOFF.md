@@ -159,7 +159,11 @@ finished; do not rely only on the document XML or a text extraction.
 The installed `qhnotes` and `qhhomework` packages own the active courses'
 shared preamble, theorem styles, geometry, and common build behaviour. Each
 document root selects its package options, course metadata, and its own local
-shortcuts. Since 2026-09-25 the `qhnotes` default face is Times with matching math
+shortcuts. The packages live in the separate `references` repository
+(`~/references/template/sty`, GitHub `QinghaoHuWaterloo/references`);
+`~/Library/texmf/tex/latex/qhtemplates` is a symlink to that directory. Commit
+package changes there, not in this repository.
+Since 2026-09-25 the `qhnotes` default face is Times with matching math
 (newtx); the `latinmodern` option restores Latin Modern, and `springer` is
 kept only for compatibility. A font change moves page breaks, so rebuild every
 `qhnotes` document cleanly afterwards and check for mdframed split loops.
