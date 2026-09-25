@@ -25,7 +25,7 @@ self-contained account of the concepts and reasoning over a transcript.
 1a/
   math135/                 Honor Algebra course notes
     note.tex                document root (qhnotes `color` option only, no watermark)
-    chapters/cN.tex         chapter assembly files (c1-c4; c4 covers proof techniques)
+    chapters/cN.tex         chapter assembly files (c1-c5; c4 proof techniques, c5 sets)
     chapters/uN/sN.tex      unit/lecture source files; `remark` environment in active use
                             for proof-idea notes (see u2/u3/u4)
     hw/                     homework sources and their build artifacts
@@ -159,7 +159,11 @@ finished; do not rely only on the document XML or a text extraction.
 The installed `qhnotes` and `qhhomework` packages own the active courses'
 shared preamble, theorem styles, geometry, and common build behaviour. Each
 document root selects its package options, course metadata, and its own local
-shortcuts. Reuse this setup. Do not copy package internals into a document,
+shortcuts. Since 2026-09-25 the `qhnotes` default face is Times with matching math
+(newtx); the `latinmodern` option restores Latin Modern, and `springer` is
+kept only for compatibility. A font change moves page breaks, so rebuild every
+`qhnotes` document cleanly afterwards and check for mdframed split loops.
+Reuse this setup. Do not copy package internals into a document,
 add packages, change geometry, or redesign theorem boxes as part of ordinary
 note editing. Such a change affects the entire document and needs a deliberate
 separate review.

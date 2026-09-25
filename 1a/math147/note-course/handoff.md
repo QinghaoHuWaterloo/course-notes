@@ -4,6 +4,11 @@ Read this file first in any new session before touching the notes. It exists so
 you (or an agent) don't have to re-derive the project layout, macros, or editing
 rules from scratch every time — do that once, then edit one lecture/file at a time.
 
+**The "Presentation standard" section below is the current house style for all
+MATH 147 notes and overrides the older spec wherever they disagree.** The
+notes in this directory already follow it; `style-migration.md` records the
+conversion.
+
 ## What this project is
 
 Undergraduate honours real analysis (MATH 147) lecture notes, LaTeX, for
@@ -19,19 +24,22 @@ this file — do not paraphrase it away, sub-agents need it close to verbatim.
 note.tex              <- root file, compile this one. Currently has
                           no active \includeonly, so all chapters render.
 chapters/
-  c1.tex               <- \input{u1/s1.tex}, course logistics, NOT math content
-  c2.tex               <- \input{u2/s1.tex .. s5.tex}, \section{Foundations of Calculus}
-  c3.tex               <- \input{u3/s1.tex}, \section{Sequences and Limits}
+  c1.tex               <- \section{Course Information}; \input{u1/s1.tex}
+  c2.tex               <- \section{The Real Number System}; u2/s1..s5
+  c3.tex               <- \section{Sequences and Limits}; u3/s1
                           THIS is the real analysis material.
-  u1/s1.tex            <- course logistics (contact info, schedule) — out of scope
-  u2/s1.tex            <- Lecture 1: N/Z/Q, sqrt(2) irrational, quantifiers
-  u2/s2.tex            <- Mathematical Induction, Well-Ordering Principle
-  u2/s3.tex            <- Algebraic & Order Properties of R, |x|, triangle ineq.
-  u2/s4.tex            <- Bounds: sup/inf definitions, epsilon-characterization
-  u2/s5.tex            <- Completeness, Archimedean Property, sqrt(2) exists,
-                          density of Q — HIGHEST PRIORITY section, most care here
-  u3/s1.tex            <- Limits of sequences, examples, uniqueness, divergence,
-                          boundedness
+  u1/s1.tex            <- Logistics (contact info, schedule) — out of scope
+  u2/s1.tex            <- Numbers and Logic: N/Z/Q, sqrt(2) irrational,
+                          quantifiers (European-style notation box)
+  u2/s2.tex            <- Induction and Well-Ordering
+  u2/s3.tex            <- R as an Ordered Field: field/order axioms, |x|,
+                          triangle inequality
+  u2/s4.tex            <- Suprema and Infima, epsilon-characterization
+  u2/s5.tex            <- Completeness and Its Consequences: Archimedean
+                          Property, sqrt(2) exists, density of Q, countability
+                          — HIGHEST PRIORITY section, most care here
+  u3/s1.tex            <- Convergent Sequences: limit, uniqueness, divergence,
+                          boundedness, divergence to +-infinity
 ```
 
 Each `uN/sN.tex` is one lecture / one `\subsection`. **Edit one file per
@@ -45,8 +53,9 @@ aux/log/fls cache) — do this if you see weird stale-looking warnings.
 
 ## Shared-style facts (don't re-read `note.tex` unless you suspect it changed)
 
-`note.tex` loads the installed `qhnotes` package with `color, watermark`
-options. `note.tex` itself defines `\paren{}`, `\abs{}`, `\norm{}`,
+`note.tex` loads the installed `qhnotes` package with the `color` option
+(default font: Times). `note.tex` also defines the MATH 147-only `idea` and
+`scratch` environments, and `\paren{}`, `\abs{}`, `\norm{}`,
 `\bracks{}`, `\set{}`, `\R`, `\N`, `\Z`, `\Q`, `\C`, `\ds`, `\blue`,
 `\red`, and `\mypic`; keep those shortcuts local to the document and reuse
 them rather than defining additional variants. Do not copy the package
@@ -55,10 +64,9 @@ preamble into `note.tex`.
 - Theorem environments, one shared counter numbered by subsection: `theorem`,
   `lemma`, `proposition`, `corollary`, `definition`, `example` (all boxed or
   sidebar-colored via mdframed). Unnumbered: `remark`, `axiom`, `assumption`,
-  `notation` (amsthm `\newtheorem*`). `remark` supports an optional title:
-  `\begin{remark}[Proof idea] ... \end{remark}` — this is the standard place
-  for "Proof idea" / "Why this set" / practical-usage asides. **Do not invent
-  new environments.**
+  `notation` (amsthm `\newtheorem*`). Proof ideas do **not** go in `remark`;
+  use the MATH 147-local `idea` / `scratch` environments or prose, per the
+  Presentation standard below. **Do not invent further environments.**
 - `proof` is redefined (bold non-italic head, own line, blue sidebar box, QED
   symbol is `\blacksquare`).
 - Shortcuts: `\R \N \Z \Q \C` (blackboard bold), `\paren{}` = `\left(\right)`,
@@ -74,14 +82,112 @@ preamble into `note.tex`.
   (sometimes `../../note`, sometimes `../../note.tex`, sometimes leading
   space). Preserve whatever that specific file already has, don't normalize it.
 
+## Presentation standard (adopted 2026-09-25)
+
+Applies to every MATH 147 note file. The current `chapters/` follow it;
+`style-migration.md` lists every conversion made.
+Overrides spec §2, §6, §8 and §10 below, and the older "use `remark[Proof
+idea]`" rule.
+
+### 1. Proof ideas: four devices
+
+| Device | Use when | Form |
+|---|---|---|
+| `\begin{idea}` | the strategy fits in 1–3 sentences | pale-blue box directly above the `proof` |
+| `\begin{scratch}` | the proof must *choose* something ($n_\epsilon$, $\epsilon/2$, how small a nudge $1/n$) | grey box titled *Scratch work*: work **backwards** from the goal to the choice; the proof then runs forwards |
+| motivation prose | the explanation is really "why this construction / what are we looking for" | plain paragraph(s) **before** the statement (Abbott style) |
+| nothing | the proof is ≤ 3 lines and explains itself | — |
+
+An `idea` states the plan, not the proof: no inequalities chains, no case
+analysis. Do not repeat the Idea/Scratch text inside the proof; if a proof
+opens by restating its idea, cut that opening. Both environments are defined
+in `note.tex` (local to MATH 147 — **do not move them into the shared
+`qhnotes` package**; other courses are not on this standard).
+
+### 2. Remarks are rare
+
+A `remark` is kept only for a genuine conceptual trap that a reader could get
+wrong: quantifier order, min vs sup, sup vs max, and similar. Everything else
+that used to be a remark becomes:
+- **prose** — bridges, readings of a definition, geometric interpretations,
+  "the converse fails" notes, previews;
+- **part of an Idea** — "this step is the ε-characterisation with ε = 1";
+- **In practice** (see §3) — recipes, templates, techniques;
+- **deleted** — anything that repeats nearby text.
+
+Remarks are unboxed, so a prose paragraph directly after a remark needs
+`\medskip\noindent` or a heading, or it reads as part of the remark.
+
+### 3. "In practice" at the end of each lecture file
+
+Techniques and recipes ("to show $u=\sup S$, check …", induction template,
+case-split with trichotomy, add-and-subtract) are collected at the **end** of
+their `\subsection` (one `uN/sN.tex` file) under
+
+```latex
+\subsubsection*{In practice}
+\begin{itemize}
+    \item \textbf{Short name.} One to three sentences.
+\end{itemize}
+```
+
+Unnumbered, not in the TOC. Omit the block when a file has no techniques;
+never invent filler.
+
+### 4. Quantifiers: European style
+
+Each quantifier in parentheses, the governed statement in square brackets,
+read left to right; no trailing "$\forall c$" after a formula.
+
+```latex
+(\forall\epsilon>0)(\exists n_\epsilon\in\N)(\forall n\geq n_\epsilon)\,\bigl[\abs{x_n-a}<\epsilon\bigr]
+\neg(\forall n\in\N)\,[P(n)] \iff (\exists n\in\N)\,[\neg P(n)]
+```
+
+Use `\bigl[ \bigr]` when the bracketed statement contains `\abs{}` or
+fractions. Words ("for every $x$ there exists …") remain fine in prose and in
+theorem statements; the rule is about symbolic formulas. The convention is
+stated once, in the `notation` box in `u2/s1`.
+
+### 5. Headers
+
+- `\section` (chapter file `cN.tex`) = the topic: *The Real Number System*,
+  *Sequences and Limits*.
+- `\subsection` (one lecture file) is named by content, never "Lecture N".
+- `\subsubsection` marks each major block so the TOC is skimmable — roughly
+  one per 2–4 pages (e.g. *The Field Axioms*, *The Existence of $\sqrt2$*,
+  *Uniqueness of the Limit*). Title case; math allowed in titles.
+- `\subsubsection*{In practice}` is always last in its file.
+
+### 6. Typography
+
+Times text + matching math (newtx) — the usual face of modern mathematical
+publishing (Springer, Elsevier, most journals). Since 2026-09-25 this is the
+**`qhnotes` default**, so `\usepackage[color]{qhnotes}` is enough; the
+`latinmodern` option restores the old face. Body size is **11pt**
+(`\documentclass[11pt]{article}`): Times is narrow, and at 10pt lines ran
+to ~90 characters on the 124 mm text block.
+
+Page stays at the `qhnotes` default 160×240 mm (close to Springer's
+155×235 mm trim). Tried and rejected: Century Schoolbook (`fouriernc`),
+Concrete + Euler (no bold), Palatino. `idea` / `scratch` stay local to
+MATH 147's `note.tex`.
+
+Switching fonts moves page breaks: after any font or size change, do a clean
+rebuild and check for the mdframed split loop (pitfall 2) and for boxes
+split badly across pages. At 11pt: the ε-characterization **lemma statement**
+in `u2/s4` is wrapped in `\mdfsetup{nobreak=true}` (it used to leave one word
+on the next page), and the `[0,1)` example no longer nests its two proofs
+inside the example box (nested mdframed boxes cannot split, which left a
+third of a page blank). Avoid nesting `proof` inside `example` in general.
+
 ## Known pitfalls hit last time — avoid repeating these
 
 1. **`\fbox{\parbox{...}}` inside `\begin{center}`** to make a highlighted
    summary box: don't do this. It's an unbreakable box and will crash mdframed
    page-splitting if it lands near a page boundary (cascading "Overfull \vbox"
    warnings, escalating pt-by-pt, plus "Box was splittet wrong"). Use the
-   existing `remark` environment instead — it's already visually subtle and
-   breakable.
+   prose or, for a genuine conceptual trap, a `remark` — both are breakable.
 2. **A `proof` environment that grows too long** (e.g. after adding a lot of
    explanatory prose inside the proof body itself, not in a separate remark)
    can trigger the same mdframed splitting failure if it straddles a page
@@ -142,6 +248,19 @@ avoid re-adding proof-idea remarks etc. that are already there.
 `chapters/u1/s1.tex` and `chapters/c1.tex` (course logistics) have NOT been
 touched — they're out of scope for this spec (no theorems/proofs to enrich).
 
+## Status update (2026-09-25)
+
+All of `chapters/` was converted to the Presentation standard (see
+`style-migration.md`): 14 proof-idea remarks became Idea / Scratch work /
+motivation prose, remarks went from 22 to 4, techniques moved to
+end-of-lecture *In practice* blocks, symbolic logic is European style, headers
+were renamed by content, and the font is Times. The conversion was drafted in
+`../note-mixed-style/` and copied here; that directory was then removed. Then
+switched to 11pt. Clean build: 35 pages, 0 overfull.
+
+`../note-zorich-style/` is an older, separate experiment and does not follow
+this standard.
+
 ## Status update (2026-09-23)
 
 The former `u2/s6.tex` sequence-limit introduction is now in `u3/s1.tex`.
@@ -176,12 +295,11 @@ clearer logical structure + more motivation + more intermediate reasoning +
 better explanation of why each construction is used + better LaTeX.
 
 ### 2. Add proof architecture
-For important/nontrivial proofs, add a short "Idea"/"Proof strategy" remark
-BEFORE the formal proof explaining: what we're trying to prove; what the main
-construction is; why that construction is natural; which previous
-theorem/axiom is being used; where the contradiction or key step will come
-from. Pattern: `\begin{remark}[Proof idea] ... \end{remark}`. Not excessively
-verbose.
+*(Superseded by Presentation standard §1.)* For important/nontrivial proofs,
+make the plan visible BEFORE the formal proof: what we're trying to prove;
+what the main construction is; why that construction is natural; which
+previous theorem/axiom is being used; where the contradiction or key step will
+come from. Use `idea`, `scratch`, or motivation prose — not a remark.
 
 ### 3. Break long proofs into logical steps
 When a proof has several conceptually different moves, split into labeled
@@ -202,10 +320,11 @@ has no real supremum. If a tempting-but-wrong alternative exists, add a short
 remark on why it fails.
 
 ### 6. Expand definitions into practical usage
-After important definitions (upper/lower bound, supremum, infimum,
-completeness, convergence, injective/surjective/bijective), add a short
-practical-interpretation remark — supplementing, not replacing, the formal
-definition. E.g. after supremum: "to show u = sup S, verify (1) u is an upper
+*(Superseded by Presentation standard §2–§3.)* After important definitions
+(upper/lower bound, supremum, infimum, completeness, convergence,
+injective/surjective/bijective), give a one-sentence plain reading in prose
+right after the definition, and put the working recipe in the file's
+*In practice* block — supplementing, not replacing, the formal definition. E.g. after supremum: "to show u = sup S, verify (1) u is an upper
 bound, (2) no smaller number is; equivalently, for every epsilon>0 there is
 x in S with u-epsilon < x <= u."
 
@@ -228,10 +347,10 @@ repetition, unclear antecedents, informal wording. Prefer standard
 mathematical English, not excessively formal or ornate.
 
 ### 10. Preserve the current visual system
-Reuse existing theorem/definition/proof environments and colors. Don't
-redesign. If genuinely needed, the `remark` environment (with optional
-bracket title) is the one lightweight vehicle for explanatory asides — keep
-it visually subtle, don't add new colored boxes.
+*(Amended by Presentation standard.)* Reuse existing theorem/definition/proof
+environments and colors, plus the local `idea` and `scratch` boxes. Don't add
+further colored boxes. Explanatory asides go in prose; `remark` is only for
+conceptual traps.
 
 ### 11. Special attention: bounds and completeness (s4.tex, s5.tex)
 Extra care on: bounded sets; upper/lower bounds; supremum/infimum;

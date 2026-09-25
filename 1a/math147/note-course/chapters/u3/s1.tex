@@ -1,6 +1,7 @@
 %!TEX root=../../note.tex
 
-\subsection{Limits of Sequences}
+\subsection{Convergent Sequences}
+\subsubsection{The Limit of a Sequence}
 
 A sequence of real numbers is a function $X:\N\to\R$. We write $x_n=X(n)$ for its $n$th term and denote the sequence by $\set{x_n}_{n=1}^{\infty}$.
 
@@ -12,9 +13,11 @@ A sequence of real numbers is a function $X:\N\to\R$. We write $x_n=X(n)$ for it
     We then write $\lim_{n\to\infty}x_n=a$.
 \end{definition}
 
-\begin{remark}[Reading the definition]
-    For every tolerance $\epsilon>0$, all sufficiently late terms lie in $(a-\epsilon,a+\epsilon)$. The index $n_\epsilon$ may depend on $\epsilon$. Once $n\geq n_\epsilon$, the inequality must hold for every later term, even if earlier terms lie outside the interval.
-\end{remark}
+In symbols,
+\[
+    x_n\to a \iff (\forall\epsilon>0)(\exists n_\epsilon\in\N)(\forall n\geq n_\epsilon)\,\bigl[\abs{x_n-a}<\epsilon\bigr].
+\]
+In words: for every tolerance $\epsilon>0$, all sufficiently late terms lie in $(a-\epsilon,a+\epsilon)$. The index $n_\epsilon$ may depend on $\epsilon$, and once $n\geq n_\epsilon$ the inequality must hold for \emph{every} later term, even if earlier terms lie outside the interval.
 
 The points below show $x_n=1/n$. For the illustrated tolerance $\epsilon=0.3$, every term from $n_\epsilon=4$ onward lies in the shaded band around $a=0$.
 
@@ -56,6 +59,13 @@ Thus $x_n\to a$ precisely when, for every $\epsilon>0$, there is $n_\epsilon\in\
 \begin{example}
     Prove that $\lim_{n\to\infty}\frac{4n+3}{n+1}=4$.
 \end{example}
+\begin{scratch}
+    Simplify the distance first, then see how large $n$ must be:
+    \[
+        \abs{\frac{4n+3}{n+1}-4}=\abs{\frac{-1}{n+1}}=\frac1{n+1}<\frac1n.
+    \]
+    So it is enough that $\frac1n<\epsilon$. By Archimedes pick $n_\epsilon$ with $\frac1{n_\epsilon}<\epsilon$; every $n\geq n_\epsilon$ then works.
+\end{scratch}
 \begin{proof}
     Let $\epsilon>0$. By the Archimedean Property, choose $n_\epsilon\in\N$ with $1/n_\epsilon<\epsilon$. For every $n\geq n_\epsilon$,
     \[
@@ -65,12 +75,10 @@ Thus $x_n\to a$ precisely when, for every $\epsilon>0$, there is $n_\epsilon\in\
     Therefore the sequence converges to $4$.
 \end{proof}
 
+\subsubsection{Uniqueness of the Limit}
 \begin{proposition}
     If $x,y\in\R$ and $\abs{x-y}<\epsilon$ for every $\epsilon>0$, then $x=y$.
 \end{proposition}
-\begin{remark}[Proof idea]
-    If $x\ne y$, their distance is positive. Choose $\epsilon$ to be half that distance; the assumed inequality must then fail.
-\end{remark}
 \begin{proof}
     Suppose $x\ne y$. Then $\epsilon=\abs{x-y}/2>0$, but $\abs{x-y}>\epsilon$, contradicting the hypothesis.
 \end{proof}
@@ -78,9 +86,13 @@ Thus $x_n\to a$ precisely when, for every $\epsilon>0$, there is $n_\epsilon\in\
 \begin{theorem}
     A sequence in $\R$ can have at most one limit.
 \end{theorem}
-\begin{remark}[Proof idea]
-    If two limits existed, a sufficiently late term would be close to both. The triangle inequality then makes the two proposed limits arbitrarily close to each other.
-\end{remark}
+\begin{scratch}
+    By the preceding proposition, it suffices to show $\abs{a-b}<\epsilon$ for every $\epsilon>0$. The only link between $a$ and $b$ is the sequence, so pass through a term $x_n$:
+    \[
+        \abs{a-b}\leq\abs{a-x_n}+\abs{x_n-b}.
+    \]
+    To make the sum $<\epsilon$, make each piece $<\epsilon/2$: that needs $n\geq n_1$ for the first and $n\geq n_2$ for the second, so take $n\geq\max\set{n_1,n_2}$.
+\end{scratch}
 \begin{proof}
     Suppose $x_n\to a$ and $x_n\to b$. Given $\epsilon>0$, choose $n_1,n_2\in\N$ so that $\abs{x_n-a}<\epsilon/2$ whenever $n\geq n_1$ and $\abs{x_n-b}<\epsilon/2$ whenever $n\geq n_2$. For $n\geq\max\set{n_1,n_2}$, the triangle inequality gives
     \[
@@ -89,7 +101,7 @@ Thus $x_n\to a$ precisely when, for every $\epsilon>0$, there is $n_\epsilon\in\
     This holds for every $\epsilon>0$, so the preceding proposition gives $a=b$.
 \end{proof}
 
-\subsubsection{Divergence}
+\subsubsection{Divergence and Boundedness}
 A sequence diverges if it does not converge to any real number. For example, consider $\set{x_n}=\set{0,1,0,1,\ldots}$, with $x_n=0$ for odd $n$ and $x_n=1$ for even $n$.
 
 Both $0$ and $1$ keep appearing arbitrarily late, so the terms cannot all remain close to one proposed limit.
@@ -103,9 +115,9 @@ Suppose $x_n\to a$ and take $\epsilon=1/2$. There is an $n_\epsilon$ such that $
 \begin{theorem}
     Every convergent sequence of real numbers is bounded.
 \end{theorem}
-\begin{remark}[Proof idea]
-    Convergence bounds every sufficiently late term near the limit. Only finitely many earlier terms remain, and their absolute values have a maximum.
-\end{remark}
+\begin{idea}
+    The tail stays within $1$ of the limit; only finitely many terms come before it, and a finite set has a maximum.
+\end{idea}
 \begin{proof}
     Suppose $x_n\to a$. Taking $\epsilon=1$, choose $n_1\in\N$ so that $\abs{x_n-a}<1$ for all $n\geq n_1$. For these terms, the triangle inequality gives
     \[
@@ -117,3 +129,66 @@ Suppose $x_n\to a$ and take $\epsilon=1/2$. There is an $n_\epsilon$ such that $
     \]
     bounds every term of the sequence (when $n_1=1$, take $M=1+\abs{a}$).
 \end{proof}
+
+The converse fails: $\set{0,1,0,1,\ldots}$ is bounded but, as shown above, diverges.
+
+
+\begin{example}
+    Consider the following sequences. 
+    \begin{itemize}
+        \item $\set{a_n } = \set{\frac{n^2 + 1 }{n }}$
+        
+        Take a look at this sequence: 
+        \begin{equation*}
+            \abs{\frac{n^2 + 1 }{n }} = \abs{n + \frac{1}{n }} = n + \frac{1}{n}
+        \end{equation*}
+    
+        For any $M > 0$, there exist $n_m \in \N$ such that $n_M > M$.  Thus, 
+        \begin{equation*}
+            \abs{a_{n_M}} > M. 
+        \end{equation*}
+
+        \item $\set{a_n } = \set{\paren{-1}^n n}$
+        
+        Take a look at this sequence:
+
+        \begin{equation*}
+            \abs{a_n } = \abs{\paren{-1}^n n } = \abs{\paren{-1}^n }\abs{n } = \abs{n } > M
+        \end{equation*}
+    \end{itemize}
+\end{example}
+
+\subsubsection{Divergence to $\pm\infty$}
+\begin{definition}
+    A sequence $\set{x_n }$ diverges to $+\infty$, that is, $\lim_{x_n } = \infty$, if for all real number $M > 0$, there exists $n_M \in \N$
+    such that $a_n > M$ for all $n \geq n_M$. 
+\end{definition}
+
+\begin{definition}
+    A sequence $\set{x_n }$ diverges to $-\infty$, that is, $\lim_{x_n } = -\infty$, if for all real number $M > 0$, there exists $n_M \in \N$
+    such that $a_n < - M$ for all $n \geq n_M$. 
+\end{definition}
+We write $\lim_{n\to\infty}x_n=\pm\infty$, but such a sequence is still divergent: it does not converge to any real number.
+
+
+\begin{example}
+    Prove that $\lim_{n \to \infty } \frac{n^2}{1 - n} = -\infty$. 
+\end{example}
+\begin{proof}
+    Let $M > 0$. 
+\end{proof}
+
+\begin{example}
+    Prove that $\lim_{x \to \infty} \sqrt{n } + 1 = + \infty$. 
+\end{example}
+\begin{proof}
+    The goal is to let $\sqrt{n } > m - 1$
+\end{proof}
+
+\begin{theorem}
+    If $\lim_{n \to \infty} x_n = a$ and $\lim_{n \to \infty} y_n = b$, then 
+    \begin{enumerate}
+        \item $(\forall c \in \R)\,[\lim_{n \to \infty} c = c]$
+        \item $(\forall c \in \R)\,[\lim_{n \to \infty} cx_n = ca]$
+    \end{enumerate}
+\end{theorem}

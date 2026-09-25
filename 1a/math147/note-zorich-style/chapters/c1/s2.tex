@@ -1,0 +1,113 @@
+%!TEX root = ../../note.tex
+\subsection{The Natural Numbers: Induction and Well-Ordering}
+
+Two properties of $\N$ are used throughout the course. Induction lets us
+prove a statement for every $n$ by passing from $n$ to $n+1$; well-ordering
+lets us pick the least element of a set of natural numbers. We take the first
+as a principle and derive the second from it.
+
+\subsubsection{Mathematical induction}
+\begin{axiom}[Principle of Mathematical Induction]
+    Let $P(n)$ be a statement depending on $n\in\N$. If
+    \begin{enumerate}[label=(\arabic*)]
+        \item $P(1)$ is true, and
+        \item for every $k\in\N$, $P(k)$ implies $P(k+1)$,
+    \end{enumerate}
+    then $P(n)$ is true for every $n\in\N$.
+\end{axiom}
+
+Thus an induction proof has two parts: the \term{base case} $P(1)$, and the
+\term{inductive step}, in which we fix an arbitrary $k$, assume $P(k)$ (the
+\emph{inductive hypothesis}), and deduce $P(k+1)$.
+
+\begin{example}
+    $1+2+\cdots+n=\dfrac{n(n+1)}{2}$ for every $n\in\N$.
+\end{example}
+
+\begin{proof}
+    For $n=1$ both sides equal $1$. If the formula holds for $k$, then
+    \begin{equation*}
+        1+\cdots+k+(k+1)
+        = \frac{k(k+1)}{2}+(k+1)
+        = \frac{k(k+1)+2(k+1)}{2}
+        = \frac{(k+1)(k+2)}{2},
+    \end{equation*}
+    which is the formula for $k+1$.
+\end{proof}
+
+The same principle, stated for sets, reads as follows.
+
+\begin{proposition}\label{prop:induction-sets}
+    If $S\subseteq\N$, $1\in S$, and $k\in S\Rightarrow k+1\in S$, then
+    $S=\N$.
+\end{proposition}
+
+\begin{proof}
+    Apply induction to the statement $P(n)$: ``$n\in S$''.
+\end{proof}
+
+\subsubsection{The well-ordering principle}
+\begin{theorem}[Well-Ordering Principle]\label{thm:wop}
+    Every nonempty subset $S$ of $\N$ has a least element.
+\end{theorem}
+
+Suppose $S$ had no least element. We show by induction that then $S$
+contains none of $1,2,\ldots,n$, for every $n$; hence $S=\emptyset$.
+
+\begin{proof}
+    Assume $S\neq\emptyset$ has no least element, and let
+    \begin{equation*}
+        T=\set{n\in\N : \set{1,2,\ldots,n}\cap S=\emptyset}.
+    \end{equation*}
+    \emph{$1\in T$}: otherwise $1\in S$, and $1$, being the least natural
+    number, would be the least element of $S$.
+
+    \emph{$k\in T\Rightarrow k+1\in T$}: if $\set{1,\ldots,k}\cap S=\emptyset$
+    but $\set{1,\ldots,k+1}\cap S\neq\emptyset$, then $k+1\in S$ while no
+    smaller number lies in $S$, so $k+1$ would be the least element of $S$.
+
+    By Proposition~\ref{prop:induction-sets}, $T=\N$. Hence every $n\in\N$
+    satisfies $n\notin S$, i.e.\ $S=\emptyset$, a contradiction.
+\end{proof}
+
+Well-ordering gives the method of the \term{minimal counterexample}: if
+$P(n)$ failed for some $n$, the set $S=\set{n\in\N:\neg P(n)}$ would be
+nonempty and would have a least element $k$. Then $P(k-1)$ holds by
+minimality, and one shows that $P(k-1)$ forces $P(k)$ --- a contradiction.
+
+\begin{example}
+    Using well-ordering, prove that for every $n\in\N$
+    \begin{equation}\label{eq:sum-squares}
+        1^2 + 2^2 + \cdots + n^2 = \frac{n(n + 1)(2n + 1)}{6}.
+    \end{equation}
+\end{example}
+
+\begin{proof}
+    Let $P(n)$ be the statement \eqref{eq:sum-squares}, and suppose that
+    the set of counterexamples
+    \begin{equation*}
+        S=\set{n \in \N : \neg P(n)}
+    \end{equation*}
+    is nonempty. By
+    Theorem~\ref{thm:wop}, $S$ has a least element $k$. Since $P(1)$ holds,
+    $k>1$, so $k-1\in\N$, and $P(k-1)$ holds because $k-1<k$:
+    \begin{equation*}
+        1^2 + \cdots + (k - 1)^2 = \frac{(k - 1)k(2k - 1)}{6}.
+    \end{equation*}
+    Adding $k^2$,
+    \begin{align*}
+        1^2 + \cdots + k^2
+        &= \frac{k\bigl((k-1)(2k-1)+6k\bigr)}{6} \\
+        &= \frac{k(2k^2+3k+1)}{6}
+         = \frac{k(k+1)(2k+1)}{6},
+    \end{align*}
+    so $P(k)$ holds, contradicting $k\in S$. Hence $S=\emptyset$.
+\end{proof}
+
+\begin{remark}
+    The argument needs the \emph{least element} $k$ of $S$, not just a
+    greatest lower bound: we must know that $k\in S$, i.e.\ that $P(k)$
+    fails. For a nonempty subset of $\N$ this is exactly what
+    well-ordering provides; for a subset of $\R$ the infimum need not belong
+    to the set (\S\ref{sec:bounds}).
+\end{remark}

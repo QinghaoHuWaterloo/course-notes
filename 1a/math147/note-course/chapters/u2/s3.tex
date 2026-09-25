@@ -1,5 +1,5 @@
 %!TEX root=../../note
-\subsection{The Algebraic and Order Properties of $\R$}
+\subsection{$\R$ as an Ordered Field}
 The real numbers $\R$ form a \emph{complete ordered field}. We build up this
 description in three stages: first the field (algebraic) axioms, which govern
 $+$ and $\cdot$; then the order axioms, which let us compare elements with
@@ -9,6 +9,7 @@ structure on top of the previous one, and each is needed for a different
 purpose: the field axioms let us compute, the order axioms let us compare, and
 completeness lets us take limits.
 
+\subsubsection{The Field Axioms}
 \begin{definition}[Field]
     A \textbf{field} is a set $F$ equipped with two binary operations
     \[
@@ -70,23 +71,11 @@ completeness lets us take limits.
     \end{enumerate}
 \end{definition}
 
-\begin{remark}
-    The rational numbers $\Q$ also form a field: all nine axioms F1--F9 hold
-    for the usual $+$ and $\cdot$ on fractions. So being a field alone does not
-    distinguish $\R$ from $\Q$; the field axioms only capture the algebra of
-    $+$ and $\cdot$, not any notion of size, order, or completeness.
-\end{remark}
+The rational numbers $\Q$ also satisfy F1--F9, so being a field does not distinguish $\R$ from $\Q$: the field axioms capture the algebra of $+$ and $\cdot$, but nothing about size, order, or completeness.
 
-\begin{remark}
-    In practice, F1--F9 are the axioms that justify every "obvious" algebraic
-    manipulation: moving terms across an equals sign uses additive inverses
-    and associativity, cancelling a nonzero factor uses multiplicative
-    inverses, and expanding a product uses the distributive law. The theorem
-    below derives a few of the most basic consequences (uniqueness of the
-    identities, and $a \cdot 0 = 0$) directly from the axioms, to illustrate
-    that even these familiar facts are theorems, not axioms, once the field
-    axioms are fixed.
-\end{remark}
+
+Once the axioms are fixed, even the most familiar facts --- uniqueness of the identities, $a\cdot0=0$ --- become theorems.
+
 
 \begin{theorem}
     \begin{enumerate}[label = \alph*)]
@@ -115,6 +104,7 @@ completeness lets us take limits.
     \end{enumerate}
 \end{proof}
 
+\subsubsection{The Order Axioms}
 \begin{definition}[The Order Properties of $\R$]
     There is a nonempty subset $P$ of $\R$, called the set of \textbf{positive real
     numbers}, that satisfies the following properties.
@@ -133,15 +123,6 @@ completeness lets us take limits.
     \end{enumerate}
 \end{definition}
 
-\begin{remark}
-    O1 (trichotomy) is what makes $P$ usable for case-splitting arguments:
-    given any real number, we may always split into the three exhaustive,
-    mutually exclusive cases $a=0$, $a\in P$, $-a\in P$, and handle each case
-    separately. O2 and O3 then guarantee that this splitting behaves well
-    under the field operations, so that positivity is preserved by the
-    algebra we already know how to do. This is exactly the pattern used below
-    in the proof that $a\neq0 \implies a^2>0$.
-\end{remark}
 
 \begin{definition}[Order relation]
     Let $a, b \in \R$.
@@ -151,36 +132,21 @@ completeness lets us take limits.
     \end{enumerate}
 \end{definition}
 
-\begin{remark}
-    This definition reduces every order statement to a statement about
-    membership in $P$: to show $a > b$, it suffices to show $a - b \in P$.
-    All order manipulations later in the course (adding the same quantity to
-    both sides, multiplying by a positive quantity, etc.) ultimately trace
-    back to this definition together with O1--O3.
-\end{remark}
 
-\begin{remark}
-    $\Q$ is also ordered: the positive rationals $P \cap \Q$ satisfy O1--O3.
-    So, just as with the field axioms, being an ordered field still does not
-    distinguish $\R$ from $\Q$ -- we are still missing something. That
-    missing ingredient is completeness, which $\Q$ does \emph{not} have (e.g.\
-    $\set{q \in \Q : q^2 < 2}$ is bounded above in $\Q$ but has no least upper
-    bound in $\Q$). This is precisely why completeness must be singled out as
-    a separate axiom rather than derived from the field and order axioms.
-\end{remark}
+The positive rationals $P\cap\Q$ also satisfy O1--O3, so an ordered field still need not be $\R$. The missing ingredient is completeness, which $\Q$ lacks: the set
+\[
+    \set{q\in\Q:q^2<2}
+\]
+is bounded above in $\Q$ but has no least upper bound in $\Q$. That is why completeness is a separate axiom.
+
 
 \begin{definition}[Completeness Axiom]
     If $A \subseteq \R$ is nonempty and bounded above, then $A$ has a least upper
     bound in $\R$.
 \end{definition}
 
-\begin{remark}
-    This is only a preview statement: the notions of upper bound and least
-    upper bound (supremum), and the full consequences of this axiom, are
-    developed in \S 5. For now it suffices to record that this is the axiom
-    that makes $\R$ complete, and hence suitable for limits, while $\Q$ is
-    not.
-\end{remark}
+This is only a preview: upper bounds, suprema and the consequences of this axiom are developed in \S5.
+
 
 \begin{example}
     Prove that if $a \in \R$ and $a \neq 0$, then $a^2 > 0$.
@@ -209,7 +175,7 @@ completeness lets us take limits.
     conclude $a^2 > 0$ in either case.
 \end{proof}
 
-\subsubsection{The Absolute Value}
+\subsubsection{Absolute Value and the Triangle Inequality}
 \begin{definition}
     Given $a \in \R$, we define the \textbf{absolute value} $\abs{a}$ by
     \[
@@ -221,13 +187,8 @@ completeness lets us take limits.
     \]
 \end{definition}
 
-\begin{remark}
-    Geometrically, $\abs{a}$ is the distance from $a$ to $0$ on the number
-    line, and more generally $\abs{a-b}$ is the distance between $a$ and $b$.
-    This interpretation is what makes the theorem and proposition below --
-    especially the triangle inequality -- intuitive: they are just algebraic
-    statements about distances.
-\end{remark}
+Geometrically, $\abs{a}$ is the distance from $a$ to $0$, and $\abs{a-b}$ is the distance between $a$ and $b$; the results below are statements about distances.
+
 
 \begin{theorem}
     \begin{enumerate} [label = (\alph*)]
@@ -242,14 +203,10 @@ completeness lets us take limits.
 
 \end{theorem}
 
-\begin{remark}[Proof idea]
-    Parts (a), (b), (d) follow directly by splitting into the cases $a\geq0$
-    and $a<0$ (and similarly for $b$) and unwinding the definition of
-    $\abs{\cdot}$ in each case -- the same case-split strategy as in the
-    $a^2>0$ example above. Part (c) is the most important part for later use:
-    it converts a single inequality on $\abs{a}$ into a pair of ordinary
-    inequalities on $a$, and its proof again splits on the sign of $a$.
-\end{remark}
+\begin{idea}
+    Every part is the same move: split on the sign of $a$ (and of $b$), and
+    unwind the definition of $\abs{\cdot}$ in each case.
+\end{idea}
 
 \begin{proof}
     The definition immediately gives $\abs{-a}=\abs{a}$: if $a\geq0$,
@@ -279,29 +236,17 @@ completeness lets us take limits.
     the inequality and gives $-a\leq c$, hence $\abs a\leq c$. This proves (c).
 \end{proof}
 
-\begin{remark}
-    Part (c) is the key tool for turning an absolute-value inequality into a
-    two-sided inequality (and vice versa); it will be used constantly in the
-    rest of the course whenever a bound of the form $\abs{x}\leq c$ needs to
-    be unpacked into $-c\leq x\leq c$, or vice versa. The triangle inequality
-    below is the first major illustration of this.
-\end{remark}
 
 \begin{proposition}
     [Triangle Inequality]
     If $a, b \in \R$, then $\abs{a + b } \leq \abs{a} + \abs{b}$.
 \end{proposition}
 
-\begin{remark}[Proof idea]
-    From part (d) of the preceding theorem we already have the two-sided
-    bounds $-\abs{a}\leq a\leq\abs{a}$ and $-\abs{b}\leq b\leq\abs{b}$. Adding
-    these two chains of inequalities termwise gives a two-sided bound on
-    $a+b$ directly in terms of $\abs{a}+\abs{b}$. This is exactly the
-    situation covered by part (c) of the same theorem, applied with $x=a+b$
-    and $c=\abs{a}+\abs{b}$: a two-sided bound $-c\leq x\leq c$ converts back
-    into the single inequality $\abs{x}\leq c$, which is precisely the
-    triangle inequality we want.
-\end{remark}
+\begin{idea}
+    Add the two-sided bounds from part (d) for $a$ and for $b$; this gives
+    $-c\leq a+b\leq c$ with $c=\abs a+\abs b$, and part (c) turns that back
+    into $\abs{a+b}\leq c$.
+\end{idea}
 
 \begin{proof}
     Let $a, b \in \R$. By part (d) of the preceding theorem,
@@ -324,23 +269,8 @@ completeness lets us take limits.
     \end{equation*}
 \end{proof}
 
-\begin{center}
-    \fbox{
-    \begin{minipage}{0.9\linewidth}
-        \textbf{Key mechanism.} The bound $-\abs{a}\leq a\leq\abs{a}$ (part (d))
-        added to its counterpart for $b$, combined with part (c)
-        ($\abs{x}\leq c \iff -c\leq x\leq c$) applied to $x=a+b$,
-        $c=\abs{a}+\abs{b}$, yields the triangle inequality
-        $\abs{a+b}\leq\abs{a}+\abs{b}$.
-    \end{minipage}
-    }
-\end{center}
+In terms of distance: going from $0$ to $a+b$ directly is never longer than going via $a$.
 
-\begin{remark}
-    Interpreted via distance, the triangle inequality says that distance is
-    subadditive: the direct distance from $0$ to $a+b$ never exceeds the sum
-    of the distances from $0$ to $a$ and from $0$ to $b$.
-\end{remark}
 
 \begin{corollary}
     \begin{enumerate}
@@ -386,3 +316,12 @@ completeness lets us take limits.
         = \abs{a} + \abs{b}.
     \end{align*}
 \end{proof}
+
+\subsubsection*{In practice}
+\begin{itemize}
+    \item \textbf{Algebra is F1--F9.} Every ``obvious'' manipulation is an axiom in disguise: moving a term across ``$=$'' uses additive inverses and associativity, cancelling a nonzero factor uses multiplicative inverses, expanding a product uses the distributive law.
+    \item \textbf{Case-split with trichotomy.} Any $a\in\R$ falls in exactly one of $a=0$, $a\in P$, $-a\in P$; handle each case, and use O2, O3 to keep positivity through the algebra (as in the proof that $a\neq0\Rightarrow a^2>0$).
+    \item \textbf{To show $a>b$, show $a-b\in P$.} Every order manipulation (adding to both sides, multiplying by a positive number) traces back to this definition and O1--O3.
+    \item \textbf{Unpack absolute values.} $\abs{x}\leq c \iff -c\leq x\leq c$ turns one absolute-value inequality into two ordinary ones, and back. The triangle inequality is the first example; it will be used constantly.
+    \item \textbf{Add and subtract.} To bound $\abs{a}$ in terms of $\abs{a-b}$, write $a=(a-b)+b$ and apply the triangle inequality.
+\end{itemize}

@@ -1,6 +1,30 @@
-% Shared visual system: installed qhnotes package.
-\documentclass[10pt]{article}
+% MATH 147 course notes.
+% Writing standard: handoff.md, section "Presentation standard".
+\documentclass[11pt]{article}
+% Font: Times + matching math, the qhnotes default.
 \usepackage[color]{qhnotes}
+
+% ----- Proof-idea environments (MATH 147 only) -----
+% idea:    1--3 sentence strategy, sits directly on top of the proof.
+% scratch: backward "how do we find n_eps / choose epsilon" work; not part
+%          of the proof, so it gets a grey paper look instead of the proof blue.
+\theoremstyle{noteblock}
+\newtheorem*{idea}{Idea}
+\newtheorem*{scratch}{Scratch work}
+\surroundwithmdframed[
+  topline=false, bottomline=false, rightline=false, leftline=true,
+  linecolor=proofAccent!45, linewidth=1.6pt, backgroundcolor=proofAccent!7,
+  skipabove=6pt, skipbelow=0pt,
+  innertopmargin=3pt, innerbottommargin=4pt,
+  innerleftmargin=8pt, innerrightmargin=4pt
+]{idea}
+\surroundwithmdframed[
+  topline=false, bottomline=false, rightline=false, leftline=true,
+  linecolor=black!30, linewidth=1.6pt, backgroundcolor=black!4,
+  skipabove=6pt, skipbelow=0pt,
+  innertopmargin=3pt, innerbottommargin=4pt,
+  innerleftmargin=8pt, innerrightmargin=4pt
+]{scratch}
 
 % Document-local shortcuts
 \newcommand{\paren}[1]{\left(#1\right)}

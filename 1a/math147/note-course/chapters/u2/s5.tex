@@ -1,5 +1,5 @@
 %!TEX root=../../note.tex
-\subsection{The Completeness Property of $\R$}
+\subsection{Completeness and Its Consequences}
 \begin{axiom}[Completeness Property]
     Every nonempty set of real numbers that has an upper bound also has a supremum in $\R$.
 \end{axiom}
@@ -12,7 +12,7 @@
 
     Define $S' = \set{-s : s \in S}$. Then $S'$ is nonempty, and
     \begin{equation*}
-        -w \geq -s, \ \forall s \in S \implies -w \text{ is an upper bound for } S'.
+        (\forall s \in S)\,[-w \geq -s] \implies -w \text{ is an upper bound for } S'.
     \end{equation*}
 
     By the Completeness Axiom, $S'$ has a supremum. Say
@@ -28,9 +28,6 @@
     Thus $-u$ is a lower bound for $S$ that is at least as large as every other lower bound, so $-u = \inf S$.
 \end{proof}
 
-\begin{remark}
-    Recall the sup/inf recipe from the previous section: to verify $u = \sup S$, check (i) $u$ is an upper bound for $S$, and (ii) no number smaller than $u$ is an upper bound for $S$ (equivalently, the $\epsilon$-characterization: for every $\epsilon>0$ there is $x_\epsilon\in S$ with $u-\epsilon<x_\epsilon$). We will use this recipe repeatedly below, most notably in the Archimedean Property and in the existence of $\sqrt2$.
-\end{remark}
 
 \begin{example}
     \begin{equation*}
@@ -68,11 +65,11 @@ We now prove that $\N$ is not bounded above in $\R$. The proof combines two ingr
     If $x \in \R$, then there exists $n_x \in \N$ such that $x \leq n_x$. 
 \end{definition}
 
-\begin{remark}[Proof idea]
-    We argue by contradiction: suppose some real number $x$ exceeds every natural number, so that $\N$ is bounded above by $x$. Completeness then hands us $u=\sup\N\in\R$. The key move is that $u-1$, being strictly less than $u$, cannot itself be an upper bound for $\N$ (since $u$ is the \emph{least} upper bound) — this forces some natural number $m$ to lie strictly beyond $u-1$. But then $m+1$ is again a natural number (by the inductive property) sitting strictly beyond $u$, which contradicts $u$ being an upper bound for $\N$ in the first place. So no such $x$ can exist.
-\end{remark}
+\begin{idea}
+    If $\N$ were bounded above, let $u=\sup\N$. Then $u-1$ is not an upper bound (the $\epsilon$-characterization with $\epsilon=1$), so some $m\in\N$ has $m>u-1$ --- and then $m+1\in\N$ lies beyond $u$.
+\end{idea}
 \begin{proof}
-    Suppose, for contradiction, that $\exists x \in \R$ such that $x > n$ for all $n \in \N$.
+    Suppose, for contradiction, that $(\exists x \in \R)(\forall n \in \N)\,[x > n]$.
 
     Then $x$ is an upper bound for $\N$. Since $1 \in \N$, $\N \neq \emptyset$, so by the Completeness Axiom, $\N$ has a supremum in $\R$.
 
@@ -82,7 +79,7 @@ We now prove that $\N$ is not bounded above in $\R$. The proof combines two ingr
     \end{equation*}
     and $u$ is the \emph{least} upper bound of $\N$, no number strictly smaller than $u$ can be an upper bound for $\N$ (an upper bound smaller than the least upper bound would contradict its minimality). Applying this general principle to $u-1$, we conclude that $u - 1$ is not an upper bound for $\N$. Hence
     \begin{equation*}
-        \exists m \in \N \text{ such that } u - 1 < m,
+        (\exists m \in \N)\,[u - 1 < m],
     \end{equation*}
     which gives
     \begin{equation*}
@@ -97,9 +94,6 @@ We now prove that $\N$ is not bounded above in $\R$. The proof combines two ingr
     \boxed{\text{Completeness} + \text{closure of }\N\text{ under }+1 \Longrightarrow \text{Archimedean Property}}
 \]
 
-\begin{remark}
-    The step ``$u-1<u$, so $u-1$ is not an upper bound'' is exactly the $\epsilon$-characterization of the supremum from the previous section, applied with $\epsilon=1$: if $u=\sup S$, then for every $\epsilon>0$, $u-\epsilon$ fails to be an upper bound for $S$, so some element of $S$ exceeds $u-\epsilon$. Here $S=\N$ and $\epsilon=1$ give the natural number $m$ with $u-1<m$.
-\end{remark}
 
 \begin{corollary}
     The following are consequences of the Archimedean Property:
@@ -125,21 +119,24 @@ We now prove that $\N$ is not bounded above in $\R$. The proof combines two ingr
     \end{enumerate}
 \end{corollary}
 
-\begin{remark}[Proof idea]
-    Part (a) uses the sup/inf recipe: $0$ is clearly a lower bound for $S$, and part (b) shows no larger number can be, since $1/n$ can be made smaller than any prescribed $t>0$. Part (b) is a direct rescaling of the Archimedean Property: bound $1/t$ above by some natural number $m$, then $n_t=m+1$ works. Part (c) is the most subtle: we want the \emph{first} natural number strictly to the right of $y$, so we collect \emph{all} candidates into a set $A=\set{n\in\N:y<n}$ and take the least element of $A$ — this is a well-ordering argument, not a supremum argument (see the remark following the proof for why).
-\end{remark}
+\begin{idea}
+    Each part is one move.
+    \begin{enumerate}[label=(\alph*), nosep]
+        \item $0$ is a lower bound, and (b) says nothing larger is.
+        \item Archimedes applied to $1/t$.
+        \item Take the \emph{least} natural number to the right of $y$: $n_y=\min\set{n\in\N:y<n}$ (well-ordering, not a supremum).
+    \end{enumerate}
+\end{idea}
 \begin{proof}
     \begin{enumerate}[label=(\alph*)]
         \item Clearly $0$ is a lower bound for $S$. Let $b>0$. By part (b), there exists $n\in\N$ such that $1/n<b$. Since $1/n\in S$, this means $b$ is not a lower bound for $S$. As $b>0$ was arbitrary, no number greater than $0$ is a lower bound for $S$. Combined with $0$ being a lower bound, $\inf S=0$.
 
         \item By the Archimedean Property, choose $m\in\N$ with $1/t\leq m$. Then $n_t=m+1\in\N$ satisfies $n_t>m\geq1/t$, so $n_t>1/t$, and dividing by $n_t>0$ gives $0<1/n_t<t$.
 
-        \item We want the least natural number lying strictly to the right of $y$. To find it, we collect every natural number with this property into the set
+        \item Let
         \[
-            A=\set{n\in\N:y<n},
+            A=\set{n\in\N:y<n}.
         \]
-        and then take the smallest element of $A$; this smallest element is automatically the \emph{first} natural number beyond $y$, which is precisely what we need to pin $y$ between two consecutive integers.
-
         By the Archimedean Property, $A$ is nonempty (some natural number exceeds $y$). Since $A\subseteq\N$ is nonempty, the Well-Ordering Principle guarantees that $A$ has a least element; let $n_y=\min A$. Then $n_y\in A$, so $y<n_y$.
 
         It remains to show $n_y-1\leq y$. Suppose instead that $n_y-1>y$. Since $y>0$ and $n_y\geq1$ (as $n_y\in\N$), if $n_y=1$ then $n_y-1=0>y$ is impossible because $y>0$; so $n_y\geq2$ and $n_y-1\in\N$. Then $n_y-1\in\N$ together with $n_y-1>y$ shows $n_y-1\in A$. But $n_y-1<n_y$, contradicting that $n_y$ is the \emph{least} element of $A$. Hence $n_y-1\leq y$, and combined with $y<n_y$ we obtain
@@ -153,17 +150,40 @@ We now prove that $\N$ is not bounded above in $\R$. The proof combines two ingr
     Part (c) is a \emph{minimum} argument, not a supremum argument, and this distinction matters. The set $A=\set{n\in\N:y<n}$ is a subset of $\N$, and in general $A$ is \emph{unbounded above} in $\R$: if $y$ is not itself a boundary case, every sufficiently large natural number also lies in $A$. So $\sup A$ would not even be a finite real number, and asking for $\sup A$ would be the wrong tool here. What we actually need is the \emph{least} element of $A$, and the Well-Ordering Principle supplies this regardless of whether $A$ is bounded above — it only requires $A$ to be a nonempty subset of $\N$. This is in direct contrast to the supremum arguments used elsewhere in this section (for $\sup\N$ in the Archimedean Property, and for $\sup S$ in the existence of $\sqrt2$ below), where the relevant sets are subsets of $\R$ and boundedness above is essential.
 \end{remark}
 
+\subsubsection{The Existence of $\sqrt2$}
+We know $\sqrt2\notin\Q$. Does $\R$ contain a square root of $2$? Completeness should produce one. Take all the candidates from below,
+\[
+    S=\set{t\in\R : t\geq0,\ t^2<2}.
+\]
+Its supremum $x=\sup S$ ought to sit exactly on the boundary between squares below $2$ and squares above $2$. There are only two ways $x$ could miss:
+\begin{itemize}
+    \item $x^2<2$: then $x$ has not reached the boundary, so it can be nudged slightly \emph{right} and still lie in $S$ --- then $x$ is not an upper bound;
+    \item $x^2>2$: then $x$ has overshot, so it can be nudged slightly \emph{left} and still be an upper bound --- then $x$ is not the \emph{least} one.
+\end{itemize}
+Unlike part (c) above, this is a genuine completeness argument: $S$ is a bounded set of reals and we need its least upper bound, not a least element.
+
 \begin{proposition}
     There exists a real number $x$ such that $x^2 = 2$.
 \end{proposition}
 
-\begin{remark}[Proof idea]
-    We want to build $\sqrt2$ directly as a supremum. Consider
-    \[
-        S = \set{t \in \R : t \geq 0, t^2 < 2},
-    \]
-    the set of all nonnegative reals whose square undershoots $2$. Intuitively, $S$ consists of all the ``candidates'' for $\sqrt2$ from below, and its supremum $x=\sup S$ should sit exactly at the boundary between squares less than $2$ and squares greater than $2$ — that is, $x^2$ should equal $2$ precisely. To prove this rigorously, we rule out the two ways $x$ could fail to be $\sqrt2$: if $x^2<2$, then $x$ is not yet at the boundary and can be nudged slightly to the right while staying in $S$, contradicting that $x$ is an upper bound; if $x^2>2$, then $x$ has overshot the boundary and can be nudged slightly to the left while remaining an upper bound for $S$, contradicting that $x$ is the \emph{least} upper bound. Both nudges are constructed using the Archimedean Property to choose $n\in\N$ large enough. Note that $x=\sup S$ is a genuine completeness argument: $S\subseteq\R$ is bounded above, and we need the \emph{least upper bound} of a set of reals, not a well-ordering argument as in part (c) above.
-\end{remark}
+\begin{scratch}
+    How small must the nudge $1/n$ be? Work backwards from what we want.
+    \begin{itemize}
+        \item \emph{Right nudge.} Want $\paren{x+\frac1n}^2<2$. Expanding gives $x^2+\frac{2x}{n}+\frac1{n^2}$; the $\frac1{n^2}$ is awkward, but $\frac1{n^2}\leq\frac1n$, so it is enough that
+        \[
+            x^2+\frac{2x+1}{n}<2
+            \quad\Longleftarrow\quad
+            n>\frac{2x+1}{2-x^2}.
+        \]
+        \item \emph{Left nudge.} Want $\paren{x-\frac1n}^2>2$. Dropping the positive $\frac1{n^2}$, it is enough that
+        \[
+            x^2-\frac{2x}{n}>2
+            \quad\Longleftarrow\quad
+            n>\frac{2x}{x^2-2}.
+        \]
+    \end{itemize}
+    Both thresholds are fixed positive numbers, so the Archimedean Property supplies such an $n$.
+\end{scratch}
 \begin{proof}
     Define
     \begin{equation*}
@@ -232,39 +252,39 @@ We now prove that $\N$ is not bounded above in $\R$. The proof combines two ingr
     Combining both cases, $x^2 = 2$.
 \end{proof}
 
-\subsubsection{Density of $\Q$}
+\subsubsection{Density of $\Q$ and of the Irrationals}
 
-\begin{remark}
-    Consider the set
-    \[
-        T=\{r\in\mathbb{Q}: r^2<2\},
-    \]
-    which mirrors the set $S$ used above to construct $\sqrt2$, but restricted to rational numbers. As before, $T\neq\varnothing$ and $T$ is bounded above in $\Q$: for instance $0\in T$, and every $r\in T$ satisfies $r<2$.
+Completeness is exactly what $\Q$ is missing. Take
+\[
+    T=\set{r\in\Q : r^2<2},
+\]
+the rational version of the set $S$ above. It is nonempty ($0\in T$) and bounded above in $\Q$ (every $r\in T$ has $r<2$). Viewed inside $\R$, it has a supremum $y=\sup_\R T$, and the same two-case argument as above gives $y^2=2$, so $y=\sqrt2$. But $\sqrt2\notin\Q$, and $y$ was the only possible least upper bound, so $T$ has no supremum in $\Q$. Thus $\Q$ is \emph{not} complete: $\R$ needs irrationals like $\sqrt2$ to serve as suprema of sets like $T$.
 
-    If $T$ is instead regarded as a subset of $\R$, completeness of $\R$ guarantees that the supremum
-    \[
-        y=\sup_{\R} T
-    \]
-    exists. Running exactly the same case-split argument as in the proof above (with $T$ in place of $S$) shows that $y^2=2$, so $y=\sqrt2$.
-
-    But $\sqrt2\notin\Q$, so this candidate supremum $y$ is not itself a rational number. Since $y$ was the \emph{only} possible least upper bound of $T$ in $\R$, no rational number can serve as a least upper bound of $T$ in $\Q$ either — that is, $T$ has no supremum in $\Q$.
-
-    We have therefore produced a nonempty subset $T\subset\Q$ that is bounded above in $\Q$ but has no least upper bound in $\Q$. Thus $\Q$ is \emph{not} complete: completeness genuinely depends on $\R$ containing irrational numbers like $\sqrt2$ to serve as suprema for sets like $T$.
-\end{remark}
+Still, $\Q$ is spread densely through $\R$. The picture: lay down the multiples $\frac1n,\frac2n,\frac3n,\ldots$ on the number line. If the step $\frac1n$ is shorter than the interval $(x,y)$, the multiples cannot jump over it, so one of them lands inside.
 
 \begin{theorem}
     If $x$ and $y$ are any real numbers with $x < y$, then there exists a rational number $r \in \Q$ such that $x < r < y$. 
 \end{theorem}
 
-\begin{remark}[Proof idea]
-    We first treat the case $0<x<y$. The idea is to build a rational number of the form $m/n$ landing strictly between $x$ and $y$. First we choose $n\in\N$ large enough (via the Archimedean Property) that $1/n<y-x$; this makes consecutive multiples of $1/n$ closer together than the gap $y-x$, which guarantees that at least one multiple of $1/n$ will fall inside $(x,y)$. Then we choose $m$ to be the integer just to the right of $xn$, using the integer-location result (part (c) above) applied to $xn$. A short computation shows $xn<m<yn$, and dividing by $n$ places $r=m/n$ strictly between $x$ and $y$. The general case $x\leq0$ is reduced to the positive case by shifting both $x$ and $y$ up by a large enough integer $k$, applying the positive case, and shifting back down.
-\end{remark}
+\begin{scratch}
+    Take $0<x<y$ first. We want $m,n$ with
+    \[
+        x<\frac mn<y
+        \quad\Longleftrightarrow\quad
+        xn<m<yn.
+    \]
+    \begin{itemize}
+        \item Choose $m$ to be the \emph{first} natural number past $xn$ (part (c)): then $xn<m\leq xn+1$.
+        \item This $m$ stays below $yn$ provided $xn+1<yn$, i.e.\ $\frac1n<y-x$ --- which Archimedes provides.
+    \end{itemize}
+    For $x\leq0$, shift both endpoints right by an integer $k>-x$, apply the positive case, and shift back.
+\end{scratch}
 \begin{proof}
     First suppose that $0<x<y$. Then $y-x>0$. By the Archimedean Property, there exists $n\in\N$ such that
     \begin{equation*}
         \frac1n<y-x.
     \end{equation*}
-    This choice of $n$ ensures that consecutive multiples of $1/n$ are spaced closer together than the gap between $x$ and $y$, so some multiple of $1/n$ ought to land inside $(x,y)$; we now locate it explicitly. Multiplying $1/n<y-x$ by $n>0$ shows that
+    Multiplying $1/n<y-x$ by $n>0$ shows that
     \begin{equation*}
         xn+1<yn.
     \end{equation*}
@@ -277,7 +297,7 @@ We now prove that $\N$ is not bounded above in $\R$. The proof combines two ingr
     \begin{equation*}
         xn<m\leq xn+1.
     \end{equation*}
-    This is exactly why part (c) is invoked here: $m$ is, by construction, the first natural number strictly to the right of $xn$, so $xn<m$ holds automatically. Combining this with $xn+1<yn$ obtained above, we have
+    Combining this with $xn+1<yn$ obtained above, we have
     \begin{equation*}
         xn<m<yn,
     \end{equation*}
@@ -301,9 +321,9 @@ We now prove that $\N$ is not bounded above in $\R$. The proof combines two ingr
     If $x$ and $y$ are any real numbers with $x < y$, then there exists an irrational number $z$ such that $x < z < y$.
 \end{corollary}
 
-\begin{remark}[Proof idea]
-    Rescale the interval $(x,y)$ by dividing by $\sqrt2$, obtaining $(a,b)$ with $a=x/\sqrt2$ and $b=y/\sqrt2$. Apply the density of $\Q$ to find a nonzero rational $r\in(a,b)$. Then $z=\sqrt2\,r$ lands back in $(x,y)$, and $z$ must be irrational: if it were rational, $\sqrt2=z/r$ would be a ratio of rationals and hence rational, contradicting the irrationality of $\sqrt2$.
-\end{remark}
+\begin{idea}
+    Scale by $\sqrt2$: a nonzero rational $r$ between $x/\sqrt2$ and $y/\sqrt2$ gives $\sqrt2\,r$ between $x$ and $y$, and $\sqrt2\,r$ is irrational.
+\end{idea}
 \begin{proof}
     Set $a=x/\sqrt2$ and $b=y/\sqrt2$. Since $\sqrt2>0$, we have $a<b$. Choose a nonzero rational number $r$ with $a<r<b$: if $b\leq0$, choose $r\in\Q$ with $a<r<b$; if $a\geq0$, choose $r\in\Q$ with $a<r<b$; and if $a<0<b$, choose $r\in\Q$ with $0<r<b$. In each case, the density theorem provides such an $r$, and $r\neq0$.
 
@@ -314,9 +334,6 @@ We now prove that $\N$ is not bounded above in $\R$. The proof combines two ingr
     Let $x, y \in \R$, with $x < y$. Then there exists infinitely many rationals between $x$ and $y$. 
 \end{corollary}
 
-\begin{remark}[Proof idea]
-    Apply the density theorem repeatedly: once we have a rational $r_k$ strictly between $x$ and $y$, the theorem applied to the (still nonempty) interval $(r_k,y)$ produces a new rational $r_{k+1}$ strictly between $r_k$ and $y$. Iterating this produces an infinite strictly increasing sequence of distinct rationals, all lying in $(x,y)$.
-\end{remark}
 \begin{proof}
     Choose $r_1\in\Q$ with $x<r_1<y$. Having chosen $r_k\in\Q$ with $x<r_k<y$, apply the density theorem to $r_k<y$ to choose $r_{k+1}\in\Q$ such that
     \[
@@ -325,6 +342,7 @@ We now prove that $\N$ is not bounded above in $\R$. The proof combines two ingr
     This produces infinitely many distinct rational numbers $r_1,r_2,\ldots$ in $(x,y)$.
 \end{proof}
 
+\subsubsection{Countable and Uncountable Sets}
 Are there more rational or irrational numbers? To answer this question, we need to know in what sense. 
 \begin{definition}
     [Cardinality]

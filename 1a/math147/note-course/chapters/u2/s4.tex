@@ -1,5 +1,5 @@
 %!TEX root=../../note
-\subsection{Bounds}
+\subsection{Suprema and Infima}
 Bounds make sense in any ordered set. The special feature of $\R$ is that every nonempty set bounded above has a supremum in $\R$; this need not hold in $\Q$.
 
 \begin{definition}
@@ -31,45 +31,21 @@ Bounds make sense in any ordered set. The special feature of $\R$ is that every 
     \end{equation*}
 \end{definition}
 
-\begin{remark}
-    [Practical recipe]
-    To show that $u = \sup S$, it suffices to check two things:
-    \begin{enumerate}
-        \item $u$ is an upper bound for $S$; and
-        \item no number smaller than $u$ is an upper bound for $S$.
-    \end{enumerate}
-    Condition (2) is awkward to verify directly, since it quantifies over all real numbers smaller than $u$. The lemma below rephrases it as an equivalent, checkable condition: for every $\epsilon>0$ there exists $x\in S$ with $u-\epsilon<x\leq u$, i.e.\ $S$ contains points arbitrarily close to $u$ from below. The analogous recipe, with inequalities reversed, applies to $\inf S$.
-\end{remark}
 
-\begin{remark}
-    There can be only one supremum/infimum of a given set $S$ of $\R$.
+A set has at most one supremum. If $u_1$ and $u_2$ are both suprema of $S$, then $u_1$ is least and $u_2$ is an upper bound, so $u_1\leq u_2$; swapping roles gives $u_2\leq u_1$. Hence $u_1=u_2$, and the same argument with inequalities reversed shows the infimum is unique.
 
-    Idea: Suppose $u_1$ and $u_2$ are both suprema of $S$.
+\subsubsection{The $\epsilon$-Characterization of the Supremum}
+When does an upper bound $u$ fail to be the \emph{least} one? Exactly when some smaller number is still an upper bound --- that is, when there is a gap between $S$ and $u$. So $u$ is the supremum precisely when there is no gap: however small a margin $\epsilon>0$ we allow, $S$ still has a point within $\epsilon$ of $u$.
 
-    Since $u_1$ is a supremum and $u_2$ is an upper bound, we get
-    \begin{equation*}
-        u_1 \leq u_2.
-    \end{equation*}
 
-    Since $u_2$ is a supremum and $u_1$ is an upper bound, we get
-    \begin{equation*}
-        u_2 \leq u_1.
-    \end{equation*}
-
-    Since $u_1 \leq u_2$ and $u_2 \leq u_1$, we conclude $u_1 = u_2$. Hence the supremum, when it exists, is unique; the same argument (with inequalities reversed) shows the infimum is unique.
-\end{remark}
-
-\begin{remark}
-    [Proof idea]
-    An upper bound $u$ fails to be the \emph{least} upper bound exactly when some smaller number is still an upper bound, i.e.\ when there is a "gap" between $u$ and the set $S$. The $\epsilon$-condition below rules this out: it says that no matter how small a margin $\epsilon>0$ we allow, $S$ still has a point within that margin of $u$, so no smaller number can be an upper bound. This turns the definition of supremum (a comparison against \emph{every} upper bound) into a directly checkable statement about $S$ itself.
-\end{remark}
-
+\mdfsetup{nobreak=true}
 \begin{lemma}
     An upper bound $u$ of a nonempty set $S$ in $\R$ is the supremum of $S$ if and only if
     \begin{equation*}
-        (\forall \epsilon > 0)(\exists x_\epsilon \in S)\ u - \epsilon < x_\epsilon.
+        (\forall \epsilon > 0)(\exists x_\epsilon \in S)\,[u - \epsilon < x_\epsilon].
     \end{equation*}
 \end{lemma}
+\mdfsetup{nobreak=false}
 
 \begin{proof}
     ($\Rightarrow$) Suppose $u=\sup S$. Let $\epsilon>0$. Since
@@ -92,32 +68,33 @@ Bounds make sense in any ordered set. The special feature of $\R$ is that every 
     contradicting that $w$ is an upper bound (since $x_\epsilon \in S$ exceeds $w$). Hence no such $w$ exists, and $u=\sup S$.
 \end{proof}
 
-\begin{remark}
-    The $\epsilon$-characterization above is the key practical tool for verifying suprema, and it will be used repeatedly: to confirm $u=\sup S$, exhibit, for each $\epsilon>0$, a point of $S$ satisfying $u-\epsilon<x\leq u$.
-\end{remark}
 
 \begin{example}
-    Consider the set $S = \set{x \in \R : 0 \leq x < 1}$.
-    \begin{itemize}
-        \item $\sup S = 1$.
-        \begin{proof}
-            Every $x\in S$ satisfies $x<1$, so $1$ is an upper bound. Let $u=\sup S$, which exists by completeness since $S$ is nonempty and bounded above. Because $1$ is an upper bound, $u\leq1$. Suppose $u\neq1$, so $u<1$. Choose
-            \begin{equation*}
-                \epsilon=\frac{1-u}{2}>0.
-            \end{equation*}
-            Then
-            \begin{equation*}
-                u<u+\epsilon=\frac{u+1}{2}<1.
-            \end{equation*}
-            Also $u\geq0$ since $0\in S$, so $u+\epsilon\geq0$. Thus $u+\epsilon\in S$, contradicting that $u$ is an upper bound for $S$. Therefore $u=1$, i.e.\ $\sup S=1$.
-        \end{proof}
-        \item $\inf S = 0$.
-        \begin{proof}
-            Since $x\geq0$ for all $x\in S$, $0$ is a lower bound. Let $w=\inf S$. Because $0$ is a lower bound, $w\geq0$. Suppose $w\neq0$, so $w>0$. But $0\in S$, and a lower bound $w$ must satisfy $w\leq0$, a contradiction. Therefore $w=0$, i.e.\ $\inf S=0$.
-        \end{proof}
-    \end{itemize}
+    Consider the set $S = \set{x \in \R : 0 \leq x < 1}$. Then $\sup S = 1$ and $\inf S = 0$.
 \end{example}
+
+\begin{proof}[Proof that $\sup S=1$]
+    Every $x\in S$ satisfies $x<1$, so $1$ is an upper bound. Let $u=\sup S$, which exists by completeness since $S$ is nonempty and bounded above. Because $1$ is an upper bound, $u\leq1$. Suppose $u\neq1$, so $u<1$. Choose
+    \begin{equation*}
+        \epsilon=\frac{1-u}{2}>0.
+    \end{equation*}
+    Then
+    \begin{equation*}
+        u<u+\epsilon=\frac{u+1}{2}<1.
+    \end{equation*}
+    Also $u\geq0$ since $0\in S$, so $u+\epsilon\geq0$. Thus $u+\epsilon\in S$, contradicting that $u$ is an upper bound for $S$. Therefore $u=1$, i.e.\ $\sup S=1$.
+\end{proof}
+
+\begin{proof}[Proof that $\inf S=0$]
+    Since $x\geq0$ for all $x\in S$, $0$ is a lower bound. Let $w=\inf S$. Because $0$ is a lower bound, $w\geq0$. Suppose $w\neq0$, so $w>0$. But $0\in S$, and a lower bound $w$ must satisfy $w\leq0$, a contradiction. Therefore $w=0$, i.e.\ $\inf S=0$.
+\end{proof}
 
 \begin{remark}
     In this example, $S=[0,1)$ has $\sup S=1$ but no maximum, because $1\notin S$. Its infimum $0$ does belong to $S$, so $0$ is also its minimum. A supremum is the \emph{least upper bound}, whether or not it belongs to the set; it is a maximum only when it does belong to the set. Similarly, ``bounded above,'' ``bounded below,'' ``bounded,'' and ``unbounded'' are properties of the \emph{set} $S$, whereas $\sup S$ and $\inf S$ (when they exist) are specific \emph{real numbers} associated to $S$.
 \end{remark}
+
+\subsubsection*{In practice}
+\begin{itemize}
+    \item \textbf{Verifying $u=\sup S$.} Check two things: (i) $u$ is an upper bound for $S$; (ii) no smaller number is. Condition (ii) quantifies over all numbers below $u$ and is awkward directly; use the $\epsilon$-form instead: for each $\epsilon>0$, exhibit $x\in S$ with $u-\epsilon<x\leq u$.
+    \item \textbf{Infimum.} The same recipe with inequalities reversed: a lower bound $w$, and for each $\epsilon>0$ some $x\in S$ with $w\leq x<w+\epsilon$.
+\end{itemize}

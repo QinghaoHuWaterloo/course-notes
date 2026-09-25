@@ -1,6 +1,6 @@
 %!TEX root = ../../../note
 
-\subsection{Lecture 1}
+\subsection{Numbers and Logic}
 
 \subsubsection{What Is Calculus?}
 Differential and integral calculus are two branches of calculus.
@@ -10,7 +10,7 @@ Differential and integral calculus are two branches of calculus.
     \item[Integral calculus:] The study of areas and accumulation.
 \end{description}
 
-\subsubsection{Numbers}
+\subsubsection{From $\N$ to $\Q$}
 The number systems discussed in this lecture include
 \begin{align*}
     \N &= \set{1,2,3,\ldots}, \\
@@ -24,9 +24,9 @@ The natural numbers are closed under addition. The integers are closed under add
     The number $\sqrt{2}$ is irrational; equivalently, $\sqrt{2}\notin\Q$.
 \end{theorem}
 
-\begin{remark}[Proof idea]
-    We argue by contradiction. If $\sqrt{2}$ were rational, we could write it as a fraction $m/n$ in \emph{lowest terms}, i.e.\ with $\gcd(m,n)=1$. Squaring turns the equation into a statement about parity: $m^2=2n^2$ forces $m$ to be even, and feeding this back into the equation forces $n$ to be even as well. But then $m$ and $n$ share the factor $2$, contradicting the assumption that they had no common factor. The key mechanism is that ``lowest terms'' gives us a parity constraint that the equation $m^2=2n^2$ cannot simultaneously satisfy.
-\end{remark}
+\begin{idea}
+    Write $\sqrt2=m/n$ in lowest terms. Then $m^2=2n^2$ forces $m$ even, and feeding that back forces $n$ even --- so $2$ divides both, contradicting lowest terms.
+\end{idea}
 
 \begin{proof}
     Suppose, for contradiction, that $\sqrt{2}\in\Q$. Then we can write
@@ -92,7 +92,7 @@ The \textbf{universal quantifier} $\forall$ means ``for all.'' For example,
 \begin{example}
     The statement
     \begin{equation*}
-        \forall x \in \R,\quad x^2-x\geq 0
+        (\forall x \in \R)\,[x^2-x\geq 0]
     \end{equation*}
     is false; for instance, it fails when $x=\frac12$.
 \end{example}
@@ -101,10 +101,21 @@ The \textbf{existential quantifier} $\exists$ means ``there exists.'' For exampl
 \begin{example}
     The statement
     \begin{equation*}
-        \exists x \in \R,\quad x^2-x\geq 0
+        (\exists x \in \R)\,[x^2-x\geq 0]
     \end{equation*}
     is true; for instance, $x=2$ satisfies the inequality.
 \end{example}
+
+\begin{notation}
+    Each quantifier is written in parentheses, and the statement it governs in square brackets, read left to right:
+    \[
+        (\forall x\in\R)(\exists y\in\R)\,[x^3-y^3=1]
+    \]
+    reads ``for every $x\in\R$ there exists $y\in\R$ such that $x^3-y^3=1$.'' Negation moves inward and swaps each quantifier:
+    \[
+        \neg(\forall x)(\exists y)\,[P(x,y)] \iff (\exists x)(\forall y)\,[\neg P(x,y)].
+    \]
+\end{notation}
 
 \begin{proposition}
     For every $x\in\R$, there exists $y\in\R$ such that
@@ -120,23 +131,23 @@ The \textbf{existential quantifier} $\exists$ means ``there exists.'' For exampl
     \end{equation*}
 \end{proof}
 
-Here the choice of $y$ is allowed to depend on $x$: for each $x$ we produce a (possibly different) $y$ that makes the equation hold. This is exactly what the quantifier order $\forall x\ \exists y$ permits.
+Here the choice of $y$ is allowed to depend on $x$: for each $x$ we produce a (possibly different) $y$ that makes the equation hold. This is exactly what the quantifier order $(\forall x)(\exists y)$ permits.
 
 \begin{proposition}
     The statement
     \begin{equation*}
-        \exists y\in\R,\quad \forall x\in\R,\quad x^3-y^3=1
+        (\exists y\in\R)(\forall x\in\R)\,[x^3-y^3=1]
     \end{equation*}
     is false.
 
     Its negation is
     \begin{equation*}
-        \forall y\in\R,\quad \exists x\in\R,\quad x^3-y^3\neq 1.
+        (\forall y\in\R)(\exists x\in\R)\,[x^3-y^3\neq 1].
     \end{equation*}
     To prove the negation, let $y\in\R$ and take $x=y$. Then
     $x^3-y^3=0\neq 1$.
 \end{proposition}
 
 \begin{remark}
-    In this second statement, the quantifier order is reversed: $\exists y\ \forall x$ demands a \emph{single} $y$ that works simultaneously for every $x\in\R$. This is a much stronger requirement than $\forall x\ \exists y$, which only asks that a (possibly different) $y$ exist for each individual $x$. The first proposition shows such $y$'s exist, but they genuinely depend on $x$ (namely $y=\sqrt[3]{x^3-1}$), so no single choice of $y$ can work for all $x$ at once. This is why swapping the order of $\forall$ and $\exists$ can change a true statement into a false one, and it is a caution to always read quantified statements in the order they are written.
+    In this second statement, the quantifier order is reversed: $(\exists y)(\forall x)$ demands a \emph{single} $y$ that works simultaneously for every $x\in\R$. This is a much stronger requirement than $(\forall x)(\exists y)$, which only asks that a (possibly different) $y$ exist for each individual $x$. The first proposition shows such $y$'s exist, but they genuinely depend on $x$ (namely $y=\sqrt[3]{x^3-1}$), so no single choice of $y$ can work for all $x$ at once. This is why swapping the order of $\forall$ and $\exists$ can change a true statement into a false one, and it is a caution to always read quantified statements in the order they are written.
 \end{remark}
