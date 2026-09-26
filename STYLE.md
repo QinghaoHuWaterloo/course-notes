@@ -173,7 +173,6 @@ Current assignments (keep in sync with the table in `HANDOFF.md`):
 | Note set | Profile |
 |---|---|
 | `1a/math147/note-course` | **`mixed`** |
-| `1a/math147/note-zorich-style` | `zorich` (alternative rendering) |
 | `1a/math147/note-cambridge-style` | `cambridge` (alternative rendering) |
 | `1a/math135` | `legacy` |
 | `1a/math147/hw`, `1a/math135/hw` | `homework` |
@@ -197,7 +196,7 @@ There are two families:
 2. **One style per note set.** Do not mix styles inside one `note.tex`.
 3. **Alternative renderings live beside the course notes.** To try another
    style on an existing course, rewrite into a sibling directory
-   `note-<style>-style/` (as `1a/math147/note-zorich-style/`), never inside
+   `note-<style>-style/` (as `1a/math147/note-cambridge-style/`), never inside
    `note-course/`. Give it a `README.md` with: the model book, a source map
    (new file → original file), the style rules used, and a section
    *Content changes beyond wording* listing every mathematical change.
@@ -277,7 +276,10 @@ expected to supply routine verifications.
 - **Not this style:** motivational prose, boxed summaries, figures, colour
   emphasis (`\blue`, `\red`), repeated statements, bullet-point recipes.
 
-### 3.5 `zorich` — rigorous and readable (reference: `1a/math147/note-zorich-style`)
+### 3.5 `zorich` — rigorous and readable
+
+A MATH 147 rendering in this style existed until 2026-09-26; it can be
+recovered from git history (`git show aa70c37:1a/math147/note-zorich-style/README.md`).
 
 Model: Zorich, *Mathematical Analysis I*. Formal statements in logical
 symbolism with a plain reading beside them; motivation is brief but always
@@ -286,7 +288,7 @@ present.
 - **Voice.** "Let us …", "We now show …"; measured, explanatory.
 - **Structure.** Chapter (`\section`) → numbered section 1.3
   (`\subsection`) → lettered subsection a., b., … (`\subsubsection`).
-  Implement the letters in `note.tex` as in the Zorich experiment:
+  Implement the letters in `note.tex`:
   ```latex
   \renewcommand{\thesubsubsection}{\alph{subsubsection}}
   \makeatletter

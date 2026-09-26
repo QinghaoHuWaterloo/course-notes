@@ -35,7 +35,6 @@ CLAUDE.md                   pointer for Claude Code
   math147/
     note-course/            Intro to Analysis — profile mixed (reference course)
       note.tex, handoff.md, style-migration.md, chapters/
-    note-zorich-style/      alternative rendering in profile zorich (experiment)
     note-cambridge-style/   alternative rendering in profile cambridge
     hw/                     homework (profile homework)
   cs135/                    discontinued archive — do not extend or copy
@@ -122,7 +121,7 @@ Document roots define their own shortcuts (`\R \N \Z \Q \C`, `\paren{}`,
 ### Rendering a course in another style (`rudin`, `zorich`, …)
 
 1. Create `<course>/note-<style>-style/` next to the primary notes (e.g.
-   `math147/note-course/` → `math147/note-zorich-style/`; for a course whose
+   `math147/note-course/` → `math147/note-cambridge-style/`; for a course whose
    `note.tex` sits directly in the course directory, the new directory goes
    in that course directory too). Copy the root's class options and
    shortcuts, then add only what the style's section in `STYLE.md` §3
@@ -131,7 +130,7 @@ Document roots define their own shortcuts (`\R \N \Z \Q \C`, `\paren{}`,
 2. Rewrite lecture by lecture from the primary `chapters/`; the originals
    are read-only for this task.
 3. Keep a `README.md`: model book, source map, style rules used, and
-   *Content changes beyond wording* (see `note-zorich-style/README.md`).
+   *Content changes beyond wording* (see `note-cambridge-style/README.md`).
 4. Build and inspect as usual. The rendering is not the course's primary
    notes unless the user says so; then update the course handoff.
 

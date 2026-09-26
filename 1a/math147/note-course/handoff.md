@@ -131,9 +131,10 @@ Build and check: `HANDOFF.md`, "Verification".
     `u3/s1`).
 - **Next:** new lectures go into `chapters/u3/` (and `c3.tex`) in the
   `mixed` profile.
-- **Alternative renderings** (not kept in sync with later edits here; both
-  cover u2/s1–u3/s1): `../note-zorich-style/` (profile `zorich`) and
-  `../note-cambridge-style/` (profile `cambridge`, 2026-09-26). The
+- **Alternative rendering** (not kept in sync with later edits here; covers
+  u2/s1–u3/s1): `../note-cambridge-style/` (profile `cambridge`,
+  2026-09-26). The Zorich-style rendering was deleted on 2026-09-26 (in git
+  history before that date). The
   Cambridge README lists two source issues worth fixing here too: the
   "ℚ is not complete" argument needs density of ℚ, and `u3/s1` has typos
   (`\lim_{x_n}`, `a_n`/`x_n`, `x\to\infty`, `n_m`, "√n > m − 1").
