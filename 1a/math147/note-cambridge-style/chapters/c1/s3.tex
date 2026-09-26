@@ -1,0 +1,198 @@
+%!TEX root = ../../note.tex
+% Source: ../note-course/chapters/u2/s3.tex
+\subsection{\texorpdfstring{$\R$}{R} as an ordered field}
+The real numbers form a \emph{complete ordered field}. We build this up in
+three stages: the field axioms, which govern $+$ and $\cdot$; the order
+axioms, which let us compare elements; and the completeness axiom, which
+distinguishes $\R$ from $\Q$ and is the source of all limiting behaviour in
+analysis.
+
+\subsubsection*{The field axioms}
+\begin{defi}[Field]
+  A \term{field} is a set $F$ with two binary operations
+  $+ : F \times F \to F$ and $\cdot : F \times F \to F$ such that for all
+  $a, b, c \in F$:
+  \begin{enumerate}[label=\textbf{F\arabic*.}, leftmargin=2.5em]
+    \item (Associativity of addition) $a + (b + c) = (a + b) + c$.
+    \item (Commutativity of addition) $a + b = b + a$.
+    \item (Additive identity) There is $0 \in F$ with $a + 0 = a$.
+    \item (Additive inverses) For every $a \in F$ there is $-a \in F$ with $a + (-a) = 0$.
+    \item (Associativity of multiplication) $a \cdot (b \cdot c) = (a \cdot b) \cdot c$.
+    \item (Commutativity of multiplication) $a \cdot b = b \cdot a$.
+    \item (Multiplicative identity) There is $1 \in F$, $1 \neq 0$, with $a \cdot 1 = a$.
+    \item (Multiplicative inverses) For every $a \in F$ with $a \neq 0$ there is $a^{-1} \in F$ with $a \cdot a^{-1} = 1$.
+    \item (Distributive law) $a \cdot (b + c) = a \cdot b + a \cdot c$.
+  \end{enumerate}
+\end{defi}
+
+\begin{eg}
+  $\Q$ also satisfies F1--F9. So being a field says nothing about size,
+  order or completeness, and does not distinguish $\R$ from $\Q$.
+\end{eg}
+
+Once the axioms are fixed, even the most familiar facts become theorems.
+\begin{thm}\leavevmode
+  \begin{enumerate}[label=(\alph*)]
+    \item If $z, a \in \R$ and $z + a = a$, then $z = 0$.
+    \item If $u, b \in \R$, $b \neq 0$ and $u \cdot b = b$, then $u = 1$.
+    \item If $a \in \R$, then $a \cdot 0 = 0$.
+  \end{enumerate}
+\end{thm}
+
+\begin{proof}\leavevmode
+  \begin{enumerate}[label=(\alph*)]
+    \item $z = z + 0 = z + (a - a) = (z + a) + (-a) = a + (-a) = 0$.
+    \item Multiplying $u \cdot b = b$ by $b^{-1}$,
+      $u = u \cdot 1 = u \cdot (b \cdot b^{-1}) = (u \cdot b) \cdot b^{-1} = b \cdot b^{-1} = 1$.
+    \item $a \cdot 0 = a \cdot (0 + 0) = a \cdot 0 + a \cdot 0$. Adding
+      $-(a \cdot 0)$ to both sides and using associativity gives
+      $0 = a \cdot 0$.\qedhere
+  \end{enumerate}
+\end{proof}
+
+\begin{remark}
+  Every ``obvious'' manipulation is an axiom in disguise: moving a term
+  across ``$=$'' uses additive inverses and associativity, cancelling a
+  nonzero factor uses multiplicative inverses, and expanding a product uses
+  the distributive law.
+\end{remark}
+
+\subsubsection*{The order axioms}
+\begin{defi}[Order properties of $\R$]
+  There is a nonempty subset $P \subseteq \R$, the set of \term{positive real
+  numbers}, such that:
+  \begin{enumerate}[label=\textbf{O\arabic*.}, leftmargin=2.5em]
+    \item (Trichotomy) For every $a \in \R$, exactly one of $a = 0$,
+      $a \in P$, $-a \in P$ holds.
+    \item (Closure under addition) If $a, b \in P$, then $a + b \in P$.
+    \item (Closure under multiplication) If $a, b \in P$, then $a \cdot b \in P$.
+  \end{enumerate}
+\end{defi}
+
+\begin{defi}[Order relation]
+  For $a, b \in \R$, we write $a > b$ (or $b < a$) if $a - b \in P$, and
+  $a \geq b$ (or $b \leq a$) if $a - b \in P \cup \{0\}$.
+\end{defi}
+So to show $a > b$, one shows $a - b \in P$; every manipulation of
+inequalities traces back to this and to O1--O3.
+
+The positive rationals $P \cap \Q$ also satisfy O1--O3, so an ordered field
+still need not be $\R$. What $\Q$ lacks is completeness: the set
+$\{q \in \Q : q^2 < 2\}$ is bounded above in $\Q$ but has no least upper
+bound in $\Q$. This is why completeness is a separate axiom.
+
+\begin{axiom}[Completeness axiom]
+  If $A \subseteq \R$ is nonempty and bounded above, then $A$ has a least
+  upper bound in $\R$.
+\end{axiom}
+Upper bounds, suprema and the consequences of this axiom are developed in
+the next two subsections.
+
+\begin{eg}
+  If $a \in \R$ and $a \neq 0$, then $a^2 > 0$.
+\end{eg}
+
+\begin{proof}
+  Since $a \neq 0$, trichotomy leaves two cases. If $a \in P$, then
+  $a^2 = a \cdot a \in P$ by O3. Otherwise $-a \in P$, so
+  $(-a)(-a) \in P$ by O3, and it remains to check $(-a)(-a) = a^2$.
+  Multiplying $a + (-a) = 0$ by $-a$,
+  \begin{align*}
+    (-a)\bigl(a + (-a)\bigr) = (-a) \cdot 0 = 0
+    &\implies (-a)a + (-a)(-a) = 0\\
+    &\implies (-a)(-a) = -\bigl((-a)a\bigr) = -(-a^2) = a^2.
+  \end{align*}
+  In either case $a^2 \in P$, i.e.\ $a^2 > 0$.
+\end{proof}
+This is the typical use of trichotomy: split into the cases $a = 0$,
+$a \in P$, $-a \in P$, and use O2 and O3 to keep track of positivity.
+
+\subsubsection*{Absolute value and the triangle inequality}
+\begin{defi}[Absolute value]
+  For $a \in \R$, the \term{absolute value} of $a$ is
+  \[
+    \abs{a} =
+    \begin{cases}
+      a & a \geq 0,\\
+      -a & a < 0.
+    \end{cases}
+  \]
+\end{defi}
+Geometrically, $\abs{a}$ is the distance from $a$ to $0$, and $\abs{a - b}$
+is the distance between $a$ and $b$.
+
+\begin{nthm}\label{thm:abs}
+  For all $a, b \in \R$ and $c > 0$:
+  \begin{enumerate}[label=(\alph*)]
+    \item $\abs{ab} = \abs{a}\abs{b}$;
+    \item $\abs{a}^2 = a^2$;
+    \item $\abs{a} \leq c \iff -c \leq a \leq c$;
+    \item $-\abs{a} \leq a \leq \abs{a}$.
+  \end{enumerate}
+\end{nthm}
+Every part is proved the same way: split on the sign of $a$ (and of $b$) and
+unwind the definition.
+
+\begin{proof}
+  The definition gives $\abs{-a} = \abs{a}$ and $-\abs{a} \leq a \leq \abs{a}$,
+  which is (d); checking the cases $a \geq 0$ and $a < 0$ gives (b).
+
+  For (a), if $a, b \geq 0$, then $ab \geq 0$ and $\abs{ab} = ab = \abs{a}\abs{b}$.
+  If $a \geq 0 > b$, then $ab \leq 0$ and $\abs{ab} = -ab = a(-b) = \abs{a}\abs{b}$;
+  the case $b \geq 0 > a$ is symmetric. If $a, b < 0$, then $ab > 0$ and
+  $\abs{ab} = ab = (-a)(-b) = \abs{a}\abs{b}$.
+
+  For (c), suppose $\abs{a} \leq c$. If $a \geq 0$, then $a = \abs{a} \leq c$
+  and $-c < 0 \leq a$. If $a < 0$, then $-a = \abs{a} \leq c$, i.e.\
+  $-c \leq a$, and $a < 0 < c$. Conversely, suppose $-c \leq a \leq c$. If
+  $a \geq 0$, then $\abs{a} = a \leq c$. If $a < 0$, multiplying $-c \leq a$
+  by $-1$ gives $\abs{a} = -a \leq c$.
+\end{proof}
+
+\begin{nprop}[Triangle inequality]\label{prop:triangle}
+  If $a, b \in \R$, then $\abs{a + b} \leq \abs{a} + \abs{b}$.
+\end{nprop}
+The idea is to add the two-sided bounds of Theorem~\ref{thm:abs}(d) for $a$
+and $b$, and then use part (c) to turn the result back into one inequality.
+
+\begin{proof}
+  By Theorem~\ref{thm:abs}(d), $-\abs{a} \leq a \leq \abs{a}$ and
+  $-\abs{b} \leq b \leq \abs{b}$. Adding,
+  \[
+    -\bigl(\abs{a} + \abs{b}\bigr) \leq a + b \leq \abs{a} + \abs{b}.
+  \]
+  If $\abs{a} + \abs{b} = 0$, this forces $a + b = 0$ and the claim is
+  immediate. Otherwise $\abs{a} + \abs{b} > 0$, and
+  Theorem~\ref{thm:abs}(c) with $c = \abs{a} + \abs{b}$ gives
+  $\abs{a + b} \leq \abs{a} + \abs{b}$.
+\end{proof}
+In terms of distance: going from $0$ to $a + b$ directly is never longer than
+going via $a$.
+
+\begin{cor}
+  For all $a, b \in \R$:
+  \begin{enumerate}
+    \item $\bigl|\abs{a} - \abs{b}\bigr| \leq \abs{a - b}$;
+    \item $\abs{a - b} \leq \abs{a} + \abs{b}$.
+  \end{enumerate}
+\end{cor}
+
+\begin{proof}\leavevmode
+  \begin{enumerate}
+    \item Write $a = (a - b) + b$. The triangle inequality gives
+      $\abs{a} \leq \abs{a - b} + \abs{b}$, i.e.\
+      $\abs{a} - \abs{b} \leq \abs{a - b}$. Symmetrically, $b = (b - a) + a$
+      gives $\abs{b} - \abs{a} \leq \abs{b - a} = \abs{a - b}$. Together,
+      \[
+        -\abs{a - b} \leq \abs{a} - \abs{b} \leq \abs{a - b},
+      \]
+      which is the claim by Theorem~\ref{thm:abs}(c).
+    \item $\abs{a - b} = \abs{a + (-b)} \leq \abs{a} + \abs{-b} = \abs{a} + \abs{b}$.\qedhere
+  \end{enumerate}
+\end{proof}
+
+\begin{remark}
+  The trick in (i) is to \emph{add and subtract}: to bound $\abs{a}$ in terms
+  of $\abs{a - b}$, write $a = (a - b) + b$ and apply the triangle
+  inequality. It will be used constantly.
+\end{remark}

@@ -1,5 +1,12 @@
 # MATH 147 — style migration log (2026-09-25)
 
+> Historical record, not a rule book. The standard these notes follow is the
+> `mixed` profile in `../../../STYLE.md` §3.3; course details are in
+> `handoff.md`. Use this log as the template when migrating another course
+> (e.g. MATH 135 from `legacy`) to `mixed`.
+> The "Presentation standard" section of `handoff.md` mentioned below has
+> since become that `mixed` profile.
+
 What changed when these notes moved to the Presentation standard in
 `handoff.md`. The work was done in a copy (`note-mixed-style/`), which then
 replaced `chapters/` and `note.tex` here. Mathematics, order, notation and the
@@ -64,7 +71,8 @@ Every other remark became one of:
 - **part of an Idea** — "u−1 is not an upper bound = ε-characterisation with ε=1";
 - **deleted** — the s5 "recall the sup recipe" remark (now in s4's In practice);
 - **In practice** — techniques and recipes, moved to the end of their section
-  under `\inpractice` (unnumbered, listed in the TOC):
+  (at first under an `\inpractice` macro listed in the TOC; in round 3 this
+  became a plain `\subsubsection*{In practice}`, not in the TOC):
   - `u2/s2`: induction template; minimal-counterexample pattern
   - `u2/s3`: algebra is F1–F9; case-split with trichotomy; a>b ⇔ a−b∈P;
     unpack |x|≤c; add and subtract

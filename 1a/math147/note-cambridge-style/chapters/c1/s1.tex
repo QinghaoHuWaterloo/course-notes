@@ -1,0 +1,101 @@
+%!TEX root = ../../note.tex
+% Source: ../note-course/chapters/u2/s1.tex
+\subsection{Numbers and logic}
+The number systems we start from are
+\begin{align*}
+  \N &= \{1, 2, 3, \ldots\},\\
+  \Z &= \{\ldots, -1, 0, 1, \ldots\},\\
+  \Q &= \left\{\frac{m}{n} : m, n \in \Z,\ n \neq 0\right\}.
+\end{align*}
+$\N$ is closed under addition, and $\Z$ under addition, subtraction and
+multiplication, but not under division: $1/2 \notin \Z$. The rationals are
+introduced precisely to allow quotients of integers with nonzero
+denominators. They are still not enough.
+
+\begin{nthm}[Irrationality of $\sqrt{2}$]\label{thm:sqrt2-irrational}
+  $\sqrt{2}$ is irrational, i.e.\ $\sqrt{2} \notin \Q$.
+\end{nthm}
+The idea is to write $\sqrt 2$ in lowest terms and show that $2$ must
+nevertheless divide both numerator and denominator.
+
+\begin{proof}
+  Suppose $\sqrt{2} \in \Q$, and write
+  \[
+    \sqrt{2} = \frac{m}{n},\quad m, n \in \Z,\quad n > 0,\quad \gcd(m, n) = 1.
+  \]
+  Squaring gives $m^2 = 2n^2$, so $m^2$ is even. An odd integer has an odd
+  square, so $m$ is even, say $m = 2\ell$ with $\ell \in \Z$. Then
+  $2n^2 = 4\ell^2$, i.e.\ $n^2 = 2\ell^2$, and the same parity argument shows
+  that $n$ is even. So $2$ divides both $m$ and $n$, contradicting
+  $\gcd(m, n) = 1$.
+\end{proof}
+
+\begin{significant}
+  Assuming lowest terms turns the equation into a parity contradiction.
+\end{significant}
+
+The real numbers that are not rational are the \term{irrational numbers}
+$\R \setminus \Q = \{x \in \R : x \notin \Q\}$.
+
+\begin{eg}
+  Every nonnegative real number has a \term{decimal representation}
+  \[
+    x = a + \sum_{i=1}^{\infty} \frac{x_i}{10^i},\quad a \in \N \cup \{0\},\quad x_i \in \{0, 1, \ldots, 9\},
+  \]
+  and negative real numbers are the negatives of such expansions. Some
+  numbers have two decimal representations. For example, $1.999\cdots = 2$:
+  if $x = 1.999\cdots$, then $10x = 19.999\cdots$, so $9x = 18$ and $x = 2$.
+\end{eg}
+
+\subsubsection*{Statements and quantifiers}
+\begin{defi}
+  A \term{statement} is a sentence with a definite truth value: it is either
+  true or false.
+\end{defi}
+
+The \term{universal quantifier} $\forall$ means ``for all'', and the
+\term{existential quantifier} $\exists$ means ``there exists''.
+
+\begin{eg}\leavevmode
+  \begin{enumerate}
+    \item ``$\forall x \in \R,\ x^2 - x \geq 0$'' is false: it fails at
+      $x = \frac{1}{2}$.
+    \item ``$\exists x \in \R,\ x^2 - x \geq 0$'' is true: $x = 2$ works.
+  \end{enumerate}
+\end{eg}
+
+\begin{notation}
+  Quantifiers are read left to right. To negate a quantified statement, move
+  the negation inwards and swap each quantifier:
+  \[
+    \neg\bigl(\forall x\ \exists y\ \ P(x, y)\bigr) \iff \exists x\ \forall y\ \ \neg P(x, y).
+  \]
+\end{notation}
+
+\begin{prop}
+  For every $x \in \R$ there exists $y \in \R$ such that $x^3 - y^3 = 1$.
+\end{prop}
+
+\begin{proof}
+  Given $x$, take $y = \sqrt[3]{x^3 - 1}$. Then $x^3 - y^3 = x^3 - (x^3 - 1) = 1$.
+\end{proof}
+Here $y$ is allowed to depend on $x$; this is exactly what the order
+``$\forall x\ \exists y$'' permits.
+
+\begin{prop}
+  The statement ``$\exists y \in \R\ \forall x \in \R,\ x^3 - y^3 = 1$'' is
+  false.
+\end{prop}
+
+\begin{proof}
+  We prove its negation, $\forall y \in \R\ \exists x \in \R,\ x^3 - y^3 \neq 1$.
+  Given $y$, take $x = y$; then $x^3 - y^3 = 0 \neq 1$.
+\end{proof}
+
+\begin{warning}
+  Swapping $\forall$ and $\exists$ can turn a true statement into a false
+  one. ``$\forall x\ \exists y$'' asks for a possibly different $y$ for each
+  $x$; ``$\exists y\ \forall x$'' asks for a \emph{single} $y$ that works for
+  every $x$ at once. Above, the $y$ that works is $\sqrt[3]{x^3 - 1}$, which
+  genuinely depends on $x$.
+\end{warning}

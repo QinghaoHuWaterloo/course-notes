@@ -1,0 +1,121 @@
+%!TEX root = ../../note.tex
+% Source: ../note-course/chapters/u2/s2.tex
+\subsection{Induction and well-ordering}
+\begin{axiom}[Principle of mathematical induction]
+  Let $P(n)$ be a statement depending on $n \in \N$. If
+  \begin{enumerate}
+    \item $P(1)$ is true, and
+    \item for every $k \in \N$, $P(k)$ implies $P(k + 1)$,
+  \end{enumerate}
+  then $P(n)$ is true for every $n \in \N$.
+\end{axiom}
+To use it, verify the \term{base case} $P(1)$; then fix an arbitrary
+$k \in \N$, assume $P(k)$ (the \term{inductive hypothesis}) and deduce
+$P(k + 1)$.
+
+\begin{prop}
+  For every $n \in \N$,
+  \[
+    1 + 2 + \cdots + n = \frac{n(n + 1)}{2}.
+  \]
+\end{prop}
+
+\begin{proof}
+  Let $P(n)$ be the displayed statement. $P(1)$ reads
+  $1 = \frac{1 \cdot 2}{2}$. If $P(k)$ holds, then
+  \begin{align*}
+    1 + 2 + \cdots + (k + 1) &= \frac{k(k + 1)}{2} + (k + 1)\\
+    &= \frac{k(k + 1) + 2(k + 1)}{2} = \frac{(k + 1)(k + 2)}{2},
+  \end{align*}
+  which is $P(k + 1)$. By induction, $P(n)$ holds for all $n$.
+\end{proof}
+
+Induction has an equivalent formulation in terms of sets.
+\begin{prop}
+  Let $S \subseteq \N$. If $1 \in S$, and $k \in S$ implies $k + 1 \in S$,
+  then $S = \N$.
+\end{prop}
+
+\begin{proof}
+  Apply induction to the statement $P(n)$: ``$n \in S$''. Then every
+  $n \in \N$ lies in $S$, and $S \subseteq \N$, so $S = \N$.
+\end{proof}
+
+\subsubsection*{The well-ordering principle}
+\begin{nthm}[Well-ordering principle]\label{thm:wop}
+  Every nonempty subset $S$ of $\N$ has a smallest element.
+\end{nthm}
+The idea is that if $S$ had no smallest element, induction would show that
+$S$ misses $1, 2, \ldots, n$ for every $n$, so $S$ would be empty.
+
+\begin{proof}
+  Let $S \subseteq \N$ be nonempty, and suppose $S$ has no smallest element.
+  Let
+  \[
+    T = \{n \in \N : \{1, 2, \ldots, n\} \cap S = \emptyset\},
+  \]
+  the set of $n$ such that $S$ has ``not yet been seen'' by the time we reach
+  $n$. We show $T = \N$ by induction.
+
+  \emph{Base case.} If $1 \in S$, then $1$ would be the smallest element of
+  $S$, since it is the smallest element of $\N$. So $1 \notin S$, and $1 \in T$.
+
+  \emph{Inductive step.} Suppose $k \in T$, i.e.\
+  $\{1, \ldots, k\} \cap S = \emptyset$. If $k + 1 \notin T$, then
+  $\{1, \ldots, k + 1\} \cap S \neq \emptyset$, which by the inductive
+  hypothesis forces $k + 1 \in S$. But none of $1, \ldots, k$ lies in $S$, so
+  $k + 1$ would be the smallest element of $S$, a contradiction. Hence
+  $k + 1 \in T$.
+
+  So $T = \N$. Then no natural number lies in $S$, i.e.\ $S = \emptyset$,
+  contradicting that $S$ is nonempty.
+\end{proof}
+
+Well-ordering gives another way to prove statements about all $n$: look at
+the smallest counterexample.
+
+\begin{prop}
+  For every $n \in \N$,
+  \[
+    1^2 + 2^2 + \cdots + n^2 = \frac{n(n + 1)(2n + 1)}{6}.
+  \]
+\end{prop}
+
+\begin{proof}
+  Let $P(n)$ be the displayed statement, and suppose it fails for some $n$,
+  i.e.\ $\neg(\forall n \in \N,\ P(n))$, equivalently
+  $\exists n \in \N,\ \neg P(n)$. Then
+  \[
+    S = \{n \in \N : \neg P(n)\}
+  \]
+  is nonempty, so by the well-ordering principle it has a smallest element
+  $k$. Since $P(1)$ holds, $k > 1$, so $k - 1 \in \N$, and $k - 1 \notin S$
+  by minimality. So $P(k - 1)$ holds:
+  \[
+    1^2 + \cdots + (k - 1)^2 = \frac{(k - 1)k\bigl(2(k - 1) + 1\bigr)}{6} = \frac{(k - 1)k(2k - 1)}{6}.
+  \]
+  Adding $k^2$ to both sides,
+  \begin{align*}
+    1^2 + \cdots + k^2 &= \frac{(k - 1)k(2k - 1) + 6k^2}{6} = \frac{k\bigl((k - 1)(2k - 1) + 6k\bigr)}{6}\\
+    &= \frac{k(2k^2 + 3k + 1)}{6} = \frac{k(k + 1)(2k + 1)}{6}.
+  \end{align*}
+  So $P(k)$ holds, contradicting $k \in S$. Hence $S = \emptyset$.
+\end{proof}
+
+\begin{remark}
+  This is the method of the \term{minimal counterexample}: if the set $S$ of
+  counterexamples is nonempty, take $k = \min S$; since $k$ is the
+  \emph{first} failure, $P(k - 1)$ still holds, and one shows that $P(k - 1)$
+  forces $P(k)$. Induction and well-ordering are equivalent ways of
+  expressing the same fact about $\N$: we proved well-ordering by induction,
+  and here we used well-ordering to prove something that direct induction
+  would also give.
+\end{remark}
+
+\begin{warning}
+  The argument needs a \emph{minimum}, not an infimum. Well-ordering applies
+  to nonempty subsets of $\N$ and produces a least element that lies
+  \emph{in} $S$, which is what lets us conclude $\neg P(k)$. For a general
+  subset of $\R$, an infimum need not belong to the set, so nothing could be
+  concluded about $P(\inf S)$.
+\end{warning}

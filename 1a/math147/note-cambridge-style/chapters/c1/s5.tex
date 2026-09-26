@@ -1,0 +1,253 @@
+%!TEX root = ../../note.tex
+% Source: ../note-course/chapters/u2/s5.tex
+\subsection{Completeness and its consequences}
+We now use the completeness axiom seriously. Recall it once more.
+
+\begin{axiom}[Completeness property]
+  Every nonempty set of real numbers that has an upper bound has a supremum
+  in $\R$.
+\end{axiom}
+
+\begin{cor}
+  Every nonempty set of real numbers that has a lower bound has an infimum
+  in $\R$.
+\end{cor}
+
+\begin{proof}
+  Let $S \subseteq \R$ be nonempty with a lower bound $w$, so $w \leq s$ and
+  hence $-w \geq -s$ for all $s \in S$. Then $S' = \{-s : s \in S\}$ is
+  nonempty with upper bound $-w$, so by completeness $u = \sup S'$ exists.
+  We claim $-u = \inf S$.
+  \begin{itemize}
+    \item Since $u \geq -s$ for all $s \in S$, we have $-u \leq s$ for all
+      $s \in S$, so $-u$ is a lower bound for $S$.
+    \item If $w$ is any lower bound for $S$, then $-w$ is an upper bound for
+      $S'$, so $u \leq -w$, i.e.\ $w \leq -u$.
+  \end{itemize}
+  So $-u$ is the greatest lower bound.
+\end{proof}
+
+\begin{eg}
+  Let $S = \left\{\left(1 + \frac{1}{n}\right)^n : n \in \N\right\}$. By the
+  binomial theorem,
+  \[
+    \left(1 + \frac{1}{n}\right)^n = 1 + \binom{n}{1}\frac{1}{n} + \sum_{k=2}^{n} \binom{n}{k}\frac{1}{n^k} > 1.
+  \]
+  For $0 \leq k \leq n$ we have
+  $\binom{n}{k} = \frac{n(n - 1)\cdots(n - k + 1)}{k!} \leq \frac{n^k}{k!}$,
+  and $k! \geq 2^{k - 1}$ for $k \geq 2$, since each factor from $2$ to $k$
+  is at least $2$. Hence
+  \[
+    \left(1 + \frac{1}{n}\right)^n \leq \sum_{k=0}^{n} \frac{1}{k!} < 1 + 1 + \sum_{k=2}^{\infty} \frac{1}{2^{k - 1}} = 3.
+  \]
+  So $1 < \left(1 + \frac{1}{n}\right)^n < 3$ for all $n$, and $S$ is bounded.
+\end{eg}
+
+\subsubsection*{The Archimedean property}
+We now show that $\N$ is not bounded above in $\R$. This uses two
+ingredients: completeness, which lets us form $u = \sup \N$ (as a subset of
+$\R$; nothing says $u \in \N$), and the fact that $\N$ is closed under
+$n \mapsto n + 1$, which produces a natural number beyond $u$.
+
+\begin{nthm}[Archimedean property]\label{thm:archimedes}
+  For every $x \in \R$ there is $n_x \in \N$ with $x \leq n_x$.
+\end{nthm}
+The idea is that if $\N$ had a supremum $u$, then $u - 1$ would not be an
+upper bound (Lemma~\ref{lem:eps-sup} with $\epsilon = 1$), so some $m \in \N$
+exceeds $u - 1$, and then $m + 1 \in \N$ lies beyond $u$.
+
+\begin{proof}
+  Suppose not: there is $x \in \R$ with $x > n$ for all $n \in \N$. Then $x$
+  is an upper bound for $\N$, and $\N \neq \emptyset$, so by completeness
+  $u = \sup \N$ exists. Since $u - 1 < u$ and $u$ is the \emph{least} upper
+  bound, $u - 1$ is not an upper bound for $\N$, so there is $m \in \N$ with
+  $u - 1 < m$, i.e.\ $u < m + 1$. But $m + 1 \in \N$ and $u$ is an upper
+  bound for $\N$, so $m + 1 \leq u$. Contradiction.
+\end{proof}
+
+\begin{significant}
+  Completeness $+$ closure of $\N$ under $+1$ $\Longrightarrow$ Archimedean property.
+\end{significant}
+
+\begin{ncor}\label{cor:archimedes}\leavevmode
+  \begin{enumerate}[label=(\alph*)]
+    \item If $S = \{\frac{1}{n} : n \in \N\}$, then $\inf S = 0$.
+    \item If $t > 0$, there is $n_t \in \N$ with $0 < \frac{1}{n_t} < t$.
+    \item If $y > 0$, there is $n_y \in \N$ with $n_y - 1 \leq y < n_y$.
+  \end{enumerate}
+\end{ncor}
+Each part is a single step: (a) follows from (b); (b) is the Archimedean
+property applied to $1/t$; and for (c) we take the \emph{least} natural
+number to the right of $y$, which exists by well-ordering.
+
+\begin{proof}\leavevmode
+  \begin{enumerate}[label=(\alph*)]
+    \item $0$ is a lower bound for $S$. If $b > 0$, then by (b) there is
+      $n \in \N$ with $1/n < b$, and $1/n \in S$, so $b$ is not a lower bound.
+      Hence $\inf S = 0$.
+    \item By Theorem~\ref{thm:archimedes}, choose $m \in \N$ with
+      $1/t \leq m$. Then $n_t = m + 1 > 1/t$, so $0 < 1/n_t < t$.
+    \item Let $A = \{n \in \N : y < n\}$. By Theorem~\ref{thm:archimedes},
+      $A \neq \emptyset$, so by the well-ordering principle
+      (Theorem~\ref{thm:wop}) it has a least element $n_y$, and $y < n_y$
+      since $n_y \in A$. Suppose $n_y - 1 > y$. Since $y > 0$, this forces
+      $n_y \geq 2$, so $n_y - 1 \in \N$ and hence $n_y - 1 \in A$. But
+      $n_y - 1 < n_y$, contradicting minimality. So
+      $n_y - 1 \leq y < n_y$.\qedhere
+  \end{enumerate}
+\end{proof}
+
+\begin{warning}
+  Part (c) is a \emph{minimum} argument, not a supremum argument. The set
+  $A = \{n \in \N : y < n\}$ is unbounded above, so $\sup A$ would not even
+  be a real number. What we need is the least element of $A$, and
+  well-ordering supplies it without any boundedness assumption. Contrast the
+  supremum arguments for $\sup \N$ above and for $\sup S$ below, where the
+  sets are subsets of $\R$ and boundedness above is essential.
+\end{warning}
+
+\subsubsection*{The existence of \texorpdfstring{$\sqrt{2}$}{sqrt 2}}
+We know $\sqrt{2} \notin \Q$. Completeness should produce a square root of
+$2$ in $\R$. Take the candidates from below,
+$S = \{t \in \R : t \geq 0,\ t^2 < 2\}$; its supremum $x$ ought to sit
+exactly on the boundary. There are only two ways it could miss. If
+$x^2 < 2$, then $x$ can be nudged slightly to the right and stay in $S$, so
+$x$ is not an upper bound. If $x^2 > 2$, then $x$ can be nudged slightly to
+the left and remain an upper bound, so $x$ is not the least one. Unlike
+Corollary~\ref{cor:archimedes}(c), this is a genuine completeness argument.
+
+\begin{nprop}\label{prop:sqrt2-exists}
+  There is a real number $x$ with $x^2 = 2$.
+\end{nprop}
+The nudge is by $1/n$. Working backwards, it suffices that
+$\frac{2x + 1}{n} < 2 - x^2$ for the right nudge, and $\frac{2x}{n} < x^2 - 2$
+for the left one; the Archimedean property provides such $n$.
+
+\begin{proof}
+  Let $S = \{t \in \R : t \geq 0,\ t^2 < 2\}$. Then $1 \in S$, and $2$ is an
+  upper bound, since $t > 2$ implies $t^2 > 4$. By completeness,
+  $x = \sup S$ exists, and $x \geq 1$.
+
+  \emph{Case 1: $x^2 < 2$.} Since $x \geq 1$ and $n \geq 1$,
+  \[
+    \left(x + \frac{1}{n}\right)^2 = x^2 + \frac{2x}{n} + \frac{1}{n^2} \leq x^2 + \frac{2x + 1}{n}.
+  \]
+  As $2 - x^2 > 0$, the Archimedean property gives $n \in \N$ with
+  $\frac{2x + 1}{n} < 2 - x^2$. Then $\left(x + \frac{1}{n}\right)^2 < 2$,
+  so $x + \frac{1}{n} \in S$, although $x + \frac{1}{n} > x = \sup S$.
+  Contradiction. So $x^2 \geq 2$.
+
+  \emph{Case 2: $x^2 > 2$.} Since $1/n^2 > 0$,
+  \[
+    \left(x - \frac{1}{n}\right)^2 = x^2 - \frac{2x}{n} + \frac{1}{n^2} > x^2 - \frac{2x}{n}.
+  \]
+  As $x^2 - 2 > 0$, choose $n \in \N$ with $\frac{2x}{n} < x^2 - 2$. Then
+  $\left(x - \frac{1}{n}\right)^2 > 2$. For any $t \in S$ we get
+  $t^2 < 2 < \left(x - \frac{1}{n}\right)^2$, and $x - \frac{1}{n} \geq 0$
+  since $x \geq 1$; as $u \mapsto u^2$ is strictly increasing on
+  $[0, \infty)$, this gives $t < x - \frac{1}{n}$. So $x - \frac{1}{n}$ is
+  an upper bound for $S$ smaller than $\sup S$. Contradiction. So
+  $x^2 \leq 2$.
+
+  Hence $x^2 = 2$.
+\end{proof}
+
+\subsubsection*{Density of \texorpdfstring{$\Q$}{Q} and of the irrationals}
+Completeness is exactly what $\Q$ is missing. The rational version of the
+set above, $T = \{r \in \Q : r^2 < 2\}$, is nonempty ($0 \in T$) and bounded
+above in $\Q$ (every $r \in T$ has $r < 2$). In $\R$ it has a supremum
+$y = \sup T$, and the same two-case argument gives $y^2 = 2$, so
+$y = \sqrt{2}$. But $\sqrt{2} \notin \Q$, and $y$ was the only possible
+least upper bound, so $T$ has no supremum in $\Q$: $\Q$ is \emph{not}
+complete.
+\begin{own}
+  The last step needs the density of $\Q$ (Theorem~\ref{thm:q-dense} below).
+  A rational least upper bound $s$ of $T$ would also be an upper bound in
+  $\R$, so $s \geq \sqrt{2}$, and $s \neq \sqrt{2}$ since $\sqrt 2$ is
+  irrational. Density gives $r \in \Q$ with $\sqrt{2} < r < s$, and $r$ is
+  again an upper bound of $T$ (every $t \in T$ has $t < \sqrt{2}$), so $s$ was
+  not least.
+\end{own}
+
+Still, $\Q$ is spread densely through $\R$. Lay down the multiples
+$\frac{1}{n}, \frac{2}{n}, \frac{3}{n}, \ldots$ on the number line; if the
+step $\frac{1}{n}$ is shorter than the interval $(x, y)$, the multiples
+cannot jump over it, so one of them lands inside.
+
+\begin{nthm}[Density of $\Q$]\label{thm:q-dense}
+  If $x, y \in \R$ and $x < y$, there is $r \in \Q$ with $x < r < y$.
+\end{nthm}
+For $0 < x < y$ we want $xn < m < yn$. We take $m$ to be the first natural
+number past $xn$ (Corollary~\ref{cor:archimedes}(c)), so $m \leq xn + 1$, and
+this stays below $yn$ as soon as $\frac{1}{n} < y - x$.
+
+\begin{proof}
+  First let $0 < x < y$. By the Archimedean property there is $n \in \N$
+  with $\frac{1}{n} < y - x$, i.e.\ $xn + 1 < yn$. Since $xn > 0$,
+  Corollary~\ref{cor:archimedes}(c) gives $m \in \N$ with
+  $m - 1 \leq xn < m$, i.e.\ $xn < m \leq xn + 1$. Hence
+  \[
+    xn < m \leq xn + 1 < yn,
+  \]
+  and dividing by $n > 0$ gives $x < \frac{m}{n} < y$ with
+  $\frac{m}{n} \in \Q$.
+
+  If $x \leq 0$, choose $k \in \N$ with $-x < k$. Then $0 < x + k < y + k$,
+  so by the first case there is $q \in \Q$ with $x + k < q < y + k$, and
+  $r = q - k \in \Q$ satisfies $x < r < y$.
+\end{proof}
+
+\begin{cor}
+  If $x, y \in \R$ and $x < y$, there is an irrational $z$ with $x < z < y$.
+\end{cor}
+
+\begin{proof}
+  Let $a = x/\sqrt{2}$ and $b = y/\sqrt{2}$, so $a < b$. Choose a nonzero
+  rational $r$ with $a < r < b$: if $b \leq 0$ or $a \geq 0$, any rational
+  in $(a, b)$ given by Theorem~\ref{thm:q-dense} is nonzero; if $a < 0 < b$,
+  take $r \in \Q$ with $0 < r < b$. Let $z = \sqrt{2}\,r$, so $x < z < y$.
+  If $z$ were rational, so would be $\sqrt{2} = z/r$, contradicting
+  Theorem~\ref{thm:sqrt2-irrational}.
+\end{proof}
+
+\begin{cor}
+  If $x, y \in \R$ and $x < y$, there are infinitely many rationals between
+  $x$ and $y$.
+\end{cor}
+
+\begin{proof}
+  Choose $r_1 \in \Q$ with $x < r_1 < y$. Given $r_k \in (x, y) \cap \Q$,
+  apply Theorem~\ref{thm:q-dense} to $r_k < y$ to get $r_{k + 1} \in \Q$ with
+  $r_k < r_{k + 1} < y$. The $r_k$ are distinct rationals in $(x, y)$.
+\end{proof}
+
+\subsubsection*{Countable and uncountable sets}
+Are there more rational or irrational numbers? To answer this we need to
+say in what sense one set is ``bigger'' than another.
+
+\begin{defi}[Cardinality]
+  A function $f : A \to B$ is a \term{bijection} if it is injective
+  (one-to-one) and surjective (onto). The sets $A$ and $B$ have the same
+  \term{cardinality}, written $\abs{A} = \abs{B}$, if there is a bijection
+  $f : A \to B$.
+\end{defi}
+
+\begin{defi}
+  A set $S$ is \term{finite} if $S = \emptyset$ or there is a bijection
+  $\{1, 2, \ldots, n\} \to S$ for some $n \in \N$. It is \term{countably
+  infinite} if there is a bijection $\N \to S$.
+\end{defi}
+
+\begin{eg}\leavevmode
+  \begin{enumerate}[label=(\alph*)]
+    \item $f : \N \to \{2, 4, 6, \ldots\}$, $f(n) = 2n$, is a bijection, so
+      the even natural numbers have the same cardinality as $\N$.
+    \item $g : \N \to \Z$ given by $g(1) = 0$, $g(2k) = k$,
+      $g(2k + 1) = -k$ ($k \in \N$) is a bijection, so $\abs{\Z} = \abs{\N}$.
+  \end{enumerate}
+\end{eg}
+
+\begin{defi}
+  A set is \term{countable} if it is finite or countably infinite, and
+  \term{uncountable} otherwise.
+\end{defi}

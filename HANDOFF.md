@@ -1,285 +1,218 @@
-# Course Notes — Project Handoff and Note-Making Standard
+# Course Notes — Project Handoff
 
-Read this file first before creating or editing material anywhere in this
-repository. It is the project-level counterpart to a course handoff: it tells
-you what belongs where, what "finished notes" mean, and how to make a safe,
-reviewable change. A course-specific handoff (when present) takes precedence
-over this document for its own course.
+Read this file first before creating or editing anything in this repository.
+It says what belongs where, how to work safely, and how to verify a change.
+Then read:
 
-## Purpose and editorial promise
+1. **`STYLE.md`** — the writing standard, the device catalogue (Idea, Scratch
+   work, Trap, *In practice*, …), and the style profiles (`mixed`, `rudin`,
+   `zorich`, `abbott`, `tao`, `cambridge`, …).
+2. **The course's `handoff.md`**, if it has one — it takes precedence over
+   both project files for its own course.
 
-This is a personal archive of undergraduate course notes, designed to remain
-useful after the term rather than merely recording what was said in class.
-The desired voice is: *my own notes, written clearly enough that a future me
-can recover the ideas, not only the final answers.*
+## Purpose
 
-When polishing existing notes, preserve the source course's mathematical or
-technical content, order, notation, proof/programming strategy, and level.
-Improve the explanation; do not silently turn the notes into a different
-textbook. When writing new notes from class material, prefer a compact,
-self-contained account of the concepts and reasoning over a transcript.
+A personal archive of undergraduate course notes, built to stay useful after
+the term: *my own notes, written clearly enough that a future me can recover
+the ideas, not only the final answers.* When polishing, preserve the course's
+content, order, notation, strategy, and level and improve the explanation.
+When writing from new class material, write a compact, self-contained account
+of the ideas and reasoning, not a transcript.
 
 ## Repository map
 
 ```
-1a/
-  math135/                 Honor Algebra course notes
-    note.tex                document root (qhnotes `color` option only, no watermark)
-    chapters/cN.tex         chapter assembly files (c1-c5; c4 proof techniques, c5 sets)
-    chapters/uN/sN.tex      unit/lecture source files; `remark` environment in active use
-                            for proof-idea notes (see u2/u3/u4)
-    hw/                     homework sources and their build artifacts
+HANDOFF.md                  this file (operations)
+STYLE.md                    writing standard, devices, profiles
+CLAUDE.md                   pointer for Claude Code
+.kiro/skills/course-notes/  Kiro skill (routing only; defers to these files)
+1a/                         term directory (next term: 1b/, …)
+  math135/                  Algebra for Honours Mathematics — profile legacy
+    note.tex                root
+    chapters/cN.tex         c1–c5 (c4 proof techniques, c5 sets)
+    chapters/uN/sN.tex      lecture files (u1–u5)
+    hw/                     homework (profile homework)
   math147/
-    note-course/            Analysis course notes
-      note.tex              document root
-      handoff.md            detailed, course-specific editing handoff
-      chapters/...          chapter and lecture sources
-    hw/                     homework sources and artifacts; separate from notes
-  cs135/                    Discontinued Designing Functional Programming archive
-    note.tex                document root
-    chapters/...            chapter and lecture sources
-    hw/                     Racket homework/source work; separate from notes
-  emls102/week1/            course documents (currently a Word exercise)
+    note-course/            Intro to Analysis — profile mixed (reference course)
+      note.tex, handoff.md, style-migration.md, chapters/
+    note-zorich-style/      alternative rendering in profile zorich (experiment)
+    note-cambridge-style/   alternative rendering in profile cambridge
+    hw/                     homework (profile homework)
+  cs135/                    discontinued archive — do not extend or copy
+  ENGL119/                  syllabus documents (profile writing)
 ```
 
-`note.tex` is always the compilation root for a LaTeX note set. `chapters/cN.tex`
-controls a chapter's inclusion order; `chapters/uN/sN.tex` is normally the
-smallest independently editable lecture unit. Do not put homework solutions,
-scratch work, build files, or copied source slides into a note chapter.
+`note.tex` is always the compilation root of a note set; `chapters/cN.tex`
+fixes chapter order; `chapters/uN/sN.tex` is the smallest normal editing
+unit. Homework, rough drafts, build files, and copied slides never go into a
+note chapter.
 
 ### Current course facts
 
-| Course | Scope / source root | Build command | Important local rule |
+| Course | Root | Profile | Local rules |
 | --- | --- | --- | --- |
-| MATH 135 | `1a/math135/note.tex` | `latexmk -pdf -interaction=nonstopmode note.tex` | Narrow, two-sided page layout; theorem/proof environments are styled boxes; `remark` (optional `[Proof idea]` title) is available and used for proof-idea notes and substitution/instantiation justifications. |
-| MATH 147 | `1a/math147/note-course/note.tex` | `latexmk -pdf -interaction=nonstopmode note.tex` | Read `note-course/handoff.md` first. All chapters currently build. |
-| CS 135 | `1a/cs135/` | — | Discontinued archive. Do not extend, polish, or use as a template unless explicitly asked. |
+| MATH 135 | `1a/math135/note.tex` | `legacy` | 10pt, twoside, `color`; QED is an italic "Q.E.D."; `remark[Proof idea]` before hard proofs; no index. No course handoff yet. |
+| MATH 147 | `1a/math147/note-course/note.tex` | **`mixed`** | Read `note-course/handoff.md` first. 11pt, twoside, `color`; local `idea` / `scratch` environments. |
+| CS 135 | `1a/cs135/note.tex` | — | Discontinued. Touch only if explicitly asked. |
+| ENGL 119 | `1a/ENGL119/` | `writing` | Syllabus only so far. |
 
-Run each command from the relevant course directory. Do not assume that a
-successful partial build proves that disabled chapters are healthy.
+Build (from the course directory):
+`latexmk -pdf -interaction=nonstopmode note.tex`.
 
-## Non-negotiable standards for every note
+## Shared LaTeX packages
 
-### 1. Teach the idea, then record the result
+`qhnotes` (notes) and `qhhomework` (homework), both on top of `qhbase`, own
+the shared preamble: fonts (Times/newtx by default since 2026-09-25), the
+160×240 mm page, theorem boxes, colours, headers, index. They live in the
+separate `references` repository (`~/references/template/sty`, GitHub
+`QinghaoHuWaterloo/references`); `~/Library/texmf/tex/latex/qhtemplates` is a
+symlink to that directory, and its option list is in
+`~/references/template/README.md`. Package changes are committed there, not
+here, and are never part of an ordinary note edit: they reflow every
+document, so after one rebuild every `qhnotes` document cleanly and recheck
+page splitting.
 
-Every substantial topic should let a returning reader answer these questions:
+Document roots define their own shortcuts (`\R \N \Z \Q \C`, `\paren{}`,
+`\abs{}`, `\norm{}`, `\bracks{}`, `\set{}`, `\ds`, `\blue`, `\red`,
+`\mypic`); reuse them, do not add variants.
 
-1. What problem or distinction is this concept for?
-2. What is the exact definition, rule, or interface?
-3. How is it used in a representative example?
-4. What reasoning links the assumptions to the conclusion?
-5. What common confusion, limitation, or boundary matters?
+## Working rules for agents
 
-The answer need not be five paragraphs. A definition plus one well-chosen
-sentence, example, or proof-idea note is often enough. Expand conceptual
-jumps, not routine algebra or obvious syntax.
+- **Read little, precisely.** This file, `STYLE.md`, the course handoff,
+  the target file, and only the context needed to resolve a concrete macro,
+  label, or dependency. Do not preload other courses.
+- **One file at a time.** One lecture file per edit keeps diffs reviewable.
+- **Classify the risk before editing.**
+  - *Low* — spelling, punctuation, spacing, a known formatting fix.
+  - *Medium* — prose, structure, applying devices; technical meaning fixed.
+  - *High* — definitions, statements, hypotheses, proof logic, formulas,
+    labels, anything cross-file. Verify against the diff line by line.
+- **Never** delete or rewrite existing uncommitted work (the user's or
+  anyone else's), run
+  destructive Git commands to "clean" the tree, rewrite history, or commit
+  unless asked. Check `git status --short` first.
+- **Summaries are not evidence.** Confirm a sub-agent's (or your own)
+  claimed result in the diff and the build log.
+- **Keep handoffs true.** When a layout, build command, profile, scope, or
+  known pitfall changes, update the relevant handoff in the same change.
 
-### 2. Preserve the course's reasoning
-
-For an existing proof, derivation, program, or design recipe:
-
-- retain its main method and order of steps when it is valid;
-- state the construction's purpose before a non-obvious choice;
-- make critical implication chains explicit;
-- use labels such as `\textbf{Step 1: ...}` only when they reveal real
-  structure;
-- correct errors rather than preserving them, but do not replace an elementary
-  course method with more advanced machinery just because it is shorter.
-
-If a correction changes meaning, a theorem statement, a proof strategy, a
-program's output, or notation used elsewhere, treat it as a content change:
-check the surrounding lecture and record the reason in the commit/hand-off.
-
-### 3. Use examples as tests of understanding
-
-An example must do explanatory work. It should instantiate a definition,
-demonstrate a method, distinguish nearby concepts, or expose an edge case.
-Do not add examples merely to make a page look fuller. Keep examples close to
-the idea they support, and explain the decisive step rather than presenting a
-bare answer.
-
-### 4. Make limits and scope visible
-
-State hypotheses, domains, type restrictions, quantifier order, and
-preconditions where they matter. For code, distinguish source text,
-evaluation, value, and error. For mathematics, distinguish definitions from
-theorems, examples from proofs, and an implication from its converse.
-
-### 5. Prefer durable notation and terminology
-
-Use the notation established by the course root and keep it consistent inside
-a note set. Define nonstandard symbols at first useful use. Prefer standard
-mathematical and technical English over informal shorthand, but retain useful
-course vocabulary. Never bulk-normalize notation across courses without an
-explicit request: each document may intentionally differ.
-
-### 6. Keep the document skimmable
-
-Use prose for explanation, displays for meaningful equations or traces, and
-lists only for genuine collections of cases or requirements. Give sections
-descriptive titles. Keep paragraphs focused. A long proof or program walk
-through may be divided into logical stages; a short one should remain short.
-
-### 7. Preserve provenance without copying noise
-
-Notes may reflect lectures, textbooks, assignments, and personal insights,
-but should be rewritten into a coherent personal explanation. Do not paste
-large blocks from a source. If an external source, convention, or attribution
-materially matters, cite or name it briefly in the notes. Do not put private
-course-platform content or credentials in the repository.
-
-## Subject-specific additions
-
-### Mathematics notes
-
-- Put formal statements in the existing `definition`, `theorem`, `lemma`,
-  `proposition`, `corollary`, `axiom`, `assumption`, `notation`, or `example`
-  environment that best describes them. Do not invent a new visual system.
-- A proof should make the plan and every nontrivial inference recoverable.
-  Add a short `remark` with an optional title such as `Proof idea` before a
-  difficult proof when that helps.
-- Explain the purpose of constructed sets, substitutions, induction
-  hypotheses, contradictions, and extremal choices. Name exactly which
-  theorem, axiom, definition, or closure property licenses a key step.
-- Distinguish nearby terms carefully: e.g., upper bound/supremum/maximum and
-  existential/universal quantifiers. Do not use an example as proof of a
-  universal statement.
-- Use `align*` for multi-step equalities or inequalities when alignment helps;
-  use inline mathematics for short expressions. Avoid ornamental displays.
-
-### Writing and non-LaTeX course material
-
-Keep course documents in the relevant course/week directory, using a clear,
-descriptive filename. Preserve the instructor's requested format. When
-editing `.docx` material, render and visually inspect it before calling it
-finished; do not rely only on the document XML or a text extraction.
-
-## LaTeX and visual-system rules
-
-The installed `qhnotes` and `qhhomework` packages own the active courses'
-shared preamble, theorem styles, geometry, and common build behaviour. Each
-document root selects its package options, course metadata, and its own local
-shortcuts. The packages live in the separate `references` repository
-(`~/references/template/sty`, GitHub `QinghaoHuWaterloo/references`);
-`~/Library/texmf/tex/latex/qhtemplates` is a symlink to that directory. Commit
-package changes there, not in this repository.
-Since 2026-09-25 the `qhnotes` default face is Times with matching math
-(newtx); the `latinmodern` option restores Latin Modern, and `springer` is
-kept only for compatibility. A font change moves page breaks, so rebuild every
-`qhnotes` document cleanly afterwards and check for mdframed split loops.
-Reuse this setup. Do not copy package internals into a document,
-add packages, change geometry, or redesign theorem boxes as part of ordinary
-note editing. Such a change affects the entire document and needs a deliberate
-separate review.
-
-Within an existing note set:
-
-- retain the file's current `%!TEX root` convention if it has one;
-- preserve `\include` / `\input` structure and cross-references;
-- use the document's existing local shortcuts (for example `\R`, `\N`,
-  `\Q`, `\paren{}`, `\abs{}`) rather than adding near-duplicates;
-- prefer the existing theorem and remark environments over ad-hoc boxes;
-- keep equations, tables, figures, and code within the page width;
-- add a caption when a figure needs explanation, and use descriptive labels
-  for references when the local document already uses labels.
-
-Narrow layouts and `mdframed` boxes need special care. Avoid placing long
-unbreakable constructions (especially `\fbox{\parbox{...}}`) in a centered
-environment. If a boxed proof or theorem develops page-splitting warnings,
-move nonessential commentary into a nearby `remark` or apply the documented
-course-local workaround, then reset any local setting immediately.
-
-## Standard workflow
+## Workflow
 
 ### Editing one existing lecture
 
-1. Read this handoff, then the target course's handoff if it has one.
-2. Read the target source file and the smallest necessary surrounding context
-   (chapter assembler, referenced definition, or root only when needed).
-3. Identify the original argument or teaching objective before drafting.
-4. Make a focused edit to one lecture/file when practical. Keep diffs small
-   enough to review.
-5. Compile the document root using the course's command. Use a clean rebuild
-   when layout-sensitive material changed or when a prior build looks stale:
-   `latexmk -C note.tex && latexmk ...`.
-6. Inspect the log for errors and newly introduced layout warnings. A useful
-   baseline check is `rg -n -i 'overfull|underfull|warning|error|^!' note.log`.
-   Investigate errors and material overfull/splitting warnings; do not hide
-   them by deleting content blindly.
-7. Review `git diff -- path/to/edited-file`. For mathematical or code changes,
-   manually confirm that every important original statement, condition, and
-   step remains or has a deliberate documented correction.
-8. State what changed and what verification passed. Update the course handoff
-   if its layout, build command, scope, or known pitfalls have changed.
+1. Read the files listed under "Working rules".
+2. Identify the original argument or teaching objective before drafting.
+3. Edit that one file according to the course's profile in `STYLE.md`.
+4. Build and verify (below).
+5. Review `git diff -- <file>`: every original statement, condition, and key
+   step is present or deliberately corrected.
+6. Report what changed, which checks passed, and anything unresolved
+   (including new `% TODO(check)` markers).
+
+### Writing new lecture notes from class material
+
+1. Put the source (slides, photos) *outside* `chapters/` — e.g.
+   `lecture-ppt/` — or leave it where the user keeps it.
+2. Create `chapters/uN/sN.tex` with the root line and a `% Source:` comment,
+   add it to `chapters/cN.tex`.
+3. Write in the course's profile (`STYLE.md` §3). Mark anything unreadable
+   with `% TODO(check)`.
+4. Build, inspect the rendered pages, update the course handoff's status.
+
+### Rendering a course in another style (`rudin`, `zorich`, …)
+
+1. Create `<course>/note-<style>-style/` next to the primary notes (e.g.
+   `math147/note-course/` → `math147/note-zorich-style/`; for a course whose
+   `note.tex` sits directly in the course directory, the new directory goes
+   in that course directory too). Copy the root's class options and
+   shortcuts, then add only what the style's section in `STYLE.md` §3
+   prescribes (heading format, `numberwithin`); a `cambridge` rendering
+   starts from its own template instead.
+2. Rewrite lecture by lecture from the primary `chapters/`; the originals
+   are read-only for this task.
+3. Keep a `README.md`: model book, source map, style rules used, and
+   *Content changes beyond wording* (see `note-zorich-style/README.md`).
+4. Build and inspect as usual. The rendering is not the course's primary
+   notes unless the user says so; then update the course handoff.
 
 ### Creating a new course note set
 
-1. Create a course directory under the term (for example `1b/math237/`) with
-   a `note.tex` root, `chapters/`, and, when applicable, a separate `hw/`.
-2. Start from the project's established visual conventions only when they fit
-   the course; otherwise make the difference intentional and document it. Do
-   not use discontinued courses as templates.
-3. Create `chapters/c1.tex` and use `chapters/uN/sN.tex` for lecture-scale
-   content. Keep the root as the only compilation entry point.
-4. Add a local `handoff.md` before the course grows. Record the layout, build
-   command, active `\includeonly`, macro/environment facts, known pitfalls,
-   editing scope, and current status.
-5. Add one representative lecture, compile it, and inspect its rendered PDF
-   before multiplying the structure.
+1. `<term>/<course>/` with `note.tex`, `chapters/`, and `hw/` if needed.
+2. Start the root from `~/references/template/note-color/template.tex`
+   (or `note/` for plain amsthm styling; `cambridge/template.tex` for the
+   `cambridge` profile). Never from CS 135.
+3. Pick a profile from `STYLE.md` §3; if it is `mixed`, copy the `idea` /
+   `scratch` definitions from MATH 147's `note.tex`.
+4. Write `handoff.md` from the template below before the course grows.
+5. Write one representative lecture, build it, inspect the PDF, then scale.
 
-### Minimum course-handoff template
+## Verification
 
-```md
-# COURSE CODE Notes — Editing Handoff
-
-Read this before editing the course notes.
-
-## Purpose and scope
-- Course/topic:
-- Intended reader/use:
-- What to preserve when editing:
-- Explicitly out of scope:
-
-## Layout and build
-- Root file: `note.tex`
-- Chapter/lecture convention:
-- Build command:
-- Active `\includeonly` (or “none”):
-
-## Local writing and LaTeX rules
-- Existing macros/environments to reuse:
-- Course-specific notation/style decisions:
-- Code/listing/figure rules, if applicable:
-- Known layout or compilation pitfalls:
-
-## Workflow and verification
-- Smallest normal editing unit:
-- Required checks:
-- How to review content-sensitive changes:
-
-## Status (YYYY-MM-DD)
-- Completed material:
-- Current priority / next file:
-- Known warnings or intentional exceptions:
+```sh
+latexmk -C note.tex && latexmk -pdf -interaction=nonstopmode note.tex
+grep -nE 'Output written|^!' note.log
+grep -ciE 'overfull' note.log
+grep -niE 'splittet|overfull \\vbox' note.log
 ```
+
+A clean rebuild is required after layout-sensitive edits, font or size
+changes, or whenever a build looks stale; an incremental build can hide a
+page-count shift that exposes a split bug. Compare warnings against the
+course handoff's recorded baseline: investigate every new error, overfull
+box, or split warning (fixes: `STYLE.md` §6). Do not hide warnings by
+deleting content.
+
+A text-only edit to a `.md` file needs no build.
 
 ## Repository hygiene
 
-Generated LaTeX artifacts are covered by `.gitignore`; do not add `.aux`,
-`.log`, `.out`, `.toc`, `.synctex.gz`, `_minted*`, or similar build output.
-Committed PDFs are acceptable when they are intentional course-note output;
-regenerate them only after their source compiles successfully. Keep unrelated
-homework build artifacts out of note changes.
-
-Before a multi-file cleanup or structural change, check `git status --short`.
-The repository can contain someone else's in-progress work. Preserve unrelated
-changes, never use destructive Git commands to "clean" the tree, and do not
-rewrite history for an ordinary note edit.
+- Build artifacts (`.aux`, `.log`, `.out`, `.toc`, `.synctex.gz`,
+  `_minted*`, …) are ignored and never committed.
+- Committed PDFs are intentional output: regenerate only from a source that
+  builds cleanly, and commit a PDF together with its source change.
+- Keep homework build files out of note changes.
+- Commit messages: `<course>: <what changed>` (e.g.
+  `math147: add In practice to u3/s1`); mention content changes explicitly.
 
 ## Definition of done
 
-A note change is done when it is faithful to the course material, clearer at
-the point a future reader would otherwise get stuck, visually consistent with
-its course, free of introduced build/layout problems, and represented by a
-small diff whose content was actually reviewed. The handoff is part of the
-notes: keep it current whenever its operational facts stop being true.
+Faithful to the course; clearer where a future reader would get stuck;
+consistent with the course's profile and visual system; no new build or
+layout problems; a small diff whose content was actually reviewed; handoffs
+still true.
+
+## Course-handoff template
+
+```md
+# COURSE Notes — Editing Handoff
+
+Profile: `mixed` | `rudin` | `zorich` | `abbott` | `tao` | `cambridge` | `legacy` |
+`computation` | `programming` | `writing`
+(see `STYLE.md` at the repository root). Deviations from the profile are
+listed below.
+
+## Scope
+- Course / topic / source (lecturer, textbook):
+- What to preserve when editing:
+- Out of scope:
+
+## Layout and build
+- Root and document class options:
+- Chapter/lecture files:
+- Active `\includeonly` (or none):
+- Build baseline (pages, overfull count, known split warnings):
+
+## Local rules
+- Local environments/macros beyond the shared ones:
+- Notation decisions:
+- Profile deviations:
+- Course-specific pitfalls:
+
+## Content notes
+- Topics that need special care, and the arguments that must be kept:
+
+## Status (YYYY-MM-DD)
+- Done:
+- Next:
+- Known gaps / intentional exceptions:
+```

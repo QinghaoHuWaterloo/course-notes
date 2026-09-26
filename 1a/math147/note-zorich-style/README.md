@@ -22,6 +22,9 @@ Compile: `latexmk -pdf -interaction=nonstopmode note.tex`
 
 ## Style rules used
 
+These rules are now the `zorich` profile in `../../../STYLE.md` §3.5; the
+list below is what this experiment actually applied.
+
 1. **Structure**: chapter → numbered section (1.3) → lettered subsection (a., b., …),
    as in Zorich. Each chapter and section opens with one or two sentences
    saying what it is for.

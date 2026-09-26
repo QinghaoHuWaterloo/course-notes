@@ -1,0 +1,89 @@
+%!TEX root = ../../note.tex
+% Source: ../note-course/chapters/u2/s4.tex
+\subsection{Suprema and infima}
+Bounds make sense in any ordered set. What is special about $\R$ is that
+every nonempty set that is bounded above has a supremum in $\R$; this need
+not hold in $\Q$.
+
+\begin{defi}[Bounded sets]
+  Let $S$ be a nonempty subset of $\R$. Then $S$ is
+  \begin{enumerate}
+    \item \term{bounded above} if there is $u \in \R$ (an \term{upper bound})
+      with $x \leq u$ for all $x \in S$;
+    \item \term{bounded below} if there is $w \in \R$ (a \term{lower bound})
+      with $w \leq x$ for all $x \in S$;
+    \item \term{bounded} if it is bounded above and below, and
+      \term{unbounded} otherwise.
+  \end{enumerate}
+\end{defi}
+
+\begin{defi}[Supremum and infimum]
+  An upper bound $u_0$ of $S$ such that $u_0 \leq u$ for every upper bound
+  $u$ of $S$ is the \term{supremum} (or \emph{least upper bound}) of $S$,
+  written $u_0 = \sup S$.
+
+  A lower bound $w_0$ of $S$ such that $w_0 \geq w$ for every lower bound $w$
+  of $S$ is the \term{infimum} (or \emph{greatest lower bound}) of $S$,
+  written $w_0 = \inf S$.
+\end{defi}
+
+The notation is justified because a set has at most one supremum: if $u_1$
+and $u_2$ are both suprema of $S$, then $u_1 \leq u_2$, since $u_1$ is least
+and $u_2$ is an upper bound, and symmetrically $u_2 \leq u_1$. The same
+argument with the inequalities reversed shows that the infimum is unique.
+
+\subsubsection*{The \texorpdfstring{$\epsilon$}{epsilon}-characterization of the supremum}
+An upper bound $u$ fails to be the \emph{least} one exactly when some smaller
+number is still an upper bound, i.e.\ when there is a gap between $S$ and
+$u$. So $u$ is the supremum precisely when there is no gap: however small a
+margin $\epsilon > 0$ we allow, $S$ has a point within $\epsilon$ of $u$.
+
+\begin{nlemma}[$\epsilon$-characterization of the supremum]\label{lem:eps-sup}
+  An upper bound $u$ of a nonempty set $S \subseteq \R$ is the supremum of
+  $S$ if and only if for every $\epsilon > 0$ there is $x_\epsilon \in S$
+  with $u - \epsilon < x_\epsilon$.
+\end{nlemma}
+
+\begin{proof}
+  ($\Rightarrow$) Let $u = \sup S$ and $\epsilon > 0$. Since
+  $u - \epsilon < u$ and $u$ is the \emph{least} upper bound, $u - \epsilon$
+  is not an upper bound. So some $x_\epsilon \in S$ satisfies
+  $u - \epsilon < x_\epsilon \leq u$.
+
+  ($\Leftarrow$) Suppose $u$ is not least, so there is an upper bound
+  $w < u$. Take $\epsilon = u - w > 0$. Then some $x_\epsilon \in S$
+  satisfies $w = u - \epsilon < x_\epsilon$, so $w$ is not an upper bound
+  after all.
+\end{proof}
+
+So to show $u = \sup S$, one checks that $u$ is an upper bound of $S$, and
+that for every $\epsilon > 0$ there is $x \in S$ with $u - \epsilon < x \leq u$.
+For $\inf S$, reverse the inequalities: a lower bound $w$ such that every
+$\epsilon > 0$ has some $x \in S$ with $w \leq x < w + \epsilon$.
+
+\begin{eg}
+  Let $S = \{x \in \R : 0 \leq x < 1\}$. Then $\sup S = 1$ and $\inf S = 0$.
+
+  \emph{$\sup S = 1$}: every $x \in S$ has $x < 1$, so $1$ is an upper bound.
+  Since $S$ is nonempty and bounded above, $u = \sup S$ exists by
+  completeness, and $u \leq 1$. Suppose $u < 1$, and let
+  $\epsilon = \frac{1 - u}{2} > 0$. Then
+  \[
+    u < u + \epsilon = \frac{u + 1}{2} < 1,
+  \]
+  and $u + \epsilon \geq 0$ since $u \geq 0$ (as $0 \in S$). So
+  $u + \epsilon \in S$ exceeds the upper bound $u$, a contradiction. Hence
+  $u = 1$.
+
+  \emph{$\inf S = 0$}: every $x \in S$ has $x \geq 0$, so $0$ is a lower
+  bound, and $w = \inf S \geq 0$. Every lower bound satisfies $w \leq 0$
+  because $0 \in S$. Hence $w = 0$.
+\end{eg}
+
+\begin{warning}
+  $\sup S$ need not belong to $S$. Above, $\sup S = 1 \notin S$, so $S$ has
+  no maximum; $\inf S = 0 \in S$, so $0$ is also the minimum. A supremum is a
+  maximum only when it belongs to the set. Note also that ``bounded above'',
+  ``bounded'' and so on are properties of the \emph{set} $S$, whereas
+  $\sup S$ and $\inf S$ (when they exist) are \emph{real numbers}.
+\end{warning}

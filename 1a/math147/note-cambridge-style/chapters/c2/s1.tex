@@ -1,0 +1,191 @@
+%!TEX root = ../../note.tex
+% Source: ../note-course/chapters/u3/s1.tex
+\subsection{Convergent sequences}
+\begin{defi}[Sequence]
+  A \term{sequence} of real numbers is a function $X : \N \to \R$. We write
+  $x_n = X(n)$ for its $n$th term and $\{x_n\}_{n=1}^{\infty}$, or simply
+  $\{x_n\}$, for the sequence.
+\end{defi}
+
+\begin{defi}[Convergence]
+  A sequence $\{x_n\}$ \term{converges} to $a \in \R$ if for every
+  $\epsilon > 0$ there is $n_\epsilon \in \N$ such that
+  \[
+    n \geq n_\epsilon \implies \abs{x_n - a} < \epsilon.
+  \]
+  We then write $\lim_{n \to \infty} x_n = a$, or $x_n \to a$, and call $a$
+  the \term{limit} of the sequence.
+\end{defi}
+In symbols,
+\[
+  x_n \to a \iff \forall \epsilon > 0\ \ \exists n_\epsilon \in \N\ \ \forall n \geq n_\epsilon,\ \ \abs{x_n - a} < \epsilon.
+\]
+Intuitively, for every tolerance $\epsilon > 0$, all sufficiently late terms
+lie in $(a - \epsilon, a + \epsilon)$. The index $n_\epsilon$ may depend on
+$\epsilon$, and once $n \geq n_\epsilon$ the inequality must hold for
+\emph{every} later term, even if earlier terms lie outside the interval. For
+$x_n = 1/n$ and $\epsilon = 0.3$, every term from $n_\epsilon = 4$ on lies in
+the shaded band around $a = 0$:
+\begin{center}
+  \begin{tikzpicture}[x=0.55cm, y=2.4cm, >=Stealth]
+    \fill[red!8] (0, 0) rectangle (11, 0.3);
+    \draw[densely dashed, red!75!black] (0, 0.3) -- (11, 0.3) node [right] {$a + \epsilon$};
+    \draw[->] (0, 0) -- (11.5, 0) node [right] {$n$};
+    \draw[->] (0, 0) -- (0, 1.15) node [above] {$x_n$};
+    \node [left] at (0, 0) {$a = 0$};
+    \draw[densely dashed, blue!70!black] (4, 0) -- (4, 0.95);
+    \node [below] at (4, 0) {$n_\epsilon = 4$};
+    \foreach \n in {1, ..., 10} {
+      \fill[teal!70!black] (\n, {1/\n}) circle (1.7pt);
+    }
+    \node [teal!70!black, anchor=west] at (1.3, 0.85) {$x_n = 1/n$};
+  \end{tikzpicture}
+\end{center}
+
+\begin{defi}[$\epsilon$-neighbourhood]
+  For $a \in \R$ and $\epsilon > 0$, the \term{$\epsilon$-neighbourhood} of
+  $a$ is
+  \[
+    V_\epsilon(a) = \{x \in \R : \abs{x - a} < \epsilon\} = (a - \epsilon, a + \epsilon).
+  \]
+\end{defi}
+So $x_n \to a$ precisely when for every $\epsilon > 0$ there is $n_\epsilon$
+with $x_n \in V_\epsilon(a)$ for all $n \geq n_\epsilon$.
+
+\begin{eg}
+  $\lim_{n \to \infty} \frac{1}{n} = 0$. Given $\epsilon > 0$, the
+  Archimedean property gives $n_\epsilon \in \N$ with
+  $1/n_\epsilon < \epsilon$, and then for every $n \geq n_\epsilon$,
+  \[
+    \abs{\frac{1}{n} - 0} = \frac{1}{n} \leq \frac{1}{n_\epsilon} < \epsilon.
+  \]
+\end{eg}
+
+\begin{eg}
+  $\lim_{n \to \infty} \frac{4n + 3}{n + 1} = 4$. The idea is to simplify
+  the distance first:
+  $\abs{\frac{4n + 3}{n + 1} - 4} = \frac{1}{n + 1} < \frac{1}{n}$, so it is
+  enough that $\frac{1}{n} < \epsilon$. Given $\epsilon > 0$, choose
+  $n_\epsilon \in \N$ with $1/n_\epsilon < \epsilon$; then for every
+  $n \geq n_\epsilon$,
+  \[
+    \abs{\frac{4n + 3}{n + 1} - 4} = \frac{1}{n + 1} \leq \frac{1}{n} \leq \frac{1}{n_\epsilon} < \epsilon.
+  \]
+\end{eg}
+
+\subsubsection*{Uniqueness of the limit}
+\begin{nprop}\label{prop:arbitrarily-close}
+  If $x, y \in \R$ and $\abs{x - y} < \epsilon$ for every $\epsilon > 0$,
+  then $x = y$.
+\end{nprop}
+
+\begin{proof}
+  If $x \neq y$, then $\epsilon = \abs{x - y}/2 > 0$ but
+  $\abs{x - y} > \epsilon$.
+\end{proof}
+
+\begin{nthm}\label{thm:limit-unique}
+  A sequence in $\R$ has at most one limit.
+\end{nthm}
+The idea is to pass from $a$ to $b$ through a late term $x_n$, making each
+of the two distances less than $\epsilon/2$.
+
+\begin{proof}
+  Suppose $x_n \to a$ and $x_n \to b$, and let $\epsilon > 0$. Choose
+  $n_1, n_2 \in \N$ with $\abs{x_n - a} < \epsilon/2$ for $n \geq n_1$ and
+  $\abs{x_n - b} < \epsilon/2$ for $n \geq n_2$. For
+  $n \geq \max\{n_1, n_2\}$, the triangle inequality gives
+  \[
+    \abs{a - b} \leq \abs{a - x_n} + \abs{x_n - b} < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon.
+  \]
+  As $\epsilon > 0$ was arbitrary, $a = b$ by
+  Proposition~\ref{prop:arbitrarily-close}.
+\end{proof}
+
+\subsubsection*{Divergence and boundedness}
+\begin{defi}
+  A sequence \term{diverges} if it does not converge to any real number.
+\end{defi}
+
+\begin{eg}
+  The sequence $0, 1, 0, 1, \ldots$ ($x_n = 0$ for odd $n$, $x_n = 1$ for
+  even $n$) diverges: both $0$ and $1$ keep appearing arbitrarily late, so the
+  terms cannot all stay close to one limit. Indeed, suppose $x_n \to a$ and
+  take $\epsilon = 1/2$. Choose an odd and an even index beyond $n_\epsilon$.
+  The odd term gives $\abs{a} < 1/2$, i.e.\ $-1/2 < a < 1/2$, and the even
+  term gives $\abs{1 - a} < 1/2$, i.e.\ $1/2 < a < 3/2$. These intervals do
+  not overlap.
+\end{eg}
+
+\begin{defi}
+  A sequence $\{x_n\}$ is \term{bounded} if there is $M \in \R$ with
+  $\abs{x_n} \leq M$ for all $n \in \N$.
+\end{defi}
+
+\begin{nthm}\label{thm:convergent-bounded}
+  Every convergent sequence of real numbers is bounded.
+\end{nthm}
+The idea is that the tail stays within $1$ of the limit, and only finitely
+many terms come before it.
+
+\begin{proof}
+  Suppose $x_n \to a$. With $\epsilon = 1$, choose $n_1$ such that
+  $\abs{x_n - a} < 1$ for all $n \geq n_1$. For these $n$,
+  $\abs{x_n} \leq \abs{x_n - a} + \abs{a} < 1 + \abs{a}$. The remaining
+  terms form a finite set, so
+  \[
+    M = \max\{\abs{x_1}, \ldots, \abs{x_{n_1 - 1}}, 1 + \abs{a}\}
+  \]
+  bounds every term (if $n_1 = 1$, take $M = 1 + \abs{a}$).
+\end{proof}
+The converse fails: $0, 1, 0, 1, \ldots$ is bounded but diverges.
+
+\begin{eg}
+  The following sequences are unbounded: for every $M > 0$ some term has
+  absolute value greater than $M$.
+  \begin{enumerate}
+    \item $a_n = \frac{n^2 + 1}{n}$: here $\abs{a_n} = n + \frac{1}{n}$, and
+      choosing $n_M \in \N$ with $n_M > M$ gives $\abs{a_{n_M}} > M$.
+    \item $a_n = (-1)^n n$: here $\abs{a_n} = \abs{(-1)^n}\abs{n} = n$, which
+      exceeds $M$ as soon as $n > M$.
+  \end{enumerate}
+  \begin{own}
+    By Theorem~\ref{thm:convergent-bounded}, neither sequence converges.
+  \end{own}
+\end{eg}
+
+\subsubsection*{Divergence to \texorpdfstring{$\pm\infty$}{plus or minus infinity}}
+\begin{defi}
+  A sequence $\{x_n\}$ \term{diverges to $+\infty$}, written
+  $\lim_{n \to \infty} x_n = +\infty$, if for every $M > 0$ there is
+  $n_M \in \N$ such that $x_n > M$ for all $n \geq n_M$. It
+  \emph{diverges to $-\infty$}, written $\lim_{n \to \infty} x_n = -\infty$,
+  if for every $M > 0$ there is $n_M \in \N$ such that $x_n < -M$ for all
+  $n \geq n_M$.
+\end{defi}
+
+\begin{warning}
+  Although we write $\lim_{n \to \infty} x_n = \pm\infty$, such a sequence
+  is still divergent: it does not converge to any real number.
+\end{warning}
+
+\begin{eg}\leavevmode
+  \begin{enumerate}
+    \item $\lim_{n \to \infty} \frac{n^2}{1 - n} = -\infty$.
+    \item $\lim_{n \to \infty} \bigl(\sqrt{n} + 1\bigr) = +\infty$.
+  \end{enumerate}
+  The proofs were not completed in lecture. For (ii), the suggested approach
+  was to choose $n$ so large that $\sqrt{n} > M - 1$.
+  % TODO(check): complete both proofs once the next lecture covers them.
+\end{eg}
+
+\begin{thm}
+  Suppose $\lim_{n \to \infty} x_n = a$ and $\lim_{n \to \infty} y_n = b$.
+  Then for every $c \in \R$:
+  \begin{enumerate}
+    \item the constant sequence $c, c, c, \ldots$ converges to $c$;
+    \item $\lim_{n \to \infty} c x_n = ca$.
+  \end{enumerate}
+\end{thm}
+% TODO(check): the lecture stated this without proof so far; the hypothesis
+% on y_n is not used by (i) or (ii) -- presumably later parts involve it.

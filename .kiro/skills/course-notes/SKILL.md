@@ -7,6 +7,13 @@ description: Organize course LaTeX notes with minimal context and cost-aware Hai
 
 Organize the LaTeX course notes requested in `$ARGUMENTS`. If the course, target, or desired change is unclear, ask one short question instead of scanning the repository.
 
+## Standard
+
+Before editing, read `HANDOFF.md` (operations), `STYLE.md` (writing standard,
+devices, style profiles), and the target course's `handoff.md` if present.
+Apply the profile the course handoff names. This skill only adds routing and
+validation rules on top of those files.
+
 ## Guardrails
 
 - Each course directory may have its own `note.tex` entry and file layout. Detect the target course first, then follow only the relevant `\input` and `\include` chain.
