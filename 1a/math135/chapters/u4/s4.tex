@@ -1,0 +1,94 @@
+\subsection{If and Only If Proof}
+\subsubsection*{Recall}
+If and only if statement: 
+\begin{equation*}
+    A \iff B \equiv \paren{A \implies B} \wedge \paren{B \implies A}
+\end{equation*}
+\begin{example}
+    Prove that for all $x, y \in \R$ with $x, y \geq 0$ that $\frac{x + y}{x} = \sqrt{xy}$ if and only if $x = y$. 
+\end{example}
+\begin{proof}
+    Let $x, y$ be arbitrary in $\R$ and non-negative. 
+
+    Prove (\Leftarrow) first. Assume $x = y$. 
+
+    Then, 
+    \begin{equation*}
+        \frac{x + y}{2} = \frac{y + y}{2} = \frac{2y}{2} = y
+    \end{equation*}
+
+    and 
+    \begin{equation*}
+        \sqrt{xy } = \sqrt{yy} = \sqrt{y^2} = \abs{y} = y. 
+    \end{equation*}
+
+    since $y$ is non-negative. 
+
+    $(\Rightarrow)$ Assume $\frac{x + y }{2 } = \sqrt{xy}$. 
+
+    Then 
+    \begin{equation*}
+        x + y = 2\sqrt{xy} \implies 2x^2. + 2xy + y^2 = 4xy \implies x^2 - 2xy + y^2 = 0. 
+    \end{equation*}
+
+    This implies 
+    \begin{equation*}
+        \paren{x - y }^2 = 0. 
+    \end{equation*}
+
+    Therefore, 
+    \begin{equation*}
+        x - y = 0 \implies x = y. 
+    \end{equation*}
+\end{proof}
+
+\subsection{Sigma \& Product Notation}
+\begin{example}
+    We have 
+    \begin{equation*}
+        1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10 
+    \end{equation*}
+
+    It is not too hard to write 10 numbers in a sum. What about 
+    \begin{equation*}
+        1 + 2 + \underbrace{\cdots}_{\text{This is not rigourous}} + 1000
+    \end{equation*}
+\end{example}
+
+\subsubsection{Summation Notation}
+Fill in rigours definition. 
+\begin{equation*}
+    1 + 2 + 3 + \cdots + 100 = \sum_{i = 1}^{100} i. 
+\end{equation*}
+
+\begin{example}
+    $$1 + 8 + 27 + 64 + 125 = \sum_{i = 1}^{5} i^3$$
+\end{example}
+
+\subsubsection*{Properties of Summations}
+\begin{enumerate}
+    \item Multiplying by a constant 
+    \begin{equation*}
+        c \sum_{i = a }^{b } t_i = \sum_{i = a }^{b } ct_i.  
+    \end{equation*}
+    \item Addition or Subtraction of Summations
+    \begin{equation*}
+        \sum_{j = 1}^{n } x_i \pm \sum_{i = 1}^{n} y_i = \sum_{i = 1}^{n} \paren{x_i \pm y_i}
+    \end{equation*}
+
+    \item Change bounds
+    \begin{equation*}
+        \sum_{i = m }^{n } x_i = \sum_{i = m + r }^{n + r } x_{i - r}
+    \end{equation*}
+    for any $m, n, r \in \Z$. 
+
+    \item Breaking Sum Apart 
+    \begin{equation*}
+        \sum_{i = 1}^{n - 1} i + \sum_{n }^{k } = \sum_{i = 1}^{k} i. 
+    \end{equation*}
+\end{enumerate}
+
+\subsubsection*{Product Notation}
+\begin{equation*}
+    \prod_{i = 1}^{n } = 1 \cdot 2 \cdot 3 \cdots n = n!
+\end{equation*}
