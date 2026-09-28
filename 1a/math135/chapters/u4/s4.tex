@@ -1,3 +1,4 @@
+%!TEX root=../../note.tex
 \subsection{If and Only If Proof}
 \subsubsection*{Recall}
 If and only if statement: 
@@ -5,12 +6,12 @@ If and only if statement:
     A \iff B \equiv \paren{A \implies B} \wedge \paren{B \implies A}
 \end{equation*}
 \begin{example}
-    Prove that for all $x, y \in \R$ with $x, y \geq 0$ that $\frac{x + y}{x} = \sqrt{xy}$ if and only if $x = y$. 
+    Prove that for all $x, y \in \R$ with $x, y \geq 0$ that $\frac{x + y}{2} = \sqrt{xy}$ if and only if $x = y$.
 \end{example}
 \begin{proof}
     Let $x, y$ be arbitrary in $\R$ and non-negative. 
 
-    Prove (\Leftarrow) first. Assume $x = y$. 
+    Prove $(\Leftarrow)$ first. Assume $x = y$.
 
     Then, 
     \begin{equation*}
@@ -28,7 +29,7 @@ If and only if statement:
 
     Then 
     \begin{equation*}
-        x + y = 2\sqrt{xy} \implies 2x^2. + 2xy + y^2 = 4xy \implies x^2 - 2xy + y^2 = 0. 
+        x + y = 2\sqrt{xy} \implies x^2 + 2xy + y^2 = 4xy \implies x^2 - 2xy + y^2 = 0.
     \end{equation*}
 
     This implies 
@@ -73,7 +74,7 @@ Fill in rigours definition.
     \end{equation*}
     \item Addition or Subtraction of Summations
     \begin{equation*}
-        \sum_{j = 1}^{n } x_i \pm \sum_{i = 1}^{n} y_i = \sum_{i = 1}^{n} \paren{x_i \pm y_i}
+        \sum_{i = 1}^{n } x_i \pm \sum_{i = 1}^{n} y_i = \sum_{i = 1}^{n} \paren{x_i \pm y_i}
     \end{equation*}
 
     \item Change bounds
@@ -84,11 +85,54 @@ Fill in rigours definition.
 
     \item Breaking Sum Apart 
     \begin{equation*}
-        \sum_{i = 1}^{n - 1} i + \sum_{n }^{k } = \sum_{i = 1}^{k} i. 
+        \sum_{i = 1}^{n - 1} i + \sum_{i = n}^{k} i = \sum_{i = 1}^{k} i.
     \end{equation*}
 \end{enumerate}
 
 \subsubsection*{Product Notation}
 \begin{equation*}
-    \prod_{i = 1}^{n } = 1 \cdot 2 \cdot 3 \cdots n = n!
+    \prod_{i = 1}^{n } i = 1 \cdot 2 \cdot 3 \cdots n = n!
 \end{equation*}
+
+\subsection{Proving Uniqueness}
+To prove ``there is a unique $x \in S$ such that $P(x)$'', we prove two things:
+\begin{itemize}
+    \item \textbf{Existence:} there is at least one $x \in S$ such that $P(x)$ is true
+    (for example, by exhibiting one);
+    \item \textbf{Uniqueness:} assume that $P(x)$ and $P(y)$ are both true for some $x, y \in S$,
+    and prove that $x = y$.
+\end{itemize}
+Uniqueness alone does not guarantee that such an $x$ exists, so both parts are needed.
+
+\begin{proposition}
+    $\forall a, b \in \Z$, if $a \neq 0$ and $a \mid b$, then there is a unique integer $k$ such that
+    $b = ka$.
+\end{proposition}
+\begin{proof}
+    Let $a, b$ be arbitrary in $\Z$. Assume $a \neq 0$ and $a \mid b$.
+
+    \textbf{Existence.} Since $a \mid b$, by definition of divisibility,
+    \begin{equation*}
+        \paren{\exists k \in \Z } b = ka.
+    \end{equation*}
+
+    \textbf{Uniqueness.} Suppose $k, m \in \Z$ satisfy
+    \begin{equation*}
+        b = ka \qquad \text{and} \qquad b = ma.
+    \end{equation*}
+
+    Thus, $ka = ma$.
+    Since $a \neq 0$, we may divide both sides by $a$, and we have
+    \begin{equation*}
+        k = m.
+    \end{equation*}
+
+    Thus, there is a unique $k \in \Z$ such that $b = ka$.
+\end{proof}
+\begin{remark}
+    The hypothesis $a \neq 0$ is exactly what the uniqueness step uses. If $a = 0$ and $b = 0$,
+    then $0 \mid 0$, but \emph{every} integer $k$ satisfies $0 = k \cdot 0$.
+\end{remark}
+
+\subsubsection*{Exercises}
+Use a proof by contradiction to show that two non-parallel lines have a unique intersection point.

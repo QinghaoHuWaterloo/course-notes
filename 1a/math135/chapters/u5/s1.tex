@@ -1,4 +1,5 @@
 %!TEX root=../../note.tex
+\subsection{Basic Set Notation and Operations}
 
 \begin{definition}
 A \emph{set} is a collection of distinct elements. The \emph{empty set} $\emptyset$ has no elements. For a finite set $S$, its \emph{cardinality} $\abs{S}$ is its number of elements.
@@ -13,7 +14,7 @@ We can describe a set by listing its elements, selecting elements with a propert
 Order and repetition do not change a set: $\set{1,2,2}=\set{2,1}$. Also, $\abs{\emptyset}=0$, while $\abs{\set{\emptyset}}=1$: the latter set contains the empty set as its one element.
 \end{example}
 
-\subsection{Set-builder notation}
+\subsubsection{Set-Builder Notation}
 \begin{definition}
 The \emph{selection form} $\set{x\in U : P(x)}$ contains exactly the elements of $U$ for which $P(x)$ is true. The \emph{generation form} $\set{f(x) : x\in U}$ contains the outputs of $f$, which need not be the inputs.
 \end{definition}
@@ -25,7 +26,7 @@ We can combine the forms: $\set{f(x) : x\in U,\ P(x)}$ first selects the inputs 
     \set{3a : a\in\Z,\ 2\mid a}=\set{6k : k\in\Z}.
 \]
 
-\subsection{Intervals}
+\subsubsection{Intervals}
 For real numbers $a<b$, square brackets include an endpoint and round brackets exclude it:
 \begin{gather*}
     [a,b]=\set{x\in\R : a\leq x\leq b}, \qquad
@@ -34,7 +35,7 @@ For real numbers $a<b$, square brackets include an endpoint and round brackets e
     (a,b]=\set{x\in\R : a<x\leq b}.
 \end{gather*}
 
-\subsection{Set operations}
+\subsubsection{Set Operations}
 \begin{definition}
 The \emph{union} $S\cup T$ collects elements in either set; the \emph{intersection} $S\cap T$ keeps elements in both. The \emph{difference} $S-T$ keeps elements in $S$ but not $T$:
 \begin{gather*}

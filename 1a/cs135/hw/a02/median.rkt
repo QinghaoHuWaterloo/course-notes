@@ -23,6 +23,7 @@
 [(or (and (<= a b) (<= b c)) (and (<= c b) (<= b a))) b]
 [(or (and (<= b c) (<= c a)) (and (<= a c) (<= c b))) c]))
 
+;; test cases
 (check-expect (median-of-3-simple 1 2 3) (median-of-3 1 2 3))
 (check-expect (median-of-3-simple 1000 100 10) (median-of-3 1000 100 10))
 (check-expect (median-of-3-simple 1000 123 799) (median-of-3 1000 123 799))
