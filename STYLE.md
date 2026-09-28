@@ -81,9 +81,10 @@ profile (§3) decides which devices a course uses, so a device that one
 profile requires may be forbidden by another (e.g. Idea boxes are `mixed`
 only). Do not invent further boxed environments or colours; everything below
 is built from the environments `qhnotes` already provides (for `cambridge`,
-see its own mapping in §3.8), plus the two MATH 147-local
-environments `idea` and `scratch` (a course that adopts them copies their
-definitions from `1a/math147/note-course/note.tex` into its own root).
+see its own mapping in §3.8), plus the MATH 147-local
+environments `idea` and `scratch` and the macro `\insymbols` (a course that
+adopts them copies their definitions from `1a/math147/note-course/note.tex`
+into its own root).
 
 ### 2.1 Statement devices
 
@@ -108,6 +109,7 @@ definitions from `1a/math147/note-course/note.tex` into its own root).
 | **Scratch work** | `\begin{scratch}` between statement and `proof` | the proof must *choose* something ($n_\epsilon$, $\epsilon/2$, $\delta$, a nudge $1/n$) | works **backwards** from the goal to the choice; the proof then runs forwards |
 | **Nothing** | — | the proof is ≤ 3 lines and explains itself | — |
 | **Trap** | `\begin{remark}[<the confusion>]`, e.g. `[Why $\min$, not $\sup$]` | a genuine conceptual trap: quantifier order, sup vs max, min vs sup, a tempting wrong step | rare (a few per chapter); title names the trap; everything else is prose, Idea, or *In practice* |
+| **Symbolic form** | `\insymbols{…}` as the last line inside the statement box (local macro, like `idea` / `scratch`) | every theorem-like statement, so the words and the logic can be compared | quantifiers and connectives only, in the profile's quantifier style; notation defined *before* the statement (sup, \|·\|, →) may be used, anything newer is unfolded; multi-part results use `aligned` with the statement's own labels |
 | **Negation line** | display after the definition's symbolic form | a quantified definition whose negation is used later (divergence, unboundedness, discontinuity) | the negation only, in the same quantifier style |
 | **Comparison table** | small `tabular` | ≥ 3 nearby concepts share ≥ 2 attributes (upper bound / supremum / maximum; injective / surjective / bijective) | fits in `\linewidth`; no colour |
 | **Key mechanism** | `\[\boxed{\text{…}}\]` after a proof | the whole proof reduces to one memorable implication | ≤ 2 per file; width check (§6, item 4) |
@@ -237,6 +239,9 @@ proof aids with textbook prose.
   choice), motivation prose, or nothing (§2.2). Never `remark[Proof idea]`.
 - **Remarks.** Traps only.
 - **Logic.** European quantifier style, stated once in a `notation` box.
+- **Symbolic forms.** Every theorem, proposition, lemma, corollary and
+  axiom (and any principle typeset as a definition) ends with a Symbolic
+  form (§2.2).
 - **Extras.** Key mechanism lines (≤ 2 per file), Negation lines,
   Comparison tables, figures where a picture carries the idea.
 - **Not this style:** unboxed "Proof idea" remarks; recipes inside remarks;

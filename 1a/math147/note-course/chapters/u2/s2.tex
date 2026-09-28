@@ -13,6 +13,7 @@
         (\forall n\in\N)\,[P(n)]
     \end{equation*}
     is true.
+    \insymbols{\Bigl(P(1)\wedge(\forall k\in\N)\,[P(k)\Rightarrow P(k+1)]\Bigr)\Longrightarrow(\forall n\in\N)\,[P(n)]}
 \end{definition}
 
 
@@ -22,6 +23,7 @@ Here is an example:
     \begin{equation*}
         1+2+\cdots+n=\frac{n(n+1)}{2}.
     \end{equation*}
+    \insymbols{(\forall n\in\N)\,\Bigl[\sum_{k=1}^{n}k=\frac{n(n+1)}{2}\Bigr]}
 \end{proposition}
 
 
@@ -53,6 +55,7 @@ The principle of mathematical induction has the following equivalent set formula
         \item for every $k\in S$, $k+1\in S$;
     \end{enumerate}
     then $S=\N$.
+    \insymbols{(\forall S\subseteq\N)\,\Bigl[\bigl(1\in S\wedge(\forall k\in S)\,[k+1\in S]\bigr)\Rightarrow S=\N\Bigr]}
 \end{proposition}
 
 \begin{proof}
@@ -62,6 +65,7 @@ The principle of mathematical induction has the following equivalent set formula
 \subsubsection{The Well-Ordering Principle}
 \begin{theorem}[Well-Ordering Principle]
     Every nonempty subset $S$ of $\N$ has a smallest element.
+    \insymbols{(\forall S\subseteq\N)\,\Bigl[S\neq\emptyset\Rightarrow(\exists m\in S)(\forall s\in S)\,[m\leq s]\Bigr]}
 \end{theorem}
 
 \begin{idea}
@@ -87,6 +91,7 @@ The principle of mathematical induction has the following equivalent set formula
     \begin{equation*}
         1^2 + 2^2 + \cdots + n^2 = \frac{n\paren{n + 1}\paren{2n + 1}}{6}.
     \end{equation*}
+    \insymbols{(\forall n\in\N)\,\Bigl[\sum_{k=1}^{n}k^2=\frac{n(n+1)(2n+1)}{6}\Bigr]}
 \end{proposition}
 
 \begin{idea}

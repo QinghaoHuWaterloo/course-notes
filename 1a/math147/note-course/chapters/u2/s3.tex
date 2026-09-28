@@ -77,13 +77,20 @@ The rational numbers $\Q$ also satisfy F1--F9, so being a field does not disting
 Once the axioms are fixed, even the most familiar facts --- uniqueness of the identities, $a\cdot0=0$ --- become theorems.
 
 
+\mdfsetup{nobreak=true}
 \begin{theorem}
     \begin{enumerate}[label = \alph*)]
         \item If $z, a \in \R$ with $z + a = a$, then $z = 0$.
         \item If $u \in \R$ and $b \neq 0$ with $u \cdot b = b$, then $u = 1$.
         \item If $a \in \R$, then $a \cdot 0 = 0$.
     \end{enumerate}
+    \insymbols{\begin{aligned}
+        \text{a)}\quad & (\forall z,a\in\R)\,[z+a=a\Rightarrow z=0]\\
+        \text{b)}\quad & (\forall u,b\in\R)\,\bigl[(b\neq0\wedge u\cdot b=b)\Rightarrow u=1\bigr]\\
+        \text{c)}\quad & (\forall a\in\R)\,[a\cdot0=0]
+    \end{aligned}}
 \end{theorem}
+\mdfsetup{nobreak=false}
 
 \begin{proof}
     \begin{enumerate}[label = \alph*)]
@@ -143,6 +150,11 @@ is bounded above in $\Q$ but has no least upper bound in $\Q$. That is why compl
 \begin{definition}[Completeness Axiom]
     If $A \subseteq \R$ is nonempty and bounded above, then $A$ has a least upper
     bound in $\R$.
+    \insymbols{\begin{aligned}
+        &(\forall A\subseteq\R)\,\Bigl[\bigl(A\neq\emptyset\wedge(\exists u\in\R)(\forall a\in A)\,[a\leq u]\bigr)\\
+        &\quad\Rightarrow(\exists u_0\in\R)\bigl[(\forall a\in A)\,[a\leq u_0]\\
+        &\qquad\wedge(\forall u\in\R)\bigl((\forall a\in A)\,[a\leq u]\Rightarrow u_0\leq u\bigr)\bigr]\Bigr]
+    \end{aligned}}
 \end{definition}
 
 This is only a preview: upper bounds, suprema and the consequences of this axiom are developed in \S5.
@@ -200,7 +212,12 @@ Geometrically, $\abs{a}$ is the distance from $a$ to $0$, and $\abs{a-b}$ is the
         \[-\abs{a} \leq a \leq \abs{a}.\]
 
     \end{enumerate}
-
+    \insymbols{\begin{aligned}
+        \text{(a)}\quad & (\forall a,b\in\R)\,\bigl[\abs{ab}=\abs{a}\abs{b}\bigr]\\
+        \text{(b)}\quad & (\forall a\in\R)\,\bigl[\abs{a}^2=a^2\bigr]\\
+        \text{(c)}\quad & (\forall a\in\R)(\forall c>0)\,\bigl[\abs{a}\leq c\iff -c\leq a\leq c\bigr]\\
+        \text{(d)}\quad & (\forall a\in\R)\,\bigl[-\abs{a}\leq a\leq\abs{a}\bigr]
+    \end{aligned}}
 \end{theorem}
 
 \begin{idea}
@@ -240,6 +257,7 @@ Geometrically, $\abs{a}$ is the distance from $a$ to $0$, and $\abs{a-b}$ is the
 \begin{proposition}
     [Triangle Inequality]
     If $a, b \in \R$, then $\abs{a + b } \leq \abs{a} + \abs{b}$.
+    \insymbols{(\forall a,b\in\R)\,\bigl[\abs{a+b}\leq\abs{a}+\abs{b}\bigr]}
 \end{proposition}
 
 \begin{idea}
@@ -277,6 +295,10 @@ In terms of distance: going from $0$ to $a+b$ directly is never longer than goin
         \item $\abs{\abs{a} - \abs{b}} \leq \abs{a - b}.$
         \item $\abs{a - b} \leq \abs{a} + \abs{b}$
     \end{enumerate}
+    \insymbols{\begin{aligned}
+        \text{(i)}\quad & (\forall a,b\in\R)\,\bigl[\,\bigl|\abs{a}-\abs{b}\bigr|\leq\abs{a-b}\bigr]\\
+        \text{(ii)}\quad & (\forall a,b\in\R)\,\bigl[\abs{a-b}\leq\abs{a}+\abs{b}\bigr]
+    \end{aligned}}
 \end{corollary}
 
 \begin{proof}[Proof of (1)]

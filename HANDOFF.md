@@ -51,7 +51,7 @@ note chapter.
 | Course | Root | Profile | Local rules |
 | --- | --- | --- | --- |
 | MATH 135 | `1a/math135/note.tex` | `legacy` | 10pt, twoside, `color`; QED is an italic "Q.E.D."; `remark[Proof idea]` before hard proofs; no index. No course handoff yet. |
-| MATH 147 | `1a/math147/note-course/note.tex` | **`mixed`** | Read `note-course/handoff.md` first. 11pt, twoside, `color`; local `idea` / `scratch` environments. |
+| MATH 147 | `1a/math147/note-course/note.tex` | **`mixed`** | Read `note-course/handoff.md` first. 11pt, twoside, `color`; local `idea` / `scratch` environments and `\insymbols` macro. |
 | CS 135 | `1a/cs135/note.tex` | — | Discontinued. Touch only if explicitly asked. |
 | ENGL 119 | `1a/ENGL119/` | `writing` | Syllabus only so far. |
 
@@ -141,7 +141,8 @@ Document roots define their own shortcuts (`\R \N \Z \Q \C`, `\paren{}`,
    (or `note/` for plain amsthm styling; `cambridge/template.tex` for the
    `cambridge` profile). Never from CS 135.
 3. Pick a profile from `STYLE.md` §3; if it is `mixed`, copy the `idea` /
-   `scratch` definitions from MATH 147's `note.tex`.
+   `scratch` environments and the `\insymbols` macro from MATH 147's
+   `note.tex`.
 4. Write `handoff.md` from the template below before the course grows.
 5. Write one representative lecture, build it, inspect the PDF, then scale.
 

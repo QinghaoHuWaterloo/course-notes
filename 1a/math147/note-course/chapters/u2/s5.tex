@@ -2,10 +2,18 @@
 \subsection{Completeness and Its Consequences}
 \begin{axiom}[Completeness Property]
     Every nonempty set of real numbers that has an upper bound also has a supremum in $\R$.
+    \insymbols{\begin{aligned}
+        &(\forall S\subseteq\R)\,\Bigl[\bigl(S\neq\emptyset\wedge(\exists u\in\R)(\forall x\in S)\,[x\leq u]\bigr)\\
+        &\quad\Rightarrow(\exists u_0\in\R)\,[u_0=\sup S]\Bigr]
+    \end{aligned}}
 \end{axiom}
 
 \begin{corollary}
     Every nonempty set of real numbers that has a lower bound also has an infimum in $\R$.
+    \insymbols{\begin{aligned}
+        &(\forall S\subseteq\R)\,\Bigl[\bigl(S\neq\emptyset\wedge(\exists w\in\R)(\forall x\in S)\,[w\leq x]\bigr)\\
+        &\quad\Rightarrow(\exists w_0\in\R)\,[w_0=\inf S]\Bigr]
+    \end{aligned}}
 \end{corollary}
 \begin{proof}
     Let $S \subseteq \R$ be nonempty with a lower bound $w$, that is, $w \leq s$ for all $s \in S$. As a consequence, $-w \geq -s$ for all $s \in S$.
@@ -63,6 +71,7 @@ We now prove that $\N$ is not bounded above in $\R$. The proof combines two ingr
 \begin{definition}
     [Archimedean Property]
     If $x \in \R$, then there exists $n_x \in \N$ such that $x \leq n_x$. 
+    \insymbols{(\forall x\in\R)(\exists n_x\in\N)\,[x\leq n_x]}
 \end{definition}
 
 \begin{idea}
@@ -117,6 +126,11 @@ We now prove that $\N$ is not bounded above in $\R$. The proof combines two ingr
             n_y - 1 \leq y < n_y.
         \]
     \end{enumerate}
+    \insymbols{\begin{aligned}
+        \text{(a)}\quad & \inf\set{\tfrac1n : n\in\N}=0\\
+        \text{(b)}\quad & (\forall t>0)(\exists n_t\in\N)\,\bigl[0<\tfrac{1}{n_t}<t\bigr]\\
+        \text{(c)}\quad & (\forall y>0)(\exists n_y\in\N)\,[n_y-1\leq y<n_y]
+    \end{aligned}}
 \end{corollary}
 
 \begin{idea}
@@ -162,9 +176,12 @@ Its supremum $x=\sup S$ ought to sit exactly on the boundary between squares bel
 \end{itemize}
 Unlike part (c) above, this is a genuine completeness argument: $S$ is a bounded set of reals and we need its least upper bound, not a least element.
 
+\mdfsetup{nobreak=true}
 \begin{proposition}
     There exists a real number $x$ such that $x^2 = 2$.
+    \insymbols{(\exists x\in\R)\,[x^2=2]}
 \end{proposition}
+\mdfsetup{nobreak=false}
 
 \begin{scratch}
     How small must the nudge $1/n$ be? Work backwards from what we want.
@@ -264,6 +281,7 @@ Still, $\Q$ is spread densely through $\R$. The picture: lay down the multiples 
 
 \begin{theorem}
     If $x$ and $y$ are any real numbers with $x < y$, then there exists a rational number $r \in \Q$ such that $x < r < y$. 
+    \insymbols{(\forall x,y\in\R)\,\bigl[x<y\Rightarrow(\exists r\in\Q)\,[x<r<y]\bigr]}
 \end{theorem}
 
 \begin{scratch}
@@ -319,6 +337,7 @@ Still, $\Q$ is spread densely through $\R$. The picture: lay down the multiples 
 
 \begin{corollary}
     If $x$ and $y$ are any real numbers with $x < y$, then there exists an irrational number $z$ such that $x < z < y$.
+    \insymbols{(\forall x,y\in\R)\,\bigl[x<y\Rightarrow(\exists z\in\R\setminus\Q)\,[x<z<y]\bigr]}
 \end{corollary}
 
 \begin{idea}
@@ -332,6 +351,10 @@ Still, $\Q$ is spread densely through $\R$. The picture: lay down the multiples 
 
 \begin{corollary}
     Let $x, y \in \R$, with $x < y$. Then there exists infinitely many rationals between $x$ and $y$. 
+    \insymbols{\begin{aligned}
+        &(\forall x,y\in\R)\,\Bigl[x<y\\
+        &\quad\Rightarrow(\forall n\in\N)(\exists r_1,\ldots,r_n\in\Q)\,[x<r_1<r_2<\cdots<r_n<y]\Bigr]
+    \end{aligned}}
 \end{corollary}
 
 \begin{proof}

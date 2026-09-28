@@ -53,6 +53,21 @@ Build and check: `HANDOFF.md`, "Verification".
   style plus `\surroundwithmdframed`: pale-blue and grey left-bar boxes).
   They stay local to MATH 147's roots; other courses that adopt `mixed` copy
   the definitions. Do not move them into `qhnotes`.
+- **`\insymbols{…}`** (in `note.tex`, since 2026-09-26) ends every theorem,
+  proposition, lemma, corollary and axiom, plus the three principles typeset
+  as definitions (induction in `u2/s2`, the completeness preview in `u2/s3`,
+  the Archimedean property in `u2/s5`): 26 in all. The convention is
+  announced in the `notation` box of `u2/s1`. Rules:
+  - European quantifiers; only notation defined *before* the statement.
+    So the `u2/s3` completeness preview unfolds "least upper bound", while
+    `u2/s5` may write `u_0 = \sup S`.
+  - Multi-part results: `\begin{aligned}` with the statement's own labels,
+    as rendered (`a)`, `(a)`, `(i)`).
+  - Lines wider than ~70% of the box are broken with `aligned` and indented
+    continuation lines (`&\quad\Rightarrow …`).
+  - Examples are not given symbolic forms, even when they state a claim.
+- **`\raggedbottom`** (in `note.tex`): `twoside` turns on `\flushbottom`,
+  which stretched pages around unbreakable boxes; ragged bottom avoids it.
 - **Shortcuts** in `note.tex`: `\paren{} \abs{} \norm{} \bracks{} \set{}`,
   `\R \N \Z \Q \C`, `\ds`, `\blue`, `\red`, `\mypic`. No new macros unless
   unavoidable.
@@ -70,7 +85,9 @@ Build and check: `HANDOFF.md`, "Verification".
   √2 pair counts as one mechanism, so `u2/s5` is at the limit of two; add
   none there.
 - **Known `nobreak` spots:** a long proof in `u2/s2`, the `1/n → 0` proof
-  in `u3/s1`, and the
+  in `u3/s1`, the field-facts theorem in `u2/s3` and the √2-exists
+  proposition in `u2/s5` (both keep their symbolic form on the same page),
+  and the
   ε-characterisation lemma statement in `u2/s4` (it left one word on the next
   page at 11pt). The `[0,1)` example in `u2/s4` no longer nests its proofs
   inside the example box.
@@ -117,11 +134,10 @@ Build and check: `HANDOFF.md`, "Verification".
 
 - **Done:** all of `chapters/` follows `mixed` (migration 2026-09-25, see
   `style-migration.md`).
-- **Build baseline** (`note.log` of 2026-09-25 22:30, twoside, 11pt):
-  35 pages; 3 overfull `\hbox`es — `u1/s1` (26.5pt, logistics, out of
-  scope), `u2/s2` (8.1pt, lines 68–69), `u2/s5` (0.1pt); 4 mdframed "Box was
-  splittet wrong" info messages. The earlier record (before `twoside`) said
-  0 overfull; the cause of the difference has not been investigated.
+- **Build baseline** (clean build 2026-09-26, twoside, 11pt, with
+  `\insymbols` and `\raggedbottom`): 37 pages; 0 overfull and 0 underfull
+  boxes; 5 mdframed "Box was splittet wrong" info messages (`u2/s2`, `u2/s3`
+  ×3, `u2/s5`), with no visible defect on those pages.
 - **Gaps against the current `STYLE.md`:**
   - Lecture openers (§2.2): present in `u2/s3` and `u2/s4`; missing in
     `u2/s1`, `u2/s2`, `u2/s5`, `u3/s1`.
@@ -129,6 +145,8 @@ Build and check: `HANDOFF.md`, "Verification".
     is empty. Either add `\term{}` to definitions or drop `\printindex`.
   - No Negation line yet for the limit definition (divergence is used in
     `u3/s1`).
+  - Corollary 2.3.10 (`u2/s3`) renders its parts as (i)/(ii), but the
+    proofs are titled "Proof of (1)" / "Proof of (2)".
 - **Next:** new lectures go into `chapters/u3/` (and `c3.tex`) in the
   `mixed` profile.
 - **Alternative rendering** (not kept in sync with later edits here; covers

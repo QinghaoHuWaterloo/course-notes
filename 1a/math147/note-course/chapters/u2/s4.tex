@@ -44,6 +44,10 @@ When does an upper bound $u$ fail to be the \emph{least} one? Exactly when some 
     \begin{equation*}
         (\forall \epsilon > 0)(\exists x_\epsilon \in S)\,[u - \epsilon < x_\epsilon].
     \end{equation*}
+    \insymbols{\begin{aligned}
+        &(\forall S\subseteq\R)(\forall u\in\R)\,\Bigl[\bigl(S\neq\emptyset\wedge(\forall x\in S)\,[x\leq u]\bigr)\\
+        &\quad\Rightarrow\bigl(u=\sup S\iff(\forall\epsilon>0)(\exists x_\epsilon\in S)\,[u-\epsilon<x_\epsilon]\bigr)\Bigr]
+    \end{aligned}}
 \end{lemma}
 \mdfsetup{nobreak=false}
 

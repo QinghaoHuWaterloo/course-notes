@@ -22,6 +22,7 @@ The natural numbers are closed under addition. The integers are closed under add
 
 \begin{theorem}[Irrationality of $\sqrt{2}$]
     The number $\sqrt{2}$ is irrational; equivalently, $\sqrt{2}\notin\Q$.
+    \insymbols{\neg(\exists m\in\Z)(\exists n\in\N)\,\Bigl[\sqrt2=\frac mn\Bigr]}
 \end{theorem}
 
 \begin{idea}
@@ -115,6 +116,7 @@ The \textbf{existential quantifier} $\exists$ means ``there exists.'' For exampl
     \[
         \neg(\forall x)(\exists y)\,[P(x,y)] \iff (\exists x)(\forall y)\,[\neg P(x,y)].
     \]
+    From here on, every theorem-like statement ends with its form \emph{In symbols}: quantifiers and connectives only, using notation defined before that statement.
 \end{notation}
 
 \begin{proposition}
@@ -122,6 +124,7 @@ The \textbf{existential quantifier} $\exists$ means ``there exists.'' For exampl
     \begin{equation*}
         x^3-y^3=1.
     \end{equation*}
+    \insymbols{(\forall x\in\R)(\exists y\in\R)\,[x^3-y^3=1]}
 \end{proposition}
 
 \begin{proof}
@@ -139,6 +142,7 @@ Here the choice of $y$ is allowed to depend on $x$: for each $x$ we produce a (p
         (\exists y\in\R)(\forall x\in\R)\,[x^3-y^3=1]
     \end{equation*}
     is false.
+    \insymbols{\neg(\exists y\in\R)(\forall x\in\R)\,[x^3-y^3=1]}
 
     Its negation is
     \begin{equation*}

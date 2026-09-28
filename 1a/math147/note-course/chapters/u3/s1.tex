@@ -78,6 +78,7 @@ Thus $x_n\to a$ precisely when, for every $\epsilon>0$, there is $n_\epsilon\in\
 \subsubsection{Uniqueness of the Limit}
 \begin{proposition}
     If $x,y\in\R$ and $\abs{x-y}<\epsilon$ for every $\epsilon>0$, then $x=y$.
+    \insymbols{(\forall x,y\in\R)\,\Bigl[(\forall\epsilon>0)\,\bigl[\abs{x-y}<\epsilon\bigr]\Rightarrow x=y\Bigr]}
 \end{proposition}
 \begin{proof}
     Suppose $x\ne y$. Then $\epsilon=\abs{x-y}/2>0$, but $\abs{x-y}>\epsilon$, contradicting the hypothesis.
@@ -85,6 +86,7 @@ Thus $x_n\to a$ precisely when, for every $\epsilon>0$, there is $n_\epsilon\in\
 
 \begin{theorem}
     A sequence in $\R$ can have at most one limit.
+    \insymbols{(\forall a,b\in\R)\,\bigl[(x_n\to a\wedge x_n\to b)\Rightarrow a=b\bigr]}
 \end{theorem}
 \begin{scratch}
     By the preceding proposition, it suffices to show $\abs{a-b}<\epsilon$ for every $\epsilon>0$. The only link between $a$ and $b$ is the sequence, so pass through a term $x_n$:
@@ -114,6 +116,7 @@ Suppose $x_n\to a$ and take $\epsilon=1/2$. There is an $n_\epsilon$ such that $
 
 \begin{theorem}
     Every convergent sequence of real numbers is bounded.
+    \insymbols{(\exists a\in\R)\,[x_n\to a]\Rightarrow(\exists M\in\R)(\forall n\in\N)\,\bigl[\abs{x_n}\leq M\bigr]}
 \end{theorem}
 \begin{idea}
     The tail stays within $1$ of the limit; only finitely many terms come before it, and a finite set has a maximum.
@@ -191,4 +194,5 @@ We write $\lim_{n\to\infty}x_n=\pm\infty$, but such a sequence is still divergen
         \item $(\forall c \in \R)\,[\lim_{n \to \infty} c = c]$
         \item $(\forall c \in \R)\,[\lim_{n \to \infty} cx_n = ca]$
     \end{enumerate}
+    \insymbols{(x_n\to a\wedge y_n\to b)\Rightarrow(\forall c\in\R)\,\Bigl[\lim_{n\to\infty}c=c\ \wedge\ \lim_{n\to\infty}cx_n=ca\Bigr]}
 \end{theorem}
