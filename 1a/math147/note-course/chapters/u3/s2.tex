@@ -1,0 +1,96 @@
+%!TEX root=../../note.tex
+% Source: MATH 147 lecture notes; limits and order, squeeze theorem, monotone convergence.
+\subsection{Limits and Order}
+Limits preserve order, and completeness turns a bounded monotone sequence into a convergent one. These facts let us find limits even when the limit laws alone do not apply.
+
+\subsubsection{Limits and Order}
+\begin{theorem}
+    If $\lim_{n\to\infty}x_n=a$ and $x_n\geq0$ for every $n\in\N$, then $a\geq0$.
+    \insymbols{\bigl[\lim_{n\to\infty}x_n=a\wedge(\forall n\in\N)\,[x_n\geq0]\bigr]\Rightarrow a\geq0}
+\end{theorem}
+\begin{idea}
+    If $a<0$, convergence would force every sufficiently late term into a small interval around $a$ that lies below zero.
+\end{idea}
+\begin{proof}
+    Suppose instead that $a<0$. Take $\epsilon=-a/2>0$. Since $\lim_{n\to\infty}x_n=a$, some $n_\epsilon\in\N$ satisfies $\abs{x_n-a}<\epsilon$ whenever $n\geq n_\epsilon$. For such $n$,
+    \[
+        x_n<a+\epsilon=\frac a2<0,
+    \]
+    contradicting $x_n\geq0$. Thus $a\geq0$.
+\end{proof}
+
+The same conclusion holds if $x_n\geq0$ only for all sufficiently large $n$: the proof uses just one term after both thresholds.
+
+\begin{theorem}
+    If $\lim_{n\to\infty}x_n=a$, $\lim_{n\to\infty}y_n=b$, and $x_n\leq y_n$ for every $n\in\N$, then $a\leq b$.
+    \insymbols{\bigl[\lim_{n\to\infty}x_n=a\wedge \lim_{n\to\infty}y_n=b\wedge(\forall n\in\N)\,[x_n\leq y_n]\bigr]\Rightarrow a\leq b}
+\end{theorem}
+\begin{proof}
+    Set $z_n=y_n-x_n\geq0$. The difference law gives $\lim_{n\to\infty}z_n=b-a$. By the preceding theorem, $b-a\geq0$, so $a\leq b$.
+\end{proof}
+
+\begin{theorem}[Squeeze Theorem]
+    Suppose $x_n\leq y_n\leq z_n$ for every $n\in\N$ and $\lim_{n\to\infty}x_n=a$, $\lim_{n\to\infty}z_n=a$. Then $\lim_{n\to\infty}y_n=a$.
+    \insymbols{\bigl[(\forall n\in\N)\,[x_n\leq y_n\leq z_n]\wedge \lim_{n\to\infty}x_n=a\wedge \lim_{n\to\infty}z_n=a\bigr]\Rightarrow \lim_{n\to\infty}y_n=a}
+\end{theorem}
+\begin{proof}
+    Let $\epsilon>0$. Choose $n_1,n_2\in\N$ such that $\abs{x_n-a}<\epsilon$ for $n\geq n_1$ and $\abs{z_n-a}<\epsilon$ for $n\geq n_2$. If $n\geq\max\set{n_1,n_2}$, then
+    \[
+        a-\epsilon<x_n\leq y_n\leq z_n<a+\epsilon.
+    \]
+    Thus $\abs{y_n-a}<\epsilon$ for every such $n$, so $\lim_{n\to\infty}y_n=a$.
+\end{proof}
+
+\begin{example}
+    Prove that $\lim_{n\to\infty}\frac{\sin n}{\sqrt n}=0$.
+\end{example}
+\begin{proof}
+    Since $-1\leq\sin n\leq1$ and $\sqrt n>0$,
+    \[
+        -\frac1{\sqrt n}\leq\frac{\sin n}{\sqrt n}\leq\frac1{\sqrt n}.
+    \]
+    The outer sequences tend to $0$: given $\epsilon>0$, Archimedes supplies $N>1/\epsilon^2$, and $n\geq N$ gives $1/\sqrt n<\epsilon$. The Squeeze Theorem now gives the result.
+\end{proof}
+
+\subsubsection{Monotone Sequences}
+\begin{definition}
+    A sequence $\set{x_n}$ is \emph{increasing} if $x_n\leq x_{n+1}$ for every $n\in\N$, and \emph{decreasing} if $x_n\geq x_{n+1}$ for every $n\in\N$. It is \emph{monotone} if it is increasing or decreasing.
+\end{definition}
+
+\begin{theorem}[Monotone Convergence Theorem]
+    A monotone sequence of real numbers converges if and only if it is bounded. More precisely:
+    \begin{enumerate}
+        \item[(i)] If $\set{x_n}$ is bounded and increasing, then $\lim_{n\to\infty}x_n=\sup\set{x_n:n\in\N}$.
+        \item[(ii)] If $\set{x_n}$ is bounded and decreasing, then $\lim_{n\to\infty}x_n=\inf\set{x_n:n\in\N}$.
+    \end{enumerate}
+    \insymbols{\begin{aligned}
+        \text{(i)}\quad &[\set{x_n}\text{ bounded and increasing}]
+            \Rightarrow\lim_{n\to\infty}x_n=\sup\set{x_n:n\in\N},\\
+        \text{(ii)}\quad &[\set{x_n}\text{ bounded and decreasing}]
+            \Rightarrow\lim_{n\to\infty}x_n=\inf\set{x_n:n\in\N}.
+    \end{aligned}}
+\end{theorem}
+\begin{idea}
+    Completeness gives a supremum or infimum. A term lies within $\epsilon$ of that bound, and monotonicity keeps every later term there.
+\end{idea}
+\begin{proof}
+    Every convergent sequence is bounded, proving the forward implication.
+
+    For (i), suppose $\set{x_n}$ is bounded and increasing. The set $S=\set{x_n:n\in\N}$ is nonempty and bounded above, so completeness gives $s=\sup S$. Let $\epsilon>0$. The $\epsilon$-characterization of the supremum gives an index $n_\epsilon$ with $s-\epsilon<x_{n_\epsilon}$. For every $n\geq n_\epsilon$, monotonicity and the upper-bound property give
+    \[
+        s-\epsilon<x_{n_\epsilon}\leq x_n\leq s<s+\epsilon.
+    \]
+    Hence $\lim_{n\to\infty}x_n=s$.
+
+    For (ii), suppose $\set{x_n}$ is bounded and decreasing. Completeness gives $t=\inf S$. By the infimum version of the $\epsilon$-characterization, choose $n_\epsilon$ with $x_{n_\epsilon}<t+\epsilon$. For $n\geq n_\epsilon$,
+    \[
+        t-\epsilon<t\leq x_n\leq x_{n_\epsilon}<t+\epsilon.
+    \]
+    Thus $\lim_{n\to\infty}x_n=t$.
+\end{proof}
+
+\subsubsection*{In practice}
+\begin{itemize}
+    \item \textbf{Use the squeeze theorem.} Bound a difficult sequence above and below by sequences with the same known limit; verify that both bounds hold for all sufficiently large indices.
+    \item \textbf{Use monotonicity.} Prove the direction of monotonicity and find a bound. Completeness then gives the limit as the supremum or infimum of the terms.
+\end{itemize}

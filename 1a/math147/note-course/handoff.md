@@ -35,7 +35,8 @@ chapters/
   u2/s5.tex     Completeness and consequences: Archimedean property, sqrt 2
                 exists, density of Q, countability  — highest care
   u3/s1.tex     Convergent sequences: limit, uniqueness, divergence,
-                boundedness, divergence to +-infinity
+                boundedness, divergence to +-infinity, limit laws
+  u3/s2.tex     Limits and order, squeeze theorem, monotone convergence
 ```
 
 One `uN/sN.tex` = one `\subsection` = the editing unit. The `%!TEX root`
@@ -71,6 +72,9 @@ Build and check: `HANDOFF.md`, "Verification".
 - **Shortcuts** in `note.tex`: `\paren{} \abs{} \norm{} \bracks{} \set{}`,
   `\R \N \Z \Q \C`, `\ds`, `\blue`, `\red`, `\mypic`. No new macros unless
   unavoidable.
+- **Sequence-limit notation.** In new lectures, prefer
+  `$\lim_{n\to\infty}x_n=a$` to `$x_n\to a$` when stating or invoking a
+  limit, matching the lecturer's usage.
 - **Typography.** Times + newtx (the `qhnotes` default), 11pt: at 10pt Times
   ran ~90 characters per line on the 124 mm block. Tried and rejected:
   Century Schoolbook (`fouriernc`), Concrete + Euler (no bold), Palatino.
@@ -130,7 +134,7 @@ Build and check: `HANDOFF.md`, "Verification".
   all (`style-migration.md` lists each). Check `git log -p -- <file>` before
   adding explanation to a file that was already edited.
 
-## Status (2026-09-26)
+## Status (2026-09-28)
 
 - **Done:** all of `chapters/` follows `mixed` (migration 2026-09-25, see
   `style-migration.md`).
@@ -139,20 +143,22 @@ Build and check: `HANDOFF.md`, "Verification".
   boxes; 5 mdframed "Box was splittet wrong" info messages (`u2/s2`, `u2/s3`
   ×3, `u2/s5`), with no visible defect on those pages.
 - **Gaps against the current `STYLE.md`:**
-  - Lecture openers (§2.2): present in `u2/s3` and `u2/s4`; missing in
-    `u2/s1`, `u2/s2`, `u2/s5`, `u3/s1`.
+  - Lecture openers (§2.2): present in `u2/s3`, `u2/s4`, and `u3/s1`;
+    missing in `u2/s1`, `u2/s2`, and `u2/s5`.
   - `note.tex` calls `\printindex`, but no file uses `\term{}`, so the index
     is empty. Either add `\term{}` to definitions or drop `\printindex`.
-  - No Negation line yet for the limit definition (divergence is used in
-    `u3/s1`).
+  - The divergence negation line is now in `u3/s1`.
   - Corollary 2.3.10 (`u2/s3`) renders its parts as (i)/(ii), but the
     proofs are titled "Proof of (1)" / "Proof of (2)".
 - **Next:** new lectures go into `chapters/u3/` (and `c3.tex`) in the
-  `mixed` profile.
+  `mixed` profile. The divergence examples, eight elementary limit laws,
+  and later limit examples in `u3/s1` were completed on 2026-09-28.
+  `u3/s2` now covers limits and order, the squeeze theorem, and monotone
+  convergence with complete proofs.
 - **Alternative rendering** (not kept in sync with later edits here; covers
   u2/s1–u3/s1): `../note-cambridge-style/` (profile `cambridge`,
   2026-09-26). The Zorich-style rendering was deleted on 2026-09-26 (in git
   history before that date). The
-  Cambridge README lists two source issues worth fixing here too: the
-  "ℚ is not complete" argument needs density of ℚ, and `u3/s1` has typos
-  (`\lim_{x_n}`, `a_n`/`x_n`, `x\to\infty`, `n_m`, "√n > m − 1").
+  Cambridge README lists a source issue worth fixing here too: the
+  "ℚ is not complete" argument needs density of ℚ. The listed `u3/s1`
+  typos were corrected on 2026-09-28.

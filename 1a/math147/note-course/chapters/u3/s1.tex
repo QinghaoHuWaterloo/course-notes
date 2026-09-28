@@ -1,6 +1,7 @@
 %!TEX root=../../note.tex
 
 \subsection{Convergent Sequences}
+The limit definition makes precise what it means for the terms of a sequence to settle near a real number. We use it to distinguish convergence from two ways a sequence can diverge.
 \subsubsection{The Limit of a Sequence}
 
 A sequence of real numbers is a function $X:\N\to\R$. We write $x_n=X(n)$ for its $n$th term and denote the sequence by $\set{x_n}_{n=1}^{\infty}$.
@@ -106,6 +107,11 @@ Thus $x_n\to a$ precisely when, for every $\epsilon>0$, there is $n_\epsilon\in\
 \subsubsection{Divergence and Boundedness}
 A sequence diverges if it does not converge to any real number. For example, consider $\set{x_n}=\set{0,1,0,1,\ldots}$, with $x_n=0$ for odd $n$ and $x_n=1$ for even $n$.
 
+Negating the limit definition, $\set{x_n}$ diverges precisely when
+\[
+    (\forall a\in\R)(\exists\epsilon>0)(\forall N\in\N)(\exists n\geq N)\,\bigl[\abs{x_n-a}\geq\epsilon\bigr].
+\]
+
 Both $0$ and $1$ keep appearing arbitrarily late, so the terms cannot all remain close to one proposed limit.
 
 Suppose $x_n\to a$ and take $\epsilon=1/2$. There is an $n_\epsilon$ such that $\abs{x_n-a}<1/2$ for every $n\geq n_\epsilon$. Choose an odd and an even index beyond $n_\epsilon$. The odd term gives $\abs{a}<1/2$, hence $-1/2<a<1/2$. The even term gives $\abs{1-a}<1/2$, hence $1/2<a<3/2$. These intervals do not overlap, a contradiction. Thus this sequence diverges.
@@ -137,62 +143,151 @@ The converse fails: $\set{0,1,0,1,\ldots}$ is bounded but, as shown above, diver
 
 
 \begin{example}
-    Consider the following sequences. 
-    \begin{itemize}
-        \item $\set{a_n } = \set{\frac{n^2 + 1 }{n }}$
-        
-        Take a look at this sequence: 
-        \begin{equation*}
-            \abs{\frac{n^2 + 1 }{n }} = \abs{n + \frac{1}{n }} = n + \frac{1}{n}
-        \end{equation*}
-    
-        For any $M > 0$, there exist $n_m \in \N$ such that $n_M > M$.  Thus, 
-        \begin{equation*}
-            \abs{a_{n_M}} > M. 
-        \end{equation*}
-
-        \item $\set{a_n } = \set{\paren{-1}^n n}$
-        
-        Take a look at this sequence:
-
-        \begin{equation*}
-            \abs{a_n } = \abs{\paren{-1}^n n } = \abs{\paren{-1}^n }\abs{n } = \abs{n } > M
-        \end{equation*}
-    \end{itemize}
+    The sequences $a_n=(n^2+1)/n$ and $b_n=(-1)^n n$ are unbounded.
 \end{example}
+For $a_n=n+1/n$, given $M>0$ choose $n>M$ by the Archimedean Property. Then $\abs{a_n}=n+1/n>M$. For $b_n$, the same choice gives $\abs{b_n}=n>M$. In each case no single bound works for every term. Notice that $a_n$ eventually stays positive, while $b_n$ alternates signs; their unboundedness alone does not describe how they diverge.
 
 \subsubsection{Divergence to $\pm\infty$}
 \begin{definition}
-    A sequence $\set{x_n }$ diverges to $+\infty$, that is, $\lim_{x_n } = \infty$, if for all real number $M > 0$, there exists $n_M \in \N$
-    such that $a_n > M$ for all $n \geq n_M$. 
+    A sequence $\set{x_n}$ diverges to $+\infty$, written $\lim_{n\to\infty}x_n=+\infty$, if for every $M>0$ there is $n_M\in\N$ such that $x_n>M$ for all $n\geq n_M$.
 \end{definition}
+In symbols, $(\forall M>0)(\exists n_M\in\N)(\forall n\geq n_M)\,[x_n>M]$.
 
 \begin{definition}
-    A sequence $\set{x_n }$ diverges to $-\infty$, that is, $\lim_{x_n } = -\infty$, if for all real number $M > 0$, there exists $n_M \in \N$
-    such that $a_n < - M$ for all $n \geq n_M$. 
+    A sequence $\set{x_n}$ diverges to $-\infty$, written $\lim_{n\to\infty}x_n=-\infty$, if for every $M>0$ there is $n_M\in\N$ such that $x_n<-M$ for all $n\geq n_M$.
 \end{definition}
+In symbols, $(\forall M>0)(\exists n_M\in\N)(\forall n\geq n_M)\,[x_n<-M]$.
 We write $\lim_{n\to\infty}x_n=\pm\infty$, but such a sequence is still divergent: it does not converge to any real number.
 
 
 \begin{example}
-    Prove that $\lim_{n \to \infty } \frac{n^2}{1 - n} = -\infty$. 
+    Prove that $\lim_{n\to\infty}\frac{n^2}{1-n}=-\infty$.
 \end{example}
+\begin{scratch}
+    For $n>1$, write $\frac{n^2}{1-n}=-\frac{n^2}{n-1}$. Since $\frac{n^2}{n-1}>n$, it is enough to choose an index after which $n>M$ and $n>1$.
+\end{scratch}
 \begin{proof}
-    Let $M > 0$. 
+    Let $M>0$. By the Archimedean Property choose $n_M\in\N$ with $n_M>\max\set{M,1}$. For every $n\geq n_M$, we have $n>1$ and
+    \[
+        \frac{n^2}{1-n}=-\frac{n^2}{n-1}<-n<-M,
+    \]
+    because $n^2>n(n-1)$. Hence the sequence diverges to $-\infty$.
 \end{proof}
 
 \begin{example}
-    Prove that $\lim_{x \to \infty} \sqrt{n } + 1 = + \infty$. 
+    Prove that $\lim_{n\to\infty}(\sqrt n+1)=+\infty$.
 \end{example}
+\begin{scratch}
+    To obtain $\sqrt n+1>M$, it is enough to make $\sqrt n>M$, or $n>M^2$. Archimedes supplies such an index.
+\end{scratch}
 \begin{proof}
-    The goal is to let $\sqrt{n } > m - 1$
+    Let $M>0$. Choose $n_M\in\N$ with $n_M>M^2$ by the Archimedean Property. If $n\geq n_M$, then $\sqrt n\geq\sqrt{n_M}>M$, so $\sqrt n+1>M$. Thus the sequence diverges to $+\infty$.
+\end{proof}
+
+\subsubsection{Elementary Limit Laws}
+The limit definition lets us pass to limits through arithmetic. For a quotient, the denominator's limit must be nonzero.
+\begin{theorem}
+    If $\lim_{n\to\infty}x_n=a$ and $\lim_{n\to\infty}y_n=b$ in $\R$, then
+    \begin{enumerate}
+        \item[(i)] $\lim_{n\to\infty}c=c$ for every constant $c\in\R$;
+        \item[(ii)] $\lim_{n\to\infty}(cx_n)=ca$ for every $c\in\R$;
+        \item[(iii)] $\lim_{n\to\infty}(x_n+y_n)=a+b$;
+        \item[(iv)] $\lim_{n\to\infty}(x_n-y_n)=a-b$;
+        \item[(v)] $\lim_{n\to\infty}(x_ny_n)=ab$;
+        \item[(vi)] if $b\ne0$ and $y_n\ne0$ for every $n$, then
+            $\lim_{n\to\infty}\frac{x_n}{y_n}=\frac ab$;
+        \item[(vii)] $\lim_{n\to\infty}\abs{x_n}=\abs a$;
+        \item[(viii)] $\lim_{n\to\infty}x_n^k=a^k$ for every positive integer $k$.
+    \end{enumerate}
+    \insymbols{\begin{aligned}
+        \text{(i)}\quad &(\forall c\in\R)\,\left[\lim_{n\to\infty}c=c\right],\\
+        \text{(ii)}\quad &(\forall c\in\R)\,\left[\lim_{n\to\infty}(cx_n)=ca\right],\\
+        \text{(iii)}\quad &\lim_{n\to\infty}(x_n+y_n)=a+b,\\
+        \text{(iv)}\quad &\lim_{n\to\infty}(x_n-y_n)=a-b,\\
+        \text{(v)}\quad &\lim_{n\to\infty}(x_ny_n)=ab,\\
+        \text{(vi)}\quad &\begin{aligned}[t]
+            &b\ne0\wedge(\forall n\in\N)\,[y_n\ne0]\\
+            &\quad\Rightarrow\lim_{n\to\infty}\frac{x_n}{y_n}=\frac ab,
+        \end{aligned}\\
+        \text{(vii)}\quad &\lim_{n\to\infty}\abs{x_n}=\abs a,\\
+        \text{(viii)}\quad &(\forall k\in\N)\,\left[\lim_{n\to\infty}x_n^k=a^k\right].
+    \end{aligned}}
+\end{theorem}
+\begin{proof}
+    For (i), let $\epsilon>0$. Every term of the constant sequence satisfies $\abs{c-c}=0<\epsilon$, so any $n_\epsilon\in\N$ works.
+
+    For (ii), fix $c\in\R$. If $c=0$, then $cx_n=ca=0$ for every $n$. If $c\ne0$, given $\epsilon>0$ use $x_n\to a$ with tolerance $\epsilon/\abs c$ to choose $n_\epsilon$ such that $\abs{x_n-a}<\epsilon/\abs c$ for all $n\geq n_\epsilon$. Hence
+    \[
+        \abs{cx_n-ca}=\abs c\abs{x_n-a}<\epsilon
+    \]
+    for all such $n$, as required.
+
+    For (iii), given $\epsilon>0$, choose $n$ late enough that both $\abs{x_n-a}<\epsilon/2$ and $\abs{y_n-b}<\epsilon/2$. Then
+    \[
+        \abs{(x_n+y_n)-(a+b)}\leq\abs{x_n-a}+\abs{y_n-b}<\epsilon.
+    \]
+    For (iv), apply (ii) with $c=-1$ and then (iii).
+
+    For (v), convergent sequences are bounded, so choose $M>0$ with $\abs{x_n}\leq M$ for every $n$. Given $\epsilon>0$, take $n$ late enough that $\abs{y_n-b}<\epsilon/(2M)$ and $\abs{x_n-a}<\epsilon/(2(\abs b+1))$. Thus
+    \[
+        \abs{x_ny_n-ab}
+        \leq\abs{x_n}\abs{y_n-b}+\abs b\abs{x_n-a}<\epsilon.
+    \]
+
+    For (vi), we first prove $1/y_n\to1/b$. Since $b\ne0$, eventually $\abs{y_n-b}<\abs b/2$, which gives $\abs{y_n}>\abs b/2$. Given $\epsilon>0$, take $n$ still later so that $\abs{y_n-b}<\epsilon\abs b^2/2$. Then
+    \[
+        \abs{\frac1{y_n}-\frac1b}
+        =\frac{\abs{y_n-b}}{\abs{y_n}\abs b}
+        <\frac{2\abs{y_n-b}}{\abs b^2}<\epsilon.
+    \]
+    Apply (v) to $x_n$ and $1/y_n$.
+
+    For (vii), the reverse triangle inequality gives $\bigl|\abs{x_n}-\abs a\bigr|\leq\abs{x_n-a}$. For (viii), use induction: $x_n^1\to a$ by hypothesis, and if $x_n^k\to a^k$, then (v) gives $x_n^{k+1}=x_n^kx_n\to a^ka=a^{k+1}$.
 \end{proof}
 
 \begin{theorem}
-    If $\lim_{n \to \infty} x_n = a$ and $\lim_{n \to \infty} y_n = b$, then 
-    \begin{enumerate}
-        \item $(\forall c \in \R)\,[\lim_{n \to \infty} c = c]$
-        \item $(\forall c \in \R)\,[\lim_{n \to \infty} cx_n = ca]$
-    \end{enumerate}
-    \insymbols{(x_n\to a\wedge y_n\to b)\Rightarrow(\forall c\in\R)\,\Bigl[\lim_{n\to\infty}c=c\ \wedge\ \lim_{n\to\infty}cx_n=ca\Bigr]}
+    If $x_n\to+\infty$ and $y_n\to L>0$, then $x_ny_n\to+\infty$.
+    \insymbols{\bigl[x_n\to+\infty\wedge y_n\to L\wedge L>0\bigr]
+        \Rightarrow x_ny_n\to+\infty}
 \end{theorem}
+\begin{idea}
+    Eventually $y_n$ stays above the positive number $L/2$. Make $x_n$ large enough that $(L/2)x_n$ exceeds the requested bound.
+\end{idea}
+\begin{proof}
+    Let $M>0$. Since $y_n\to L$, there is $n_1$ such that $y_n>L/2$ for every $n\geq n_1$. Since $x_n\to+\infty$, there is $n_2$ such that $x_n>2M/L>0$ for every $n\geq n_2$. Thus, if $n\geq\max\set{n_1,n_2}$,
+    \[
+        x_ny_n>\frac{2M}{L}\cdot\frac L2=M.
+    \]
+    Hence $x_ny_n\to+\infty$.
+\end{proof}
+
+\begin{example}
+    Evaluate $\lim_{n\to\infty}\frac{n^2+2}{n-1}$.
+\end{example}
+\begin{proof}
+    For $n>1$,
+    \[
+        \frac{n^2+2}{n-1}
+        =n\frac{1+2/n^2}{1-1/n}.
+    \]
+    By the limit laws and $1/n\to0$, the second factor tends to $1$. The preceding theorem then shows that the original sequence diverges to $+\infty$.
+\end{proof}
+
+\begin{example}
+    Evaluate $\lim_{n\to\infty}\frac{n^3+5}{n+1}$.
+\end{example}
+\begin{proof}
+    For $n\geq1$,
+    \[
+        \frac{n^3+5}{n+1}
+        =n^2\frac{1+5/n^3}{1+1/n}.
+    \]
+    The limit laws give $\frac{1+5/n^3}{1+1/n}\to1$. Also $n^2\to+\infty$, since $n^2\geq n$ and the natural numbers are unbounded above. By the preceding theorem, the quotient diverges to $+\infty$.
+\end{proof}
+
+\subsubsection*{In practice}
+\begin{itemize}
+    \item \textbf{Prove convergence.} Simplify $\abs{x_n-a}<\epsilon$, then choose an index that makes it hold for every later term.
+    \item \textbf{Prove divergence to infinity.} Given $M>0$, find a lower bound on $n$ that forces $x_n>M$ or $x_n<-M$.
+    \item \textbf{Use the limit laws.} Factor a rational expression into a power of $n$ and a factor with a finite nonzero limit. Check whether the power converges or diverges before taking the limit.
+\end{itemize}
