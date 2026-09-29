@@ -1,0 +1,54 @@
+%!TEX root=../../note.tex
+\subsection{Summation and Product Notation}
+Writing $1+2+3+4+5+6+7+8+9+10$ is manageable, but writing out every term
+through $1000$ is not. Summation notation specifies both the terms and their
+range, instead of relying on dots in $1+2+\cdots+1000$.
+
+\begin{definition}[Summation notation]
+    For integers $a\leq b$ and terms $t_a,\ldots,t_b$, write
+    \begin{equation*}
+        \sum_{i=a}^{b}t_i=t_a+t_{a+1}+\cdots+t_b.
+    \end{equation*}
+    The index $i$ runs through every integer from $a$ to $b$.
+\end{definition}
+
+\begin{example}
+    \begin{equation*}
+        1+2+\cdots+100=\sum_{i=1}^{100}i,
+        \qquad
+        1+8+27+64+125=\sum_{i=1}^{5}i^3.
+    \end{equation*}
+    In the second sum, the term indexed by $i$ is $i^3$.
+\end{example}
+
+\subsubsection{Properties of Summations}
+For terms $x_i,y_i$, a constant $c$, and integer bounds $a\leq b$ and
+$m\leq n$, the following identities let us rewrite sums without changing
+their terms:
+\begin{enumerate}
+    \item Multiplying by a constant:
+    \begin{equation*}
+        c\sum_{i=a}^{b}x_i=\sum_{i=a}^{b}cx_i.
+    \end{equation*}
+    \item Adding or subtracting sums with the same bounds:
+    \begin{equation*}
+        \sum_{i=a}^{b}x_i\pm\sum_{i=a}^{b}y_i
+        =\sum_{i=a}^{b}(x_i\pm y_i).
+    \end{equation*}
+    \item Shifting the index by an integer $r$:
+    \begin{equation*}
+        \sum_{i=m}^{n}x_i=\sum_{j=m+r}^{n+r}x_{j-r}.
+    \end{equation*}
+    The new index $j=i+r$ names the same terms.
+    \item Splitting a sum at $n$, where $2\leq n\leq k$:
+    \begin{equation*}
+        \sum_{i=1}^{n-1}i+\sum_{i=n}^{k}i=\sum_{i=1}^{k}i.
+    \end{equation*}
+\end{enumerate}
+
+\subsubsection{Product Notation}
+Products use the same indexing convention, with multiplication in place of
+addition. For $n\geq 1$,
+\begin{equation*}
+    \prod_{i=1}^{n}i=1\cdot2\cdot3\cdots n=n!.
+\end{equation*}

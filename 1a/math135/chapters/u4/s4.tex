@@ -1,138 +1,30 @@
 %!TEX root=../../note.tex
-\subsection{If and Only If Proof}
-\subsubsection*{Recall}
-If and only if statement: 
-\begin{equation*}
-    A \iff B \equiv \paren{A \implies B} \wedge \paren{B \implies A}
-\end{equation*}
-\begin{example}
-    Prove that for all $x, y \in \R$ with $x, y \geq 0$ that $\frac{x + y}{2} = \sqrt{xy}$ if and only if $x = y$.
-\end{example}
-\begin{proof}
-    Let $x, y$ be arbitrary in $\R$ and non-negative. 
-
-    Prove $(\Leftarrow)$ first. Assume $x = y$.
-
-    Then, 
-    \begin{equation*}
-        \frac{x + y}{2} = \frac{y + y}{2} = \frac{2y}{2} = y
-    \end{equation*}
-
-    and 
-    \begin{equation*}
-        \sqrt{xy } = \sqrt{yy} = \sqrt{y^2} = \abs{y} = y. 
-    \end{equation*}
-
-    since $y$ is non-negative. 
-
-    $(\Rightarrow)$ Assume $\frac{x + y }{2 } = \sqrt{xy}$. 
-
-    Then 
-    \begin{equation*}
-        x + y = 2\sqrt{xy} \implies x^2 + 2xy + y^2 = 4xy \implies x^2 - 2xy + y^2 = 0.
-    \end{equation*}
-
-    This implies 
-    \begin{equation*}
-        \paren{x - y }^2 = 0. 
-    \end{equation*}
-
-    Therefore, 
-    \begin{equation*}
-        x - y = 0 \implies x = y. 
-    \end{equation*}
-\end{proof}
-
-\subsection{Sigma \& Product Notation}
-\begin{example}
-    We have 
-    \begin{equation*}
-        1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10 
-    \end{equation*}
-
-    It is not too hard to write 10 numbers in a sum. What about 
-    \begin{equation*}
-        1 + 2 + \underbrace{\cdots}_{\text{This is not rigourous}} + 1000
-    \end{equation*}
-\end{example}
-
-\subsubsection{Summation Notation}
-Fill in rigours definition. 
-\begin{equation*}
-    1 + 2 + 3 + \cdots + 100 = \sum_{i = 1}^{100} i. 
-\end{equation*}
+\subsection{Proving If and Only If Statements}
+The statement $A\iff B$ means $(A\implies B)\wedge(B\implies A)$.
+Prove both directions to establish the equivalence.
 
 \begin{example}
-    $$1 + 8 + 27 + 64 + 125 = \sum_{i = 1}^{5} i^3$$
+    Prove that for all non-negative $x, y \in \R$,
+    \begin{equation*}
+        \frac{x+y}{2}=\sqrt{xy}\quad\iff\quad x=y.
+    \end{equation*}
 \end{example}
-
-\subsubsection*{Properties of Summations}
-\begin{enumerate}
-    \item Multiplying by a constant 
-    \begin{equation*}
-        c \sum_{i = a }^{b } t_i = \sum_{i = a }^{b } ct_i.  
-    \end{equation*}
-    \item Addition or Subtraction of Summations
-    \begin{equation*}
-        \sum_{i = 1}^{n } x_i \pm \sum_{i = 1}^{n} y_i = \sum_{i = 1}^{n} \paren{x_i \pm y_i}
-    \end{equation*}
-
-    \item Change bounds
-    \begin{equation*}
-        \sum_{i = m }^{n } x_i = \sum_{i = m + r }^{n + r } x_{i - r}
-    \end{equation*}
-    for any $m, n, r \in \Z$. 
-
-    \item Breaking Sum Apart 
-    \begin{equation*}
-        \sum_{i = 1}^{n - 1} i + \sum_{i = n}^{k} i = \sum_{i = 1}^{k} i.
-    \end{equation*}
-\end{enumerate}
-
-\subsubsection*{Product Notation}
-\begin{equation*}
-    \prod_{i = 1}^{n } i = 1 \cdot 2 \cdot 3 \cdots n = n!
-\end{equation*}
-
-\subsection{Proving Uniqueness}
-To prove ``there is a unique $x \in S$ such that $P(x)$'', we prove two things:
-\begin{itemize}
-    \item \textbf{Existence:} there is at least one $x \in S$ such that $P(x)$ is true
-    (for example, by exhibiting one);
-    \item \textbf{Uniqueness:} assume that $P(x)$ and $P(y)$ are both true for some $x, y \in S$,
-    and prove that $x = y$.
-\end{itemize}
-Uniqueness alone does not guarantee that such an $x$ exists, so both parts are needed.
-
-\begin{proposition}
-    $\forall a, b \in \Z$, if $a \neq 0$ and $a \mid b$, then there is a unique integer $k$ such that
-    $b = ka$.
-\end{proposition}
-\begin{proof}
-    Let $a, b$ be arbitrary in $\Z$. Assume $a \neq 0$ and $a \mid b$.
-
-    \textbf{Existence.} Since $a \mid b$, by definition of divisibility,
-    \begin{equation*}
-        \paren{\exists k \in \Z } b = ka.
-    \end{equation*}
-
-    \textbf{Uniqueness.} Suppose $k, m \in \Z$ satisfy
-    \begin{equation*}
-        b = ka \qquad \text{and} \qquad b = ma.
-    \end{equation*}
-
-    Thus, $ka = ma$.
-    Since $a \neq 0$, we may divide both sides by $a$, and we have
-    \begin{equation*}
-        k = m.
-    \end{equation*}
-
-    Thus, there is a unique $k \in \Z$ such that $b = ka$.
-\end{proof}
-\begin{remark}
-    The hypothesis $a \neq 0$ is exactly what the uniqueness step uses. If $a = 0$ and $b = 0$,
-    then $0 \mid 0$, but \emph{every} integer $k$ satisfies $0 = k \cdot 0$.
+\begin{remark}[Proof idea]
+    If $x=y$, evaluate both sides. In the other direction, square the equality
+    and rearrange it into $(x-y)^2=0$.
 \end{remark}
+\begin{proof}
+    Let $x,y\in\R$ be arbitrary and non-negative.
 
-\subsubsection*{Exercises}
-Use a proof by contradiction to show that two non-parallel lines have a unique intersection point.
+    $(\Leftarrow)$ Suppose $x=y$. Then
+    \begin{equation*}
+        \frac{x+y}{2}=y=\sqrt{y^2}=\sqrt{xy},
+    \end{equation*}
+    where $\sqrt{y^2}=y$ because $y\geq 0$.
+
+    $(\Rightarrow)$ Suppose $\frac{x+y}{2}=\sqrt{xy}$. Squaring both sides gives
+    \begin{equation*}
+        x^2+2xy+y^2=4xy,
+    \end{equation*}
+    so $(x-y)^2=0$. Hence $x=y$.
+\end{proof}

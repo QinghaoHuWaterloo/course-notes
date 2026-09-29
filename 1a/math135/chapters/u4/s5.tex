@@ -1,0 +1,33 @@
+%!TEX root=../../note.tex
+\subsection{Proving Uniqueness}
+To prove that there is a unique $x\in S$ satisfying $P(x)$, show both that
+such an $x$ exists and that any two elements satisfying $P$ are equal.
+Proving only the second part does not establish existence.
+
+\begin{proposition}
+    For all $a,b\in\Z$, if $a\neq 0$ and $a\mid b$, then there is a unique
+    integer $k$ such that $b=ka$.
+\end{proposition}
+\begin{remark}[Proof idea]
+    Divisibility gives existence directly. For uniqueness, compare two
+    possible multiples of the same nonzero integer $a$.
+\end{remark}
+\begin{proof}
+    Let $a,b\in\Z$ be arbitrary. Assume $a\neq 0$ and $a\mid b$.
+
+    \textbf{Existence.} By the definition of divisibility, there is some
+    $k\in\Z$ such that $b=ka$.
+
+    \textbf{Uniqueness.} Suppose $k,m\in\Z$ both satisfy the equation. Then
+    $ka=b=ma$. Since $a\neq 0$, dividing by $a$ gives $k=m$.
+\end{proof}
+\begin{remark}
+    The condition $a\neq 0$ is needed for uniqueness. If $a=b=0$, then
+    $0\mid 0$, but every integer $k$ satisfies $0=k\cdot0$.
+\end{remark}
+
+\subsubsection*{Exercises}
+\begin{enumerate}
+    \item Use a proof by contradiction to show that two non-parallel lines
+    have a unique intersection point.
+\end{enumerate}
