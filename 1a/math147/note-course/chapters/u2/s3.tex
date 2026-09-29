@@ -10,8 +10,8 @@ purpose: the field axioms let us compute, the order axioms let us compare, and
 completeness lets us take limits.
 
 \subsubsection{The Field Axioms}
-\begin{definition}[Field]
-    A \textbf{field} is a set $F$ equipped with two binary operations
+\begin{definition}[Field]\label{def:field}
+    A \textbf{field} is a set $F$ equipped with two binary operations\index{field}
     \[
         + : F \times F \to F,
         \qquad
@@ -78,7 +78,7 @@ Once the axioms are fixed, even the most familiar facts --- uniqueness of the id
 
 
 \mdfsetup{nobreak=true}
-\begin{theorem}
+\begin{theorem}\label{thm:field-facts}
     \begin{enumerate}[label = \alph*)]
         \item If $z, a \in \R$ with $z + a = a$, then $z = 0$.
         \item If $u \in \R$ and $b \neq 0$ with $u \cdot b = b$, then $u = 1$.
@@ -112,9 +112,9 @@ Once the axioms are fixed, even the most familiar facts --- uniqueness of the id
 \end{proof}
 
 \subsubsection{The Order Axioms}
-\begin{definition}[The Order Properties of $\R$]
+\begin{definition}[The Order Properties of $\R$]\label{def:order-properties}
     There is a nonempty subset $P$ of $\R$, called the set of \textbf{positive real
-    numbers}, that satisfies the following properties.
+    numbers}, that satisfies the following properties.\index{order axioms}\index{positive real numbers}
     \begin{enumerate}[label=\textbf{O\arabic*.}, leftmargin=3em]
         \item \textbf{Trichotomy law.}
         For every $a \in \R$, exactly one of the following holds:
@@ -131,7 +131,7 @@ Once the axioms are fixed, even the most familiar facts --- uniqueness of the id
 \end{definition}
 
 
-\begin{definition}[Order relation]
+\begin{definition}[Order relation]\label{def:order-relation}
     Let $a, b \in \R$.
     \begin{enumerate}
         \item If $a - b \in P$, then we write $a > b$ or $b < a$.
@@ -147,9 +147,9 @@ The positive rationals $P\cap\Q$ also satisfy O1--O3, so an ordered field still 
 is bounded above in $\Q$ but has no least upper bound in $\Q$. That is why completeness is a separate axiom.
 
 
-\begin{definition}[Completeness Axiom]
+\begin{definition}[Completeness Axiom]\label{def:completeness-preview}
     If $A \subseteq \R$ is nonempty and bounded above, then $A$ has a least upper
-    bound in $\R$.
+    bound in $\R$.\index{completeness axiom}
     \insymbols{\begin{aligned}
         &(\forall A\subseteq\R)\,\Bigl[\bigl(A\neq\emptyset\wedge(\exists u\in\R)(\forall a\in A)\,[a\leq u]\bigr)\\
         &\quad\Rightarrow(\exists u_0\in\R)\bigl[(\forall a\in A)\,[a\leq u_0]\\
@@ -188,8 +188,8 @@ This is only a preview: upper bounds, suprema and the consequences of this axiom
 \end{proof}
 
 \subsubsection{Absolute Value and the Triangle Inequality}
-\begin{definition}
-    Given $a \in \R$, we define the \textbf{absolute value} $\abs{a}$ by
+\begin{definition}\label{def:absolute-value}
+    Given $a \in \R$, we define the \textbf{absolute value} $\abs{a}$ by\index{absolute value}
     \[
         \abs{a} =
         \begin{cases}
@@ -202,7 +202,7 @@ This is only a preview: upper bounds, suprema and the consequences of this axiom
 Geometrically, $\abs{a}$ is the distance from $a$ to $0$, and $\abs{a-b}$ is the distance between $a$ and $b$; the results below are statements about distances.
 
 
-\begin{theorem}
+\begin{theorem}\label{thm:abs-value}
     \begin{enumerate} [label = (\alph*)]
         \item $\abs{ab} = \abs{a}\abs{b}$ for all $a, b \in \R$.
         \item $\abs{a}^2 = a^2$ for all $a \in \R$.
@@ -255,8 +255,8 @@ Geometrically, $\abs{a}$ is the distance from $a$ to $0$, and $\abs{a-b}$ is the
 
 
 \begin{proposition}
-    [Triangle Inequality]
-    If $a, b \in \R$, then $\abs{a + b } \leq \abs{a} + \abs{b}$.
+    [Triangle Inequality]\label{prop:triangle-inequality}
+    If $a, b \in \R$, then $\abs{a + b } \leq \abs{a} + \abs{b}$.\index{triangle inequality}
     \insymbols{(\forall a,b\in\R)\,\bigl[\abs{a+b}\leq\abs{a}+\abs{b}\bigr]}
 \end{proposition}
 
@@ -267,7 +267,7 @@ Geometrically, $\abs{a}$ is the distance from $a$ to $0$, and $\abs{a-b}$ is the
 \end{idea}
 
 \begin{proof}
-    Let $a, b \in \R$. By part (d) of the preceding theorem,
+    Let $a, b \in \R$. By part (d) of \cref{thm:abs-value},
     \begin{align*}
         -\abs{a} \leq a \leq \abs{a}, \\
         -\abs{b} \leq b \leq \abs{b}.
@@ -280,7 +280,7 @@ Geometrically, $\abs{a}$ is the distance from $a$ to $0$, and $\abs{a-b}$ is the
 
     If $\abs{a}+\abs{b}=0$, then the displayed bounds force $a+b=0$, so the
     claim is immediate. Otherwise $\abs{a}+\abs{b}>0$, and applying part (c)
-    of the preceding theorem with $x = a+b$ and $c = \abs{a}+\abs{b}$ converts
+    of \cref{thm:abs-value} with $x = a+b$ and $c = \abs{a}+\abs{b}$ converts
     this two-sided bound back into the single inequality
     \begin{equation*}
         \abs{a + b} \leq \abs{a} + \abs{b}.
@@ -290,7 +290,7 @@ Geometrically, $\abs{a}$ is the distance from $a$ to $0$, and $\abs{a-b}$ is the
 In terms of distance: going from $0$ to $a+b$ directly is never longer than going via $a$.
 
 
-\begin{corollary}
+\begin{corollary}\label{cor:reverse-triangle}
     \begin{enumerate}
         \item $\abs{\abs{a} - \abs{b}} \leq \abs{a - b}.$
         \item $\abs{a - b} \leq \abs{a} + \abs{b}$
@@ -323,7 +323,7 @@ In terms of distance: going from $0$ to $a+b$ directly is never longer than goin
         -\abs{a - b} \leq \abs{a} - \abs{b} \leq \abs{a - b}.
     \end{equation*}
 
-    By part (c) of the absolute value theorem, applied with $x=\abs{a}-\abs{b}$
+    By part (c) of \cref{thm:abs-value}, applied with $x=\abs{a}-\abs{b}$
     and $c=\abs{a-b}$, this two-sided bound is equivalent to
     \begin{equation*}
         \abs{\abs{a} - \abs{b}} \leq \abs{a - b}.

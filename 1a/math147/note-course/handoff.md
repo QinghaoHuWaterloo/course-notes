@@ -41,10 +41,10 @@ chapters/
 
 One `uN/sN.tex` = one `\subsection` = the editing unit. The `%!TEX root`
 spelling varies (`../../note`, `../../note.tex`, with or without spaces);
-do not normalise it for style. Two lines point to the wrong place and may be
-corrected when those files are next edited: `chapters/c2.tex`
-(`../../note`, should be `../note`) and `chapters/u2/s1.tex`
-(`../../../note`, should be `../../note`).
+do not normalise it for style. `chapters/c2.tex` was corrected to `../note`
+on 2026-09-29; one line still points to the wrong place and may be corrected
+when next edited: `chapters/u2/s1.tex` (`../../../note`, should be
+`../../note`).
 
 Build and check: `HANDOFF.md`, "Verification".
 
@@ -134,27 +134,44 @@ Build and check: `HANDOFF.md`, "Verification".
   all (`style-migration.md` lists each). Check `git log -p -- <file>` before
   adding explanation to a file that was already edited.
 
-## Status (2026-09-28)
+## Status (2026-09-29)
 
 - **Done:** all of `chapters/` follows `mixed` (migration 2026-09-25, see
-  `style-migration.md`).
-- **Build baseline** (clean build 2026-09-26, twoside, 11pt, with
-  `\insymbols` and `\raggedbottom`): 37 pages; 0 overfull and 0 underfull
-  boxes; 5 mdframed "Box was splittet wrong" info messages (`u2/s2`, `u2/s3`
-  ×3, `u2/s5`), with no visible defect on those pages.
+  `style-migration.md`). Cross-reference + index + concept-map layer added
+  2026-09-29 (see below).
+- **Build baseline** (clean build 2026-09-29, twoside, 11pt, with
+  `\insymbols`, `\raggedbottom`, cleveref, populated index and two concept
+  maps): **45 pages**; **0 overfull and 0 underfull** boxes; **7** mdframed
+  "Box was splittet wrong" info messages, with no visible defect on those
+  pages; **0 undefined references**. (The pre-linking baseline was 43 pages
+  / 3 overfull / 5 split on 2026-09-28; reflow removed the 3 overfull, the
+  index and concept maps added 2 pages and 2 split infos.)
+- **Cross-reference, index, concept-map layer (2026-09-29).** Implements
+  `STYLE.md` §5.3–5.6:
+  - `note.tex` loads cleveref via `\AtEndPreamble` (after qhbase's hyperref
+    hook) with `\crefname`/`\Crefname` for the six numbered theorem
+    environments.
+  - Every numbered theorem-like block across `u2/s1`–`u2/s5` and
+    `u3/s1`–`u3/s2` has a semantic `\label` (`def:`/`thm:`/`prop:`/`lem:`/
+    `cor:`). The starred `axiom` (completeness) is unnumbered, so it is
+    `\index`ed but not labelled.
+  - Prose pointers ("the preceding theorem", "the difference law", "part (c)
+    of the preceding corollary", …) converted to `\cref`, including one
+    cross-chapter link `\cref{lem:eps-characterization}` (u3/s2 → u2/s4).
+    Multi-part references keep the part in prose: `part (c) of
+    \cref{thm:abs-value}`.
+  - Concept definitions carry `\index{}` (47 entries → populated `Index` in
+    the TOC at the last page).
+  - `c2.tex` and `c3.tex` each open with a `\cref`-linked concept map.
+  - `c2.tex` `%!TEX root` corrected to `../note`.
 - **Gaps against the current `STYLE.md`:**
   - Lecture openers (§2.2): present in `u2/s3`, `u2/s4`, and `u3/s1`;
     missing in `u2/s1`, `u2/s2`, and `u2/s5`.
-  - `note.tex` calls `\printindex`, but no file uses `\term{}`, so the index
-    is empty. Either add `\term{}` to definitions or drop `\printindex`.
-  - The divergence negation line is now in `u3/s1`.
   - Corollary 2.3.10 (`u2/s3`) renders its parts as (i)/(ii), but the
     proofs are titled "Proof of (1)" / "Proof of (2)".
 - **Next:** new lectures go into `chapters/u3/` (and `c3.tex`) in the
-  `mixed` profile. The divergence examples, eight elementary limit laws,
-  and later limit examples in `u3/s1` were completed on 2026-09-28.
-  `u3/s2` now covers limits and order, the squeeze theorem, and monotone
-  convergence with complete proofs.
+  `mixed` profile, adding `\label`/`\cref`/`\index` as written (`STYLE.md`
+  §5.3–5.4) and extending the `c3` concept map when the chapter grows.
 - **Alternative rendering** (not kept in sync with later edits here; covers
   u2/s1–u3/s1): `../note-cambridge-style/` (profile `cambridge`,
   2026-09-26). The Zorich-style rendering was deleted on 2026-09-26 (in git

@@ -545,19 +545,62 @@ them where they say so.
 - Starred headings only for *In practice*, *Exercises*, and the headings a
   profile prescribes (Abbott's *Discussion* / *Epilogue*, …).
 
-### 5.3 Labels and references
+### 5.3 Labels and cross-references
 
-Label only what is referenced. Prefixes: `def:`, `thm:`, `prop:`, `lem:`,
-`cor:`, `ex:` (example), `exr:` (exercise), `eq:`, `fig:`, `sec:`; then a short kebab-case name
-(`thm:archimedes`, `prop:sqrt2-exists`). Refer as `Theorem~\ref{thm:…}`, or
-by name for named results. Never renumber or rename an existing label
-without updating every reference.
+Label every **numbered** theorem-like block that a reader might want to jump
+to, even before anything references it — a stable label costs nothing and
+lets later notes (and the concept map, §5.6) link to it. Only the numbered
+environments (`theorem`, `lemma`, `proposition`, `corollary`, `definition`,
+`example`, which share one counter) can be referenced; the starred
+`remark`/`axiom`/`assumption`/`notation` have no number, so do not label
+them.
+
+Prefixes: `def:`, `thm:`, `prop:`, `lem:`, `cor:`, `ex:` (example),
+`exr:` (exercise), `eq:`, `fig:`, `sec:`; then a short kebab-case name
+(`thm:archimedean`, `prop:sqrt2-exists`, `lem:eps-characterization`). Place
+the `\label` on the `\begin{…}` line of the block.
+
+Refer with **cleveref**, never a bare `\ref`: `\cref{thm:archimedean}` prints
+"Theorem 2.5.3"; `\Cref{…}` capitalises at a sentence start; a comma list
+`\cref{def:supremum,def:infimum}` merges into "Definitions 2.4.2 and 2.4.3".
+This replaces prose pointers like "the preceding theorem" or "by the
+result above", which break silently when order changes — convert them to
+`\cref`. For one part of a multi-part result, keep the part in prose and
+`\cref` the block: `part (c) of \cref{thm:abs-value}`. cleveref resolves
+references across chapter files automatically (a `u3` proof may
+`\cref{lem:eps-characterization}` defined in `u2`). Never renumber or rename
+an existing label without updating every reference.
+
+**Load order (once per course root).** cleveref must load *after* hyperref.
+`qhbase` loads hyperref at `\AtEndPreamble`, so queue cleveref just after it
+in `note.tex` and set the theorem names there:
+
+```latex
+\AtEndPreamble{%
+  \RequirePackage[nameinlink]{cleveref}%
+  \crefname{theorem}{Theorem}{Theorems}%      % + lemma/proposition/
+  \Crefname{theorem}{Theorem}{Theorems}%      %   corollary/definition/example
+  … }
+```
 
 ### 5.4 Index
 
-If the root calls `\printindex`, each defined term is written `\term{word}`
-in its `definition` (it is emphasised and indexed). If the root does not
-print an index, use `\emph{}`.
+`qhnotes` always loads `imakeidx` and defines `\term{word}`
+(`= \emph{word}\index{word}`); the note root should call `\printindex` once,
+last. Keep the index populated: at the point a concept is **first defined**,
+record it.
+
+- If the defined word appears as plain text, wrap it once with `\term{word}`
+  (emphasises and indexes in one step).
+- If the word is already styled (`\textbf`, `\emph`, inside a `definition`
+  head), add a bare `\index{word}` right after it instead of `\term`, to
+  avoid double emphasis.
+- Sub-entries for a family: `\index{quantifier!universal}`,
+  `\index{density!of $\Q$ in $\R$}`. Force the sort key for symbols:
+  `\index{square root of 2@$\sqrt{2}$}`.
+- Index the *concept*, not every mention — one entry per definition, plus a
+  sub-entry for a named consequence if it is a landmark
+  (`\index{convergence!implies boundedness}`).
 
 ### 5.5 Visual system
 
@@ -567,6 +610,29 @@ In a note set: no new packages, no geometry or font changes, no copied
 package internals, no ad-hoc coloured boxes. Such
 changes are package work in the `references` repository and affect every
 course.
+
+### 5.6 Concept map (structure note)
+
+Each chapter file (`cN.tex`) opens, right after its `\section`, with one
+short **concept map**: a single italic paragraph that names the chapter's
+load-bearing results and how they depend on one another, each linked with
+`\cref`. It is the reading spine — how the pieces connect — not a summary of
+every result. Keep it to the few concepts everything else rests on.
+
+```latex
+\section{The Real Number System}
+\begin{quote}\small\itshape
+\textbf{Concept map.}
+$\R$ is a complete ordered field: the field axioms (\cref{def:field}),
+the order axioms (\cref{def:order-properties}), and completeness
+(\cref{def:completeness-preview}) … the Archimedean property
+(\cref{def:archimedean}) drives \cref{prop:sqrt2-exists,thm:density-Q}.
+\end{quote}
+\input{chapters/u2/s1.tex}
+```
+
+Because it is `\cref`-linked, it stays correct when results are renumbered,
+and it doubles as the chapter's revision map.
 
 ---
 
@@ -615,6 +681,9 @@ Before calling a note edit done:
 - [ ] Headings name content and follow the profile; end-of-lecture blocks
       (where the profile uses them) are last.
 - [ ] Notation and shortcuts match the rest of the document.
+- [ ] Every new numbered block has a semantic `\label`; cross-references use
+      `\cref`/`\Cref`, not bare `\ref` or "the preceding …"; new concept
+      definitions are `\index`ed; a new chapter has its concept map (§5.3–5.6).
 - [ ] No new `TODO(check)` left unexplained in the report.
 - [ ] Clean build; no new overfull boxes or split warnings (`HANDOFF.md`,
       "Verification").

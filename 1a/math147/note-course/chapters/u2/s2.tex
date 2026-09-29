@@ -2,8 +2,8 @@
 
 \subsection{Induction and Well-Ordering}
 \subsubsection{Mathematical Induction}
-\begin{definition}[Principle of Mathematical Induction]
-    Let $P(n)$ be a statement depending on $n\in\N$. If the following two statements are true:
+\begin{definition}[Principle of Mathematical Induction]\label{def:induction}
+    Let $P(n)$ be a statement depending on $n\in\N$.\index{induction!principle of mathematical}\index{mathematical induction} If the following two statements are true:
     \begin{enumerate}[label=(\arabic*)]
         \item $P(1)$ is true;
         \item for every $k\in\N$, if $P(k)$ is true, then $P(k+1)$ is true;
@@ -18,7 +18,7 @@
 
 
 Here is an example: 
-\begin{proposition}[Sum of the First $n$ Natural Numbers]
+\begin{proposition}[Sum of the First $n$ Natural Numbers]\label{prop:sum-n}
     For every $n\in\N$,
     \begin{equation*}
         1+2+\cdots+n=\frac{n(n+1)}{2}.
@@ -48,7 +48,7 @@ Here is an example:
 \end{proof}
 
 The principle of mathematical induction has the following equivalent set formulation.
-\begin{proposition}
+\begin{proposition}\label{prop:induction-set-form}
     Let $S\subseteq\N$. If
     \begin{enumerate}
         \item $1\in S$;
@@ -63,8 +63,8 @@ The principle of mathematical induction has the following equivalent set formula
 \end{proof}
 
 \subsubsection{The Well-Ordering Principle}
-\begin{theorem}[Well-Ordering Principle]
-    Every nonempty subset $S$ of $\N$ has a smallest element.
+\begin{theorem}[Well-Ordering Principle]\label{thm:well-ordering}
+    Every nonempty subset $S$ of $\N$ has a smallest element.\index{well-ordering principle}
     \insymbols{(\forall S\subseteq\N)\,\Bigl[S\neq\emptyset\Rightarrow(\exists m\in S)(\forall s\in S)\,[m\leq s]\Bigr]}
 \end{theorem}
 
@@ -86,7 +86,7 @@ The principle of mathematical induction has the following equivalent set formula
     By mathematical induction, $T=\N$. This implies that no natural number belongs to $S$, so $S=\emptyset$, contradicting the assumption that $S$ is nonempty. Therefore, $S$ has a smallest element.
 \end{proof}
 
-\begin{proposition}
+\begin{proposition}\label{prop:sum-n-squared}
     Using the well-ordering principle, prove that for every $n\in\N$,
     \begin{equation*}
         1^2 + 2^2 + \cdots + n^2 = \frac{n\paren{n + 1}\paren{2n + 1}}{6}.
@@ -113,7 +113,7 @@ The principle of mathematical induction has the following equivalent set formula
     \begin{equation*}
         S := \set{n \in \N : \neg P(n)}
     \end{equation*}
-    is nonempty. By the well-ordering principle, $S$ has a smallest element $k$. Since $P(1)$ holds, $1\notin S$, so $k > 1$ and hence $k - 1\in\N$.
+    is nonempty. By the well-ordering principle (\cref{thm:well-ordering}), $S$ has a smallest element $k$. Since $P(1)$ holds, $1\notin S$, so $k > 1$ and hence $k - 1\in\N$.
 
     By minimality of $k$, we have $k - 1\notin S$, so $P(k - 1)$ is true:
     \begin{equation*}

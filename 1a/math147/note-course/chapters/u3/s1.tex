@@ -6,8 +6,8 @@ The limit definition makes precise what it means for the terms of a sequence to 
 
 A sequence of real numbers is a function $X:\N\to\R$. We write $x_n=X(n)$ for its $n$th term and denote the sequence by $\set{x_n}_{n=1}^{\infty}$.
 
-\begin{definition}
-    A sequence $\set{x_n}$ in $\R$ converges to $a\in\R$ if, for every $\epsilon>0$, there is an index $n_\epsilon\in\N$ such that
+\begin{definition}\label{def:limit}
+    A sequence $\set{x_n}$ in $\R$ converges to $a\in\R$ if, for every $\epsilon>0$, there is an index $n_\epsilon\in\N$ such that\index{limit!of a sequence}\index{convergence}
     \[
         n\geq n_\epsilon \quad\Longrightarrow\quad \abs{x_n-a}<\epsilon.
     \]
@@ -77,7 +77,7 @@ Thus $x_n\to a$ precisely when, for every $\epsilon>0$, there is $n_\epsilon\in\
 \end{proof}
 
 \subsubsection{Uniqueness of the Limit}
-\begin{proposition}
+\begin{proposition}\label{prop:eps-forces-equal}
     If $x,y\in\R$ and $\abs{x-y}<\epsilon$ for every $\epsilon>0$, then $x=y$.
     \insymbols{(\forall x,y\in\R)\,\Bigl[(\forall\epsilon>0)\,\bigl[\abs{x-y}<\epsilon\bigr]\Rightarrow x=y\Bigr]}
 \end{proposition}
@@ -85,12 +85,12 @@ Thus $x_n\to a$ precisely when, for every $\epsilon>0$, there is $n_\epsilon\in\
     Suppose $x\ne y$. Then $\epsilon=\abs{x-y}/2>0$, but $\abs{x-y}>\epsilon$, contradicting the hypothesis.
 \end{proof}
 
-\begin{theorem}
-    A sequence in $\R$ can have at most one limit.
+\begin{theorem}\label{thm:limit-unique}
+    A sequence in $\R$ can have at most one limit.\index{limit!uniqueness}
     \insymbols{(\forall a,b\in\R)\,\bigl[(x_n\to a\wedge x_n\to b)\Rightarrow a=b\bigr]}
 \end{theorem}
 \begin{scratch}
-    By the preceding proposition, it suffices to show $\abs{a-b}<\epsilon$ for every $\epsilon>0$. The only link between $a$ and $b$ is the sequence, so pass through a term $x_n$:
+    By \cref{prop:eps-forces-equal}, it suffices to show $\abs{a-b}<\epsilon$ for every $\epsilon>0$. The only link between $a$ and $b$ is the sequence, so pass through a term $x_n$:
     \[
         \abs{a-b}\leq\abs{a-x_n}+\abs{x_n-b}.
     \]
@@ -101,7 +101,7 @@ Thus $x_n\to a$ precisely when, for every $\epsilon>0$, there is $n_\epsilon\in\
     \[
         \abs{a-b}\leq\abs{a-x_n}+\abs{x_n-b}<\frac\epsilon2+\frac\epsilon2=\epsilon.
     \]
-    This holds for every $\epsilon>0$, so the preceding proposition gives $a=b$.
+    This holds for every $\epsilon>0$, so \cref{prop:eps-forces-equal} gives $a=b$.
 \end{proof}
 
 \subsubsection{Divergence and Boundedness}
@@ -116,12 +116,12 @@ Both $0$ and $1$ keep appearing arbitrarily late, so the terms cannot all remain
 
 Suppose $x_n\to a$ and take $\epsilon=1/2$. There is an $n_\epsilon$ such that $\abs{x_n-a}<1/2$ for every $n\geq n_\epsilon$. Choose an odd and an even index beyond $n_\epsilon$. The odd term gives $\abs{a}<1/2$, hence $-1/2<a<1/2$. The even term gives $\abs{1-a}<1/2$, hence $1/2<a<3/2$. These intervals do not overlap, a contradiction. Thus this sequence diverges.
 
-\begin{definition}
-    A sequence $\set{x_n}$ is bounded if there is an $M\in\R$ such that $\abs{x_n}\leq M$ for every $n\in\N$.
+\begin{definition}\label{def:bounded-sequence}
+    A sequence $\set{x_n}$ is bounded if there is an $M\in\R$ such that $\abs{x_n}\leq M$ for every $n\in\N$.\index{bounded sequence}
 \end{definition}
 
-\begin{theorem}
-    Every convergent sequence of real numbers is bounded.
+\begin{theorem}\label{thm:convergent-bounded}
+    Every convergent sequence of real numbers is bounded.\index{convergence!implies boundedness}
     \insymbols{(\exists a\in\R)\,[x_n\to a]\Rightarrow(\exists M\in\R)(\forall n\in\N)\,\bigl[\abs{x_n}\leq M\bigr]}
 \end{theorem}
 \begin{idea}
@@ -148,13 +148,13 @@ The converse fails: $\set{0,1,0,1,\ldots}$ is bounded but, as shown above, diver
 For $a_n=n+1/n$, given $M>0$ choose $n>M$ by the Archimedean Property. Then $\abs{a_n}=n+1/n>M$. For $b_n$, the same choice gives $\abs{b_n}=n>M$. In each case no single bound works for every term. Notice that $a_n$ eventually stays positive, while $b_n$ alternates signs; their unboundedness alone does not describe how they diverge.
 
 \subsubsection{Divergence to $\pm\infty$}
-\begin{definition}
-    A sequence $\set{x_n}$ diverges to $+\infty$, written $\lim_{n\to\infty}x_n=+\infty$, if for every $M>0$ there is $n_M\in\N$ such that $x_n>M$ for all $n\geq n_M$.
+\begin{definition}\label{def:diverge-plus-infty}
+    A sequence $\set{x_n}$ diverges to $+\infty$, written $\lim_{n\to\infty}x_n=+\infty$, if for every $M>0$ there is $n_M\in\N$ such that $x_n>M$ for all $n\geq n_M$.\index{divergence!to $+\infty$}
 \end{definition}
 In symbols, $(\forall M>0)(\exists n_M\in\N)(\forall n\geq n_M)\,[x_n>M]$.
 
-\begin{definition}
-    A sequence $\set{x_n}$ diverges to $-\infty$, written $\lim_{n\to\infty}x_n=-\infty$, if for every $M>0$ there is $n_M\in\N$ such that $x_n<-M$ for all $n\geq n_M$.
+\begin{definition}\label{def:diverge-minus-infty}
+    A sequence $\set{x_n}$ diverges to $-\infty$, written $\lim_{n\to\infty}x_n=-\infty$, if for every $M>0$ there is $n_M\in\N$ such that $x_n<-M$ for all $n\geq n_M$.\index{divergence!to $-\infty$}
 \end{definition}
 In symbols, $(\forall M>0)(\exists n_M\in\N)(\forall n\geq n_M)\,[x_n<-M]$.
 We write $\lim_{n\to\infty}x_n=\pm\infty$, but such a sequence is still divergent: it does not converge to any real number.
@@ -186,8 +186,8 @@ We write $\lim_{n\to\infty}x_n=\pm\infty$, but such a sequence is still divergen
 
 \subsubsection{Elementary Limit Laws}
 The limit definition lets us pass to limits through arithmetic. For a quotient, the denominator's limit must be nonzero.
-\begin{theorem}
-    If $\lim_{n\to\infty}x_n=a$ and $\lim_{n\to\infty}y_n=b$ in $\R$, then
+\begin{theorem}\label{thm:limit-laws}
+    If $\lim_{n\to\infty}x_n=a$ and $\lim_{n\to\infty}y_n=b$ in $\R$, then\index{limit!laws}
     \begin{enumerate}
         \item[(i)] $\lim_{n\to\infty}c=c$ for every constant $c\in\R$;
         \item[(ii)] $\lim_{n\to\infty}(cx_n)=ca$ for every $c\in\R$;
@@ -245,7 +245,7 @@ The limit definition lets us pass to limits through arithmetic. For a quotient, 
     For (vii), the reverse triangle inequality gives $\bigl|\abs{x_n}-\abs a\bigr|\leq\abs{x_n-a}$. For (viii), use induction: $x_n^1\to a$ by hypothesis, and if $x_n^k\to a^k$, then (v) gives $x_n^{k+1}=x_n^kx_n\to a^ka=a^{k+1}$.
 \end{proof}
 
-\begin{theorem}
+\begin{theorem}\label{thm:infty-times-positive}
     If $x_n\to+\infty$ and $y_n\to L>0$, then $x_ny_n\to+\infty$.
     \insymbols{\bigl[x_n\to+\infty\wedge y_n\to L\wedge L>0\bigr]
         \Rightarrow x_ny_n\to+\infty}
@@ -270,7 +270,7 @@ The limit definition lets us pass to limits through arithmetic. For a quotient, 
         \frac{n^2+2}{n-1}
         =n\frac{1+2/n^2}{1-1/n}.
     \]
-    By the limit laws and $1/n\to0$, the second factor tends to $1$. The preceding theorem then shows that the original sequence diverges to $+\infty$.
+    By the limit laws and $1/n\to0$, the second factor tends to $1$. \Cref{thm:infty-times-positive} then shows that the original sequence diverges to $+\infty$.
 \end{proof}
 
 \begin{example}
@@ -282,7 +282,7 @@ The limit definition lets us pass to limits through arithmetic. For a quotient, 
         \frac{n^3+5}{n+1}
         =n^2\frac{1+5/n^3}{1+1/n}.
     \]
-    The limit laws give $\frac{1+5/n^3}{1+1/n}\to1$. Also $n^2\to+\infty$, since $n^2\geq n$ and the natural numbers are unbounded above. By the preceding theorem, the quotient diverges to $+\infty$.
+    The limit laws give $\frac{1+5/n^3}{1+1/n}\to1$. Also $n^2\to+\infty$, since $n^2\geq n$ and the natural numbers are unbounded above. By \cref{thm:infty-times-positive}, the quotient diverges to $+\infty$.
 \end{proof}
 
 \subsubsection*{In practice}

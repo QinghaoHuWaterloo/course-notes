@@ -7,6 +7,29 @@
 % boxes (Underfull \vbox, large gaps); keep the one-sided ragged bottom.
 \raggedbottom
 
+% ----- Smart cross-references (Scheme 0) -----
+% cleveref must load AFTER hyperref. qhbase loads hyperref at \AtEndPreamble,
+% so we queue cleveref just after it, still inside the preamble. \cref then
+% prints the type and number together ("Theorem 2.1.1"); \Cref capitalises
+% for sentence starts. Only the numbered theorem-like environments (which
+% share one counter) can be referenced; the starred remark/axiom/assumption/
+% notation cannot.
+\AtEndPreamble{%
+  \RequirePackage[nameinlink]{cleveref}%
+  \crefname{theorem}{Theorem}{Theorems}%
+  \crefname{lemma}{Lemma}{Lemmas}%
+  \crefname{proposition}{Proposition}{Propositions}%
+  \crefname{corollary}{Corollary}{Corollaries}%
+  \crefname{definition}{Definition}{Definitions}%
+  \crefname{example}{Example}{Examples}%
+  \Crefname{theorem}{Theorem}{Theorems}%
+  \Crefname{lemma}{Lemma}{Lemmas}%
+  \Crefname{proposition}{Proposition}{Propositions}%
+  \Crefname{corollary}{Corollary}{Corollaries}%
+  \Crefname{definition}{Definition}{Definitions}%
+  \Crefname{example}{Example}{Examples}%
+}
+
 % ----- Proof-idea environments (MATH 147 only) -----
 % idea:    1--3 sentence strategy, sits directly on top of the proof.
 % scratch: backward "how do we find n_eps / choose epsilon" work; not partœ

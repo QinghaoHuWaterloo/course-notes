@@ -3,8 +3,8 @@
 Bounds make sense in any ordered set. The special feature of $\R$ is that every nonempty set bounded above has a supremum in $\R$; this need not hold in $\Q$.
 
 \begin{definition}
-    [Bounded Sets]
-    Let $S$ be a nonempty subset of $\R$. The set $S$ is said to be
+    [Bounded Sets]\label{def:bounded-sets}
+    Let $S$ be a nonempty subset of $\R$. The set $S$ is said to be\index{bounded set}\index{upper bound}\index{lower bound}
     \begin{enumerate}
         \item bounded above if there exists $u \in \R$ such that $x \leq u$ for all $x \in S$.
         \item bounded below if there exists $w \in \R$ such that $w \leq x$ for all $x \in S$.
@@ -14,18 +14,18 @@ Bounds make sense in any ordered set. The special feature of $\R$ is that every 
 \end{definition}
 
 \begin{definition}
-    [Supremum]
+    [Supremum]\label{def:supremum}
     If there exists an upper bound $u_0$ of $S$ such that whenever $u$ is an upper bound for $S$
-    we have $u_0 \leq u$, then $u_0$ is called the least upper bound, or the supremum, of $S$.
+    we have $u_0 \leq u$, then $u_0$ is called the least upper bound, or the supremum, of $S$.\index{supremum}\index{least upper bound}
     \begin{equation*}
         u_0 := \sup S.
     \end{equation*}
 \end{definition}
 
 \begin{definition}
-    [Infimum]
+    [Infimum]\label{def:infimum}
     If there exists a lower bound $w_0$ of $S$ such that whenever $w$ is a lower bound for $S$
-    we have $w_0 \geq w$, then $w_0$ is called the greatest lower bound, or the infimum, of $S$.
+    we have $w_0 \geq w$, then $w_0$ is called the greatest lower bound, or the infimum, of $S$.\index{infimum}\index{greatest lower bound}
     \begin{equation*}
         w_0 := \inf S.
     \end{equation*}
@@ -39,8 +39,8 @@ When does an upper bound $u$ fail to be the \emph{least} one? Exactly when some 
 
 
 \mdfsetup{nobreak=true}
-\begin{lemma}
-    An upper bound $u$ of a nonempty set $S$ in $\R$ is the supremum of $S$ if and only if
+\begin{lemma}\label{lem:eps-characterization}
+    An upper bound $u$ of a nonempty set $S$ in $\R$ is the supremum of $S$ if and only if\index{supremum!epsilon-characterization@$\epsilon$-characterization}
     \begin{equation*}
         (\forall \epsilon > 0)(\exists x_\epsilon \in S)\,[u - \epsilon < x_\epsilon].
     \end{equation*}

@@ -20,8 +20,8 @@ The number systems discussed in this lecture include
 
 The natural numbers are closed under addition. The integers are closed under addition, subtraction, and multiplication, but they are not closed under division; for example, $1/2\notin\Z$. Therefore, we introduce the rational numbers to include quotients of integers with nonzero denominators.
 
-\begin{theorem}[Irrationality of $\sqrt{2}$]
-    The number $\sqrt{2}$ is irrational; equivalently, $\sqrt{2}\notin\Q$.
+\begin{theorem}[Irrationality of $\sqrt{2}$]\label{thm:sqrt2-irrational}
+    The number $\sqrt{2}$ is irrational; equivalently, $\sqrt{2}\notin\Q$.\index{irrational number}\index{square root of 2@$\sqrt{2}$}
     \insymbols{\neg(\exists m\in\Z)(\exists n\in\N)\,\Bigl[\sqrt2=\frac mn\Bigr]}
 \end{theorem}
 
@@ -85,11 +85,11 @@ Negative real numbers are the negatives of such expansions. Some numbers have tw
 \end{example}
 
 \subsubsection{Statements and Quantifiers}
-\begin{definition}[Statement]
-    A statement is a sentence that has a definite truth value: it is either true or false.
+\begin{definition}[Statement]\label{def:statement}
+    A statement is a sentence that has a definite truth value: it is either true or false.\index{statement}
 \end{definition}
 
-The \textbf{universal quantifier} $\forall$ means ``for all.'' For example,
+The \textbf{universal quantifier} $\forall$ means ``for all.''\index{quantifier!universal}\index{universal quantifier} For example,
 \begin{example}
     The statement
     \begin{equation*}
@@ -98,7 +98,7 @@ The \textbf{universal quantifier} $\forall$ means ``for all.'' For example,
     is false; for instance, it fails when $x=\frac12$.
 \end{example}
 
-The \textbf{existential quantifier} $\exists$ means ``there exists.'' For example,
+The \textbf{existential quantifier} $\exists$ means ``there exists.''\index{quantifier!existential}\index{existential quantifier} For example,
 \begin{example}
     The statement
     \begin{equation*}
@@ -119,7 +119,7 @@ The \textbf{existential quantifier} $\exists$ means ``there exists.'' For exampl
     From here on, every theorem-like statement ends with its form \emph{In symbols}: quantifiers and connectives only, using notation defined before that statement.
 \end{notation}
 
-\begin{proposition}
+\begin{proposition}\label{prop:exists-y-cube}
     For every $x\in\R$, there exists $y\in\R$ such that
     \begin{equation*}
         x^3-y^3=1.
@@ -136,7 +136,7 @@ The \textbf{existential quantifier} $\exists$ means ``there exists.'' For exampl
 
 Here the choice of $y$ is allowed to depend on $x$: for each $x$ we produce a (possibly different) $y$ that makes the equation hold. This is exactly what the quantifier order $(\forall x)(\exists y)$ permits.
 
-\begin{proposition}
+\begin{proposition}\label{prop:reversed-order-false}
     The statement
     \begin{equation*}
         (\exists y\in\R)(\forall x\in\R)\,[x^3-y^3=1]
@@ -153,5 +153,5 @@ Here the choice of $y$ is allowed to depend on $x$: for each $x$ we produce a (p
 \end{proposition}
 
 \begin{remark}
-    In this second statement, the quantifier order is reversed: $(\exists y)(\forall x)$ demands a \emph{single} $y$ that works simultaneously for every $x\in\R$. This is a much stronger requirement than $(\forall x)(\exists y)$, which only asks that a (possibly different) $y$ exist for each individual $x$. The first proposition shows such $y$'s exist, but they genuinely depend on $x$ (namely $y=\sqrt[3]{x^3-1}$), so no single choice of $y$ can work for all $x$ at once. This is why swapping the order of $\forall$ and $\exists$ can change a true statement into a false one, and it is a caution to always read quantified statements in the order they are written.
+    In this second statement, the quantifier order is reversed: $(\exists y)(\forall x)$ demands a \emph{single} $y$ that works simultaneously for every $x\in\R$. This is a much stronger requirement than $(\forall x)(\exists y)$, which only asks that a (possibly different) $y$ exist for each individual $x$. \Cref{prop:exists-y-cube} shows such $y$'s exist, but they genuinely depend on $x$ (namely $y=\sqrt[3]{x^3-1}$), so no single choice of $y$ can work for all $x$ at once. This is why swapping the order of $\forall$ and $\exists$ can change a true statement into a false one, and it is a caution to always read quantified statements in the order they are written.
 \end{remark}

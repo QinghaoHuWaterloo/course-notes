@@ -1,14 +1,14 @@
 %!TEX root=../../note.tex
 \subsection{Completeness and Its Consequences}
 \begin{axiom}[Completeness Property]
-    Every nonempty set of real numbers that has an upper bound also has a supremum in $\R$.
+    Every nonempty set of real numbers that has an upper bound also has a supremum in $\R$.\index{completeness axiom}
     \insymbols{\begin{aligned}
         &(\forall S\subseteq\R)\,\Bigl[\bigl(S\neq\emptyset\wedge(\exists u\in\R)(\forall x\in S)\,[x\leq u]\bigr)\\
         &\quad\Rightarrow(\exists u_0\in\R)\,[u_0=\sup S]\Bigr]
     \end{aligned}}
 \end{axiom}
 
-\begin{corollary}
+\begin{corollary}\label{cor:inf-existence}
     Every nonempty set of real numbers that has a lower bound also has an infimum in $\R$.
     \insymbols{\begin{aligned}
         &(\forall S\subseteq\R)\,\Bigl[\bigl(S\neq\emptyset\wedge(\exists w\in\R)(\forall x\in S)\,[w\leq x]\bigr)\\
@@ -69,8 +69,8 @@ We now prove that $\N$ is not bounded above in $\R$. The proof combines two ingr
 \end{itemize}
 
 \begin{definition}
-    [Archimedean Property]
-    If $x \in \R$, then there exists $n_x \in \N$ such that $x \leq n_x$. 
+    [Archimedean Property]\label{def:archimedean}
+    If $x \in \R$, then there exists $n_x \in \N$ such that $x \leq n_x$. \index{Archimedean property}
     \insymbols{(\forall x\in\R)(\exists n_x\in\N)\,[x\leq n_x]}
 \end{definition}
 
@@ -104,7 +104,7 @@ We now prove that $\N$ is not bounded above in $\R$. The proof combines two ingr
 \]
 
 
-\begin{corollary}
+\begin{corollary}\label{cor:archimedean-consequences}
     The following are consequences of the Archimedean Property:
     \begin{enumerate}[label=(\alph*)]
         \item If
@@ -177,8 +177,8 @@ Its supremum $x=\sup S$ ought to sit exactly on the boundary between squares bel
 Unlike part (c) above, this is a genuine completeness argument: $S$ is a bounded set of reals and we need its least upper bound, not a least element.
 
 \mdfsetup{nobreak=true}
-\begin{proposition}
-    There exists a real number $x$ such that $x^2 = 2$.
+\begin{proposition}\label{prop:sqrt2-exists}
+    There exists a real number $x$ such that $x^2 = 2$.\index{square root of 2@$\sqrt{2}$!existence}
     \insymbols{(\exists x\in\R)\,[x^2=2]}
 \end{proposition}
 \mdfsetup{nobreak=false}
@@ -279,8 +279,8 @@ the rational version of the set $S$ above. It is nonempty ($0\in T$) and bounded
 
 Still, $\Q$ is spread densely through $\R$. The picture: lay down the multiples $\frac1n,\frac2n,\frac3n,\ldots$ on the number line. If the step $\frac1n$ is shorter than the interval $(x,y)$, the multiples cannot jump over it, so one of them lands inside.
 
-\begin{theorem}
-    If $x$ and $y$ are any real numbers with $x < y$, then there exists a rational number $r \in \Q$ such that $x < r < y$. 
+\begin{theorem}\label{thm:density-Q}
+    If $x$ and $y$ are any real numbers with $x < y$, then there exists a rational number $r \in \Q$ such that $x < r < y$. \index{density!of $\Q$ in $\R$}
     \insymbols{(\forall x,y\in\R)\,\bigl[x<y\Rightarrow(\exists r\in\Q)\,[x<r<y]\bigr]}
 \end{theorem}
 
@@ -307,7 +307,7 @@ Still, $\Q$ is spread densely through $\R$. The picture: lay down the multiples 
         xn+1<yn.
     \end{equation*}
 
-    We now find a natural number between $xn$ and $xn+1$. Since $xn>0$, part~(c) of the preceding corollary (with $y$ there replaced by $xn$) gives some $m\in\N$ with
+    We now find a natural number between $xn$ and $xn+1$. Since $xn>0$, part~(c) of \cref{cor:archimedean-consequences} (with $y$ there replaced by $xn$) gives some $m\in\N$ with
     \begin{equation*}
         m-1\leq xn<m.
     \end{equation*}
@@ -335,8 +335,8 @@ Still, $\Q$ is spread densely through $\R$. The picture: lay down the multiples 
     \end{equation*}
 \end{proof}
 
-\begin{corollary}
-    If $x$ and $y$ are any real numbers with $x < y$, then there exists an irrational number $z$ such that $x < z < y$.
+\begin{corollary}\label{cor:density-irrationals}
+    If $x$ and $y$ are any real numbers with $x < y$, then there exists an irrational number $z$ such that $x < z < y$.\index{density!of irrationals in $\R$}
     \insymbols{(\forall x,y\in\R)\,\bigl[x<y\Rightarrow(\exists z\in\R\setminus\Q)\,[x<z<y]\bigr]}
 \end{corollary}
 
@@ -344,12 +344,12 @@ Still, $\Q$ is spread densely through $\R$. The picture: lay down the multiples 
     Scale by $\sqrt2$: a nonzero rational $r$ between $x/\sqrt2$ and $y/\sqrt2$ gives $\sqrt2\,r$ between $x$ and $y$, and $\sqrt2\,r$ is irrational.
 \end{idea}
 \begin{proof}
-    Set $a=x/\sqrt2$ and $b=y/\sqrt2$. Since $\sqrt2>0$, we have $a<b$. Choose a nonzero rational number $r$ with $a<r<b$: if $b\leq0$, choose $r\in\Q$ with $a<r<b$; if $a\geq0$, choose $r\in\Q$ with $a<r<b$; and if $a<0<b$, choose $r\in\Q$ with $0<r<b$. In each case, the density theorem provides such an $r$, and $r\neq0$.
+    Set $a=x/\sqrt2$ and $b=y/\sqrt2$. Since $\sqrt2>0$, we have $a<b$. Choose a nonzero rational number $r$ with $a<r<b$: if $b\leq0$, choose $r\in\Q$ with $a<r<b$; if $a\geq0$, choose $r\in\Q$ with $a<r<b$; and if $a<0<b$, choose $r\in\Q$ with $0<r<b$. In each case, \cref{thm:density-Q} provides such an $r$, and $r\neq0$.
 
     Let $z=\sqrt2r$. Multiplying $a<r<b$ by $\sqrt2$ gives $x<z<y$. If $z$ were rational, then $\sqrt2=z/r$ would be rational, a contradiction. Thus $z$ is irrational.
 \end{proof}
 
-\begin{corollary}
+\begin{corollary}\label{cor:infinitely-many-rationals}
     Let $x, y \in \R$, with $x < y$. Then there exists infinitely many rationals between $x$ and $y$. 
     \insymbols{\begin{aligned}
         &(\forall x,y\in\R)\,\Bigl[x<y\\
@@ -358,7 +358,7 @@ Still, $\Q$ is spread densely through $\R$. The picture: lay down the multiples 
 \end{corollary}
 
 \begin{proof}
-    Choose $r_1\in\Q$ with $x<r_1<y$. Having chosen $r_k\in\Q$ with $x<r_k<y$, apply the density theorem to $r_k<y$ to choose $r_{k+1}\in\Q$ such that
+    Choose $r_1\in\Q$ with $x<r_1<y$. Having chosen $r_k\in\Q$ with $x<r_k<y$, apply \cref{thm:density-Q} to $r_k<y$ to choose $r_{k+1}\in\Q$ such that
     \[
         r_k<r_{k+1}<y.
     \]
@@ -368,20 +368,20 @@ Still, $\Q$ is spread densely through $\R$. The picture: lay down the multiples 
 \subsubsection{Countable and Uncountable Sets}
 Are there more rational or irrational numbers? To answer this question, we need to know in what sense. 
 \begin{definition}
-    [Cardinality]
-    A function $f:A\to B$ is a \emph{bijection} if it is both injective (one-to-one) and surjective (onto). We say that $A$ and $B$ have the same \emph{cardinality}, written
+    [Cardinality]\label{def:cardinality}
+    A function $f:A\to B$ is a \emph{bijection} if it is both injective (one-to-one) and surjective (onto). We say that $A$ and $B$ have the same \emph{cardinality}, written\index{cardinality}\index{bijection}
     \[
         |A|=|B|,
     \]
     if there exists a bijection $f:A\to B$. Thus, cardinality records the size of a set up to a bijection.
 \end{definition}
 
-\begin{definition}
+\begin{definition}\label{def:finite-countable}
     A set $S$ is \emph{finite} if $S=\varnothing$ or if there is a bijection
     \[
         \{1,2,\ldots,n\}\to S
     \]
-    for some $n\in\N$. A set $S$ is \emph{countably infinite} if there is a bijection $f:\N\to S$.
+    for some $n\in\N$. A set $S$ is \emph{countably infinite} if there is a bijection $f:\N\to S$.\index{finite set}\index{countably infinite set}
 \end{definition}
 \begin{example}
     \begin{enumerate}[label = (\alph*)]
@@ -393,6 +393,6 @@ Are there more rational or irrational numbers? To answer this question, we need 
         is a bijection. Thus $\Z$ has the same cardinality as $\N$.
     \end{enumerate}
 \end{example}
-\begin{definition}
-    A set $S$ is \emph{countable} if it is finite or countably infinite. A set is \emph{uncountable} if it is not countable.
+\begin{definition}\label{def:countable-uncountable}
+    A set $S$ is \emph{countable} if it is finite or countably infinite. A set is \emph{uncountable} if it is not countable.\index{countable set}\index{uncountable set}
 \end{definition}

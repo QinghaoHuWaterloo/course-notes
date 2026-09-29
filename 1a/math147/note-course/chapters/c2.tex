@@ -1,6 +1,29 @@
-%!TEX root = ../../note
+%!TEX root = ../note
 
 \section{The Real Number System}
+
+% ----- Concept map (structure note) -----
+% A per-chapter map of the main results and how they depend on one another.
+% Each entry links to its statement with \cref; keep it to the load-bearing
+% concepts, not every result.
+\begin{quote}\small\itshape
+\textbf{Concept map.}
+$\R$ is a \emph{complete ordered field}, built in three layers:
+the field axioms (\cref{def:field}), the order axioms
+(\cref{def:order-properties}), and completeness
+(\cref{def:completeness-preview}, restated as the working axiom in
+\S5). Completeness is the one axiom $\Q$ fails, and every later result
+traces back to it: the Archimedean property (\cref{def:archimedean})
+comes from completeness plus induction; it in turn drives the
+consequences in \cref{cor:archimedean-consequences}, the existence of
+$\sqrt2$ (\cref{prop:sqrt2-exists}), and the density of $\Q$
+(\cref{thm:density-Q}). Suprema and infima
+(\cref{def:supremum,def:infimum}) with their $\epsilon$-characterization
+(\cref{lem:eps-characterization}) are the tools that make these
+arguments run, and they return in \S3 as the engine of the monotone
+convergence theorem.
+\end{quote}
+
 \input{chapters/u2/s1.tex}
 \input{chapters/u2/s2.tex}
 \input{chapters/u2/s3.tex}

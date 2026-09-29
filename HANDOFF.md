@@ -115,7 +115,11 @@ Document roots define their own shortcuts (`\R \N \Z \Q \C`, `\paren{}`,
 2. Create `chapters/uN/sN.tex` with the root line and a `% Source:` comment,
    add it to `chapters/cN.tex`.
 3. Write in the course's profile (`STYLE.md` §3). Mark anything unreadable
-   with `% TODO(check)`.
+   with `% TODO(check)`. As you write, add a semantic `\label` to every
+   numbered theorem-like block, `\cref` any cross-reference (never bare
+   `\ref` or "the preceding …"), and `\index` each new concept definition
+   (`STYLE.md` §5.3–5.4). If the lecture starts a new chapter, add that
+   chapter's concept map (`STYLE.md` §5.6).
 4. Build, inspect the rendered pages, update the course handoff's status.
 
 ### Rendering a course in another style (`rudin`, `zorich`, …)
@@ -142,7 +146,9 @@ Document roots define their own shortcuts (`\R \N \Z \Q \C`, `\paren{}`,
    `cambridge` profile). Never from CS 135.
 3. Pick a profile from `STYLE.md` §3; if it is `mixed`, copy the `idea` /
    `scratch` environments and the `\insymbols` macro from MATH 147's
-   `note.tex`.
+   `note.tex`. Also copy MATH 147's `\AtEndPreamble{…cleveref…}` block so
+   cross-references and concept maps work from the start (`STYLE.md` §5.3);
+   `\printindex` is already called by the template's root.
 4. Write `handoff.md` from the template below before the course grows.
 5. Write one representative lecture, build it, inspect the PDF, then scale.
 
