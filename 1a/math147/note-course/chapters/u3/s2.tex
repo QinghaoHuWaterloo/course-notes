@@ -89,8 +89,64 @@ The same conclusion holds if $x_n\geq0$ only for all sufficiently large $n$: the
     Thus $\lim_{n\to\infty}x_n=t$.
 \end{proof}
 
-\subsubsection*{In practice}
-\begin{itemize}
-    \item \textbf{Use the squeeze theorem.} Bound a difficult sequence above and below by sequences with the same known limit; verify that both bounds hold for all sufficiently large indices.
-    \item \textbf{Use monotonicity.} Prove the direction of monotonicity and find a bound. Completeness then gives the limit as the supremum or infimum of the terms.
-\end{itemize}
+\begin{example}
+    Consider the sequence given by $x_1 = 1$ and $x_{n + 1} = \frac{2x_n + 3}{4}$ for all $n \in \N$. 
+\end{example}   
+Let's try. 
+\begin{equation*}
+    x_1 = 1, x_2 = \frac{2x)1 + 3}{4} = \frac{5}{4} = 1.25, x_3 = \frac{2 \cdot \frac{5}{4} + 3}{4} = \frac{11}{8} = 1.375. 
+\end{equation*}
+
+Fact: $x_n < 2, \forall n \in \N$
+\begin{proof}
+    We use induction: base case: $n = 1$
+    \begin{equation*}
+        x_1 = 1 < 2
+    \end{equation*}
+
+    Inductive step: Let $k \in \N$, assume $x_k < 2$. Then, 
+    \begin{equation*}
+        x_k < 2 \implies 2\cdot x_k < 4 \implies 2x_k + 3 < 7 \implies \frac{2x_k + 3}{4} < \frac{7}{4} < 2
+    \end{equation*}
+    which implies 
+    \begin{equation*}
+        x_{k + 1} < 2. 
+    \end{equation*}
+\end{proof}
+
+Fact: $x_k \leq x_{k + 1}, \forall n \in \N$. 
+\begin{proof}
+    Induction: base case: $n = 1$. 
+    \begin{equation*}
+        x_1 = 1 < \frac{5}{4} = x_2. 
+    \end{equation*}
+
+    I.H: $x_k \leq x_{k + 1}$
+
+    We wish to prove $x_{k + 1} \leq x_{k + 2}$
+    \begin{equation*}
+        x_k \leq x_{k + 1} \implies 2x_k \leq 2x_{k + 1} \implies 2x_{k} + 3 \leq 2x_{k + 1} + 3
+    \end{equation*}
+    \begin{equation*}
+        \implies \frac{2x_k + 3}{4} \leq \frac{2x_{k + 1} + 3}{4} \implies x_{k + 1 } \leq x_{k + 2}
+    \end{equation*}
+\end{proof}
+Find the limits 
+\begin{proof}
+    By MCT, $\exists a \in \R$ such that $\lim (x_n)  = a$. 
+
+    Note that $\lim x_{n + 1} = a$. Thus, 
+    \begin{equation*}
+        \lim x_{n + 1} = \lim \frac{2x_n + 3}{4} = \frac{2\lim x_n + \lim 3}{\lim 4} = \frac{2a + 3}{4}
+    \end{equation*}
+    \begin{equation*}
+        a = \frac{2a + 3}{4} \implies a = \frac{3}{2}
+    \end{equation*}
+\end{proof}
+
+
+% \subsubsection*{In practice}
+% \begin{itemize}
+%     \item \textbf{Use the squeeze theorem.} Bound a difficult sequence above and below by sequences with the same known limit; verify that both bounds hold for all sufficiently large indices.
+%     \item \textbf{Use monotonicity.} Prove the direction of monotonicity and find a bound. Completeness then gives the limit as the supremum or infimum of the terms.
+% \end{itemize}

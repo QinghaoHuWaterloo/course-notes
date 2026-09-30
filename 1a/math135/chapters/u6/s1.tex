@@ -1,0 +1,101 @@
+%!TEX root=../../note.tex
+\subsection{Principle of Mathematical Induction}
+\begin{axiom}
+    [The Principle of Mathematical Induction]
+    Let $P(n)$ be an open sentence that depends on $n \in \N$. 
+    If statements (1) and (2) are true
+    \begin{enumerate}[label = (\arabic*)]
+        \item P(1)
+        \item $P(K) \implies P(K + 1), \forall n \in \N$
+    \end{enumerate}
+
+    Then, $P(n), \forall n \in \N$. 
+\end{axiom}
+
+\subsubsection*{Prove by Mathematical Induction}
+To prove the universally quantified statements "$\forall n \in \N, P(n)$"
+\begin{itemize}
+    \item Prove P(1): Base Case. 
+    \item Prove the Universally quantified implication. "For all $k \in \N$, If $P(k)$, then $P(k + 1)$"
+\end{itemize}
+\begin{example}
+    Prove for all $n \in \N$
+    \begin{equation*}
+        \sum_{i = 1}^{n } i\paren{i + 1} = \frac{1}{3} n \cdot \paren{n + 1} \cdot \paren{n + 2}
+    \end{equation*}
+\end{example}
+\begin{proof}
+
+    \textbf{Base case}: 
+    $P(1)$ is true since 
+    \begin{equation*}
+        \sum_{i = 1}^{1 } i \cdot (i + 1) = 1 \cdot 2 = 2 = \frac{1}{3} \cdot 1 \cdot (1 + 1)  \cdot (1 + 2)
+    \end{equation*}
+
+    \textbf{Inductive Step}
+    
+    Let $k$ be an arbitrary natural number. 
+
+    Assume $P(k)$ 
+
+    That is, assume 
+    \begin{equation*}
+        \sum_{i = 1}^{k } i \paren{i + 1} = \frac{1}{3} k\paren{k + 1}\paren{k + 2}
+    \end{equation*}
+
+    Prove $P(k + 1)$:
+    \begin{align*}
+        \sum_{i = 1}^{k + 1} i \paren{i + 1} &= \sum_{i = 1}^{k } i\paren{i + 1} + \paren{k + 1}\paren{k + 2} \\
+        &= \frac{1}{3} k\paren{k + 1}\paren{k + 2} + \paren{k + 1}\paren{k + 2} \\
+        &= \paren{k + 1}\paren{k + 2} \paren{k + 1} \cdot \frac{1}{3} \\
+        &= \frac{1}{3} \paren{k + 1}\paren{k + 2}\paren{k + 3}
+    \end{align*}
+
+    Therefore, $P(k + 1)$ is true. 
+
+    Thus, $P(n)$ is true $\forall n \in \N$ by POMI. 
+\end{proof}
+
+\begin{example}
+    Prove $n! > 2^n$ for all integer $n \geq 4$. 
+\end{example}
+\begin{proof}
+    By Induction on $n$
+
+    \textbf{Base Case:} Show thatstmt is true for $n = 4$. 
+
+    LS= $4! = 24$ 
+
+    RS =$2^4 = 16$
+
+    Since $24 > 16$, the stmt is true for $n = 4$. \\
+
+    \textbf{Inductive Step}: Let k be an arbitrary natural number with $k \geq 4$. 
+
+    Assume the stmt is true for $n = k$. 
+
+    That is, assume $k! > 2^k$. 
+
+    Now prove the stmt is true for $k + 1$. 
+
+    That is, prove $\paren{k + 1} > 2^{k + 1}$
+
+    We know 
+    \begin{equation*}
+        k! > 2^k
+    \end{equation*}
+
+    by I. H 
+    \begin{gather*}
+        \paren{k + 1}k! > \paren{k + 1}2^k \\
+        \paren{k + 1}! > \paren{k + 1}2^k \\
+    \end{gather*}
+
+    Since $k \geq 4$, $k + 1 \geq 5 \geq 2$, so $k + 1 \geq 2$. 
+    
+    So 
+    \begin{equation*}
+        \paren{k + 1}! > \paren{k + 1}2^k \geq 2 \cdot 2^k = 2^{k + 1}
+    \end{equation*}
+
+\end{proof}

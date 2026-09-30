@@ -1,0 +1,150 @@
+%!TEX root=../../note.tex
+\subsubsection{Subset}
+\begin{definition}
+    [Disjoint]
+    Two sets $S$ and $T$ are said to be disjoint when 
+    \begin{equation*}
+        S \cap T \neq \emptyset
+    \end{equation*}
+\end{definition}
+
+\begin{definition}
+    [Subset]
+    A set $S$ is called a subset of.a set $T$ when every element of $S$ belongs to $T$. 
+    \begin{equation*}
+        S \subseteq T. 
+    \end{equation*}
+\end{definition}
+
+\begin{definition}
+    [Proper Subset]
+    A set $S$ is called a proper subset of a set $T$ when $S$ is a subset of $T$ and there exists an element in $T$ which does not belong to $S$. We write
+    \begin{equation*}
+        S \subsetneq T
+    \end{equation*}
+\end{definition}
+
+\begin{remark}
+    When we have $S \subseteq T$: we also say $T$ is superset of $S$. 
+
+    When we have $S \nsubseteq T$: we say $T$ is a proper superset of $S$. 
+\end{remark}
+
+\begin{example}
+    \begin{itemize}
+        \item $S \subseteq S$ for all sets 
+        \item $\emptyset \subseteq S$ for all sets. 
+        \item $\N \nsubseteq \Z$ 
+        \item $\Z \nsubseteq \N$
+        \item 
+    \end{itemize}
+\end{example}
+
+To prove that $S \subseteq T$, prove the universally quantified implication 
+\begin{equation*}
+    \forall x \in \mathcal{U }, \paren{x \in S } \implies \paren{x \in T}
+\end{equation*}
+
+\begin{example}
+    Let $A = \set{n \in \N : 4 \mid (n - 3)}$ and $B = \set{2k + 1 : k \in \Z}$. 
+    \begin{enumerate}
+        \item Prove that $A \subseteq B$
+        \item Prove that $A \subseteq B$
+    \end{enumerate}
+\end{example}
+\begin{proof}
+    For (i)
+
+    Let $n \in \N$. Assume $n \in A$. 
+
+    Then by the definition of the set, $4 \mid \paren{n - 3}$, which means 
+    $\exists k \in \Z$ such that 
+    \begin{align*}
+        n - 3 &= 4k \implies n = 4k + 3 = 4k + 2 + 1 \\
+        n &= 2\paren{2k + 1} + 1. 
+    \end{align*}
+
+    Since $2k + 1 \in \Z, n \in B$. 
+
+    Therefore, $A \subseteq B$. \\
+
+    For (ii) 
+    If $n = 1, 1 \in B$. 
+    
+    \begin{align*}
+        4 \nmid 1 - 3 \implies 1 \notin A. \therefore A \subsetneq B
+    \end{align*}
+\end{proof}
+
+In order to prove $S = T$, we need to prove 
+\begin{equation*}
+    S \subseteq T \qquad T \subseteq S. 
+\end{equation*}
+
+\begin{example}
+    Let $S = \set{1, -1, 0}$ and $T = \set{x \in \R : x^3 = x}$. Prove that $S = T$. 
+\end{example}
+\begin{proof}
+    \begin{itemize}
+        \item $S \subseteq T$ 
+        
+        Let $x \in S$. Then $n = 1, -1, 0$. 
+        \begin{align*}
+            &x = 1 \implies 1^3 = 1 \implies x \in T\\
+            &x = 0 \implies 0^3 = 0 \implies x \in T\\
+            &x = -1 \implies \paren{-1}^3 = -1 \implies x \in T
+        \end{align*}
+
+        \item $T \subseteq S$ 
+        
+        Let $x \in T$. Then $x^3 = x$. So, 
+        \begin{align*}
+            x^3 - x &= 0 \\
+            x\paren{x^2 - 1} &= 0 \\
+            x\paren{x - 1}\paren{x + 1} &= 0
+        \end{align*}
+        Therefore, $x = 0, 1, -1$. 
+
+        that means $x \in S$. 
+        Therefore, $T \subseteq S$. 
+    \end{itemize}
+    Therefore $S = T$. 
+\end{proof}
+
+\begin{example}
+    Prove that $S = T$ if and only if $S \cap T = S \cup T$. 
+\end{example}
+\begin{proof}
+
+    $(\Rightarrow)$ Suppose $S = T$. 
+
+    First we prove $\paren{S \cap T} \subseteq S \cup T$. 
+    
+    Let $x \in S \cap T$. It implies $x \in S$ and $x \in T$. 
+
+    It also implies $x \in S \vee x \in T \implies x \in S \cup T$\\
+
+    Now, we need to prove $S \cup T \subseteq S \cap T$
+    \begin{equation*}
+        x \in S \cup T \implies x \in S \vee x \in T. 
+    \end{equation*}
+
+    Since $S = T$, 
+    \begin{equation*}
+        \implies x\in S \wedge x \in T \implies S \cap T. 
+    \end{equation*}
+
+    Alternative: \begin{equation*}
+        S \cap T = S \cap S = S \cup S = S \cup T. 
+    \end{equation*}
+
+    $\paren{\Leftarrow}$ Suppse $S \cup T = S \cap T$.
+    
+    First $S \subseteq T$: 
+    \begin{align*}
+        x \in S \implies x \in S \cup T \implies x \in S \cap T \implies x \in T
+    \end{align*}
+
+    Kiro, you do the second way. 
+
+\end{proof}

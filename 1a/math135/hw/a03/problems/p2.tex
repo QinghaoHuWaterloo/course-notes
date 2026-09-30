@@ -5,32 +5,32 @@ Prove the following statement.
     \forall x \in \N, \exists y \in \N, \paren{x^2 + 2 - y} \mid \paren{10 - x^2 - y^2}
 \end{equation*}
 \begin{solution}
-    Let $x$ be arbitrary number in $\N$. We select $y$ to be $3$ in $\N$. 
+    Let $x$ be arbitrary number in $\N$. We select $y$ to be $x^2 + 1$ in $\N$. 
 
-    subtituting $y = 3$ into the expression, we 
+    subtituting $y = x^2 + 1$ into the expression, we 
     \begin{equation*}
-        \paren{x^2 + 2 - 3} \mid \paren{10 - x^2 - \paren{3}^2}
+        \paren{x^2 + 2 - x^2 - 1} \mid \paren{10 - x^2 - \paren{x^2 + 1}^2}
     \end{equation*}
 
     This implies 
     \begin{equation*}
-        \paren{x^2 - 1} \mid \paren{10 - x^2 - 9 }, 
+        \paren{1} \mid \paren{10 - x^2 - x^4 - 2x^2 - 1 }, 
     \end{equation*}
 
     which equals to 
     \begin{equation*}
-        \paren{x^2 - 1} \mid \paren{1 - x^2}
+        \paren{1} \mid \paren{-x^4 - 3x^2 + 9}
     \end{equation*}
 
-    there exists a number $k = -1$ in $\Z$ such that 
+    there exists a number $k = -x^4 - 3x^2 + 9$ in $\Z$ such that 
     \begin{equation*}
-        k(x^2 - 1) = -1\paren{x^2 - 1} = -x^2 + 1 = 1 - x^2. 
+        (-x^4 - 3x^2 + 9) \cdot 1 =  -x^4 - 3x^2 + 9
     \end{equation*}
 
     for all $x \in \N$. 
 
     Thus, according to the definition of divisibility, 
     \begin{equation*}
-        \forall x \in \N, \exists y \in \N, \paren{x^2 + 2x - y} \mid \paren{10 - x^2 - y^2}. 
+        \forall x \in \N, \exists y \in \N, \paren{x^2 + 2 - y} \mid \paren{10 - x^2 - y^2}. 
     \end{equation*}
 \end{solution}
