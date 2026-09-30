@@ -9,8 +9,8 @@
 ;;
 
 ;; Question 4 Part (a)
-;; can-donate-to/bool? Sym, Sym -> Bool
-;; Sym must be (anyof 'O- 'O+ 'A- 'A+ 'B- 'B+ 'AB- 'AB+)
+;; Produces true if donor-blood-type match recipient-blood-type
+;; can-donate-to/cond?: (anyof 'O- 'O+ 'A- 'A+ 'B- 'B+ 'AB- 'AB+) (anyof 'O- 'O+ 'A- 'A+ 'B- 'B+ 'AB- 'AB+) -> Bool
 
 (define (can-donate-to/cond? donor-blood-type recipient-blood-type)
   (cond
@@ -64,8 +64,8 @@
     ))
 
 ;; Question 4 Part (b)
-;; can-donate-to/bool? Sym, Sym -> Bool
-;; Sym must be (anyof 'O- 'O+ 'A- 'A+ 'B- 'B+ 'AB- 'AB+)
+;; Produces true if donor-blood-type match recipient-blood-type
+;; can-donate-to/bool?: (anyof 'O- 'O+ 'A- 'A+ 'B- 'B+ 'AB- 'AB+) (anyof 'O- 'O+ 'A- 'A+ 'B- 'B+ 'AB- 'AB+) -> Bool
 
 (define (can-donate-to/bool? donor-blood-type recipient-blood-type)
   (or

@@ -1,0 +1,107 @@
+%!TEx root=../a03.tex
+\section{Q4}
+\begin{enumerate}[label = (\alph*)]
+    \item \begin{solution}
+        Suppose $x$ be arbitrary in $\mathcal{F}$. By the definition of set, we have 
+        \begin{equation*}
+            42 \mid x + 18, x \in \Z. 
+        \end{equation*} 
+
+        By the definition of divisibility, there exists $k \in \Z$ such that 
+        \begin{equation*}
+            42k = x + 18. 
+        \end{equation*}
+
+        Rearrange, we get 
+        \begin{equation*}
+            x = 42k - 18. 
+        \end{equation*}
+
+        Factor 3 out, we get 
+        \begin{equation*}
+            x = 3\paren{14k - 6}.
+        \end{equation*}
+
+        Since $k \in \Z$, 
+        \begin{equation*}
+            x = 3\paren{14k - 6}, 14k - 6 \in \Z. 
+        \end{equation*}
+
+        This yields $x \in \mathcal{K}$. 
+
+        Moreover, substitute $x = 42k - 18$ into $x + 18$, we get 
+        \begin{equation*}
+            42k - 18 + 18 = 42k. 
+        \end{equation*}
+
+        This is equal to 
+        \begin{equation*}
+            7 \cdot \paren{6k}. 
+        \end{equation*}
+
+        Since $k \in \Z$, $6k \in \Z$. 
+
+        Therefore, there exists $6k \in \Z$ such that 
+        \begin{equation*}
+            x + 18 = 7 \cdot 6k. 
+        \end{equation*}
+
+        By the definition of divisibility, we have 
+        \begin{equation*}
+            7 \mid x + 18. 
+        \end{equation*}
+
+        We obtain $x \in \mathcal{P}$. 
+
+        Therefore, we proved 
+        \begin{equation*}
+            \forall x \in \Z, \bracks{\paren{x \in \mathcal{F}} \implies \paren{x \in \paren{\mathcal{K} \cap \mathcal{P}}}}
+        \end{equation*}
+    \end{solution}
+
+    \newpage
+    \item \begin{solution}
+        We disprove this statement by giveing a counterexample. Let $x = 45 \in \Z$. 
+        
+        Since 
+        \begin{equation*}
+            45 + 18 = 63
+        \end{equation*}
+        and 
+        \begin{equation*}
+            42 \nmid 63. 
+        \end{equation*}
+        We have 
+        \begin{equation*}
+            45 \notin \mathcal{F}
+        \end{equation*}
+
+        However, $3 \mid 45$. 
+        So 
+        \begin{equation*}
+            45 \in \mathcal{K}. 
+        \end{equation*}
+
+        Morever, 
+        \begin{equation*}
+            45 + 18 = 63. 
+        \end{equation*}
+
+        and 
+        \begin{equation*}
+            7 \mid 63. 
+        \end{equation*}
+
+        So 
+        \begin{equation*}
+            45 \in \mathcal{P}. 
+        \end{equation*}
+
+        Thus, we proved that 
+        \begin{equation*}
+            \exists x \in \Z, \bracks{\paren{x \notin \mathcal{F}} \implies \paren{x \in \paren{\mathcal{K} \cap \mathcal{P}}}}
+        \end{equation*}
+
+        So, we disprove the original statement. 
+    \end{solution}
+\end{enumerate}

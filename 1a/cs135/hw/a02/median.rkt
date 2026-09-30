@@ -10,12 +10,17 @@
 
 
 ;; Get the median of three numbers
-;; median-of-3-simple Num, Num, Num -> Num
+;; median-of-3-simple: Num Num Num -> Num
 (define (median-of-3-simple a b c)
   (cond
-    [(and (<= (abs (- a (/ (+ a b c) 3))) (abs (- b (/ (+ a b c) 3)))) (<= (abs (- a (/ (+ a b c) 3))) (abs (- c (/ (+ a b c) 3))))) a]
-    [(and (<= (abs (- b (/ (+ a b c) 3))) (abs (- a (/ (+ a b c) 3)))) (<= (abs (- b (/ (+ a b c) 3))) (abs (- c (/ (+ a b c) 3))))) b]
-    [else c]))
+    [(<= a b)
+     (cond
+       [(<= b c) b]
+       [(<= a c) c]
+       [else a])]
+    [(<= a c) a]
+    [(<= b c) c]
+    [else b]))
 
 (define (median-of-3 a b c)
 (cond

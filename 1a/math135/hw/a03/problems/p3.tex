@@ -1,0 +1,52 @@
+%!TEX root=../a03.tex
+\section{Q3}
+Prove the following statement. 
+\begin{solution}
+    Let $p, q, r$ be arbitrary in $\Z$.
+    
+    By Elimination, it suffices to prove that 
+    \begin{equation*}
+        \bracks{\paren{p^2q \mid \paren{r^2 - q}} \wedge \paren{pq^3 \mid qr}} \implies \paren{pq \mid \paren{q(7 + 5r) - 7r^2}}
+    \end{equation*}
+
+    Suppose $\paren{p^2q \mid \paren{r^2 - q}}$ and $ \paren{pq^3 \mid qr}$, by the definition of divisibility, there exists $a, b \in \Z$ such that 
+    \begin{gather*}
+        r^2 - q = p^2qa \\
+        qr = pq^3b. 
+    \end{gather*}
+
+    Morever, we expand $q\paren{7 + 5r} - 7r^2$, we get 
+    \begin{equation*}
+        7q + 5qr - 7r^2.
+    \end{equation*}
+
+    Rerarrange and factoring -7 out of $-7r^2 + 7q$ we obtains 
+    \begin{equation*}
+        -7r^2 + 7q + 5qr = -7\paren{r^2 - q} + 5qr. 
+    \end{equation*}
+
+    Subtitute $r^2 - 1 = p^2qa$ and $qr = pq^3b$ in, we get 
+    \begin{equation*}
+        -7p^2qa + 5pq^3b. 
+    \end{equation*}
+
+    Factoring $pq$ out, we get
+    \begin{equation*}
+        pq\paren{-7pa + 5q^2b}. 
+    \end{equation*}
+
+    Since $p, q, r, a, b \in \Z$, therefore
+    \begin{equation*}
+        -7pa + 5q^2b \in \Z
+    \end{equation*}
+
+    such that 
+    \begin{equation*}
+        pq(-7pa + 5q^2b) = q(7 + 5r) - 7r^2. 
+    \end{equation*}
+
+    Thus, by the definition of divisibility, we obtain 
+    \begin{equation*}
+        pq \mid \paren{q (7 + 5r) - 7r^2. }
+    \end{equation*}
+\end{solution}
