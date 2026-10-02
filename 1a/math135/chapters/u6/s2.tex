@@ -1,0 +1,136 @@
+%!TEX root=../../note.tex
+\subsection{Principle of Strong Induction}
+Why Mathematical Induction is not enough? 
+\begin{example}
+    A sequence $\set{x_n }$ is defined by 
+    \begin{equation*}
+        x_1 = 4 \qquad x_2 = 68 \qquad x_n = 2 x_{n - 1} + 15x_{n - 2} \qquad \forall n \geq 3
+    \end{equation*}
+
+    Prove $\underbrace{x_n}_{\text{closed form}} = 2 \paren{-3}^n + 10 \cdot 5^{n - 1}, \forall n \geq 1$.
+\end{example}
+\begin{remark}
+    This is an example of a sequence defined \textit{recursively} or a recursive relation. 
+\end{remark}
+
+\begin{proof}
+    Let $P(n)$ be $x_n = 2\paren{-3}^n + 10 \cdot 5^{n - 1}$
+
+    \textbf{Base case: } Prove $P(1)$ is true.  We have
+    \begin{equation*}
+        x_1 = 4
+    \end{equation*}
+
+    by definition. also
+    \begin{align*}
+        2 \times \paren{3}^1 + 10 \cdot 5^{1 - 1} = 2(-3) + 10 = -6 + 10 = 4 = x_1
+    \end{align*}
+
+    So $P(1)$ is true. 
+
+    \textbf{Inductive Step}
+    Let $k$ be an arbitrary natural number. 
+
+    Assume $P(k)$ is true. 
+
+    That is 
+    \begin{equation*}
+        x_k = 2\paren{-3}^k + 10 \cdot 5^{k - 1}. 
+    \end{equation*}
+    
+    Prove $P(k + 1)$. That is 
+    \begin{align*}
+        x_{k + 1} = 2\paren{-3}^{k + 1} + 10 \cdot 5^k. 
+    \end{align*}
+\end{proof}
+
+We cannot continue with this. Since we are unable to prove that 
+\begin{equation*}
+    P(k) \implies P(k + 1)
+\end{equation*}
+
+since we only know $P(k)$ is true. If we want or prove, we also need to know that $P(k - 1)$ is true. 
+
+\begin{definition}
+    [Principle of Strong Induction]
+    Let $P(n)$ be an open sentence that depends on $n \in \N$.  
+
+    If statement 1 and 2 are both true 
+    \begin{enumerate}
+        \item P(1)
+        \item For all $k \in \N$, if 
+        \begin{equation*}
+            P(1) \wedge P(2) \wedge \cdots \wedge P(k)
+        \end{equation*}
+        is true, then $P(k + 1)$ is true. 
+    \end{enumerate}
+
+    then $P(k), \forall k \in \N$. 
+\end{definition}
+
+\subsubsection*{Prove by Strong Induction}
+Prove $\forall n \in \N, n \geq b, P(n)$ 
+\begin{itemize}
+    \item Prove $P(b) \wedge P(b + 1) \wedge \cdots \wedge P(B), \forall B \geq b$. 
+    \item Inductive step: Prove for all integers $k \geq B$. 
+\end{itemize}
+
+Go back to the bloody example. 
+\begin{example}
+    A sequence $\set{x_n }$ is defined by 
+    \begin{equation*}
+        x_1 = 4 \qquad x_2 = 68 \qquad x_n = 2 x_{n - 1} + 15x_{n - 2} \qquad \forall n \geq 3
+    \end{equation*}
+
+    Prove $\underbrace{x_n}_{\text{closed form}} = 2 \paren{-3}^n + 10 \cdot 5^{n - 1}, \forall n \geq 1$.
+\end{example}
+
+\begin{proof}
+   Proof by induction on $n$.  
+
+   \textbf{Base Case: }Prove $P(1)$
+   By definition, 
+    \begin{align*}
+        2 \times \paren{-3}^1 + 10 \cdot 5^{1 - 1} = 2(-3) + 10 = -6 + 10 = 4 = x_1 \\
+        2 \times \paren{3}^2 + 10 \cdot 5^{2 - 1} = 18 + 50 = 68 = x_2
+    \end{align*}
+
+    Therefore, $P(1)$ is true. 
+
+    \textbf{Inductive step }:Let $k$ be an arbitrary integer with $k \geq 2$
+
+    Assume $P(i)$ is true for all integer $i$ with $1 \leq i \leq k$. 
+
+    That is assume 
+    \begin{equation*}
+        x_i = 2\paren{-3}^i + 10 \cdot 5^{i - 1}, \forall i \in \set{1, 2, 3, \cdots, k}
+    \end{equation*}
+
+    Prove $P(k + 1)$ is true. That is 
+    \begin{align*}
+        x_{n + 1} = 2\paren{-3}^{k + 1} + 10 \cdot 5^k. 
+    \end{align*}
+
+    By define 
+    \begin{align*}
+        x_{n + 1} &= 2x_k + 15x_{k - 1} \\
+        &= 2 \bracks{2\paren{-3}^k + 10 \cdot 5^{k - 1}} + 15 \cdot 2 \bracks{2\paren{-3}^k + 10 \cdot 5^{k - 1}}\\
+        &= \text{Chatgpt, help me expand it. }\\
+        &= 2\paren{-3}^{k + 1} + 10 \cdot 5^{k - 1}
+    \end{align*}
+
+    for $k \geq 2$. 
+
+    $P(k + 1)$ is true. So this $P(n)$ is true for all $n$ in $\N$. 
+\end{proof}
+
+\begin{example}
+    Suppose $x_1 = 3, x_2 = 5$ and $x_n = 3x_{n - 1 } + 2x_{n - 2}, \forall n \geq 3$. 
+
+    Prove $x_n < 4^n$ for all $n$ in $\N$. 
+\end{example}
+\begin{example}
+    Suppose you have a $m \times n$ rectangularchocolate bar with $mn$ unit square. 
+
+    Let $N = mn$. Prove $N - 1$ breaks requred to break the choc bar into unit square. 
+\end{example}
