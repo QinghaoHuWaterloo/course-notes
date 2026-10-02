@@ -127,6 +127,7 @@ Suppose $x_n\to a$ and take $\epsilon=1/2$. There is an $n_\epsilon$ such that $
 \begin{idea}
     The tail stays within $1$ of the limit; only finitely many terms come before it, and a finite set has a maximum.
 \end{idea}
+\mdfsetup{nobreak=true}
 \begin{proof}
     Suppose $x_n\to a$. Taking $\epsilon=1$, choose $n_1\in\N$ so that $\abs{x_n-a}<1$ for all $n\geq n_1$. For these terms, the triangle inequality gives
     \[
@@ -138,6 +139,7 @@ Suppose $x_n\to a$ and take $\epsilon=1/2$. There is an $n_\epsilon$ such that $
     \]
     bounds every term of the sequence (when $n_1=1$, take $M=1+\abs{a}$).
 \end{proof}
+\mdfsetup{nobreak=false}
 
 The converse fails: $\set{0,1,0,1,\ldots}$ is bounded but, as shown above, diverges.
 
@@ -147,7 +149,7 @@ The converse fails: $\set{0,1,0,1,\ldots}$ is bounded but, as shown above, diver
 \end{example}
 For $a_n=n+1/n$, given $M>0$ choose $n>M$ by the Archimedean Property. Then $\abs{a_n}=n+1/n>M$. For $b_n$, the same choice gives $\abs{b_n}=n>M$. In each case no single bound works for every term. Notice that $a_n$ eventually stays positive, while $b_n$ alternates signs; their unboundedness alone does not describe how they diverge.
 
-\subsubsection{Divergence to $\pm\infty$}
+\subsubsection{Divergence to \texorpdfstring{$\pm\infty$}{Positive or Negative Infinity}}
 \begin{definition}\label{def:diverge-plus-infty}
     A sequence $\set{x_n}$ diverges to $+\infty$, written $\lim_{n\to\infty}x_n=+\infty$, if for every $M>0$ there is $n_M\in\N$ such that $x_n>M$ for all $n\geq n_M$.\index{divergence!to $+\infty$}
 \end{definition}
@@ -276,6 +278,7 @@ The limit definition lets us pass to limits through arithmetic. For a quotient, 
 \begin{example}
     Evaluate $\lim_{n\to\infty}\frac{n^3+5}{n+1}$.
 \end{example}
+\mdfsetup{nobreak=true}
 \begin{proof}
     For $n\geq1$,
     \[
@@ -284,6 +287,7 @@ The limit definition lets us pass to limits through arithmetic. For a quotient, 
     \]
     The limit laws give $\frac{1+5/n^3}{1+1/n}\to1$. Also $n^2\to+\infty$, since $n^2\geq n$ and the natural numbers are unbounded above. By \cref{thm:infty-times-positive}, the quotient diverges to $+\infty$.
 \end{proof}
+\mdfsetup{nobreak=false}
 
 \subsubsection*{In practice}
 \begin{itemize}

@@ -1,99 +1,142 @@
 %!TEX root=../../note.tex
+% Source: MATH 147 lecture notes; Euler's number via the monotone convergence theorem, subsequences.
+\subsection{Euler's Number and Subsequences}
+The Monotone Convergence Theorem proves that $\paren{1+\frac1n}^n$ converges without knowing its limit in advance; that limit defines $e$. We then pass from a sequence to its subsequences, which inherit its limit.
+
 \subsubsection{Euler's Number}
-Consider the sequence 
+Consider the sequence
 \begin{equation*}
-    x_n = \paren{1 + \frac{1}{n }}^n \qquad \forall n \in \N. 
+    x_n = \paren{1 + \frac{1}{n}}^n \qquad (n \in \N).
 \end{equation*}
+Neither the base nor the exponent is fixed, so the limit laws do not apply: the base tends to $1$ while the exponent grows. We expand the power instead.
 
-\begin{theorem}
-    [Binomial Theorem] 
-    $$(1 + x )^n = 1 + nx + \frac{n(n - 1)}{2!}x^2 + \cdots$$
-\end{theorem}
-Thus, 
-\begin{equation*}
-    x_n = 1 + n \cdot \frac{1}{n} + n \cdot \frac{n - 1}{2!} \paren{\frac{1}{n^2}} + \cdots + \frac{n (n - 1) \cdots 1}{n!} \frac{1}{n^n}
-\end{equation*}
-\begin{equation*}
-    = 1 + 1 + \frac{1}{2!} \frac{n }{n } \frac{n - 1}{n } + \frac{1}{3!} \frac{n }{n } \frac{n - 1}{n } \frac{n - 2}{n }+ \cdots + \frac{\paren{n - (n - 1)}}{n}
-\end{equation*}
-\begin{equation*}
-    1 + 1 + \frac{1}{2!}\paren{1 - \frac{1}{n }} + \frac{1}{3!}\paren{1 - \frac{1}{n }}\paren{1 - \frac{2}{n }} + \cdots + \text{kiro, complete me! OH MY GOSH}
-\end{equation*}
-\begin{equation*}
-    \leq 1 + \frac{1}{1!} + \frac{1}{2!} + \cdots + \frac{1}{n!}
-\end{equation*}
-
-Note that $\set{x_n }$ is decreasing. 
-\begin{gather*}
-    x_{n + 1} = 1 + \frac{1}{1!} + \frac{1}{2!}\paren{1 - \frac{1}{n + 1}} + \frac{1}{3!}\paren{1 - \frac{1}{n + 1}}\paren{1 - \frac{2}{n + 1}} + \cdots + \\\frac{1}{n!}\paren{1 - \frac{1}{n + 1}} \cdots \paren{1 - \frac{n - 1}{n + 1}}
-    + \frac{1}{(n + 1)!}
-\end{gather*}
-
-Consider the new sequence
-\begin{equation*}
-    y_n = 1 + \frac{1}{1!} + \frac{1}{2!} + \cdots + \frac{1}{n!}
-\end{equation*}
-Note that $2 \leq y_n \leq 3$. 
-
-Fact: $\frac{1}{n!} \leq \frac{1}{2^{n - 1}}$
-\begin{equation*}
-    \frac{1}{n!} = \frac{1}{1 \cdot 2 \cdots n} \leq \frac{1}{1} \cdot \frac{1}{2} \cdot \frac{1}{2} \cdots \frac{1}{2} = \frac{1}{2^{n - 1}}
-\end{equation*}
-\begin{equation*}
-    y_n = 1 + \sum_{i = 1}^{n } \frac{1}{i!} \leq 1 + \sum_{i = 1}^{n } \frac{1}{2^{i - 1}} \leq 1 + \sum_{n = 1}^{\infty} (\frac{1}{2})^{i - 1}
-\end{equation*}
-\begin{equation*}
-    = 1 + \frac{1}{1 - \frac{1}{2}} = 1 + 2 = 3. 
-\end{equation*}
-\begin{equation*}
-    2 \leq x_n \leq y_n \leq 3
-\end{equation*}
-
-Thus, 
-by MCT, $\exists e \in \R$ such that $\lim x_n = e$. 
-
-\subsubsection*{Subsequence}
-\begin{definition}
-    Let $\set{x_n }$ be a sequence of real numbers and let $n_1 < n_2 < n_3 < \cdots$ be a strictly increasing 
-    sequence of natural numbers. Then 
+\begin{theorem}[Binomial Theorem]\label{thm:binomial}
+    For every $x\in\R$ and $n\in\N$,\index{binomial theorem}
     \begin{equation*}
-        \set{x_{n_k }} = \set{x_{n_1}, x_{n_2}, x_{n_3}, \cdots}
+        (1 + x)^n = \sum_{k=0}^{n}\binom nk x^k = 1 + nx + \frac{n(n - 1)}{2!}x^2 + \cdots + x^n,
     \end{equation*}
+    where $\binom nk=\frac{n(n-1)\cdots(n-k+1)}{k!}$.
+    \insymbols{(\forall x\in\R)(\forall n\in\N)\,\Bigl[(1+x)^n=\sum_{k=0}^{n}\binom nk x^k\Bigr]}
+\end{theorem}
+The lecture used this without proof.
 
-    is called a subsequence of $\set{x_n }$. 
+With $x=\frac1n$, the term of index $k$ is
+\begin{equation*}
+    \binom nk\frac1{n^k}
+    =\frac1{k!}\cdot\frac nn\cdot\frac{n-1}n\cdots\frac{n-k+1}n
+    =\frac1{k!}\paren{1-\frac1n}\paren{1-\frac2n}\cdots\paren{1-\frac{k-1}n}.
+\end{equation*}
+Hence
+\begin{align*}
+    x_n &= 1 + n \cdot \frac{1}{n} + \frac{n(n - 1)}{2!} \cdot \frac{1}{n^2} + \cdots + \frac{n (n - 1) \cdots 1}{n!} \cdot \frac{1}{n^n}\\
+    &= 1 + 1 + \frac{1}{2!}\paren{1 - \frac{1}{n}} + \frac{1}{3!}\paren{1 - \frac{1}{n}}\paren{1 - \frac{2}{n}} + \cdots\\
+    &\quad + \frac{1}{n!}\paren{1 - \frac{1}{n}}\paren{1 - \frac{2}{n}}\cdots\paren{1 - \frac{n-1}{n}}.
+\end{align*}
+Every bracket lies in $(0,1]$, which gives two comparisons.
+
+\emph{Against a simpler sum.} Dropping the brackets can only increase each term, so
+\begin{equation*}
+    x_n \leq y_n, \qquad\text{where } y_n = 1 + \frac{1}{1!} + \frac{1}{2!} + \cdots + \frac{1}{n!}.
+\end{equation*}
+
+\emph{Against the next term of the sequence.} Replacing $n$ by $n+1$,
+\begin{align*}
+    x_{n + 1} &= 1 + 1 + \frac{1}{2!}\paren{1 - \frac{1}{n + 1}} + \frac{1}{3!}\paren{1 - \frac{1}{n + 1}}\paren{1 - \frac{2}{n + 1}} + \cdots\\
+    &\quad + \frac{1}{n!}\paren{1 - \frac{1}{n + 1}} \cdots \paren{1 - \frac{n - 1}{n + 1}}\\
+    &\quad + \frac{1}{(n + 1)!}\paren{1 - \frac{1}{n + 1}} \cdots \paren{1 - \frac{n}{n + 1}}.
+\end{align*}
+Since $1-\frac jn<1-\frac j{n+1}$ for $1\leq j\leq n-1$, each of the first $n+1$ terms of $x_{n+1}$ is at least the corresponding term of $x_n$, and $x_{n+1}$ has one more positive term. So $x_n<x_{n+1}$.
+
+\begin{proposition}\label{prop:e-limit}
+    The sequence $x_n=\paren{1+\frac1n}^n$ is increasing and satisfies $2\leq x_n<3$ for every $n\in\N$. Hence it converges.\index{e@$e$ (Euler's number)}
+    \insymbols{(\forall n\in\N)\,\bigl[x_n<x_{n+1}\wedge 2\leq x_n<3\bigr]\wedge(\exists e\in\R)\,\bigl[\lim_{n\to\infty}x_n=e\bigr]}
+\end{proposition}
+\begin{definition}[Euler's Number]\label{def:e}
+    The limit $e=\lim_{n\to\infty}\paren{1+\frac1n}^n$ is called \emph{Euler's number}.
 \end{definition}
-\begin{example}
-    Consider the sequence $\set{x_n } = \set{1, -1, 1, -1, \cdots}$. 
-\end{example}
-In order to converge to 1, we take 
-\begin{equation*}
-    \set{x_{2k - 1}} = \set{1, 1, 1, \cdots}
-\end{equation*}
-
-Converge to $-1$
-\begin{equation*}
-    \set{x_{2_k}} = \set{-1, -1, -1, \cdots}
-\end{equation*}
-
-\begin{theorem}
-    If a sequence $\set{x_n }$ of real numbers converges to a real number $x$, then any subsequence converges to $x$. 
-\end{theorem}
+\mdfsetup{nobreak=true}
+\begin{idea}
+    The comparisons above give monotonicity and $x_n\leq y_n$. Bounding $\frac1{k!}$ by a power of $\frac12$ turns $y_n$ into a geometric sum below $3$; the Monotone Convergence Theorem finishes.
+\end{idea}
+\mdfsetup{nobreak=false}
 \begin{proof}
-    Let $\epsilon > 0$, $\exists n_\epsilon \in \N$ such that 
+    \textbf{Step 1: monotone.} The term-by-term comparison above shows $x_n<x_{n+1}$ for every $n$.
+
+    \textbf{Step 2: $\frac1{k!}\leq\frac1{2^{k-1}}$ for $k\in\N$.} Each of the $k-1$ factors $2,3,\dots,k$ of $k!$ is at least $2$, so
     \begin{equation*}
-        n \geq n_\epsilon \implies \abs{x_n - x } < \epsilon. 
-    \end{equation*}
-    Now consider the subsequence 
-    \begin{equation*}
-        \set{x_{n_k}}
+        \frac{1}{k!} = \frac{1}{1 \cdot 2 \cdots k} \leq \frac{1}{1} \cdot \frac{1}{2} \cdots \frac{1}{2} = \frac{1}{2^{k - 1}}.
     \end{equation*}
 
-    We claim: $k \leq n_k, \forall k \in \N$ HW: prove by induction. 
-
-    Since $k \leq n_k$, we have $k + 1 \leq n_k + 1 \leq n_{k + 1}.$
-
-    Thus, 
+    \textbf{Step 3: bounds.} By Step 2 and the finite geometric sum,
     \begin{equation*}
-        n \geq n_\epsilon \implies n_k \geq k \geq n_\epsilon \implies \abs{x_{n_k} } < \epsilon
+        y_n = 1 + \sum_{k = 1}^{n} \frac{1}{k!} \leq 1 + \sum_{k = 1}^{n} \paren{\frac{1}{2}}^{k - 1}
+        = 1 + \frac{1-\paren{\frac12}^n}{1-\frac12} = 3-\frac1{2^{n-1}} < 3.
+    \end{equation*}
+    Since $x_1=2$ and the sequence increases, $2\leq x_n\leq y_n<3$ for every $n$.
+
+    \textbf{Step 4: convergence.} $\set{x_n}$ is bounded and increasing, so by \cref{thm:monotone-convergence} it converges.
+\end{proof}
+The lecture bounded $y_n$ by the full geometric series $1+\sum_{k=1}^{\infty}\paren{\frac12}^{k-1}=3$; the finite sum above gives the same bound without infinite series, which the course has not defined yet. \Cref{prop:e-limit} tells us only that $e$ exists and, by \cref{thm:limits-and-order}, that $2\leq e\leq3$; its value $2.718\ldots$ needs more work.
+
+\subsubsection{Subsequences}
+\begin{definition}[Subsequence]\label{def:subsequence}
+    Let $\set{x_n}$ be a sequence of real numbers and let $n_1 < n_2 < n_3 < \cdots$ be a strictly increasing sequence of natural numbers. Then
+    \begin{equation*}
+        \set{x_{n_k}} = \set{x_{n_1}, x_{n_2}, x_{n_3}, \dots}
+    \end{equation*}
+    is called a \emph{subsequence} of $\set{x_n}$.\index{subsequence}
+\end{definition}
+In words: keep infinitely many terms, in their original order, and discard the rest. The index of the subsequence is $k$; $n_k$ records which term of the original sequence is kept.
+
+\begin{example}\label{ex:alternating-subsequences}
+    Let $\set{x_n}=\set{1,-1,1,-1,\dots}$, that is, $x_n=(-1)^{n+1}$.
+\end{example}
+The sequence itself has no limit, but choosing indices well produces convergent subsequences. The odd indices $n_k=2k-1$ give
+\begin{equation*}
+    \set{x_{2k - 1}} = \set{1, 1, 1, \dots},
+\end{equation*}
+which converges to $1$, and the even indices $n_k=2k$ give
+\begin{equation*}
+    \set{x_{2k}} = \set{-1, -1, -1, \dots},
+\end{equation*}
+which converges to $-1$.
+
+\begin{lemma}\label{lem:subsequence-index}
+    If $n_1<n_2<n_3<\cdots$ are natural numbers, then $k\leq n_k$ for every $k\in\N$.
+    \insymbols{(\forall k\in\N)\,[n_k<n_{k+1}]\Rightarrow(\forall k\in\N)\,[k\leq n_k]}
+\end{lemma}
+\begin{proof}
+    By induction on $k$. For $k=1$, $n_1\in\N$ gives $1\leq n_1$. If $k\leq n_k$, then, since $n_k<n_{k+1}$ are integers,
+    \begin{equation*}
+        k + 1 \leq n_k + 1 \leq n_{k + 1}.
     \end{equation*}
 \end{proof}
+
+\begin{theorem}\label{thm:subsequence-limit}
+    If a sequence $\set{x_n}$ of real numbers converges to a real number $x$, then every subsequence of $\set{x_n}$ converges to $x$.\index{subsequence!of a convergent sequence}
+    \insymbols{\bigl[\lim_{n\to\infty}x_n=x\wedge(\forall k\in\N)\,[n_k<n_{k+1}]\bigr]\Rightarrow\lim_{k\to\infty}x_{n_k}=x}
+\end{theorem}
+\begin{idea}
+    The $k$-th term of the subsequence sits at position $n_k\geq k$ of the original sequence, so it is at least as late; the same threshold $n_\epsilon$ works.
+\end{idea}
+\mdfsetup{nobreak=true}
+\begin{proof}
+    Let $\set{x_{n_k}}$ be a subsequence and let $\epsilon > 0$. Since $\lim_{n\to\infty}x_n=x$, there is $n_\epsilon \in \N$ such that
+    \begin{equation*}
+        n \geq n_\epsilon \implies \abs{x_n - x} < \epsilon.
+    \end{equation*}
+    By \cref{lem:subsequence-index}, $n_k\geq k$ for every $k$. Hence
+    \begin{equation*}
+        k \geq n_\epsilon \implies n_k \geq k \geq n_\epsilon \implies \abs{x_{n_k} - x} < \epsilon.
+    \end{equation*}
+    Thus $\lim_{k\to\infty}x_{n_k}=x$.
+\end{proof}
+\mdfsetup{nobreak=false}
+Read contrapositively, \cref{thm:subsequence-limit} is a divergence test: if two subsequences converge to different limits, the sequence diverges. In \cref{ex:alternating-subsequences}, the subsequences tend to $1$ and $-1$, so $\set{(-1)^{n+1}}$ diverges.
+
+\subsubsection*{In practice}
+\begin{itemize}
+    \item \textbf{Expand, then compare.} When the limit laws do not apply, expand the term (here with the binomial theorem) and compare the expansion term by term: with a simpler sum for a bound, and with the next term of the sequence for monotonicity.
+    \item \textbf{Bound $\frac1{k!}$ by $\frac1{2^{k-1}}$.} This turns a factorial sum into a geometric sum with an explicit bound.
+    \item \textbf{Divergence by subsequences.} To show a sequence diverges, find two subsequences with different limits.
+\end{itemize}

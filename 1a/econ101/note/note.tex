@@ -1,0 +1,93 @@
+% ECON 101 -- lecture notes in a definition/theorem/example style.
+% Source: ../chapter{1,2,3}_econ101_fall2026.pdf (slides by M. Skuterud).
+% Compile with: latexmk -pdf note.tex
+\documentclass[a4paper]{article}
+
+\def\nterm {Fall}
+\def\nyear {2026}
+\def\nlecturer {M.~Skuterud}
+\def\ncourse {ECON 101 --- Introduction to Microeconomics}
+\def\nauthor {Qinghao Hu}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb, amsthm, mathtools}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{microtype}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usepackage{imakeidx}
+\usepackage[hidelinks]{hyperref}
+
+\pgfplotsset{compat=1.12}
+\makeindex[intoc, title=Index]
+
+\title{\ncourse}
+\author{Based on lectures by \nlecturer \\\small Notes taken by \nauthor}
+\date{\nterm\ \nyear}
+
+\pagestyle{fancyplain}
+\lhead{\emph{\nouppercase{\leftmark}}}
+\rhead{\ifnum\thepage=1\else ECON 101\fi}
+
+% ----- Theorem environments (same names as the MATH 147 notes) -----
+\theoremstyle{definition}
+\newtheorem*{defi}{Definition}
+\newtheorem*{eg}{Example}
+\newtheorem*{ex}{Exercise}
+\newtheorem*{law}{Law}
+\newtheorem*{assumption}{Assumption}
+\newtheorem*{principle}{Principle}
+\newtheorem*{notation}{Notation}
+\newtheorem*{remark}{Remark}
+\newtheorem*{warning}{Warning}
+\newtheorem{nthm}{Theorem}[section]
+\newtheorem{nprop}[nthm]{Proposition}
+\newtheorem{ncor}[nthm]{Corollary}
+\newtheorem{nlemma}[nthm]{Lemma}
+
+\renewcommand{\labelitemi}{--}
+\renewcommand{\labelenumi}{(\roman{enumi})}
+
+\let\stdsection\section
+\renewcommand\section{\newpage\stdsection}
+
+% ----- Shortcuts -----
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\term}[1]{\emph{#1}\index{#1}}
+\newcommand{\abs}[1]{\left\lvert #1\right\rvert}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\paren}[1]{\left(#1\right)}
+\newcommand{\dollar}[1]{\$#1}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator{\TB}{TB}
+\DeclareMathOperator{\TC}{TC}
+\DeclareMathOperator{\MB}{MB}
+\DeclareMathOperator{\MC}{MC}
+\DeclareMathOperator{\OC}{OC}
+\DeclareMathOperator{\FC}{FC}
+\DeclareMathOperator{\VC}{VC}
+\DeclareMathOperator{\MP}{MP}
+
+\newenvironment{significant}{\begin{center}\begin{minipage}{0.9\textwidth}\centering\em}{\end{minipage}\end{center}}
+
+\begin{document}
+\maketitle
+\begin{center}
+  \begin{minipage}{0.9\textwidth}\centering\footnotesize
+    These notes are a mathematical reorganisation of the lecture slides. The
+    definitions and theorems are my own formalisation of the ideas in the
+    slides; the examples and numbers come from the slides.
+  \end{minipage}
+\end{center}
+
+\tableofcontents
+
+\include{chapters/c1}
+\include{chapters/c2}
+\include{chapters/c3}
+
+\printindex
+\end{document}

@@ -1,7 +1,10 @@
 %!TEX root=../../note.tex
 \subsection{Basic Set Notation and Operations}
+Set notation describes which objects belong to a collection. Union,
+intersection, and difference combine sets by applying logical conditions
+to membership.
 
-\begin{definition}
+\begin{definition}[Empty Set and Cardinality]
 A \emph{set} is a collection of distinct elements. The \emph{empty set} $\emptyset$ has no elements. For a finite set $S$, its \emph{cardinality} $\abs{S}$ is its number of elements.
 \end{definition}
 We can describe a set by listing its elements, selecting elements with a property, or generating values:
@@ -15,8 +18,8 @@ Order and repetition do not change a set: $\set{1,2,2}=\set{2,1}$. Also, $\abs{\
 \end{example}
 
 \subsubsection{Set-Builder Notation}
-\begin{definition}
-The \emph{selection form} $\set{x\in U : P(x)}$ contains exactly the elements of $U$ for which $P(x)$ is true. The \emph{generation form} $\set{f(x) : x\in U}$ contains the outputs of $f$, which need not be the inputs.
+\begin{definition}[Set-Builder Notation]
+The \emph{selection form} $\set{x\in U : P(x)}$ contains exactly the elements of $U$ for which $P(x)$ is true. The \emph{generation form} $\set{f(x) : x\in U}$ contains the values $f(x)$ for $x\in U$; its elements are these outputs, not the inputs $x$.
 \end{definition}
 \begin{example}
     $\set{x^2 : x\in\set{-2,-1,0,1,2}}=\set{0,1,4}$: different inputs may give the same output, which appears only once.
@@ -36,7 +39,7 @@ For real numbers $a<b$, square brackets include an endpoint and round brackets e
 \end{gather*}
 
 \subsubsection{Set Operations}
-\begin{definition}
+\begin{definition}[Set Operations]
 The \emph{union} $S\cup T$ collects elements in either set; the \emph{intersection} $S\cap T$ keeps elements in both. The \emph{difference} $S-T$ keeps elements in $S$ but not $T$:
 \begin{gather*}
     S\cup T=\set{x : x\in S\text{ or }x\in T}, \qquad
@@ -46,6 +49,7 @@ The \emph{union} $S\cup T$ collects elements in either set; the \emph{intersecti
 When $S$ is a subset of a universal set $U$, its \emph{complement} is $\overline{S}=U-S$.
 \end{definition}
 
+\mdfsetup{nobreak=true}
 \begin{example}
 Let $A=[-1,2)$ and $B=(0,4]$. Then
 \begin{gather*}
@@ -54,11 +58,19 @@ Let $A=[-1,2)$ and $B=(0,4]$. Then
 \end{gather*}
 The point $2$ belongs to $B$ but not $A$, so it is excluded from the intersection and included in $B-A$.
 \end{example}
+\mdfsetup{nobreak=false}
 
-Some useful identities, with complements taken relative to $U$, are
+For a set $S$ contained in the universal set $U$, the following identities
+hold, with complements taken relative to $U$:
 \begin{gather*}
     S\cup\emptyset=S, \qquad S\cap\emptyset=\emptyset,\\
     S\cup U=U, \qquad S\cap U=S,\\
     S\cup S=S, \qquad S\cap S=S,\\
     S\cup\overline{S}=U, \qquad S\cap\overline{S}=\emptyset.
 \end{gather*}
+
+\subsubsection*{In practice}
+\begin{itemize}
+    \item \textbf{Reading set-builder notation.} Before the colon: what the elements look like. After it: where the variable ranges and which conditions it must satisfy. To test membership of $y$ in $\set{f(x) : x\in U}$, look for some $x\in U$ with $f(x)=y$.
+    \item \textbf{Operations on intervals.} Draw both intervals on a number line and check each endpoint separately: it belongs to the result exactly when the defining condition ($\text{or}$, $\text{and}$, $\text{and not}$) holds for it.
+\end{itemize}

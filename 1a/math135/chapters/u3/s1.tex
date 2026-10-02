@@ -1,6 +1,8 @@
 %!TEX root=../../note
-\subsection{Truth Table and Negation}
-\begin{definition}
+\subsection{Truth Tables and Negation}
+Truth tables list all possible truth values of the component statements.
+Comparing complete columns lets us test logical equivalence.
+\begin{definition}[Negation]
     The truth value for ``not $A$'', written symbolically as $\neg A$, is defined by the truth table given below.
 
     \[
@@ -18,7 +20,8 @@
 Here $A$ is a \textbf{statement variable}: it stands for an arbitrary statement, so a truth table
 must list every possible truth value of $A$.
 
-\begin{definition}[Logical equivalence]
+\subsubsection{Logical Equivalence}
+\begin{definition}[Logical Equivalence]
     Two compound statements are \textbf{logically equivalent}, written $\equiv$, if they have the
     same truth value in every row of their truth table, that is, for every assignment of truth values
     to their statement variables.
@@ -41,13 +44,12 @@ So a truth table can prove that two statements are logically equivalent.
 \end{example}
 
 \subsection{Conjunction and Disjunction}
-\begin{definition}
-    [Compound statement]
+\begin{definition}[Compound Statement]
     A compound statement is a statement composed of several individual statements, each of which is called a component statement. 
 \end{definition}
 
-\begin{definition}
-    The truth value for $A \wedge B$, is defined by the truth table 
+\begin{definition}[Conjunction]
+    The truth value for $A \wedge B$ is defined by the truth table
 
     \[
     \begin{array}{c|c|c}
@@ -66,6 +68,7 @@ So a truth table can prove that two statements are logically equivalent.
 Each statement variable has two possible truth values, so with three statement variables we need
 $2^3 = 8$ rows to cover all the possibilities (and $2^n$ rows for $n$ variables).
 
+\mdfsetup{nobreak=true}
 \begin{example}
     The compound statement 
     \begin{equation*}
@@ -74,8 +77,9 @@ $2^3 = 8$ rows to cover all the possibilities (and $2^n$ rows for $n$ variables)
 
     is false, since the statement $2 + 3 = 6$ is false. 
 \end{example}
+\mdfsetup{nobreak=false}
 
-\begin{definition}
+\begin{definition}[Disjunction]
     The truth value for $A \text{ or } B$, written as $A \vee B$, is defined by the truth table
 
     \[
@@ -104,8 +108,9 @@ $2^3 = 8$ rows to cover all the possibilities (and $2^n$ rows for $n$ variables)
     is true, since its second component $\pi + 2 \geq 5$ is true.
 \end{example}
 
+\subsubsection{De Morgan's Laws}
 \begin{example}
-    Let us use a truth table to prove that 
+    Use a truth table to prove that
     \begin{equation*}
         \neg (A \vee B) \equiv (\neg A \wedge \neg B)
     \end{equation*}
@@ -129,8 +134,7 @@ A similar equivalence is
 \end{equation*}
 
 Together, these two equivalences are called De Morgan's Laws: negating swaps $\wedge$ and $\vee$.
-\begin{theorem}
-    [De Morgan's Laws]
+\begin{theorem}[De Morgan's Laws]
     For statement variables $A$ and $B$, we have
     \begin{align*}
          \neg (A \vee B) \equiv (\neg A \wedge \neg B) \\
@@ -138,7 +142,10 @@ Together, these two equivalences are called De Morgan's Laws: negating swaps $\w
     \end{align*}
 \end{theorem}
 
-\begin{proposition}
+\Needspace{6\baselineskip}
+\subsubsection{Laws of Conjunction and Disjunction}
+\mdfsetup{nobreak=true}
+\begin{proposition}[Logical Laws]
     For statements $A, B, C$, the following rules hold for the logical operations $\wedge$ and $\vee$: 
 
     \textbf{Commutative Laws}
@@ -160,4 +167,14 @@ Together, these two equivalences are called De Morgan's Laws: negating swaps $\w
     \end{align*}
 
 \end{proposition}
+\mdfsetup{nobreak=false}
 
+\subsubsection*{In practice}
+\begin{itemize}
+    \item \textbf{Building a truth table.} For $n$ statement variables,
+    list all $2^n$ assignments. Compute inner expressions first, then compare
+    the final columns in every row.
+    \item \textbf{Negating a compound statement.} De Morgan's Laws swap
+    $\wedge$ and $\vee$ while negating both components. Keep parentheses so
+    that the scope of each negation is explicit.
+\end{itemize}

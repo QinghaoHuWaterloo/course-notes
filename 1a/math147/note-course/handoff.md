@@ -21,12 +21,12 @@ reference implementation of that profile. Read `../../../HANDOFF.md`, then
 ## Layout and build
 
 ```
-note.tex        root: \documentclass[11pt, twoside]{article},
-                \usepackage[color]{qhnotes}; no active \includeonly
+note.tex        root: \documentclass[11pt, latinmodern]{article},
+                \usepackage[europe,paper=a4]{qhnotes}; no active \includeonly
 chapters/
   c1.tex        \section{Course Information}      -> u1/s1 (logistics)
   c2.tex        \section{The Real Number System}  -> u2/s1 .. u2/s5
-  c3.tex        \section{Sequences and Limits}    -> u3/s1
+  c3.tex        \section{Sequences and Limits}    -> u3/s1 .. u3/s3
   u2/s1.tex     Numbers and logic: N/Z/Q, sqrt 2 irrational, quantifiers
                 (the European-notation `notation` box lives here)
   u2/s2.tex     Induction and well-ordering
@@ -36,7 +36,9 @@ chapters/
                 exists, density of Q, countability  — highest care
   u3/s1.tex     Convergent sequences: limit, uniqueness, divergence,
                 boundedness, divergence to +-infinity, limit laws
-  u3/s2.tex     Limits and order, squeeze theorem, monotone convergence
+  u3/s2.tex     Limits and order, squeeze theorem, monotone convergence,
+                a recursively defined sequence
+  u3/s3.tex     Euler's number via MCT, subsequences
 ```
 
 One `uN/sN.tex` = one `\subsection` = the editing unit. The `%!TEX root`
@@ -67,6 +69,10 @@ Build and check: `HANDOFF.md`, "Verification".
   - Lines wider than ~70% of the box are broken with `aligned` and indented
     continuation lines (`&\quad\Rightarrow …`).
   - Examples are not given symbolic forms, even when they state a claim.
+- **Current visual rendering:** the shared `europe` option supplies pastel
+  statement boxes and grey proof sidebars; the writing profile remains
+  `mixed`. Index entries remain in the source, but the root currently omits
+  `\printindex` (an intentional exception to `STYLE.md` §5.4).
 - **`\raggedbottom`** (in `note.tex`): `twoside` turns on `\flushbottom`,
   which stretched pages around unbreakable boxes; ragged bottom avoids it.
 - **Shortcuts** in `note.tex`: `\paren{} \abs{} \norm{} \bracks{} \set{}`,
@@ -75,15 +81,16 @@ Build and check: `HANDOFF.md`, "Verification".
 - **Sequence-limit notation.** In new lectures, prefer
   `$\lim_{n\to\infty}x_n=a$` to `$x_n\to a$` when stating or invoking a
   limit, matching the lecturer's usage.
-- **Typography.** Times + newtx (the `qhnotes` default), 11pt: at 10pt Times
+- **Typography.** Traditional Latin Modern text and math, 11pt, one-sided
+  (selected 2026-10-01 via the `latinmodern` class option). Previously:
+  Times + newtx (the `qhnotes` default), 11pt: at 10pt Times
   ran ~90 characters per line on the 124 mm block. Tried and rejected:
   Century Schoolbook (`fouriernc`), Concrete + Euler (no bold), Palatino.
   After the migration (2026-09-25) the root became `twoside`.
 - **Remarks in use** (all Traps): quantifier order ∀∃ vs ∃∀ (`u2/s1`),
   why min not sup (`u2/s2`), sup vs max for `[0,1)` (`u2/s4`), part (c) is
   a min argument (`u2/s5`). Remarks went from 22 to 4 in the migration; keep
-  it that way. Only the `u2/s2` one has a title naming the trap; give the
-  other three titles when those files are next edited.
+  it that way. All four now have titles naming the trap (2026-10-02).
 - **Key mechanism lines** exist in `u2/s1` (parity contradiction) and
   `u2/s5` (Archimedean property, plus the two √2 cases as `array{c}`). The
   √2 pair counts as one mechanism, so `u2/s5` is at the limit of two; add
@@ -93,7 +100,11 @@ Build and check: `HANDOFF.md`, "Verification".
   proposition in `u2/s5` (both keep their symbolic form on the same page),
   and the
   ε-characterisation lemma statement in `u2/s4` (it left one word on the next
-  page at 11pt). The `[0,1)` example in `u2/s4` no longer nests its proofs
+  page at 11pt). The square-positivity and absolute-value proofs in `u2/s3`,
+  the convergence-implies-boundedness proof and the final rational-function
+  example proof in `u3/s1` also use local `nobreak` pairs (2026-10-02) to
+  avoid empty continuations or a lone closing sentence. The `[0,1)` example
+  in `u2/s4` no longer nests its proofs
   inside the example box.
 
 ## Content notes — arguments that must be kept
@@ -134,8 +145,31 @@ Build and check: `HANDOFF.md`, "Verification".
   all (`style-migration.md` lists each). Check `git log -p -- <file>` before
   adding explanation to a file that was already edited.
 
-## Status (2026-09-29)
+## Status (2026-10-02)
 
+- **Layout cleanup (2026-10-02), current baseline:** retained the existing
+  A4, 11pt, one-sided `europe` rendering. List-first statement boxes now
+  start their lists below the heading; the reverse-triangle corollary and
+  its proof headings consistently use (i)/(ii). Added titles to the three
+  untitled Traps and text alternatives for all mathematical section titles
+  in PDF bookmarks. Mathematical statements and proof steps are unchanged.
+  Clean rebuild: **39 pages**, **0 overfull or underfull boxes**, **0 LaTeX
+  warnings**, **0 undefined references**, **5 mdframed split infos** (down
+  from 7 infos and 2 bad-break warnings before cleanup). Affected proof
+  pages and the remaining split boundaries were visually checked. The
+  older build records below describe earlier layouts.
+
+- **A4 restored (2026-10-01):** the root now uses `paper=a4`; font and
+  point size are unchanged. Reflow required an explicit prose line break
+  before `prop:induction-set-form` in `u2/s2`. Rebuilt PDF: **40 pages**,
+  **0 overfull or underfull boxes**, **7 split infos**, no errors or
+  undefined references. MCT on page 34 was visually checked.
+- **Layout fix (2026-10-01):** `thm:monotone-convergence` now displays
+  each limit conclusion separately and breaks the symbolic implications
+  across lines; a local `nobreak` pair keeps the whole statement together.
+  Clean Latin Modern build: **54 pages**, **6 overfull hboxes** elsewhere,
+  **1 underfull hbox**, **5 split infos**, no errors or undefined references.
+  The theorem on page 46 was visually checked and has no overflow.
 - **Done:** all of `chapters/` follows `mixed` (migration 2026-09-25, see
   `style-migration.md`). Cross-reference + index + concept-map layer added
   2026-09-29 (see below).
@@ -167,8 +201,35 @@ Build and check: `HANDOFF.md`, "Verification".
 - **Gaps against the current `STYLE.md`:**
   - Lecture openers (§2.2): present in `u2/s3`, `u2/s4`, and `u3/s1`;
     missing in `u2/s1`, `u2/s2`, and `u2/s5`.
-  - Corollary 2.3.10 (`u2/s3`) renders its parts as (i)/(ii), but the
-    proofs are titled "Proof of (1)" / "Proof of (2)".
+  - Corollary 2.3.10 (`u2/s3`) proof headings were aligned with (i)/(ii)
+    on 2026-10-02.
+- **`u3/s2` pass (2026-09-30):** subsection retitled "Limits, Order, and
+  Monotone Sequences" with blocks Limits and Inequalities / The Squeeze
+  Theorem / Monotone Sequences; prose pointers converted to `\cref`
+  (`def:archimedean`, `thm:squeeze`, `thm:convergent-bounded`,
+  `cor:inf-existence`); example labelled `ex:sin-over-sqrt`; MCT symbolic
+  form gained the iff line; the infimum case of the MCT proof now argues
+  directly from "greatest lower bound" (no inf version of
+  `lem:eps-characterization` exists). Later the same day: the lecture's
+  recursive example became `ex:recursive-mct` (staged proof: bound,
+  monotone, limit via the shifted sequence, limit laws and uniqueness),
+  and *In practice* was restored.
+- **`u3/s3` (2026-09-30), new lecture:** Euler's number and subsequences.
+  Binomial expansion completed (general term and last term), "decreasing"
+  corrected to increasing, the `n_k >= k` claim (set as HW in lecture) is
+  `lem:subsequence-index` with the lecture's inductive step, and the
+  subsequence proof now runs from `k >= n_eps`. Content change: the lecture
+  bounded `y_n` by the infinite geometric series; the notes use the finite
+  sum (series are not defined yet). New labels: `thm:binomial`,
+  `prop:e-limit`, `def:e`, `def:subsequence`, `ex:alternating-subsequences`,
+  `thm:subsequence-limit`. `c3` concept map extended.
+- **Build baseline (clean build 2026-09-30):** 52 pages, 0 overfull, 7
+  split infos (one `nobreak` pair each on the `prop:e-limit` Idea and the
+  `thm:subsequence-limit` proof), 0 undefined references.
+- **Known cleveref quirk:** all numbered environments share the `theorem`
+  counter, so `\cref` prints "Theorem" for lemmas, propositions and
+  examples (e.g. "Theorem 2.4.4" for the lemma). Pre-existing; fix in
+  `note.tex` if wanted.
 - **Next:** new lectures go into `chapters/u3/` (and `c3.tex`) in the
   `mixed` profile, adding `\label`/`\cref`/`\index` as written (`STYLE.md`
   §5.3–5.4) and extending the `c3` concept map when the chapter grows.

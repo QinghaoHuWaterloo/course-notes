@@ -1,6 +1,6 @@
 % Shared visual system: installed qhnotes package.
 \documentclass[10pt, twoside]{article}
-\usepackage[color]{qhnotes}
+\usepackage[europe,paper=a4]{qhnotes}
 
 % Document-local shortcuts
 \newcommand{\paren}[1]{\left(#1\right)}
@@ -32,10 +32,14 @@
 
 \course{Algebra for Honor Math}
 \begin{document}
+\raggedbottom
 
 \maketitle
 \clearpage
+\begingroup
+\small
 \tableofcontents
+\endgroup
 
 \include{chapters/c1}
 \include{chapters/c2}

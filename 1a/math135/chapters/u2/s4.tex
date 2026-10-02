@@ -42,9 +42,18 @@ their terms:
     The new index $j=i+r$ names the same terms.
     \item Splitting a sum at $n$, where $2\leq n\leq k$:
     \begin{equation*}
-        \sum_{i=1}^{n-1}i+\sum_{i=n}^{k}i=\sum_{i=1}^{k}i.
+        \sum_{i=1}^{n-1}x_i+\sum_{i=n}^{k}x_i=\sum_{i=1}^{k}x_i.
     \end{equation*}
 \end{enumerate}
+
+\mdfsetup{nobreak=true}
+\begin{example}
+    Shifting by $r=1$ and splitting off the last term,
+    \begin{equation*}
+        \sum_{i=0}^{9}(i+1)=\sum_{j=1}^{10}j=\sum_{j=1}^{9}j+10.
+    \end{equation*}
+\end{example}
+\mdfsetup{nobreak=false}
 
 \subsubsection{Product Notation}
 Products use the same indexing convention, with multiplication in place of
@@ -53,13 +62,33 @@ addition. For $n\geq 1$,
     \prod_{i=1}^{n}i=1\cdot2\cdot3\cdots n=n!.
 \end{equation*}
 
-\subsubsection*{Zero sum/product notation}
-We have
+\subsubsection{Sums and Products with One or No Terms}
+When the lower and upper bounds agree, the index takes a single value, so
+the sum or product consists of one term:
 \begin{equation*}
-    \sum_{i = m }^{m } x_i = x_m \qquad \text{and} \qquad  \prod_{i = m }^{m } x_i = x_m. 
+    \sum_{i=m}^{m}x_i=x_m \qquad\text{and}\qquad \prod_{i=m}^{m}x_i=x_m.
 \end{equation*}
 
-\subsubsection*{Empty products / sums}
+When the upper bound is smaller than the lower bound, no integer lies in the
+range, and the sum or product is \emph{empty}. By convention an empty sum is
+$0$ and an empty product is $1$. For example,
+% TODO(check): the term of the empty sum was not recorded in lecture; $x_j$ is a placeholder.
 \begin{equation*}
-    \sum_{j = 5}^{4} = 0 \qquad \text{and} \qquad \prod_{i = 10}^{5} i^2 = 1. 
+    \sum_{j=5}^{4}x_j=0 \qquad\text{and}\qquad \prod_{i=10}^{5}i^2=1.
 \end{equation*}
+\begin{remark}
+    These values are the identities for $+$ and $\cdot$: adding $0$ or
+    multiplying by $1$ changes nothing. With this convention the splitting
+    identity above also holds for $n=1$, where the first piece is empty:
+    $\sum_{i=1}^{0}x_i+\sum_{i=1}^{k}x_i=0+\sum_{i=1}^{k}x_i$.
+    It also gives $0!=\prod_{i=1}^{0}i=1$.
+\end{remark}
+
+\subsubsection*{In practice}
+\begin{itemize}
+    \item \textbf{Reading a sum.} Identify the index, its first and last
+    value, and the term as a function of the index; count the terms as
+    $b-a+1$ (zero when $b<a$).
+    \item \textbf{Rewriting a sum.} To compare two sums, shift one index so
+    both have the same bounds, or split off the first or last term.
+\end{itemize}

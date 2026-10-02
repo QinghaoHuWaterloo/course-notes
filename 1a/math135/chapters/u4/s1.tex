@@ -1,6 +1,6 @@
 %!TEX root=../../note
 \subsection{Proving Universally Quantified Statements}
-A \textbf{proposition} is a true statement that has been proved to be true. A \textbf{theorem}
+A \textbf{proposition} is a mathematical statement established by proof. A \textbf{theorem}
 is a particularly significant proposition. A \textbf{lemma} is a subsidiary proposition.
 A \textbf{corollary} is a proposition that follows almost immediately from a theorem.
 
@@ -13,11 +13,12 @@ A \textbf{corollary} is a proposition that follows almost immediately from a the
     The Pythagorean theorem is a corollary: taking $\theta = \pi/2$ gives $\cos\theta = 0$, so $c^2 = a^2 + b^2$.
 \end{example}
 
+\subsubsection{An Arbitrary Element}
 To prove $\forall x \in S, P(x)$, let $x$ be an \emph{arbitrary} element of $S$, using only the fact that
 $x \in S$, and show that $P(x)$ is true. Since nothing special about $x$ was assumed, the argument
 works for every element of $S$.
 
-Let's do our first proof.
+The following inequalities are proved by rewriting a difference as a square.
 \begin{proposition}
     \begin{equation*}
         \forall x \in \R, x^2 + 1 \geq 2x.
@@ -54,6 +55,7 @@ Let's do our first proof.
     Moving everything to the left side gives $x^4 - 4x^2y + 4y^2 \geq 0$, and
     $x^4 - 4x^2y + 4y^2 = (x^2 - 2y)^2$. This explains the choice of $x^2 - 2y$ below.
 \end{remark}
+\mdfsetup{nobreak=true}
 \begin{proof}
     Let $x$ and $y$ be arbitrary real numbers. Then $x^2 - 2y$ is also a real number. So
     \begin{equation*}
@@ -75,7 +77,9 @@ Let's do our first proof.
         x^4 + x^2y + y^2 \geq 5x^2y - 3y^2.
     \end{equation*}
 \end{proof}
+\mdfsetup{nobreak=false}
 
+\subsubsection{Proof by Cases}
 \begin{proposition}
     \begin{equation*}
         \forall x, y \in \R, \max(x, y) = \frac{x + y + \abs{x - y }}{2}.
@@ -88,7 +92,7 @@ Let's do our first proof.
 \begin{proof}
     Let $x$ and $y$ be arbitrary real numbers.
 
-    \textbf{Case 1: } If $x \geq y$, then $\max(x, y) = x,$ and $x - y \geq 0$, so $\abs{x - y } = x - y$.
+    \textbf{Case 1: $x\geq y$.} Then $\max(x, y) = x$ and $x - y \geq 0$, so $\abs{x - y } = x - y$.
 
     Then
     \begin{equation*}
@@ -97,8 +101,7 @@ Let's do our first proof.
 
     So the claim holds when $x \geq y$.
 
-    \textbf{Case 2: }
-    If $x < y$, then $\max(x, y) = y$, and $x - y < 0$. So
+    \textbf{Case 2: $x<y$.} Then $\max(x, y) = y$ and $x - y < 0$, so
     \begin{equation*}
         \abs{x - y } = -(x - y) = y - x.
     \end{equation*}
@@ -120,15 +123,27 @@ statement it suffices to give one \textbf{counterexample}: a specific $x \in S$ 
     \begin{equation*}
         \forall x \in \R, (x^2 - 1)^2 > 0.
     \end{equation*}
-    \emph{Solution.} Take $x = 1$. Then
-    \begin{equation*}
-        \paren{x^2 - 1}^2 = (1 - 1)^2 = 0 \not> 0.
-    \end{equation*}
-    So $x = 1$ is a counterexample, and the statement is false.
 \end{example}
+\noindent\emph{Solution.} Take $x = 1$. Then
+\begin{equation*}
+    \paren{x^2 - 1}^2 = (1 - 1)^2 = 0 \not> 0.
+\end{equation*}
+So $x = 1$ is a counterexample, and the statement is false.
+
+\subsubsection*{In practice}
+\begin{itemize}
+    \item \textbf{Universal proof.} Start with an arbitrary element of the
+    stated domain. Use the hypotheses to derive the claim without choosing
+    a special value of that element.
+    \item \textbf{Cases.} Choose cases that cover the entire domain and
+    prove the same conclusion in each. For absolute values, the sign of the
+    expression inside determines the cases.
+    \item \textbf{Counterexample.} Give one element in the domain and
+    verify that it fails the claimed condition.
+\end{itemize}
 
 \subsubsection*{Exercises}
-\begin{itemize}
+\begin{enumerate}
     \item Prove $\forall \theta \in \R, \sin 3\theta = 3\sin \theta - 4\sin^3 \theta$.
     \item Prove $\forall x \in \R, \abs{x - 3 } + 2\abs{x + 2} \geq 5$.
-\end{itemize}
+\end{enumerate}

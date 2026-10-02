@@ -1,9 +1,9 @@
 %!TEX root=../../note.tex
 % Source: MATH 147 lecture notes; limits and order, squeeze theorem, monotone convergence.
-\subsection{Limits and Order}
+\subsection{Limits, Order, and Monotone Sequences}
 Limits preserve order, and completeness turns a bounded monotone sequence into a convergent one. These facts let us find limits even when the limit laws alone do not apply.
 
-\subsubsection{Limits and Order}
+\subsubsection{Limits and Inequalities}
 \begin{theorem}\label{thm:limit-nonneg}
     If $\lim_{n\to\infty}x_n=a$ and $x_n\geq0$ for every $n\in\N$, then $a\geq0$.\index{limit!preserves order}
     \insymbols{\bigl[\lim_{n\to\infty}x_n=a\wedge(\forall n\in\N)\,[x_n\geq0]\bigr]\Rightarrow a\geq0}
@@ -29,6 +29,9 @@ The same conclusion holds if $x_n\geq0$ only for all sufficiently large $n$: the
     Set $z_n=y_n-x_n\geq0$. The difference law (\cref{thm:limit-laws}, part (iv)) gives $\lim_{n\to\infty}z_n=b-a$. By \cref{thm:limit-nonneg}, $b-a\geq0$, so $a\leq b$.
 \end{proof}
 
+Strict inequalities are not preserved: $\frac1n>0$ for every $n\in\N$, yet $\lim_{n\to\infty}\frac1n=0$. From $x_n<y_n$ for all $n$ we may conclude only $a\leq b$.
+
+\subsubsection{The Squeeze Theorem}
 \begin{theorem}[Squeeze Theorem]\label{thm:squeeze}
     Suppose $x_n\leq y_n\leq z_n$ for every $n\in\N$ and $\lim_{n\to\infty}x_n=a$, $\lim_{n\to\infty}z_n=a$. Then $\lim_{n\to\infty}y_n=a$.\index{squeeze theorem}
     \insymbols{\bigl[(\forall n\in\N)\,[x_n\leq y_n\leq z_n]\wedge \lim_{n\to\infty}x_n=a\wedge \lim_{n\to\infty}z_n=a\bigr]\Rightarrow \lim_{n\to\infty}y_n=a}
@@ -41,7 +44,7 @@ The same conclusion holds if $x_n\geq0$ only for all sufficiently large $n$: the
     Thus $\abs{y_n-a}<\epsilon$ for every such $n$, so $\lim_{n\to\infty}y_n=a$.
 \end{proof}
 
-\begin{example}
+\begin{example}\label{ex:sin-over-sqrt}
     Prove that $\lim_{n\to\infty}\frac{\sin n}{\sqrt n}=0$.
 \end{example}
 \begin{proof}
@@ -49,7 +52,7 @@ The same conclusion holds if $x_n\geq0$ only for all sufficiently large $n$: the
     \[
         -\frac1{\sqrt n}\leq\frac{\sin n}{\sqrt n}\leq\frac1{\sqrt n}.
     \]
-    The outer sequences tend to $0$: given $\epsilon>0$, Archimedes supplies $N>1/\epsilon^2$, and $n\geq N$ gives $1/\sqrt n<\epsilon$. The Squeeze Theorem now gives the result.
+    The outer sequences tend to $0$: given $\epsilon>0$, the Archimedean Property (\cref{def:archimedean}) supplies $n_\epsilon\in\N$ with $n_\epsilon>1/\epsilon^2$, and every $n\geq n_\epsilon$ gives $1/\sqrt n\leq1/\sqrt{n_\epsilon}<\epsilon$; the lower bound $-1/\sqrt n$ tends to $0$ by the same $n_\epsilon$. \Cref{thm:squeeze} now gives the result.
 \end{proof}
 
 \subsubsection{Monotone Sequences}
@@ -57,24 +60,36 @@ The same conclusion holds if $x_n\geq0$ only for all sufficiently large $n$: the
     A sequence $\set{x_n}$ is \emph{increasing} if $x_n\leq x_{n+1}$ for every $n\in\N$, and \emph{decreasing} if $x_n\geq x_{n+1}$ for every $n\in\N$. It is \emph{monotone} if it is increasing or decreasing.\index{monotone sequence}
 \end{definition}
 
+% Keep the statement and its symbolic form in one frame.
+\mdfsetup{nobreak=true}
 \begin{theorem}[Monotone Convergence Theorem]\label{thm:monotone-convergence}
     A monotone sequence of real numbers converges if and only if it is bounded. More precisely:\index{monotone convergence theorem}
     \begin{enumerate}
-        \item[(i)] If $\set{x_n}$ is bounded and increasing, then $\lim_{n\to\infty}x_n=\sup\set{x_n:n\in\N}$.
-        \item[(ii)] If $\set{x_n}$ is bounded and decreasing, then $\lim_{n\to\infty}x_n=\inf\set{x_n:n\in\N}$.
+        \item[(i)] If $\set{x_n}$ is bounded and increasing, then
+            \[
+                \lim_{n\to\infty}x_n=\sup\set{x_n:n\in\N}.
+            \]
+        \item[(ii)] If $\set{x_n}$ is bounded and decreasing, then
+            \[
+                \lim_{n\to\infty}x_n=\inf\set{x_n:n\in\N}.
+            \]
     \end{enumerate}
     \insymbols{\begin{aligned}
-        \text{(i)}\quad &[\set{x_n}\text{ bounded and increasing}]
-            \Rightarrow\lim_{n\to\infty}x_n=\sup\set{x_n:n\in\N},\\
-        \text{(ii)}\quad &[\set{x_n}\text{ bounded and decreasing}]
-            \Rightarrow\lim_{n\to\infty}x_n=\inf\set{x_n:n\in\N}.
+        &[\set{x_n}\text{ monotone}]\\
+        &\quad\Rightarrow
+            \bigl[(\exists a\in\R)\,[\lim_{n\to\infty}x_n=a]\iff\set{x_n}\text{ bounded}\bigr],\\
+        \text{(i)}\quad &[\set{x_n}\text{ bounded and increasing}]\\
+        &\quad\Rightarrow\lim_{n\to\infty}x_n=\sup\set{x_n:n\in\N},\\
+        \text{(ii)}\quad &[\set{x_n}\text{ bounded and decreasing}]\\
+        &\quad\Rightarrow\lim_{n\to\infty}x_n=\inf\set{x_n:n\in\N}.
     \end{aligned}}
 \end{theorem}
+\mdfsetup{nobreak=false}
 \begin{idea}
     Completeness gives a supremum or infimum. A term lies within $\epsilon$ of that bound, and monotonicity keeps every later term there.
 \end{idea}
 \begin{proof}
-    Every convergent sequence is bounded, proving the forward implication.
+    Every convergent sequence is bounded (\cref{thm:convergent-bounded}), proving the forward implication. For the converse, (i) and (ii) cover the two kinds of monotone sequence.
 
     For (i), suppose $\set{x_n}$ is bounded and increasing. The set $S=\set{x_n:n\in\N}$ is nonempty and bounded above, so completeness gives $s=\sup S$. Let $\epsilon>0$. The $\epsilon$-characterization of the supremum (\cref{lem:eps-characterization}) gives an index $n_\epsilon$ with $s-\epsilon<x_{n_\epsilon}$. For every $n\geq n_\epsilon$, monotonicity and the upper-bound property give
     \[
@@ -82,71 +97,58 @@ The same conclusion holds if $x_n\geq0$ only for all sufficiently large $n$: the
     \]
     Hence $\lim_{n\to\infty}x_n=s$.
 
-    For (ii), suppose $\set{x_n}$ is bounded and decreasing. Completeness gives $t=\inf S$. By the infimum version of the $\epsilon$-characterization, choose $n_\epsilon$ with $x_{n_\epsilon}<t+\epsilon$. For $n\geq n_\epsilon$,
+    For (ii), suppose $\set{x_n}$ is bounded and decreasing. The set $S$ is nonempty and bounded below, so $t=\inf S$ exists (\cref{cor:inf-existence}). Let $\epsilon>0$. Since $t+\epsilon>t$ and $t$ is the \emph{greatest} lower bound, $t+\epsilon$ is not a lower bound of $S$; so there is an index $n_\epsilon$ with $x_{n_\epsilon}<t+\epsilon$. For $n\geq n_\epsilon$, monotonicity and the lower-bound property give
     \[
         t-\epsilon<t\leq x_n\leq x_{n_\epsilon}<t+\epsilon.
     \]
     Thus $\lim_{n\to\infty}x_n=t$.
 \end{proof}
 
-\begin{example}
-    Consider the sequence given by $x_1 = 1$ and $x_{n + 1} = \frac{2x_n + 3}{4}$ for all $n \in \N$. 
-\end{example}   
-Let's try. 
-\begin{equation*}
-    x_1 = 1, x_2 = \frac{2x)1 + 3}{4} = \frac{5}{4} = 1.25, x_3 = \frac{2 \cdot \frac{5}{4} + 3}{4} = \frac{11}{8} = 1.375. 
-\end{equation*}
+\subsubsection{A Recursively Defined Sequence}
+The Monotone Convergence Theorem is most useful for sequences defined by recursion, where no formula for $x_n$ is available. It shows that a limit exists; the recursion then determines its value.
 
-Fact: $x_n < 2, \forall n \in \N$
+\begin{example}\label{ex:recursive-mct}
+    Let $x_1=1$ and $x_{n+1}=\frac{2x_n+3}{4}$ for all $n\in\N$. Show that $\set{x_n}$ converges and find its limit.
+\end{example}
+The first terms are
+\[
+    x_1=1,\qquad x_2=\frac{2\cdot1+3}{4}=\frac54=1.25,\qquad x_3=\frac{2\cdot\frac54+3}{4}=\frac{11}8=1.375,
+\]
+which suggests that the sequence increases and stays below $2$.
+\begin{idea}
+    Prove by induction that the sequence is bounded above and increasing; the Monotone Convergence Theorem then gives a limit $a$, and letting $n\to\infty$ in the recursion gives an equation for $a$.
+\end{idea}
 \begin{proof}
-    We use induction: base case: $n = 1$
-    \begin{equation*}
-        x_1 = 1 < 2
-    \end{equation*}
+    \textbf{Step 1: $x_n<2$ for all $n\in\N$.} We use induction on $n$. For $n=1$, $x_1=1<2$. Let $k\in\N$ and assume $x_k<2$. Then
+    \[
+        2x_k<4\implies 2x_k+3<7\implies x_{k+1}=\frac{2x_k+3}{4}<\frac74<2.
+    \]
+    By induction, $x_n<2$ for every $n\in\N$.
 
-    Inductive step: Let $k \in \N$, assume $x_k < 2$. Then, 
-    \begin{equation*}
-        x_k < 2 \implies 2\cdot x_k < 4 \implies 2x_k + 3 < 7 \implies \frac{2x_k + 3}{4} < \frac{7}{4} < 2
-    \end{equation*}
-    which implies 
-    \begin{equation*}
-        x_{k + 1} < 2. 
-    \end{equation*}
+    \textbf{Step 2: $x_n\leq x_{n+1}$ for all $n\in\N$.} Again by induction. For $n=1$, $x_1=1<\frac54=x_2$. Let $k\in\N$ and assume $x_k\leq x_{k+1}$. Then
+    \[
+        2x_k+3\leq 2x_{k+1}+3\implies x_{k+1}=\frac{2x_k+3}{4}\leq\frac{2x_{k+1}+3}{4}=x_{k+2}.
+    \]
+    By induction, $\set{x_n}$ is increasing.
+
+    \textbf{Step 3: the limit.} By Step 2, $x_n\geq x_1=1$ for every $n$, and by Step 1, $x_n<2$; so $\set{x_n}$ is bounded and increasing. By \cref{thm:monotone-convergence} there is $a\in\R$ with $\lim_{n\to\infty}x_n=a$.
+
+    The shifted sequence also satisfies $\lim_{n\to\infty}x_{n+1}=a$: if $\abs{x_n-a}<\epsilon$ for all $n\geq n_\epsilon$, then also $\abs{x_{n+1}-a}<\epsilon$ for all $n\geq n_\epsilon$, since $n+1\geq n_\epsilon$. On the other hand, $x_{n+1}=\frac12x_n+\frac34$, so the limit laws (\cref{thm:limit-laws}, parts (i)--(iii)) give
+    \[
+        \lim_{n\to\infty}x_{n+1}=\frac12a+\frac34=\frac{2a+3}{4}.
+    \]
+    A limit is unique (\cref{thm:limit-unique}), so
+    \[
+        a=\frac{2a+3}{4}\implies 4a=2a+3\implies a=\frac32.
+    \]
+    Hence $\lim_{n\to\infty}x_n=\frac32$.
 \end{proof}
 
-Fact: $x_k \leq x_{k + 1}, \forall n \in \N$. 
-\begin{proof}
-    Induction: base case: $n = 1$. 
-    \begin{equation*}
-        x_1 = 1 < \frac{5}{4} = x_2. 
-    \end{equation*}
+Existence must come first. The equation $a=\frac{2a+3}{4}$ only says what the limit would be \emph{if} there is one: for $x_1=1$ and $x_{n+1}=2x_n$, the same manipulation gives $a=2a$, so $a=0$, yet $x_n=2^{n-1}$ diverges to $+\infty$. The bound $2$ in Step 1 is not special; any upper bound at least $\frac32$ (the solution of the limit equation) would work.
 
-    I.H: $x_k \leq x_{k + 1}$
-
-    We wish to prove $x_{k + 1} \leq x_{k + 2}$
-    \begin{equation*}
-        x_k \leq x_{k + 1} \implies 2x_k \leq 2x_{k + 1} \implies 2x_{k} + 3 \leq 2x_{k + 1} + 3
-    \end{equation*}
-    \begin{equation*}
-        \implies \frac{2x_k + 3}{4} \leq \frac{2x_{k + 1} + 3}{4} \implies x_{k + 1 } \leq x_{k + 2}
-    \end{equation*}
-\end{proof}
-Find the limits 
-\begin{proof}
-    By MCT, $\exists a \in \R$ such that $\lim (x_n)  = a$. 
-
-    Note that $\lim x_{n + 1} = a$. Thus, 
-    \begin{equation*}
-        \lim x_{n + 1} = \lim \frac{2x_n + 3}{4} = \frac{2\lim x_n + \lim 3}{\lim 4} = \frac{2a + 3}{4}
-    \end{equation*}
-    \begin{equation*}
-        a = \frac{2a + 3}{4} \implies a = \frac{3}{2}
-    \end{equation*}
-\end{proof}
-
-
-% \subsubsection*{In practice}
-% \begin{itemize}
-%     \item \textbf{Use the squeeze theorem.} Bound a difficult sequence above and below by sequences with the same known limit; verify that both bounds hold for all sufficiently large indices.
-%     \item \textbf{Use monotonicity.} Prove the direction of monotonicity and find a bound. Completeness then gives the limit as the supremum or infimum of the terms.
-% \end{itemize}
+\subsubsection*{In practice}
+\begin{itemize}
+    \item \textbf{Use the squeeze theorem.} Bound a difficult sequence above and below by sequences with the same known limit; verify that both bounds hold for all sufficiently large indices.
+    \item \textbf{Use monotonicity.} Prove the direction of monotonicity and find a bound. Completeness then gives the limit as the supremum or infimum of the terms.
+    \item \textbf{Recursive sequences.} Compute a few terms to guess the direction and a bound; prove both by induction; apply the Monotone Convergence Theorem; then pass to the limit on both sides of the recursion and solve for the limit.
+\end{itemize}

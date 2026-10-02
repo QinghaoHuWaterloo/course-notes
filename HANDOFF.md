@@ -24,13 +24,14 @@ of the ideas and reasoning, not a transcript.
 ```
 HANDOFF.md                  this file (operations)
 STYLE.md                    writing standard, devices, profiles
-CLAUDE.md                   pointer for Claude Code
+SLIDES-TO-NOTES.md          playbook: lecture slides → mathematical notes
+CLAUDE.md, AGENTS.md        pointers for Claude Code / other agents (keep in sync)
 .kiro/skills/course-notes/  Kiro skill (routing only; defers to these files)
 1a/                         term directory (next term: 1b/, …)
   math135/                  Algebra for Honours Mathematics — profile legacy
     note.tex                root
-    chapters/cN.tex         c1–c5 (c4 proof techniques, c5 sets)
-    chapters/uN/sN.tex      lecture files (u1–u5)
+    chapters/cN.tex         c1–c6 (c4 proof techniques, c5 sets, c6 induction)
+    chapters/uN/sN.tex      lecture files (u1–u6)
     hw/                     homework (profile homework)
   math147/
     note-course/            Intro to Analysis — profile mixed (reference course)
@@ -39,6 +40,7 @@ CLAUDE.md                   pointer for Claude Code
     hw/                     homework (profile homework)
   cs135/                    discontinued archive — do not extend or copy
   ENGL119/                  syllabus documents (profile writing)
+  econ101/                  slide PDFs + note/ (built from slides, SLIDES-TO-NOTES.md)
 ```
 
 `note.tex` is always the compilation root of a note set; `chapters/cN.tex`
@@ -50,13 +52,22 @@ note chapter.
 
 | Course | Root | Profile | Local rules |
 | --- | --- | --- | --- |
-| MATH 135 | `1a/math135/note.tex` | `legacy` | 10pt, twoside, `color`; QED is an italic "Q.E.D."; `remark[Proof idea]` before hard proofs; no index. No course handoff yet. |
-| MATH 147 | `1a/math147/note-course/note.tex` | **`mixed`** | Read `note-course/handoff.md` first. 11pt, twoside, `color`; local `idea` / `scratch` environments and `\insymbols` macro. |
+| MATH 135 | `1a/math135/note.tex` | `legacy` | A4, 10pt, twoside, `europe`, ragged bottoms; QED is an italic "Q.E.D."; `remark[Proof idea]` before hard proofs; no index. See `1a/math135/handoff.md`. |
+| MATH 147 | `1a/math147/note-course/note.tex` | **`mixed`** | Read `note-course/handoff.md` first. A4, 11pt, one-sided, Latin Modern, `color`; local `idea` / `scratch` environments and `\insymbols` macro. |
 | CS 135 | `1a/cs135/note.tex` | — | Discontinued. Touch only if explicitly asked. |
 | ENGL 119 | `1a/ENGL119/` | `writing` | Syllabus only so far. |
+| ECON 101 | `1a/econ101/note/note.tex` | slides → math (`SLIDES-TO-NOTES.md`) | article, a4, one `chapters/cN.tex` per slide deck; reference preamble for new slide-based courses. |
 
 Build (from the course directory):
 `latexmk -pdf -interaction=nonstopmode note.tex`.
+
+A4 rebuild (2026-10-01): MATH 135 is 24 pages, with no overfull boxes,
+one underfull vbox and three mdframed split infos; MATH 147 is 40 pages,
+with no overfull or underfull boxes and seven split infos. Both build
+without errors or undefined references.
+
+MATH 135's `europe` / A4 rebuild (2026-10-02) supersedes its baseline above;
+see the course handoff for the current checks.
 
 ## Shared LaTeX packages
 
@@ -109,6 +120,8 @@ Document roots define their own shortcuts (`\R \N \Z \Q \C`, `\paren{}`,
    (including new `% TODO(check)` markers).
 
 ### Writing new lecture notes from class material
+
+For slide decks (PDF), follow `SLIDES-TO-NOTES.md`; the steps below still apply.
 
 1. Put the source (slides, photos) *outside* `chapters/` — e.g.
    `lecture-ppt/` — or leave it where the user keeps it.

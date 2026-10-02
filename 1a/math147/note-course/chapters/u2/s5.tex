@@ -160,11 +160,11 @@ We now prove that $\N$ is not bounded above in $\R$. The proof combines two ingr
     \end{enumerate}
 \end{proof}
 
-\begin{remark}
+\begin{remark}[Minimum versus Supremum]
     Part (c) is a \emph{minimum} argument, not a supremum argument, and this distinction matters. The set $A=\set{n\in\N:y<n}$ is a subset of $\N$, and in general $A$ is \emph{unbounded above} in $\R$: if $y$ is not itself a boundary case, every sufficiently large natural number also lies in $A$. So $\sup A$ would not even be a finite real number, and asking for $\sup A$ would be the wrong tool here. What we actually need is the \emph{least} element of $A$, and the Well-Ordering Principle supplies this regardless of whether $A$ is bounded above — it only requires $A$ to be a nonempty subset of $\N$. This is in direct contrast to the supremum arguments used elsewhere in this section (for $\sup\N$ in the Archimedean Property, and for $\sup S$ in the existence of $\sqrt2$ below), where the relevant sets are subsets of $\R$ and boundedness above is essential.
 \end{remark}
 
-\subsubsection{The Existence of $\sqrt2$}
+\subsubsection{The Existence of \texorpdfstring{$\sqrt2$}{sqrt(2)}}
 We know $\sqrt2\notin\Q$. Does $\R$ contain a square root of $2$? Completeness should produce one. Take all the candidates from below,
 \[
     S=\set{t\in\R : t\geq0,\ t^2<2}.
@@ -269,7 +269,7 @@ Unlike part (c) above, this is a genuine completeness argument: $S$ is a bounded
     Combining both cases, $x^2 = 2$.
 \end{proof}
 
-\subsubsection{Density of $\Q$ and of the Irrationals}
+\subsubsection{Density of \texorpdfstring{$\Q$}{Q} and of the Irrationals}
 
 Completeness is exactly what $\Q$ is missing. Take
 \[
@@ -384,6 +384,7 @@ Are there more rational or irrational numbers? To answer this question, we need 
     for some $n\in\N$. A set $S$ is \emph{countably infinite} if there is a bijection $f:\N\to S$.\index{finite set}\index{countably infinite set}
 \end{definition}
 \begin{example}
+    \leavevmode
     \begin{enumerate}[label = (\alph*)]
         \item The function $f:\N\to\{2,4,6,\ldots\}$ defined by $f(n)=2n$ is a bijection. Thus the set of even natural numbers has the same cardinality as $\N$.
         \item The function $g:\N\to\Z$ defined by

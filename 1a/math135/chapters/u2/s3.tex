@@ -1,5 +1,8 @@
 %!TEX root= ../../note
 \subsection{Quantifiers and Quantified Statements}
+Quantifiers specify how many elements of a domain must satisfy a condition.
+When quantifiers are nested, their order determines which choices may
+depend on earlier ones.
 \subsubsection{Universal Quantifier}
 $\forall$ means ``for all'', and it is called the universal quantifier.
 The statement $\forall x \in S, P(x)$ is true when $P(x)$ is true for \emph{every} element $x$ of $S$.
@@ -54,14 +57,29 @@ This statement is true: given any $x \in \R$, we may choose $y = x - 1$, and the
 Note that $y$ is allowed to depend on $x$.
 
 \begin{remark}
-    Order matters! Consider the statement $\exists y \in \R, \forall x \in \R, x > y$.
+    Reversing the quantifiers changes the statement:
+    $\exists y \in \R, \forall x \in \R, x > y$.
     It says there is a single real number $y$ which is smaller than every real number,
     including $y$ itself. This is false: taking $x = y$ gives $y > y$.
 \end{remark}
 
+\medskip\noindent
 To negate a nested quantified statement, negate one quantifier at a time from the outside in:
 each $\forall$ becomes $\exists$, each $\exists$ becomes $\forall$, and the open sentence is negated.
 For example,
 \begin{align*}
-    \neg \paren{\forall x \in S, \exists y \in T, P(x, y)} &\equiv\\ &\exists x \in S, \forall y \in T, \neg P(x, y).
+    &\neg \paren{\forall x \in S, \exists y \in T, P(x, y)}\\
+    &\qquad\equiv \exists x \in S, \forall y \in T, \neg P(x, y).
 \end{align*}
+
+\subsubsection*{In practice}
+\begin{itemize}
+    \item \textbf{Reading quantifiers.} State the domain and read from left
+    to right. In $\forall x\in S,\ \exists y\in T,\ P(x,y)$, the choice of
+    $y$ may depend on $x$; reversing the quantifiers requires one $y$ that
+    works for every $x$.
+    \item \textbf{Negating a statement.} Keep the domains and quantifier
+    order, swap each $\forall$ with $\exists$, and negate the final condition.
+    One counterexample refutes a universal statement; refuting an existential
+    statement requires ruling out every possible witness.
+\end{itemize}

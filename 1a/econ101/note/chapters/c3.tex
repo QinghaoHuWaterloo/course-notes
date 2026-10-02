@@ -1,0 +1,265 @@
+%!TEX root = ../note.tex
+% Source: ../chapter3_econ101_fall2026.pdf
+\section{Supply and producer choice}
+This chapter mirrors Chapter 2 with sellers in place of buyers.
+
+\subsection{Individual supply}
+\begin{defi}
+  The \term{individual supply curve} of a seller $j$ is the function
+  $p \mapsto q_j^S(p)$ giving the quantity supplied at each price $p$,
+  ceteris paribus.
+\end{defi}
+
+\begin{eg}[Shell]\label{eg:shell}
+  Shell's supply of gas (millions of litres per day):
+  \[
+    q^S_{\text{Shell}}(p) =
+    \begin{cases}
+      0 & p < 1.60,\\
+      8 + 5(p - 1.60) & 1.60 \leq p \leq 2.40,
+    \end{cases}
+  \]
+  so $q^S(1.60) = 8$, $q^S(1.80) = 9$, $q^S(2.00) = 10$, $q^S(2.20) = 11$ and
+  $q^S(2.40) = 12$. Below \dollar{1.60} Shell stops supplying gas.
+\end{eg}
+
+\begin{law}[Law of supply]
+  Quantity supplied rises when the price rises, and vice versa:
+  \[
+    p_1 < p_2 \implies q^S(p_1) \leq q^S(p_2).
+  \]
+  That is, supply curves are \emph{upward sloping}.
+\end{law}
+
+\subsection{Perfect competition}
+\begin{defi}
+  A market is \term{perfectly competitive} if
+  \begin{enumerate}
+    \item there are many buyers and sellers, each small relative to the
+      market, and no barriers to entry or exit;
+    \item all firms sell an identical product;
+    \item there is perfect information;
+    \item mobility costs are zero: buyers can switch sellers for free.
+  \end{enumerate}
+  An agent is a \term{price taker} if it treats the market price $p$ as
+  given, as opposed to a \emph{price maker}.
+\end{defi}
+
+\begin{nprop}
+  In a perfectly competitive market every firm sells at the market price $p$.
+\end{nprop}
+\begin{proof}[Argument]
+  If a firm charges $p' > p$, then by (ii)--(iv) every buyer switches to a
+  rival at no cost, so it sells nothing. Suppose instead that selling at some
+  $p' < p$ were profitable. With perfect information and free entry, a
+  competitor would already have taken that opportunity, so this cannot hold in
+  a situation where nobody wants to change what they do. Hence $p$ is
+  exogenous to each firm.
+\end{proof}
+
+\begin{remark}
+  Perfectly competitive markets are rare in reality. The assumption is a
+  simplification that makes the analysis tractable.
+\end{remark}
+
+\subsection{The rational rule for sellers}
+\begin{defi}
+  A firm's total cost splits as
+  \[
+    \TC(q) = \FC + \VC(q),
+  \]
+  where the \term{fixed cost} $\FC$ does not depend on output (e.g.\
+  capital) and the \term{variable cost} $\VC(q)$ does (e.g.\ labour). The
+  \term{marginal cost} is $\MC(q) = \TC(q) - \TC(q-1)$, or $\TC'(q)$ in the
+  continuous case.
+\end{defi}
+
+\begin{nprop}
+  $\MC(q) = \VC(q) - \VC(q-1)$. In particular, fixed costs do not affect the
+  choice of quantity.
+\end{nprop}
+\begin{proof}
+  $\FC$ cancels in the difference. This is Proposition~\ref{prop:sunk} again.
+\end{proof}
+
+For a price taker, the marginal benefit of selling one more unit is the price
+$p$.
+
+\begin{nthm}[Rational rule for sellers]\label{thm:seller}
+  If $\MC$ is nondecreasing, the profit-maximising quantity at price $p$ is
+  \[
+    q^S(p) = \max\set{q \geq 0 : q = 0 \text{ or } \MC(q) \leq p}.
+  \]
+  At an interior optimum, $\text{price} = \text{marginal cost}$. So:
+  \emph{sell one more unit if $p \geq \MC$.}
+\end{nthm}
+\begin{proof}
+  Apply Theorem~\ref{thm:rational} with $\MB(q) = p$ constant.
+\end{proof}
+
+\begin{ncor}
+  Increasing marginal cost implies the law of supply, and the supply curve
+  \emph{is} the marginal cost curve.
+\end{ncor}
+\begin{proof}
+  If $p_1 < p_2$ then $\set{q : \MC(q) \leq p_1} \subseteq \set{q : \MC(q)
+  \leq p_2}$.
+\end{proof}
+
+\begin{remark}
+  The law of supply comes from two sources: \emph{diminishing marginal
+  product} (below) and \emph{rising input costs}.
+\end{remark}
+
+\subsection{Diminishing marginal product}
+\begin{defi}
+  A \term{production function} $Y = F(L, K)$ gives output from labour $L$
+  (variable input) and capital $K$ (fixed input). The \term{marginal
+  product of labour} is $\MP_L = \partial F / \partial L$, or
+  $F(L, K) - F(L-1, K)$ in discrete terms. There is \term{diminishing
+  marginal product} if $\MP_L$ decreases in $L$ for fixed $K$.
+\end{defi}
+
+\begin{nthm}[Diminishing marginal product $\Rightarrow$ rising marginal cost]
+  \label{thm:mpmc}
+  Let the wage be $w$ and $K$ fixed, and let $F(\cdot, K)$ be smooth and
+  strictly increasing, with inverse $L(Y)$ (the labour needed to make $Y$).
+  Then
+  \[
+    \MC(Y) = \frac{w}{\MP_L\bigl(L(Y)\bigr)}.
+  \]
+  Hence if $\MP_L$ is decreasing, $\MC$ is increasing.
+\end{nthm}
+\begin{proof}
+  $\TC(Y) = wL(Y) + \FC$, so by the inverse function rule
+  $\MC(Y) = wL'(Y) = w / F_L(L(Y), K)$. When $Y$ increases, $L(Y)$ increases,
+  so $\MP_L$ falls and $\MC$ rises.
+\end{proof}
+
+\begin{significant}
+  Each extra unit of output needs more and more labour, so each unit costs
+  more than the last.
+\end{significant}
+
+\begin{eg}
+  Take $Y = \sqrt{LK}$ with $K = 4$, so $Y = 2\sqrt{L}$ and
+  $\MP_L = \frac12\sqrt{K/L} = 1/\sqrt{L}$, which is decreasing. In discrete
+  terms:
+  \begin{center}
+    \begin{tabular}{cccccccc}
+      \toprule
+      $L$ & 0 & 1 & 2 & 3 & 4 & 5 & 6 \\
+      $Y$ & 0 & 2 & 2.83 & 3.46 & 4.00 & 4.47 & 4.90 \\
+      $\MP_L$ & --- & 2 & 0.83 & 0.64 & 0.54 & 0.47 & 0.43 \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+  Invert: $L = Y^2 / K = Y^2/4$. With $w = \dollar{15}$,
+  $\TC(Y) = 15 \cdot Y^2/4 = 3.75\,Y^2$ (ignoring the fixed cost of capital),
+  so
+  \[
+    \MC(Y) = \TC(Y) - \TC(Y-1) = 3.75\,(2Y - 1).
+  \]
+  \begin{center}
+    \begin{tabular}{cccccccc}
+      \toprule
+      $Y$ & 0 & 1 & 2 & 3 & 4 & 5 & 6 \\
+      $L$ & 0 & 0.25 & 1 & 2.25 & 4 & 6.25 & 9 \\
+      $\TC$ & 0 & 3.75 & 15 & 33.75 & 60 & 93.75 & 135 \\
+      $\MC$ & --- & 3.75 & 11.25 & 18.75 & 26.25 & 33.75 & 41.25 \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+  In the continuous version, $\MC(Y) = \TC'(Y) = 7.5\,Y$, which matches
+  Theorem~\ref{thm:mpmc}: $w / \MP_L(L(Y)) = 15\sqrt{Y^2/4} = 7.5\,Y$. Setting
+  $p = \MC$ gives the supply curve $q^S(p) = p / 7.5$, which is upward
+  sloping.
+\end{eg}
+\begin{remark}
+  The table's $L$ column assumes labour can be hired in fractions. $\MP_L$
+  and $\MC$ move in opposite directions, as Theorem~\ref{thm:mpmc} predicts.
+\end{remark}
+
+\subsection{Market supply}
+\begin{defi}
+  The \term{market supply curve} is the horizontal sum
+  $Q^S(p) = \sum_{j=1}^{M} q_j^S(p)$ over the $M$ sellers. If the sellers
+  are identical, $Q^S(p) = M\,q^S(p)$.
+\end{defi}
+
+\begin{eg}
+  With $M = 10$ identical firms:
+  \begin{center}
+    \begin{tabular}{cccccc}
+      \toprule
+      $p$ & 1.60 & 1.80 & 2.00 & 2.20 & 2.40 \\
+      $q^S(p)$ & 6 & 8 & 10 & 12 & 14 \\
+      $Q^S(p) = 10\,q^S(p)$ & 60 & 80 & 100 & 120 & 140 \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+  (millions of litres per day).
+\end{eg}
+
+A higher price raises market quantity supplied in two ways: existing firms
+expand output, and new firms enter.
+
+\subsection{Movements along versus shifts of supply}
+As with demand, write
+\[
+  Q^S = Q^S(p;\ w,\ A,\ p_{\text{rel}},\ e,\ M),
+\]
+where $w$ is input prices, $A$ productivity, $p_{\text{rel}}$ prices of
+related outputs, $e$ expectations and $M$ the number of sellers. A change in
+$p$ is a \term{movement along the supply curve} and changes the
+\term{quantity supplied}. A change in any other argument is a \term{shift
+of the supply curve}. An increase in supply is a shift to the right.
+
+\subsubsection*{The five supply shifters}
+\begin{enumerate}
+  \item \emph{Input prices.} Higher input prices raise $\MC$ at every $q$, so
+    supply shifts left.
+  \item \emph{Productivity and technology.} Producing more with the same
+    inputs (new machinery, better management or processes, learning by doing)
+    lowers $\MC$, so supply shifts right.
+  \item \emph{Prices of related outputs.}
+    \begin{defi}
+      Good $y$ is a \term{substitute-in-production} for $x$ if it is made
+      with the same inputs, and a \term{complement-in-production} if it is
+      made together with $x$. Then
+      \[
+        \frac{\partial Q^S_x}{\partial p_y} < 0 \text{ for substitutes},\qquad
+        \frac{\partial Q^S_x}{\partial p_y} > 0 \text{ for complements}.
+      \]
+    \end{defi}
+  \item \emph{Expectations.} If firms expect the price to rise, they store
+    output rather than sell it now, so supply today shifts left. This matters
+    more for non-perishable goods (gasoline) than perishable ones (fresh
+    fish).
+  \item \emph{Type and number of sellers.} Changing $M$ shifts the market
+    curve but no individual curve. For example, a Competition Bureau ruling on
+    a merger changes $M$.
+\end{enumerate}
+
+\begin{eg}
+  Crude oil is an input to gasoline. If its price rises, $\MC$ rises at every
+  output level, so the market supply of gasoline shifts \emph{left}: at every
+  price, less is supplied. On the slides, supply at \dollar{2.00} falls from
+  $100$ to $60$ million litres.
+\end{eg}
+
+\subsection*{Summary: buyers versus sellers}
+\begin{center}
+  \begin{tabular}{lll}
+    \toprule
+    & Buyer & Seller \\
+    \midrule
+    Marginal benefit & $\MB(q)$ & $p$ \\
+    Marginal cost & $p$ & $\MC(q)$ \\
+    Rational rule & $p = \MB$ & $p = \MC$ \\
+    Law & demand slopes down & supply slopes up \\
+    Reason & diminishing $\MB$ & diminishing $\MP_L$, rising input costs \\
+    Market curve & $\sum_i q_i^D$ & $\sum_j q_j^S$ \\
+    \bottomrule
+  \end{tabular}
+\end{center}

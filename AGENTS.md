@@ -1,5 +1,8 @@
 # Course notes
 
+Instructions for any coding agent (Codex, Cursor, Gemini, Copilot, …).
+`CLAUDE.md` holds the same text for Claude Code; keep the two in sync.
+
 Before creating or editing any note, read:
 
 1. `HANDOFF.md` — repository map, workflow, verification, hygiene.

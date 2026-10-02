@@ -1,6 +1,9 @@
 %!TEX root=../../note
 \subsection{Implication}
-\begin{definition}
+An implication specifies what must follow when its hypothesis is true.
+Its converse and contrapositive reverse the roles of the two statements
+in different ways.
+\begin{definition}[Implication]
     The truth value for ``$A$ implies $B$'', written symbolically as $A \implies B$, is defined by the truth table
     \begin{center}
         \begin{tabular}{c|c|c}
@@ -32,7 +35,8 @@ what $B$ is (it is \emph{vacuously} true).
 \begin{remark}
     An implication with an ``or'' in its hypothesis splits into two implications:
     \begin{equation*}
-        (A \vee B) \implies C \equiv (A \implies C) \wedge (B \implies C).
+        \paren{(A \vee B) \implies C}
+        \equiv (A \implies C) \wedge (B \implies C).
     \end{equation*}
     This is the logic behind a proof by cases.
 \end{remark}
@@ -74,6 +78,7 @@ F & F & T & T & T & T
     always have the same truth value.
 \end{remark}
 
+\subsubsection{Rewriting and Negating an Implication}
 An implication is also logically equivalent to a disjunction, as shown in the following truth table:
 \begin{center}
 \begin{tabular}{c|c|c|c|c}
@@ -85,7 +90,7 @@ F & T & T & T & T \\
 F & F & T & T & T
 \end{tabular}
 \end{center}
-That is, $A \implies B \equiv \neg A \vee B$.
+That is, $(A \implies B) \equiv (\neg A \vee B)$.
 
 \begin{remark}
     The negation of an implication is not an implication. Negating $\neg A \vee B$ with De Morgan's Law
@@ -97,7 +102,7 @@ That is, $A \implies B \equiv \neg A \vee B$.
 \end{remark}
 
 \subsubsection{If and Only If}
-\begin{definition}
+\begin{definition}[If and Only If]
     The truth value for ``$A$ if and only if $B$'', written symbolically as $A \iff B$, is defined by the truth table
 
     \begin{center}

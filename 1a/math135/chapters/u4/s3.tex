@@ -1,6 +1,8 @@
 %!TEX root=../../note.tex
-\subsection{Proof By Contradiction}
-\begin{definition}
+% Keep the heading with its opening definition (needspace is loaded by mdframed).
+\Needspace{6\baselineskip}
+\subsection{Proof by Contradiction}
+\begin{definition}[Contradiction]
     Given a statement $A$, the logical expression $A \wedge \paren{\neg A }$ is called a contradiction.
 \end{definition}
 A contradiction is false in every row of its truth table. To prove a statement $S$ by contradiction,
@@ -11,33 +13,42 @@ $A$ together with $\neg B$.
 \begin{proposition}
     $\forall n \in \Z$, if $n^2$ is even, then $n$ is even.
 \end{proposition}
+\begin{remark}[Proof idea]
+    If the conclusion fails, $n$ is odd and can be written as $2k+1$.
+    Squaring this expression makes $n^2$ odd as well, contradicting the hypothesis.
+\end{remark}
+\mdfsetup{nobreak=true}
 \begin{proof}
-    Let $n$ be an arbitrary integer.
+    Let $n$ be an arbitrary integer and assume $n^2$ is even.
 
-    Assume $n^2$ is even.
-
-    Suppose, for contradiction, that $n$ is odd.
-
-    Then,
+    Suppose, for contradiction, that $n$ is odd. Then there is some $k\in\Z$ such that
     \begin{equation*}
-        \paren{\exists k \in \Z } n = 2k + 1.
+        n = 2k + 1.
     \end{equation*}
-
-    It implies
+    Squaring gives
     \begin{equation*}
         n^2 = \paren{2k + 1 }^2 = 4k^2 + 4k + 1 = 2(2k^2 + 2k ) + 1,
     \end{equation*}
-
-    but $2k^2 + 2k \in \Z$ (since $k \in \Z$). So we have actually shown that $n^2$ is odd.
+    and $2k^2 + 2k \in \Z$ (since $k \in \Z$), so $n^2$ is odd.
 
     This contradicts the assumption that $n^2$ is even.
 
-    Thus, the assumption that $n$ is odd must be false. Thus, $n$ is even.
+    Therefore $n$ cannot be odd, so $n$ is even.
 \end{proof}
+\mdfsetup{nobreak=false}
+\begin{remark}
+    The contradiction here is $\paren{n^2\text{ is even}}\wedge\paren{n^2\text{ is odd}}$, an instance of $A\wedge\paren{\neg A}$: no integer is both even and odd.
+\end{remark}
+
+\subsubsection*{In practice}
+\begin{itemize}
+    \item \textbf{Contradiction template.} Write ``Suppose, for contradiction, that $\neg S$'' (for $A\implies B$: assume $A$ and $\neg B$), derive consequences until some statement and its negation both hold, then conclude $S$.
+    \item \textbf{When to use it.} Contradiction helps when $\neg S$ gives something concrete to work with, as ``$n$ is odd'' gives $n=2k+1$ while ``$n^2$ is even'' says nothing directly about $n$.
+\end{itemize}
 
 \subsubsection*{Exercises}
-\begin{itemize}
+\begin{enumerate}
     \item Prove there is no greatest integer.
     \item Prove $\forall a, b \in \Z, a \geq 2 \implies \paren{a \nmid b } \vee \paren{a \nmid \paren{b + 1}}$.
     \item Prove $\sqrt{2}$ is irrational.
-\end{itemize}
+\end{enumerate}

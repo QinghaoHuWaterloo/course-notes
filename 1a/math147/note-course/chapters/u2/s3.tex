@@ -1,5 +1,5 @@
 %!TEX root=../../note
-\subsection{$\R$ as an Ordered Field}
+\subsection{\texorpdfstring{$\R$}{R} as an Ordered Field}
 The real numbers $\R$ form a \emph{complete ordered field}. We build up this
 description in three stages: first the field (algebraic) axioms, which govern
 $+$ and $\cdot$; then the order axioms, which let us compare elements with
@@ -79,6 +79,7 @@ Once the axioms are fixed, even the most familiar facts --- uniqueness of the id
 
 \mdfsetup{nobreak=true}
 \begin{theorem}\label{thm:field-facts}
+    \leavevmode
     \begin{enumerate}[label = \alph*)]
         \item If $z, a \in \R$ with $z + a = a$, then $z = 0$.
         \item If $u \in \R$ and $b \neq 0$ with $u \cdot b = b$, then $u = 1$.
@@ -164,6 +165,7 @@ This is only a preview: upper bounds, suprema and the consequences of this axiom
     Prove that if $a \in \R$ and $a \neq 0$, then $a^2 > 0$.
 \end{example}
 
+\mdfsetup{nobreak=true}
 \begin{proof}
     Since $a \neq 0$, the trichotomy law gives two cases.
 
@@ -186,6 +188,7 @@ This is only a preview: upper bounds, suprema and the consequences of this axiom
     and $-a \in P$ are exhaustive (trichotomy, together with $a \neq 0$), we
     conclude $a^2 > 0$ in either case.
 \end{proof}
+\mdfsetup{nobreak=false}
 
 \subsubsection{Absolute Value and the Triangle Inequality}
 \begin{definition}\label{def:absolute-value}
@@ -203,6 +206,7 @@ Geometrically, $\abs{a}$ is the distance from $a$ to $0$, and $\abs{a-b}$ is the
 
 
 \begin{theorem}\label{thm:abs-value}
+    \leavevmode
     \begin{enumerate} [label = (\alph*)]
         \item $\abs{ab} = \abs{a}\abs{b}$ for all $a, b \in \R$.
         \item $\abs{a}^2 = a^2$ for all $a \in \R$.
@@ -225,6 +229,7 @@ Geometrically, $\abs{a}$ is the distance from $a$ to $0$, and $\abs{a-b}$ is the
     unwind the definition of $\abs{\cdot}$ in each case.
 \end{idea}
 
+\mdfsetup{nobreak=true}
 \begin{proof}
     The definition immediately gives $\abs{-a}=\abs{a}$: if $a\geq0$,
     then $-a\leq0$, and if $a<0$, then $-a>0$. It also gives
@@ -252,6 +257,7 @@ Geometrically, $\abs{a}$ is the distance from $a$ to $0$, and $\abs{a-b}$ is the
     $\abs a=a\leq c$. If $a<0$, multiplying $-c\leq a$ by $-1$ reverses
     the inequality and gives $-a\leq c$, hence $\abs a\leq c$. This proves (c).
 \end{proof}
+\mdfsetup{nobreak=false}
 
 
 \begin{proposition}
@@ -291,7 +297,8 @@ In terms of distance: going from $0$ to $a+b$ directly is never longer than goin
 
 
 \begin{corollary}\label{cor:reverse-triangle}
-    \begin{enumerate}
+    \leavevmode
+    \begin{enumerate}[label=(\roman*)]
         \item $\abs{\abs{a} - \abs{b}} \leq \abs{a - b}.$
         \item $\abs{a - b} \leq \abs{a} + \abs{b}$
     \end{enumerate}
@@ -301,7 +308,7 @@ In terms of distance: going from $0$ to $a+b$ directly is never longer than goin
     \end{aligned}}
 \end{corollary}
 
-\begin{proof}[Proof of (1)]
+\begin{proof}[Proof of (i)]
     Let $a, b \in \R$. The idea is to write $a$ as $(a-b)+b$, so that the
     triangle inequality just proved applies directly to this sum and produces
     a bound involving $\abs{a-b}$:
@@ -330,7 +337,7 @@ In terms of distance: going from $0$ to $a+b$ directly is never longer than goin
     \end{equation*}
 \end{proof}
 
-\begin{proof}[Proof of (2)]
+\begin{proof}[Proof of (ii)]
     Let $a, b \in \R$. Writing $a-b$ as $a+(-b)$ reduces this to a direct
     application of the triangle inequality, using $\abs{-b}=\abs{b}$:
     \begin{align*}
