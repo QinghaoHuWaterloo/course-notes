@@ -1,136 +1,109 @@
 %!TEX root=../../note.tex
 \subsection{Principle of Strong Induction}
-Why Mathematical Induction is not enough? 
+Some inductive steps need more than the immediately preceding case. Strong
+induction makes all earlier cases available, which is useful for recurrences
+that depend on two or more previous terms.
+
+\subsubsection{Why Use a Stronger Inductive Hypothesis?}
 \begin{example}
-    A sequence $\set{x_n }$ is defined by 
-    \begin{equation*}
-        x_1 = 4 \qquad x_2 = 68 \qquad x_n = 2 x_{n - 1} + 15x_{n - 2} \qquad \forall n \geq 3
-    \end{equation*}
-
-    Prove $\underbrace{x_n}_{\text{closed form}} = 2 \paren{-3}^n + 10 \cdot 5^{n - 1}, \forall n \geq 1$.
+    A sequence $\set{x_n}$ is defined recursively by
+    \[
+        x_1=4,\qquad x_2=68,\qquad
+        x_n=2x_{n-1}+15x_{n-2}\quad\text{for all }n\geq3.
+    \]
+    Prove the closed form
+    \[
+        x_n=2\paren{-3}^n+10\cdot5^{n-1}
+        \quad\text{for all }n\in\N.
+    \]
 \end{example}
-\begin{remark}
-    This is an example of a sequence defined \textit{recursively} or a recursive relation. 
+Let $P(n)$ be the claimed formula. The first case holds because
+$2(-3)+10=4=x_1$. However, if we assume only $P(k)$, the recurrence
+\[
+    x_{k+1}=2x_k+15x_{k-1}\qquad(k\geq2)
+\]
+still involves $x_{k-1}$, whose closed form is not supplied by that
+hypothesis. We need both $P(k)$ and $P(k-1)$, as well as a second base case.
+This does not mean ordinary induction is invalid; it means this choice of
+inductive hypothesis does not provide everything the step needs.
+
+\Needspace{9\baselineskip}
+\subsubsection{The Strong Induction Principle}
+\mdfsetup{nobreak=true}
+\begin{definition}[Principle of Strong Induction]
+    Let $P(n)$ be an open sentence that depends on $n\in\N$. If
+    \begin{enumerate}[label=(\arabic*)]
+        \item $P(1)$ is true, and
+        \item for every $k\in\N$, if $P(1),P(2),\ldots,P(k)$ are
+        all true, then $P(k+1)$ is true,
+    \end{enumerate}
+    then $P(n)$ is true for all $n\in\N$.
+\end{definition}
+\mdfsetup{nobreak=false}
+The step assumes every case up to $k$, not just the case $k$. It may use
+whichever of these earlier cases the argument needs.
+
+To start at an integer $b$ and use several base cases, fix an integer
+$B\geq b$. Prove $P(b),P(b+1),\ldots,P(B)$. Then, for arbitrary $k\geq B$,
+assume $P(i)$ for every integer $b\leq i\leq k$ and prove $P(k+1)$.
+Here $B$ is fixed by the proof; we do not prove base cases for every $B$.
+
+\subsubsection{Returning to the Recurrence}
+\begin{remark}[Proof idea]
+    Check the two initial terms, then substitute the formulas for both
+    $x_k$ and $x_{k-1}$. Group the powers of $-3$ and of $5$ separately.
 \end{remark}
-
 \begin{proof}
-    Let $P(n)$ be $x_n = 2\paren{-3}^n + 10 \cdot 5^{n - 1}$
+    We prove $P(n)$ by strong induction on $n$.
 
-    \textbf{Base case: } Prove $P(1)$ is true.  We have
-    \begin{equation*}
-        x_1 = 4
-    \end{equation*}
-
-    by definition. also
+    \textbf{Base cases.} Both $P(1)$ and $P(2)$ hold, since
     \begin{align*}
-        2 \times \paren{3}^1 + 10 \cdot 5^{1 - 1} = 2(-3) + 10 = -6 + 10 = 4 = x_1
+        2\paren{-3}^1+10\cdot5^0&=-6+10=4=x_1,\\
+        2\paren{-3}^2+10\cdot5^1&=18+50=68=x_2.
     \end{align*}
 
-    So $P(1)$ is true. 
-
-    \textbf{Inductive Step}
-    Let $k$ be an arbitrary natural number. 
-
-    Assume $P(k)$ is true. 
-
-    That is 
-    \begin{equation*}
-        x_k = 2\paren{-3}^k + 10 \cdot 5^{k - 1}. 
-    \end{equation*}
-    
-    Prove $P(k + 1)$. That is 
+    \textbf{Inductive step.} Let $k\geq2$ be an arbitrary integer.
+    Assume $P(i)$ is true for every integer $1\leq i\leq k$, that is,
+    \[
+        x_i=2\paren{-3}^i+10\cdot5^{i-1}
+        \quad\text{for }1\leq i\leq k.
+    \]
+    In particular, the hypothesis applies to both $k$ and $k-1$.
+    Using the recurrence and substituting these two cases,
     \begin{align*}
-        x_{k + 1} = 2\paren{-3}^{k + 1} + 10 \cdot 5^k. 
+        x_{k+1}
+        &=2x_k+15x_{k-1}\\
+        &=2\bracks{2\paren{-3}^k+10\cdot5^{k-1}}
+          +15\bracks{2\paren{-3}^{k-1}+10\cdot5^{k-2}}\\
+        &=4\paren{-3}^k+30\paren{-3}^{k-1}
+          +20\cdot5^{k-1}+150\cdot5^{k-2}\\
+        &=\paren{-3}^{k-1}\bracks{4(-3)+30}
+          +5^{k-2}\bracks{20\cdot5+150}\\
+        &=18\paren{-3}^{k-1}+250\cdot5^{k-2}\\
+        &=2\paren{-3}^{k+1}+10\cdot5^k.
     \end{align*}
+    This is $P(k+1)$. By strong induction, the formula holds for every
+    $n\in\N$.
 \end{proof}
 
-We cannot continue with this. Since we are unable to prove that 
-\begin{equation*}
-    P(k) \implies P(k + 1)
-\end{equation*}
-
-since we only know $P(k)$ is true. If we want or prove, we also need to know that $P(k - 1)$ is true. 
-
-\begin{definition}
-    [Principle of Strong Induction]
-    Let $P(n)$ be an open sentence that depends on $n \in \N$.  
-
-    If statement 1 and 2 are both true 
-    \begin{enumerate}
-        \item P(1)
-        \item For all $k \in \N$, if 
-        \begin{equation*}
-            P(1) \wedge P(2) \wedge \cdots \wedge P(k)
-        \end{equation*}
-        is true, then $P(k + 1)$ is true. 
-    \end{enumerate}
-
-    then $P(k), \forall k \in \N$. 
-\end{definition}
-
-\subsubsection*{Prove by Strong Induction}
-Prove $\forall n \in \N, n \geq b, P(n)$ 
+\subsubsection*{In practice}
 \begin{itemize}
-    \item Prove $P(b) \wedge P(b + 1) \wedge \cdots \wedge P(B), \forall B \geq b$. 
-    \item Inductive step: Prove for all integers $k \geq B$. 
+    \item \textbf{Choose the hypothesis from the recurrence.} If the next
+    term uses two preceding terms, check both initial cases and make both
+    preceding formulas available in the inductive step.
+    \item \textbf{Strong induction template.} State $P(n)$ and check the
+    required base cases. For arbitrary $k$ beyond them, assume every earlier
+    case in the claimed range, prove $P(k+1)$, and conclude by strong induction.
 \end{itemize}
 
-Go back to the bloody example. 
-\begin{example}
-    A sequence $\set{x_n }$ is defined by 
-    \begin{equation*}
-        x_1 = 4 \qquad x_2 = 68 \qquad x_n = 2 x_{n - 1} + 15x_{n - 2} \qquad \forall n \geq 3
-    \end{equation*}
-
-    Prove $\underbrace{x_n}_{\text{closed form}} = 2 \paren{-3}^n + 10 \cdot 5^{n - 1}, \forall n \geq 1$.
-\end{example}
-
-\begin{proof}
-   Proof by induction on $n$.  
-
-   \textbf{Base Case: }Prove $P(1)$
-   By definition, 
-    \begin{align*}
-        2 \times \paren{-3}^1 + 10 \cdot 5^{1 - 1} = 2(-3) + 10 = -6 + 10 = 4 = x_1 \\
-        2 \times \paren{3}^2 + 10 \cdot 5^{2 - 1} = 18 + 50 = 68 = x_2
-    \end{align*}
-
-    Therefore, $P(1)$ is true. 
-
-    \textbf{Inductive step }:Let $k$ be an arbitrary integer with $k \geq 2$
-
-    Assume $P(i)$ is true for all integer $i$ with $1 \leq i \leq k$. 
-
-    That is assume 
-    \begin{equation*}
-        x_i = 2\paren{-3}^i + 10 \cdot 5^{i - 1}, \forall i \in \set{1, 2, 3, \cdots, k}
-    \end{equation*}
-
-    Prove $P(k + 1)$ is true. That is 
-    \begin{align*}
-        x_{n + 1} = 2\paren{-3}^{k + 1} + 10 \cdot 5^k. 
-    \end{align*}
-
-    By define 
-    \begin{align*}
-        x_{n + 1} &= 2x_k + 15x_{k - 1} \\
-        &= 2 \bracks{2\paren{-3}^k + 10 \cdot 5^{k - 1}} + 15 \cdot 2 \bracks{2\paren{-3}^k + 10 \cdot 5^{k - 1}}\\
-        &= \text{Chatgpt, help me expand it. }\\
-        &= 2\paren{-3}^{k + 1} + 10 \cdot 5^{k - 1}
-    \end{align*}
-
-    for $k \geq 2$. 
-
-    $P(k + 1)$ is true. So this $P(n)$ is true for all $n$ in $\N$. 
-\end{proof}
-
-\begin{example}
-    Suppose $x_1 = 3, x_2 = 5$ and $x_n = 3x_{n - 1 } + 2x_{n - 2}, \forall n \geq 3$. 
-
-    Prove $x_n < 4^n$ for all $n$ in $\N$. 
-\end{example}
-\begin{example}
-    Suppose you have a $m \times n$ rectangularchocolate bar with $mn$ unit square. 
-
-    Let $N = mn$. Prove $N - 1$ breaks requred to break the choc bar into unit square. 
-\end{example}
+\subsubsection*{Exercises}
+\begin{enumerate}
+    \item (Lecture.) Suppose $x_1=3$, $x_2=5$, and
+    $x_n=3x_{n-1}+2x_{n-2}$ for all $n\geq3$.
+    Prove that $x_n<4^n$ for every $n\in\N$.
+    \item (Lecture.) An $m\times n$ rectangular chocolate bar consists of
+    $N=mn$ unit squares. Prove that $N-1$ breaks are required to separate
+    the bar into unit squares.
+    % TODO(check): The lecture did not record the allowed breaking operation
+    % or whether multiple pieces may be stacked and broken simultaneously.
+\end{enumerate}

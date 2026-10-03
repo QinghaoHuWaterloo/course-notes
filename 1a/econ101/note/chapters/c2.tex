@@ -1,210 +1,227 @@
 %!TEX root = ../note.tex
 % Source: ../chapter2_econ101_fall2026.pdf
-\section{Demand and consumer choice}
-\subsection{Individual demand}
-\begin{defi}
-  The \term{individual demand curve} of a buyer $i$ is the function
-  \[
-    q_i^D : \R_{\geq 0} \to \R_{\geq 0},\qquad p \mapsto q_i^D(p),
-  \]
-  giving the quantity demanded at each price $p$, \emph{holding everything
-  else constant} (\term{ceteris paribus}). By convention price goes on the
-  vertical axis and quantity on the horizontal axis.
-\end{defi}
+\section{Demand and Consumer Choice}
+Demand describes what buyers would choose at different possible prices.
+It connects willingness to pay with quantity decisions, then combines
+individual choices into a market relationship.
 
-\begin{eg}[Darren's demand for gasoline]\label{eg:darren}
-  A survey of Darren's daily gas use (litres) at hypothetical prices:
-  \begin{center}
-    \begin{tabular}{cccccc}
-      \toprule
-      $p$ (\$/litre) & 2.40 & 2.20 & 2.00 & 1.80 & 1.60 \\
-      $q^D_{\text{Darren}}(p)$ & 1 & 2 & 3 & 5 & 7 \\
-      \bottomrule
-    \end{tabular}
-  \end{center}
-\end{eg}
+\subsection{Individual Demand}
+\begin{definition}[Individual Demand Curve]\label[definition]{def:individual-demand}
+An \term{individual demand curve} shows the quantity a buyer is willing
+and able to buy at each price, holding other relevant conditions fixed
+(\term{ceteris paribus}). Quantity is measured over a specified period.
+\end{definition}
+We can write this quantity as $q^D(p)$. Price is the input, but economics
+graphs put price on the vertical axis and quantity on the horizontal axis.
+A demand curve describes a range of possible choices; a quantity demanded
+is one choice at one price.
 
-\begin{law}[Law of demand]
-  Quantity demanded rises when the price falls, and vice versa:
-  \[
-    p_1 < p_2 \implies q^D(p_1) \geq q^D(p_2).
-  \]
-  That is, demand curves are \emph{downward sloping}.
-\end{law}
+\begin{example}[Darren's Gasoline Demand]\label[example]{ex:darren}
+The slides survey Darren about his daily gasoline use:
+\begin{center}
+\begin{tabular}{rrrrrr}
+\toprule
+Price (\$/litre)&2.40&2.20&2.00&1.80&1.60\\
+Quantity (litres/day)&1&2&3&5&7\\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{example}
+These are hypothetical-price responses; connecting them does not
+establish an exact formula at unobserved prices.
 
-\subsection{The rational rule for buyers}
-To explain the law of demand, apply the marginal principle to a buyer who
-takes the price $p$ as given. Buying the $k$-th unit has marginal benefit
-$\MB(k)$ and marginal cost $p$.
+\paragraph{The law of demand.}
+Holding other conditions fixed, a lower price weakly increases quantity
+demanded, and a higher price weakly decreases it. ``Downward sloping''
+allows a buyer's quantity to stay unchanged over some price ranges.
+This is the course's usual demand relationship, not a statement that price
+is the only influence on buying.
 
-\begin{nthm}[Rational rule for buyers]\label{thm:buyer}
-  Suppose $\MB(1) \geq \MB(2) \geq \cdots$ (\term{diminishing marginal
-  benefit}). At price $p$ the surplus-maximising quantity is
-  \[
-    q^D(p) = \max\set{k \geq 0 : k = 0 \text{ or } \MB(k) \geq p}
-    = \#\set{k \geq 1 : \MB(k) \geq p}.
-  \]
-  At an interior optimum, $\text{price} = \text{marginal benefit}$.
-\end{nthm}
-\begin{proof}
-  Apply Theorem~\ref{thm:rational} with $\MC(k) = p$ for all $k$. Since $\MB$
-  is nonincreasing, the set $\set{k : \MB(k) \geq p}$ is an initial segment
-  $\set{1, \ldots, q^D(p)}$, so its largest element equals its size.
-\end{proof}
+\subsection{The Rational Rule for Buyers}
+A \term{price taker} treats the price as given rather than choosing it.
+For such a buyer, an additional unit's marginal cost is its price.
+The rule is to buy another unit when its marginal benefit is at least that
+price, provided successive marginal benefits diminish.
 
-\begin{ncor}\label{cor:lawdemand}
-  Diminishing marginal benefit implies the law of demand. Moreover, the
-  demand curve \emph{is} the marginal benefit curve.
-\end{ncor}
-\begin{proof}
-  If $p_1 < p_2$ then $\set{k : \MB(k) \geq p_2} \subseteq \set{k : \MB(k)
-  \geq p_1}$, so $q^D(p_2) \leq q^D(p_1)$ by Theorem~\ref{thm:buyer}.
-\end{proof}
+\begin{definition}[Diminishing Marginal Benefit]\label[definition]{def:diminishing-benefit}
+\term{Diminishing marginal benefit} means that successive additional units
+provide no greater benefit than preceding units, with other conditions fixed.
+It does not mean that total benefit decreases.
+\end{definition}
+If the extra benefit stays positive but gets smaller, total benefit is
+still rising, just in smaller increments. The assumption makes it sensible
+to stop once a unit costs more than it is worth: later units will not
+restore a positive marginal surplus.
 
-\begin{eg}\label{eg:darren-mb}
-  Darren ranks the uses of each extra litre:
-  \begin{center}
-    \begin{tabular}{clc}
-      \toprule
-      $k$ & Use of the $k$-th litre & $\MB(k)$ \\
-      \midrule
-      1 & drive to work instead of the bus & 2.40 \\
-      2 & drive to school instead of biking & 2.20 \\
-      3 & shop at the cheaper No Frills & 2.00 \\
-      4 & drive to see friends & 1.90 \\
-      5 & drive to the gym & 1.80 \\
-      6 & drive to do errands & 1.70 \\
-      7 & scenic drive & 1.60 \\
-      \bottomrule
-    \end{tabular}
-  \end{center}
-  At $p = 1.85$, $\set{k : \MB(k) \geq 1.85} = \set{1, 2, 3, 4}$, so Darren
-  buys $4$ litres a day. The formula also reproduces the survey in
-  Example~\ref{eg:darren}: e.g.\ at $p = 1.80$ he buys $5$ litres.
-\end{eg}
+\begin{example}[Darren's Ranked Uses]\label[example]{ex:darren-mb}
+The slides assign these benefits to successive daily litres:
+\begin{center}\small
+\begin{tabular}{clc}
+\toprule
+Unit&Use&Marginal benefit (\$)\\
+\midrule
+1&Drive to work instead of taking the bus&2.40\\
+2&Drive to school instead of biking&2.20\\
+3&Shop at No Frills instead of a dearer shop&2.00\\
+4&Visit friends&1.90\\
+5&Drive to the gym instead of jogging there&1.80\\
+6&Drive for errands instead of walking&1.70\\
+7&Take a scenic drive&1.60\\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{example}
+At \dollar{1.85} per litre, the first four uses are worth at least their
+cost. The fifth is worth only \dollar{1.80}, so it would reduce surplus
+by \dollar{0.05}; subsequent uses are worth still less. Darren therefore
+buys four litres in this example.
+
+This explains the law of demand in the slide model: lowering the price
+makes more of the ranked uses worthwhile, while raising it rules some out.
+At \dollar{1.80}, the fifth litre adds exactly zero surplus. Including it
+reproduces the survey's five litres, but buying four would give the same
+surplus. We include units at equality when describing the tabulated choices.
 
 \begin{center}
 \begin{tikzpicture}
-  \begin{axis}[width=7cm, height=5.5cm, xmin=0, xmax=8, ymin=1.5, ymax=2.5,
-      xlabel={Quantity (litres/day)}, ylabel={Price / $\MB$ (\$)},
-      axis lines=left, xtick={1,...,7}, ytick={1.6,1.8,2.0,2.2,2.4},
-      yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
-    \addplot[const plot, thick, blue] coordinates
-      {(0,2.4) (1,2.2) (2,2.0) (3,1.9) (4,1.8) (5,1.7) (6,1.6) (7,1.6)};
-    \addplot[dashed] coordinates {(0,1.85) (8,1.85)};
-    \node[anchor=west] at (axis cs:4.2,1.9) {$p = 1.85$};
-  \end{axis}
+\begin{axis}[width=0.7\linewidth,height=4.8cm,axis lines=left,
+ xmin=0,xmax=7.5,ymin=1.5,ymax=2.5,xlabel={Quantity (litres/day)},
+ ylabel={Price or marginal benefit (\$/litre)},xtick={0,...,7}]
+\addplot[const plot,thick] coordinates
+ {(0,2.4) (1,2.2) (2,2.0) (3,1.9) (4,1.8) (5,1.7) (6,1.6) (7,1.6)};
+\addplot[dashed] coordinates {(0,1.85) (7.5,1.85)};
+\addplot[only marks] coordinates {(4,1.85)};
+\end{axis}
 \end{tikzpicture}
 \end{center}
+The steps illustrate the slide's marginal values; four complete units
+are worthwhile at the dashed price line.
 
-\subsection{Market demand}
-\begin{defi}
-  If the buyers are $i = 1, \ldots, N$, the \term{market demand curve} is the
-  horizontal sum of the individual demand curves:
-  \[
-    Q^D(p) = \sum_{i=1}^{N} q_i^D(p).
-  \]
-\end{defi}
+The slides say to buy until marginal benefit equals price. With discrete
+units, the precise stopping rule is that the last purchased unit is worth
+at least the price and the next is worth less. Exact equality need not
+occur. For smoothly divisible quantities, equality describes an interior
+optimum when marginal benefit falls through the price; a budget or quantity
+limit can instead make an endpoint optimal.
 
-\begin{nprop}
-  If every $q_i^D$ is nonincreasing, then so is $Q^D$.
-\end{nprop}
-\begin{proof}
-  A sum of nonincreasing functions is nonincreasing.
-\end{proof}
-
-A movement along $Q^D$ reflects two things: existing buyers changing the
-quantity they buy, and buyers entering or leaving the market ($q_i^D(p)$
-changing between $0$ and a positive value).
-
-\begin{eg}[Estimating market demand]
-  Survey a random sample of $n = 400$ people from a population of
-  $N = 40$ million. If $\bar q(p)$ is the average demand in the sample, then
-  $Q^D(p) \approx N \bar q(p) = \frac{N}{n} \sum_{i \in \text{sample}}
-  q_i^D(p)$, with scale factor $\frac{N}{n} = 100{,}000$.
-  \begin{center}
-    \begin{tabular}{cccc}
-      \toprule
-      $p$ & Sample total (litres) & $\times\, N/n$ & $Q^D(p)$ (millions) \\
-      \midrule
-      1.60 & 1{,}200 & $10^5$ & 120 \\
-      1.80 & 1{,}100 & $10^5$ & 110 \\
-      2.00 & 1{,}000 & $10^5$ & 100 \\
-      2.20 & 900     & $10^5$ & 90 \\
-      2.40 & 800     & $10^5$ & 80 \\
-      \bottomrule
-    \end{tabular}
-  \end{center}
-\end{eg}
-
-\subsection{Movements along versus shifts of demand}
-Demand really depends on many variables:
+\subsection{Market Demand}
+\begin{definition}[Market Demand]\label[definition]{def:market-demand}
+\term{Market demand} adds all individual quantities demanded at the same
+price. For $N$ buyers,
 \[
-  Q^D = Q^D(p;\ I,\ \theta,\ p_r,\ e,\ \ldots,\ N),
+Q^D(p)=\sum_{i=1}^N q_i^D(p).
 \]
-where $I$ is income, $\theta$ preferences, $p_r$ prices of related goods,
-$e$ expectations and $N$ the number of buyers. The demand \emph{curve} is
-the graph of $p \mapsto Q^D(p; \cdot)$ with all other arguments fixed.
+This is called a \term{horizontal sum}, because quantity is on the
+horizontal axis.
+\end{definition}
+If every buyer weakly reduces their quantity when price rises, adding
+those quantities gives the same direction for the market total. A price
+change can affect both existing customers' quantities and whether some
+potential customers buy at all. A customer moving from zero to positive
+purchases is included in this comparison.
 
-\begin{defi}
-  A change in the good's own price $p$ is a \term{movement along the demand
-  curve} and changes the \term{quantity demanded}. A change in any other
-  argument is a \term{shift of the demand curve} and changes
-  \term{demand}. An \emph{increase in demand} is a shift to the right (more
-  demanded at every $p$). A \emph{decrease} is a shift to the left.
-\end{defi}
+\begin{example}[Surveying 400 Consumers]\label[example]{ex:market-demand}
+The slides scale a 400-person sample to a population of 40 million:
+\begin{center}\small
+\begin{tabular}{rrrrr}
+\toprule
+Price&Darren&Brooklyn&Sample total&Projected millions\\
+\midrule
+1.60&7&4&1200&120\\
+1.80&5&3&1100&110\\
+2.00&3&2&1000&100\\
+2.20&2&1&900&90\\
+2.40&1&0&800&80\\
+\bottomrule
+\end{tabular}
+\end{center}
+Prices are dollars per litre; quantities are litres per day, with the
+last column expressed in millions.
+\end{example}
+The scale factor is $40{,}000{,}000/400=100{,}000$. For example,
+$1000\cdot100{,}000=100$ million litres at \dollar{2.00}.
+The projection assumes that the sample represents the population; it is
+an estimate, not an exact population count.
 
-\begin{warning}
-  ``The price fell, so demand rose'' is wrong. A price fall raises the
-  \emph{quantity demanded}; the curve itself does not move. For example, a
-  price drop from \dollar{2.20} to \dollar{1.80} moves the market along the
-  curve from $90$ to $110$ million litres.
-\end{warning}
+\subsection{Movements Along Versus Shifts of Demand}
+\begin{definition}[Movement and Shift]\label[definition]{def:demand-shift}
+A change in the good's own price, holding other conditions fixed, is a
+\term{movement along the demand curve}; it changes \term{quantity demanded}.
+A change in another relevant condition can \term{shift the demand curve}:
+there is a different quantity demanded at the same price. This changes
+\term{demand}, meaning the relationship as a whole.
+\end{definition}
+An increase in demand is a right shift: more is demanded at each price
+in the range being compared. A decrease is a left shift. The direction
+is read horizontally, even when the curve is downward sloping.
 
-\subsubsection*{The six demand shifters}
+\begin{example}[Two Comparisons]\label[example]{ex:demand-comparison}
+On the original market curve, lowering price from \dollar{2.20} to
+\dollar{1.80} raises quantity from 90 to 110 million litres per day.
+The slide's increased-demand curve instead has 120 million litres at the
+same price of \dollar{1.80}, rather than 110 million.
+\end{example}
+The first changes price on one curve; the second compares curves at a
+fixed price. Thus ``price fell, so demand increased'' should be
+``price fell, so quantity demanded increased'', with other conditions fixed.
+
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[width=0.7\linewidth,height=4.8cm,axis lines=left,
+ xmin=65,xmax=135,ymin=1.5,ymax=2.5,xlabel={Quantity (millions of litres/day)},
+ ylabel={Price (\$/litre)},xtick={80,90,100,110,120}]
+\addplot[thick] coordinates {(80,2.4) (90,2.2) (100,2) (110,1.8) (120,1.6)};
+\addplot[thick,dashed] coordinates {(90,2.4) (100,2.2) (110,2) (120,1.8) (130,1.6)};
+\addplot[only marks] coordinates {(90,2.2) (110,1.8) (120,1.8)};
+\addplot[dotted] coordinates {(65,1.8) (120,1.8)};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+The solid curve connects the observations. The dashed curve illustrates
+increased demand, with the slide's comparison at \dollar{1.80}.
+
+\subsection{The Six Demand Shifters}
+\begin{definition}[Normal and Inferior Goods]\label[definition]{def:normal-inferior}
+A \term{normal good} has higher demand when income increases; an
+\term{inferior good} has lower demand, holding price and other conditions
+fixed over the income range being considered.
+\end{definition}
+``Inferior'' describes the income response, not the good's quality.
+Higher income does not automatically increase demand for every good.
+
+\begin{definition}[Complements and Substitutes]\label[definition]{def:related-demand}
+Goods are \term{complements} when lowering the price of one raises demand
+for the other. They are \term{substitutes} when lowering the price of one
+lowers demand for the other, holding other relevant conditions fixed.
+\end{definition}
+The six shifters in the slides are:
 \begin{enumerate}
-  \item \emph{Income.}
-    \begin{defi}
-      A good is \term{normal} if demand rises with income
-      ($\partial Q^D / \partial I > 0$) and \term{inferior} if it falls
-      ($\partial Q^D / \partial I < 0$).
-    \end{defi}
-  \item \emph{Preferences}, e.g.\ a marketing campaign convincing you that a
-    brand is ``cool''.
-  \item \emph{Prices of related goods.}
-    \begin{defi}
-      Let $p_y$ be the price of another good $y$. Then $y$ is a
-      \term{complement} of $x$ if $\partial Q_x^D / \partial p_y < 0$ (a
-      cheaper $y$ raises demand for $x$), and a \term{substitute} if
-      $\partial Q_x^D / \partial p_y > 0$ (a cheaper $y$ lowers demand for
-      $x$).
-    \end{defi}
-  \item \emph{Expectations}: beliefs about future prices affect demand today.
-  \item \emph{Congestion and network effects.}
-    \begin{defi}
-      There is a \term{network effect} if a good is worth more to each buyer
-      when more other people use it, and a \term{congestion effect} if it is
-      worth less.
-    \end{defi}
-  \item \emph{Type and number of buyers.} Since $Q^D = \sum_{i=1}^N q_i^D$,
-    raising $N$ shifts the \emph{market} curve right. Unlike factors (i)--(v),
-    it does not shift any individual curve $q_i^D$.
+\item \textbf{Income.} The direction depends on whether the good is normal
+or inferior. A tax cut raising disposable income shifts gasoline demand
+right if gasoline is normal in the relevant range.
+\item \textbf{Preferences.} For example, a marketing campaign can make a
+brand more desirable and raise willingness to pay.
+\item \textbf{Prices of related goods.} A cheaper complement raises demand;
+a cheaper substitute lowers it. The price changing is the \emph{other}
+good's price, so this shifts the original good's curve.
+\item \textbf{Expectations.} Beliefs about future prices can change purchases
+today, such as buying earlier in anticipation of a price increase.
+\item \textbf{Congestion and network effects.} A \term{network effect} makes a
+good more valuable as more other people use it; a \term{congestion effect}
+makes it less valuable. These can change a buyer's willingness to pay.
+\item \textbf{Type and number of buyers.} Adding buyers increases the market
+sum, holding existing buyers' curves fixed. This direct aggregation effect
+changes market demand without changing those individual curves.
 \end{enumerate}
+Congestion or network effects may additionally change individual curves;
+the last factor isolates the direct effect of adding buyers.
 
-\begin{eg}
-  A cut in income tax rates raises consumers' disposable income $I$. If gas
-  is a normal good, market demand for gas shifts to the right: at every
-  price, more gas is demanded.
-\end{eg}
-
-\begin{ex}
-  Classify each change as a movement along or a shift of the demand for
-  gasoline, and give the direction: (a) the price of gas falls; (b) the price
-  of electric cars (a substitute for gas-powered driving) falls; (c) the
-  population grows.
-\end{ex}
-\begin{remark}[Answers]
-  (a) Movement down along the curve, so quantity demanded rises. (b) Left
-  shift, since the price of a substitute fell. (c) Right shift of the market
-  curve (factor (vi)).
-\end{remark}
+\subsubsection*{In practice}
+\begin{itemize}
+\item \textbf{Buy another unit?} Compare its marginal benefit with price;
+check how a tie is treated.
+\item \textbf{Aggregate at one price.} Add quantities, with matching units
+and periods, rather than adding prices.
+\item \textbf{Movement or shift?} Ask whose price changed. The good's own
+price gives a movement; other conditions can shift its curve.
+\end{itemize}

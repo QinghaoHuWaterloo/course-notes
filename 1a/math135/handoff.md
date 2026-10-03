@@ -99,6 +99,9 @@ more than one subsection; preserve their order during local edits.
   sum was not recorded; `x_j` is a placeholder.
 - `u5/s2.tex`: `% TODO(check)` records a possibly missing example after an
   empty item in the original notes. Do not invent the missing example.
+- `u6/s2.tex`: `% TODO(check)` records missing chocolate-breaking rules
+  (one piece per break versus simultaneous stacked breaks). Both lecture
+  exercises remain unsolved.
 - In `u4/s5.tex`, the exercise about non-parallel lines leaves the geometric
   setting implicit; confirm it from the course before changing its statement.
 - Administrative details in `u1/s1.tex` are recorded course information;
@@ -110,6 +113,22 @@ more than one subsection; preserve their order during local edits.
   were added.
 
 ## Status (2026-10-02)
+
+- Strong-induction editorial pass: polished `u6/s2.tex` in `legacy`,
+  retaining the recurrence-first motivation, strong hypothesis and two-base
+  proof. Replaced the unfinished ordinary-induction attempt with an explicit
+  explanation of the missing `P(k-1)` hypothesis; consolidated the repeated
+  example. Completed the algebra explicitly requested in the source and
+  corrected the substitution for `x_(k-1)`, the `k+1` indices, the final
+  exponent, and the claim that both base cases hold. Clarified that the last
+  base index `B` is fixed. Added a proof-idea remark and *In practice*;
+  retained the two unsolved lecture tasks under *Exercises*. No other
+  missing solutions were completed. The strong-induction statement uses a
+  local `nobreak` pair and heading space reservation to stay on one page.
+  Clean rebuild: **26 pages**, **0 errors or LaTeX warnings**, **0 undefined
+  references**, **0 overfull/underfull boxes**, **0 mdframed split infos**.
+  Pages 25--26 were visually checked. New source uncertainty: the chocolate
+  breaking operation, recorded as `TODO(check)` above.
 
 - Done: switched the primary notes to `europe` / A4; repaired empty frame
   fragments and nested frames; rebuilt `note.pdf`; created this handoff and
@@ -130,5 +149,6 @@ more than one subsection; preserve their order during local edits.
 - Conflict resolution: retained the proof idea in `u5/s2.tex`, removed
   committed conflict markers and a stray `end{equation*}`, and kept the
   upstream strong-induction lecture `u6/s2.tex`. Rebuilt the combined notes
-  as 26 pages. The new lecture retains its existing unfinished algebra and
-  examples; completing them is outside this conflict-resolution task.
+  as 26 pages. At that stage the new lecture retained its unfinished algebra
+  and examples; the later strong-induction pass above completes only the
+  explicitly requested algebra.

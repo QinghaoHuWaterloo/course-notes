@@ -36,19 +36,24 @@ Reference output: `1a/econ101/note/` (ECON 101, Chapters 1–3).
 
 ## 3. Preamble
 
-For a new course, copy `1a/econ101/note/note.tex` and change only the
-`\n…` fields (term, year, lecturer, course) and the course-specific operators.
-It provides:
+The current ECON 101 root uses the shared `qhnotes[europe,paper=a4]`
+visual system, not a standalone preamble. For a new course, start from the
+shared template specified in `HANDOFF.md` and choose the course's writing
+profile. For ECON 101's current explanatory adaptation, read its
+`note/handoff.md`; it intentionally overrides the math-first rules below.
 
-- unnumbered environments `defi, eg, ex, law, assumption, principle,
-  notation, remark, warning`;
-- numbered environments `nthm, nprop, ncor, nlemma`, sharing one counter per
-  section;
-- `\term{…}`: italics plus an index entry, for every newly defined term;
-- `significant`: a one-line takeaway after a key result;
-- operators such as `\MB`, `\MC`, `\TC` via `\DeclareMathOperator`.
+The ECON root provides:
 
-New macros go in the preamble, never mid-chapter.
+- shared numbered `definition`, `example` and result environments;
+- unnumbered `remark`, `assumption`, `axiom` and `notation`;
+- `\term{…}` and a printed index;
+- cleveref loaded after hyperref, with explicit label types for definitions
+  and examples to handle the shared theorem counter;
+- existing booktabs and pgfplots support, and economic operators such as
+  `\MB`, `\MC`, `\TC`.
+
+Reuse shared environments rather than defining the old `defi`, `eg`,
+`nthm` aliases. New course-specific operators go in the preamble.
 
 ## 4. Reading the slides cheaply
 
@@ -66,7 +71,7 @@ New macros go in the preamble, never mid-chapter.
   "principles"/"laws" go in `principle`/`law`.
 - **Prove what can be proved.** Turn slide claims into `nprop`/`nthm` with
   short proofs (monotonicity, telescoping sums, first-order conditions,
-  inverse-function rule). Label them and cross-reference with `\ref`.
+  inverse-function rule). Label them and cross-reference with `\cref` (see `STYLE.md`).
 - **Examples use the slide numbers exactly.** Rebuild tables with `booktabs`
   and show one sample calculation per table. Recompute every number. If the
   slide data violates a theorem's hypothesis, weaken the hypothesis or say so.

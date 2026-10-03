@@ -1,0 +1,111 @@
+%!TEX root=../../note.tex
+% Source: newly recorded lecture notes; bisection and peak arguments.
+\subsection{The Bolzano--Weierstrass Theorem}
+Boundedness need not make a sequence converge, but it does guarantee a
+convergent subsequence. We prove this by bisecting intervals, then study
+another route through monotone subsequences.
+
+\subsubsection{A Convergent Subsequence by Bisection}
+\begin{theorem}[Bolzano--Weierstrass Theorem]\label{thm:bolzano-weierstrass}
+    Every bounded sequence of real numbers has a convergent subsequence.
+    \index{Bolzano--Weierstrass theorem}
+    \insymbols{\begin{aligned}
+        &(\exists m>0)(\forall n\in\N)\,[\abs{x_n}\leq m]\\
+        &\quad\Rightarrow (\exists\text{ subsequence }\set{x_{n_k}})
+        (\exists L\in\R)\,\bigl[\lim_{k\to\infty}x_{n_k}=L\bigr].
+    \end{aligned}}
+\end{theorem}
+\begin{idea}
+    Keep a half-interval containing terms at infinitely many indices at
+    each bisection, and select a later term from it. The endpoints converge
+    to the same limit, squeezing the selected subsequence.
+\end{idea}
+\begin{proof}
+    Choose $m>0$ such that $\abs{x_n}\leq m$ for every $n\in\N$.
+    Set $I_1=[-m,m]$ and $n_1=1$.
+
+    \textbf{Step 1: Construct nested intervals and a subsequence.}
+    Suppose $I_k$ is a closed interval containing terms at infinitely many
+    indices, and $x_{n_k}\in I_k$. Bisect $I_k$ into two closed halves.
+    At least one half contains terms at infinitely many indices;
+    otherwise their union would contain terms at only finitely many
+    indices. Choose such a half as $I_{k+1}$, and choose $n_{k+1}>n_k$
+    with $x_{n_{k+1}}\in I_{k+1}$. This is possible because only finitely
+    many indices are at most $n_k$.
+
+    Continuing gives $n_1<n_2<\cdots$ and
+    $I_1\supseteq I_2\supseteq\cdots$. Writing $I_k=[a_k,b_k]$, we have
+    \[
+        a_k\leq x_{n_k}\leq b_k,
+        \qquad b_k-a_k=\frac{2m}{2^{k-1}}.
+    \]
+
+    \textbf{Step 2: Show the endpoints have a common limit.}
+    The left endpoints are increasing and bounded above by $m$;
+    the right endpoints are decreasing and bounded below by $-m$.
+    By \cref{thm:monotone-convergence}, there are $A,B\in\R$ with
+    \[
+        \lim_{k\to\infty}a_k=A,
+        \qquad \lim_{k\to\infty}b_k=B.
+    \]
+    By \cref{ex:geometric-zero} with $b=1/2$ and the limit laws,
+    \[
+        B-A=\lim_{k\to\infty}(b_k-a_k)
+            =\lim_{k\to\infty}\frac{2m}{2^{k-1}}=0.
+    \]
+    Thus $A=B$. Applying \cref{thm:squeeze} to
+    $a_k\leq x_{n_k}\leq b_k$ gives
+    \[
+        \lim_{k\to\infty}x_{n_k}=A.
+    \]
+\end{proof}
+
+\subsubsection{Monotone Subsequences}
+A second approach finds a monotone subsequence first. Boundedness will
+then allow us to apply the monotone convergence theorem.
+
+\begin{theorem}[Monotone Subsequence Theorem]\label{thm:monotone-subsequence}
+    Every sequence of real numbers has a monotone subsequence.
+    \insymbols{(\exists\text{ subsequence }\set{x_{n_k}})\,
+        [\set{x_{n_k}}\text{ is monotone}].}
+\end{theorem}
+For this proof, call an index $m$ a \term{peak} if
+\[
+    (\forall n\geq m)\,[x_m\geq x_n].
+\]
+In words, a peak term is at least as large as every term that follows it.
+
+\begin{idea}
+    Infinitely many peaks give a decreasing subsequence. Beyond the last
+    peak, each term has a strictly larger term later, giving an increasing
+    subsequence.
+\end{idea}
+\begin{proof}
+    \textbf{Case 1: Infinitely many peaks.}
+    List peak indices in increasing order as $m_1<m_2<\cdots$.
+    Since $m_k$ is a peak and $m_{k+1}>m_k$, we have
+    $x_{m_k}\geq x_{m_{k+1}}$. Thus $\set{x_{m_k}}$ is decreasing.
+
+    \textbf{Case 2: Finitely many peaks.}
+    Choose $s_1$ beyond all peak indices; if there are no peaks, take
+    $s_1=1$. Since $s_1$ is not a peak, there is $s_2>s_1$ with
+    $x_{s_2}>x_{s_1}$. The index $s_2$ is also beyond all peaks, so it is
+    not a peak either. Repeating this choice gives
+    \[
+        s_1<s_2<\cdots,
+        \qquad x_{s_1}<x_{s_2}<\cdots.
+    \]
+    Hence $\set{x_{s_k}}$ is increasing. The two cases are exhaustive,
+    so a monotone subsequence always exists.
+\end{proof}
+
+\subsubsection*{In practice}
+\begin{itemize}
+    \item \textbf{Bisection with infinitely many indices.} Keep a closed
+    half-interval containing terms at infinitely many indices, then choose
+    an index larger than the previous one. Shrinking interval lengths and
+    monotone endpoints let the squeeze theorem establish convergence.
+    \item \textbf{Peaks or later larger terms.} Split according to whether
+    there are infinitely many peaks. This constructs a monotone subsequence
+    even when the original sequence is unbounded.
+\end{itemize}

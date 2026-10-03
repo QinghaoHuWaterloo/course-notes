@@ -26,7 +26,7 @@ note.tex        root: \documentclass[11pt, latinmodern]{article},
 chapters/
   c1.tex        \section{Course Information}      -> u1/s1 (logistics)
   c2.tex        \section{The Real Number System}  -> u2/s1 .. u2/s5
-  c3.tex        \section{Sequences and Limits}    -> u3/s1 .. u3/s3
+  c3.tex        \section{Sequences and Limits}    -> u3/s1 .. u3/s4
   u2/s1.tex     Numbers and logic: N/Z/Q, sqrt 2 irrational, quantifiers
                 (the European-notation `notation` box lives here)
   u2/s2.tex     Induction and well-ordering
@@ -38,7 +38,8 @@ chapters/
                 boundedness, divergence to +-infinity, limit laws
   u3/s2.tex     Limits and order, squeeze theorem, monotone convergence,
                 a recursively defined sequence
-  u3/s3.tex     Euler's number via MCT, subsequences
+  u3/s3.tex     Euler's number via MCT, subsequences, tails, geometric limit
+  u3/s4.tex     Bolzano--Weierstrass by bisection; monotone subsequences
 ```
 
 One `uN/sN.tex` = one `\subsection` = the editing unit. The `%!TEX root`
@@ -147,7 +148,22 @@ Build and check: `HANDOFF.md`, "Verification".
 
 ## Status (2026-10-02)
 
-- **Layout cleanup (2026-10-02), current baseline:** retained the existing
+- **New-note整理 (2026-10-02), current baseline:** polished the additions
+  in `u3/s3` and the new `u3/s4` in `mixed`; restored *In practice* and
+  retained the unsolved sine example as a lecture exercise. Added semantic
+  labels, index entries, cross-references, and the `c3` concept-map links.
+  Corrections to the rough notes: BW asserts a convergent **subsequence**
+  and is a theorem, not a definition; bisection keeps **at least** one half
+  with infinitely many term indices; interval length is `2m/2^(k-1)`;
+  peak-case construction includes the possibility of no peaks. In the
+  geometric-limit proof, `x <= b < 1` now explicitly excludes the root 1.
+  Preserved the bisection/endpoints/squeeze and peak proof strategies.
+  Clean rebuild: **41 pages**, **0 overfull or underfull boxes**, **0 LaTeX
+  warnings**, **0 undefined references**, **5 mdframed split infos**
+  (unchanged). New content on pages 39--41 was visually checked; no new
+  `TODO(check)` markers.
+
+- **Layout cleanup (2026-10-02), earlier baseline:** retained the existing
   A4, 11pt, one-sided `europe` rendering. List-first statement boxes now
   start their lists below the heading; the reverse-triangle corollary and
   its proof headings consistently use (i)/(ii). Added titles to the three

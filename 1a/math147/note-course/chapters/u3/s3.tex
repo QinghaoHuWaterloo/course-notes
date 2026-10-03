@@ -134,9 +134,46 @@ which converges to $-1$.
 \mdfsetup{nobreak=false}
 Read contrapositively, \cref{thm:subsequence-limit} is a divergence test: if two subsequences converge to different limits, the sequence diverges. In \cref{ex:alternating-subsequences}, the subsequences tend to $1$ and $-1$, so $\set{(-1)^{n+1}}$ diverges.
 
+\begin{definition}[Tail of a Sequence]\label{def:sequence-tail}
+    Let $\set{x_n}$ be a sequence in $\R$ and let $N\in\N$.
+    The subsequence $\set{x_N,x_{N+1},x_{N+2},\ldots}$ is called a
+    \term{tail} of the sequence.
+\end{definition}
+In words, a tail retains every term from a fixed index onward.
+
+\begin{example}\label{ex:geometric-zero}
+    Prove that $\lim_{n\to\infty}b^n=0$ when $0<b<1$.
+\end{example}
+\begin{idea}
+    Monotone convergence gives a limit. The even-indexed subsequence
+    then forces an equation for that limit.
+\end{idea}
+\begin{proof}
+    Since $0<b<1$, we have $0<b^{n+1}<b^n\leq b$ for every $n\in\N$.
+    Thus $\set{b^n}$ is decreasing and bounded below by $0$.
+    By \cref{thm:monotone-convergence}, it converges; write
+    $\lim_{n\to\infty}b^n=x$.
+
+    By \cref{thm:subsequence-limit}, the even-indexed subsequence also
+    has limit $x$. On the other hand, \cref{thm:limit-laws} gives
+    \[
+        x=\lim_{n\to\infty}b^{2n}
+         =\lim_{n\to\infty}(b^n)^2=x^2.
+    \]
+    Hence $x=0$ or $x=1$. Since $b^n\leq b$ for all $n$,
+    \cref{thm:limits-and-order} gives $x\leq b<1$, excluding $x=1$.
+    Therefore $x=0$.
+\end{proof}
+
 \subsubsection*{In practice}
 \begin{itemize}
     \item \textbf{Expand, then compare.} When the limit laws do not apply, expand the term (here with the binomial theorem) and compare the expansion term by term: with a simpler sum for a bound, and with the next term of the sequence for monotonicity.
     \item \textbf{Bound $\frac1{k!}$ by $\frac1{2^{k-1}}$.} This turns a factorial sum into a geometric sum with an explicit bound.
+    \item \textbf{Identify a limit through a subsequence.} First establish convergence, then use a convenient subsequence and the limit laws to obtain an equation for the limit. Check which solutions satisfy the original bounds.
     \item \textbf{Divergence by subsequences.} To show a sequence diverges, find two subsequences with different limits.
 \end{itemize}
+
+\subsubsection*{Exercises}
+\begin{enumerate}
+    \item (Lecture.) Show that $\set{\sin\paren{\pi n/2}}$ diverges.
+\end{enumerate}

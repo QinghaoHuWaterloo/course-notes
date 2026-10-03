@@ -1,313 +1,241 @@
 %!TEX root = ../note.tex
 % Source: ../chapter1_econ101_fall2026.pdf
-\section{The four core principles of economics}
-An \term{economy} is a system that answers four questions for a group of
-agents facing scarce resources: \emph{what} to produce, \emph{how} to produce
-it, \emph{who} does what, and \emph{who} gets what. (The slides' example is
-the island in Golding's \emph{Lord of the Flies}.) The basic unit of analysis
-is an \emph{individual decision}, and four principles tell us how decisions
-are made:
-\begin{enumerate}
-  \item the cost--benefit principle,
-  \item the opportunity cost principle,
-  \item the marginal principle,
-  \item the interdependence principle.
-\end{enumerate}
+\section{The Four Core Principles of Economics}
+An \term{economy} allocates scarce resources: what to produce, how to
+produce it, who does the work, and who receives the output. The slides use
+the stranded group in \emph{Lord of the Flies} to illustrate these questions.
+Economics begins with individual decisions and studies how they fit together.
+The four principles below provide a way to reason about those decisions.
 
-\subsection{The cost--benefit principle}
-Throughout, an agent chooses from a set $A$ of feasible options.
+\subsection{The Cost--Benefit Principle}
+\begin{definition}[Economic Surplus]\label[definition]{def:surplus}
+The \term{economic surplus} from a decision is its benefit minus its cost,
+measured on a common scale and relative to the same alternative.
+\[
+\text{Economic surplus}=\text{benefit}-\text{cost}.
+\]
+\end{definition}
+The cost--benefit principle says to choose an option over its alternative
+when the benefit is at least the cost. Equality means indifference;
+strictly greater benefit means a strict gain. With several mutually
+exclusive options, a positive surplus is not enough: another option may
+have a larger surplus.
 
-\begin{defi}
-  For an option $a \in A$, let $B(a)$ be its \term{benefit} and $C(a)$ its
-  \term{cost}, both measured in dollars. The \term{economic surplus} of $a$ is
-  \[
-    S(a) = B(a) - C(a).
-  \]
-\end{defi}
+\begin{definition}[Willingness to Pay]\label[definition]{def:wtp}
+\term{Willingness to pay} is the greatest amount a person would pay to
+obtain a benefit, or to avoid a cost. It gives nonmonetary consequences,
+such as time saved, a dollar valuation.
+\end{definition}
+A valuation is not necessarily a payment. An hour saved can be valuable
+even when no money changes hands. The slides also note that benefits can
+go to someone else and outcomes can be uncertain; assigning values in
+those situations requires more care than the simple examples here.
+Costs and benefits are \term{economic incentives} that influence choices.
+The principle is a guide to reasoning, not a claim that people always
+calculate or act this way.
 
-Benefits and costs need not be monetary. They are converted to dollars through
-willingness to pay.
+\begin{example}[Gains from Trade]\label[example]{ex:trade}
+A buyer values a good at $v$, a seller's relevant cost is $c$, and they
+trade at price $p$. Relative to no trade, their surpluses are
+\[
+\text{Buyer's surplus}=v-p,\qquad
+\text{seller's surplus}=p-c.
+\]
+Both weakly gain when $c\leq p\leq v$; both strictly gain when $c<p<v$.
+\end{example}
+Adding the surpluses cancels the payment: total surplus is $v-c$.
+Price determines how the gain is divided between these two parties.
+This explains why an exchange can benefit both, rather than being a
+zero-sum transfer. The comparison assumes no additional transaction
+costs and does not assess effects on third parties.
 
-\begin{defi}
-  The \term{willingness to pay} for a benefit is the largest amount of money
-  $w$ the agent would give up to get it. For a cost, it is the largest $w$ the
-  agent would pay to avoid it.
-\end{defi}
+\subsection{The Opportunity Cost Principle}
+\begin{definition}[Opportunity Cost]\label[definition]{def:opportunity-cost}
+The \term{opportunity cost} of a choice is the value of the next best
+feasible alternative forgone. Its \term{financial cost} is the money paid
+out of pocket; financial cost can miss valuable uses of time or resources.
+\end{definition}
+Resources are \term{scarce}: using time, money or energy one way prevents
+using the same resource another way. Ask ``this option, or what?'' The
+relevant alternative is the next best one, not the sum of every possible
+use of the resource. In accounting for costs, do not count the same forgone
+value twice.
 
-\begin{principle}[Cost--benefit principle]
-  Pursue an option $a$ if and only if $B(a) \geq C(a)$, i.e.\ $S(a) \geq 0$.
-\end{principle}
+For an hour of gaming, the major cost can be the next best use of the hour,
+rather than the hardware or software. An activity with no explicit payment
+can therefore have a substantial opportunity cost.
 
-\begin{remark}
-  Some complications (the slides list them but do not resolve them yet):
-  \begin{itemize}
-    \item not everything is about money, which is why willingness to pay is
-      used as the unit;
-    \item the benefit may go to someone else;
-    \item $B$ and $C$ may be uncertain, in which case they are random variables.
-  \end{itemize}
-  Costs and benefits are the \term{economic incentives} that drive decisions.
-\end{remark}
+\begin{definition}[Sunk Cost]\label[definition]{def:sunk-cost}
+A \term{sunk cost} has already been incurred and cannot be recovered by
+changing the current decision. It does not distinguish the current options.
+\end{definition}
+Ignoring it does not mean the money was unimportant. It means that choosing
+one option rather than another cannot change that cost. Subtracting the
+same amount from every option leaves their ranking unchanged.
 
-\subsubsection*{Gains from trade}
-\begin{nprop}[Voluntary exchange is not zero-sum]\label{prop:trade}
-  A buyer values a good at $v$, a seller can produce it at cost $c$, and they
-  trade at price $p$. Then
-  \[
-    S_{\text{buyer}} = v - p,\qquad S_{\text{seller}} = p - c,\qquad
-    S_{\text{buyer}} + S_{\text{seller}} = v - c .
-  \]
-  Both agree to trade if and only if $c \leq p \leq v$, in which case both
-  surpluses are nonnegative. The total surplus $v - c$ does not depend on $p$.
-  The price only decides how it is split.
-\end{nprop}
-\begin{proof}
-  The buyer accepts iff $v - p \geq 0$ and the seller accepts iff
-  $p - c \geq 0$. Adding the two surpluses cancels $p$.
-\end{proof}
+\begin{example}[Attending a Lecture]\label[example]{ex:tuition}
+The slides allocate \dollar{4{,}500} tuition across five courses, each with
+24 lectures: $4500/(5\cdot24)=\dollar{37.50}$ per lecture.
+\end{example}
+This is an average allocation, not the additional cost of attending.
+Once tuition is nonrefundable, skipping the lecture does not recover
+\dollar{37.50}. Compare the benefit of attending with the next best use
+of those 80 minutes, such as earning wages.
 
-\begin{significant}
-  Voluntary exchange creates surplus $v - c \geq 0$. Nobody loses.
-\end{significant}
+\subsection{The Production Possibilities Frontier}
+A production possibilities frontier shows the trade-offs imposed by
+limited resources. It describes what can be achieved, not which
+combination a person should prefer.
 
-\subsection{The opportunity cost principle}
-\begin{defi}
-  Given a choice $a \in A$, the \term{next best alternative} is the best
-  option in $A \setminus \{a\}$. The \term{opportunity cost} of $a$ is the
-  value of what is given up:
-  \[
-    \OC(a) = \max_{a' \in A \setminus \{a\}} (\text{value of } a').
-  \]
-  The out-of-pocket part of a cost is the \term{financial cost}. The
-  opportunity cost can be much larger.
-\end{defi}
+\begin{definition}[Production Possibilities Frontier]\label[definition]{def:ppf}
+A combination of outputs is \term{feasible} if available resources and
+technology can produce it. It is \term{efficient} if one output cannot
+be increased without reducing another. The \term{production possibilities
+frontier} (PPF) consists of the efficient feasible combinations.
+\end{definition}
+Points inside the frontier leave room to improve an output without
+sacrificing the other. Points outside it cannot be achieved with the
+current resources and technology.
 
-\begin{principle}[Opportunity cost principle]
-  The true cost of something is what you must give up to get it. When deciding
-  on $a$, always ask ``$a$, \emph{or} the next best alternative?''
-\end{principle}
-
-Resources (income, time, energy) are \term{scarce}. That is why every choice
-has an opportunity cost.
-
-\begin{defi}
-  A \term{sunk cost} is a cost that has to be paid whatever option is
-  chosen, i.e.\ a cost $k$ that enters $C(a)$ for every $a \in A$.
-\end{defi}
-
-\begin{nprop}[Ignore sunk costs]\label{prop:sunk}
-  If $C(a) = \tilde C(a) + k$ for all $a \in A$ with $k$ constant, then
-  \[
-    \argmax_{a \in A} \bigl(B(a) - C(a)\bigr) = \argmax_{a \in A} \bigl(B(a) - \tilde C(a)\bigr).
-  \]
-\end{nprop}
-\begin{proof}
-  Subtracting the constant $k$ from every surplus preserves their order.
-\end{proof}
-
-\begin{eg}
-  Tuition is \dollar{4{,}500} per term for 5 courses with 24 lectures each, so
-  one lecture costs $\frac{4500}{5 \cdot 24} = \dollar{37.50}$. You pay this
-  whether you attend or not, so it is sunk and does not affect the decision.
-  The relevant cost of going to lecture is the next best use of those 80
-  minutes, e.g.\ wages from a job.
-\end{eg}
-
-\begin{eg}
-  The biggest cost of an hour of gaming is not the hardware or software. It is
-  the hour, which could have been spent on something else.
-\end{eg}
-
-\begin{ex}
-  Explain each of the following with the opportunity cost principle.
-  \begin{enumerate}
-    \item Many Canadians date as teenagers but few marry as teenagers.
-    \item There are fewer stay-at-home mothers than 60 years ago.
-    \item More Canadians are born in September--October than in February--March.
-    \item Terminally ill patients are more willing to try unproven drugs.
-  \end{enumerate}
-\end{ex}
-\begin{remark}[Sketch]
-  In (ii), higher wages for women raise the opportunity cost of staying at
-  home. In (iv), the patient gives up fewer expected years of life, so the
-  opportunity cost of the risk is lower.
-\end{remark}
-
-\subsubsection*{Production possibilities frontier}
-\begin{defi}
-  Given scarce resources, the \term{feasible set} $F \subseteq \R_{\geq 0}^2$ is
-  the set of output pairs $(x, y)$ that can be produced. A point
-  $(x, y) \in F$ is \term{efficient} if there is no $(x', y') \in F$ with
-  $x' \geq x$, $y' \geq y$ and $(x', y') \neq (x, y)$. The
-  \term{production possibilities frontier} (PPF) is the set of efficient
-  points in $F$.
-\end{defi}
-
-On a PPF $y = f(x)$ with $f$ decreasing, the opportunity cost of one more
-unit of $x$ is the amount of $y$ given up, $-\Delta y / \Delta x$. For a
-differentiable $f$ this is $\abs{f'(x)}$, the absolute value of the slope.
-
-\begin{eg}[Studying]\label{eg:ppf}
-  You have $3$ hours a night for economics ($h_e$) and psychology ($h_p$), so
-  $h_e + h_p \leq 3$. Each hour raises your economics grade by $8$ points and
-  your psychology grade by $4$ points:
-  \[
-    E = 8h_e,\qquad P = 4h_p.
-  \]
-  Substituting $h_e = E/8$ and $h_p = P/4$ gives
-  \[
-    F = \set{(P, E) \in \R_{\geq 0}^2 : \tfrac{E}{8} + \tfrac{P}{4} \leq 3},
-    \qquad \text{PPF: } E = 24 - 2P,\quad 0 \leq P \leq 12.
-  \]
-  The opportunity cost of one psychology point is $2$ economics points. For
-  example, going from $(4, 16)$ to $(8, 8)$ costs $8$ economics points for
-  $4$ psychology points. Points strictly inside $F$, such as $(3, 10)$, are
-  \emph{inefficient}.
-\end{eg}
+\begin{example}[Three Hours of Study]\label[example]{ex:ppf}
+The slides allow three hours per night for economics and psychology.
+Each economics hour adds eight grade points; each psychology hour adds four.
+\begin{center}
+\begin{tabular}{rrrr}
+\toprule
+Economics hours&Psychology hours&Econ improvement&Psych improvement\\
+\midrule
+3&0&24&0\\
+2&1&16&4\\
+1&2&8&8\\
+0&3&0&12\\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{example}
+These are grade improvements, not final grades. With psychology improvement
+$P$ horizontally and economics improvement $E$ vertically, the frontier is
+$E=24-2P$ for $0\leq P\leq12$.
+Moving from $(P,E)=(4,16)$ to $(8,8)$ gains four psychology points and
+loses eight economics points. The opportunity cost of one psychology
+point is therefore two economics points.
 
 \begin{center}
 \begin{tikzpicture}
-  \begin{axis}[width=7cm, height=6cm, xmin=0, xmax=20, ymin=0, ymax=38,
-      xlabel={Psych boost $P$}, ylabel={Econ boost $E$},
-      axis lines=left, xtick={4,8,12,18}, ytick={8,16,24,36}]
-    \addplot[thick, red, domain=0:12] {24 - 2*x};
-    \addplot[thick, blue, dashed, domain=0:18] {36 - 2*x};
-    \addplot[only marks, mark=*] coordinates {(4,16) (8,8)};
-    \addplot[only marks, mark=x, mark size=3pt] coordinates {(3,10)};
-    \node[red] at (axis cs:3.5,4) {old PPF};
-    \node[blue] at (axis cs:14,14) {new PPF};
-  \end{axis}
+\begin{axis}[width=0.75\linewidth,height=6cm,axis lines=left,
+ xmin=0,xmax=20,ymin=0,ymax=38,xlabel={Psychology improvement $P$},
+ ylabel={Economics improvement $E$},xtick={0,4,8,12,18},ytick={0,8,16,24,36}]
+\addplot[thick,domain=0:12] {24-2*x};
+\addplot[thick,dashed,domain=0:18] {36-2*x};
+\addplot[only marks] coordinates {(4,16) (8,8)};
+\node at (axis cs:14,23) {higher productivity};
+\end{axis}
 \end{tikzpicture}
 \end{center}
+The absolute slope measures the trade-off in vertical-axis output per unit
+of horizontal-axis output. Here it is constant because the assumed returns
+to each study hour are constant. A curved PPF can have a changing trade-off.
 
-\begin{nprop}[Features of a PPF]
-  \leavevmode
-  \begin{enumerate}
-    \item Every point on the PPF is efficient: one output can only be raised
-      by lowering the other.
-    \item The absolute value of the slope of the PPF is the opportunity cost
-      of the good on the horizontal axis.
-    \item Higher productivity enlarges $F$ and pushes the PPF outward.
-  \end{enumerate}
-\end{nprop}
+The dashed line reproduces the slides' productivity improvement. Increasing
+both hourly gains by 50\% gives a frontier from $(0,36)$ to $(18,0)$.
+More combinations become feasible, although the opportunity cost remains
+two economics points per psychology point. An outward shift does not
+necessarily mean the trade-off is unchanged; it happens to be unchanged here.
 
-\begin{eg}
-  In Example~\ref{eg:ppf}, suppose productivity rises by $50\%$ in both
-  subjects: $E = 12h_e$ and $P = 6h_p$. The new PPF is $E = 36 - 2P$ for
-  $0 \leq P \leq 18$. The frontier moves out, but the opportunity cost is
-  still $12/6 = 2$.
-\end{eg}
+\subsection{The Marginal Principle}
+Binary choices ask ``which option?'' Quantity choices ask ``how much?''
+The marginal principle breaks the latter into comparisons of adjacent quantities.
 
-\subsection{The marginal principle}
-So far choices were binary. Many choices are about \emph{how much}: choose a
-quantity $q \in \set{0, 1, 2, \ldots}$.
+\begin{definition}[Marginal Benefit and Marginal Cost]\label[definition]{def:marginal}
+The \term{marginal benefit} of an additional unit is the increase in total
+benefit caused by that unit. Its \term{marginal cost} is the increase in
+total cost. For the $k$-th unit,
+\[
+\MB(k)=\TB(k)-\TB(k-1),\qquad
+\MC(k)=\TC(k)-\TC(k-1).
+\]
+\end{definition}
+Buying or producing that unit changes surplus by $\MB(k)-\MC(k)$.
+This is a comparison of \emph{changes}, not average benefit or average cost.
 
-\begin{defi}
-  Let $\TB(q)$ and $\TC(q)$ be the \term{total benefit} and \term{total cost}
-  of quantity $q$. For $q \geq 1$ the \term{marginal benefit} and
-  \term{marginal cost} of the $q$-th unit are
-  \[
-    \MB(q) = \TB(q) - \TB(q-1),\qquad \MC(q) = \TC(q) - \TC(q-1).
-  \]
-  The surplus is $S(q) = \TB(q) - \TC(q)$.
-\end{defi}
+\paragraph{The rational rule.}
+Continue while an additional unit's marginal benefit is at least its
+marginal cost. To make this a reliable stopping rule, marginal net benefit
+must not rise again after becoming negative. A common sufficient condition
+is that $\MB-\MC$ is nonincreasing across the feasible units.
+Then surplus rises with positive increments, stays unchanged with zero
+increments, and falls with negative increments.
 
-\begin{principle}[Marginal principle]
-  Break a decision about quantity into a sequence of marginal decisions:
-  ``should I get one more?'' Answer each one with the cost--benefit
-  principle, i.e.\ compare $\MB(q+1)$ with $\MC(q+1)$.
-\end{principle}
+An equality $\MB=\MC$ means the additional unit gives no extra surplus;
+including or excluding it can both be optimal. In a discrete problem,
+the sign may jump from positive to negative without ever reaching equality.
+The slides' ``continue until they are equal'' is therefore best understood
+as this marginal comparison, rather than a requirement to find exact equality.
 
-\begin{nlemma}\label{lem:telescope}
-  For all $q \geq 0$,
-  \[
-    S(q) = S(0) + \sum_{k=1}^{q} \bigl(\MB(k) - \MC(k)\bigr).
-  \]
-\end{nlemma}
-\begin{proof}
-  The sum telescopes:
-  $\sum_{k=1}^q \MB(k) = \TB(q) - \TB(0)$, and similarly for $\MC$.
-\end{proof}
+\begin{example}[Nerida's Restaurant]\label[example]{ex:restaurant}
+The slides list worker counts from two to seven. A meal sells for
+\dollar{25}, food costs \dollar{10} per meal, each worker costs
+\dollar{300}, rent costs \dollar{500}, and Nerida's time is valued at
+\dollar{1{,}000}, all for the same operating period.
+\end{example}
+For $M$ meals and $q$ workers, total benefit is $25M$ and total cost is
+$10M+300q+1500$. The resulting slide table is:
+\begin{center}\small
+\begin{tabular}{rrrrrrr}
+\toprule
+Workers&Meals&$\TB$&$\MB$&$\TC$&$\MC$&Surplus\\
+\midrule
+2&160&4000&---&3700&---&300\\
+3&210&5250&1250&4500&800&750\\
+4&250&6250&1000&5200&700&1050\\
+5&280&7000&750&5800&600&1200\\
+6&300&7500&500&6300&500&1200\\
+7&310&7750&250&6700&400&1050\\
+\bottomrule
+\end{tabular}
+\end{center}
+The fourth worker adds $250-210=40$ meals: marginal benefit is
+$25\cdot40=1000$, while marginal cost is $300+10\cdot40=700$.
+The corresponding marginal surplus is \dollar{300}.
 
-\begin{nthm}[Rational rule]\label{thm:rational}
-  Suppose $\MB - \MC$ is nonincreasing (this holds, for instance, if $\MB$
-  is nonincreasing and $\MC$ is nondecreasing). Then
-  \[
-    q^* = \max\set{q \geq 0 : q = 0 \text{ or } \MB(q) \geq \MC(q)}
-  \]
-  maximises $S$. In words: \emph{keep going as long as the marginal benefit
-  is at least the marginal cost.}
-\end{nthm}
-\begin{proof}
-  Write $d(k) = \MB(k) - \MC(k)$, which is nonincreasing. By the choice of
-  $q^*$ and monotonicity, $d(k) \geq 0$ for $k \leq q^*$ and $d(k) < 0$ for
-  $k > q^*$. By Lemma~\ref{lem:telescope}, if $q < q^*$ then
-  $S(q^*) - S(q) = \sum_{k=q+1}^{q^*} d(k) \geq 0$, and if $q > q^*$ then
-  $S(q) - S(q^*) = \sum_{k=q^*+1}^{q} d(k) < 0$.
-\end{proof}
+Both $\MB$ and $\MC$ decrease in this example. The marginal surpluses
+are \dollar{450}, \dollar{300}, \dollar{150}, zero, and \dollar{-150}. Five and six workers both maximise surplus
+at \dollar{1{,}200}; the sixth adds exactly zero. The comparison is limited
+to the listed staffing choices, since the slides supply no other output data.
+Rent and the value of Nerida's time cancel between these choices because
+they are the same in each. This alone does not make them sunk in a separate
+decision about opening or closing the restaurant.
 
-\begin{remark}
-  If $q$ can vary continuously and $\TB$, $\TC$ are differentiable, then
-  $\MB = \TB'$ and $\MC = \TC'$. An interior optimum satisfies the
-  first-order condition $S'(q^*) = 0$, i.e.
-  \[
-    \MB(q^*) = \MC(q^*).
-  \]
-  It is a maximum when $S'' = \MB' - \MC' \leq 0$. This is the
-  ``marginal benefit equals marginal cost'' form of the rule.
-\end{remark}
+\subsection{The Interdependence Principle}
+Your best choice depends on its setting. The slides distinguish four
+sources of interdependence:
+\begin{enumerate}
+\item \textbf{Your other choices.} Income, time, energy and attention are
+shared. Choosing economics study hours leaves fewer psychology study hours.
+\item \textbf{Other people's choices.} People, firms and governments compete
+for scarce resources, affecting the opportunities available to one another.
+\item \textbf{Other markets.} Conditions in labour, housing and credit markets
+can affect choices elsewhere.
+\item \textbf{Time.} Past choices and expectations of future opportunities
+influence current choices.
+\end{enumerate}
+The next chapters first hold these other conditions fixed to study a
+response to price, then consider what happens when those conditions change.
 
-\begin{eg}[Nerida's restaurant]
-  Each meal sells for \dollar{25}. Total cost is \dollar{10} per meal in food,
-  \dollar{300} per waiter, \dollar{500} rent, and \dollar{1{,}000} for
-  Nerida's own time. How many waiters should she hire?
-  \begin{center}
-    \begin{tabular}{ccccccc}
-      \toprule
-      Workers & Meals & $\TB$ & $\MB$ & $\TC$ & $\MC$ & $S$ \\
-      \midrule
-      2 & 160 & 4000 & ---  & 3700 & --- & 300 \\
-      3 & 210 & 5250 & 1250 & 4500 & 800 & 750 \\
-      4 & 250 & 6250 & 1000 & 5200 & 700 & 1050 \\
-      5 & 280 & 7000 & 750  & 5800 & 600 & 1200 \\
-      6 & 300 & 7500 & 500  & 6300 & 500 & \textbf{1200} \\
-      7 & 310 & 7750 & 250  & 6700 & 400 & 1050 \\
-      \bottomrule
-    \end{tabular}
-  \end{center}
-  For example, the 4th worker adds $40$ meals, so
-  $\MB(4) = 25 \cdot 40 = 1000$ and $\MC(4) = 300 + 10 \cdot 40 = 700$.
-  Here both $\MB$ and $\MC$ fall, but $\MB - \MC = 450, 300, 150, 0, -150$
-  is still decreasing, so Theorem~\ref{thm:rational} applies. The
-  rule stops at $q^* = 6$, where $\MB = \MC = 500$, and the maximum surplus is
-  \dollar{1{,}200}. (The 6th worker adds exactly zero surplus, so $q = 5$ is
-  also optimal.)
-\end{eg}
-
-\begin{remark}
-  Rent and Nerida's time are the same for every $q$. They are sunk with
-  respect to this decision and never appear in $\MC$
-  (Proposition~\ref{prop:sunk}).
-\end{remark}
-
-\subsection{The interdependence principle}
-\begin{principle}[Interdependence principle]
-  Your best choice in one situation depends on:
-  \begin{enumerate}
-    \item \emph{your other choices}: resources (income, time, attention,
-      wealth) are shared across all your decisions;
-    \item \emph{other people's choices}: scarcity creates competition between
-      agents (people, businesses, governments);
-    \item \emph{other markets}: e.g.\ labour, housing and credit markets affect
-      one another;
-    \item \emph{time}: today's choice depends on past choices and expected
-      future ones.
-  \end{enumerate}
-\end{principle}
-
-\begin{remark}
-  Mathematically, (i) says you solve one problem subject to a joint budget
-  constraint (as in the PPF), not several problems separately. Points (ii) and
-  (iii) say that the parameters of your problem, such as prices, are
-  determined by the choices of everyone else.
-\end{remark}
+\subsubsection*{In practice}
+\begin{itemize}
+\item \textbf{Identify the alternative.} Compare costs and benefits on the
+same basis; count each forgone value once and exclude unrecoverable past costs.
+\item \textbf{Compare increments.} Subtract adjacent totals, then compare
+marginal benefit with marginal cost. Check that stopping does not miss later gains.
+\item \textbf{Read a PPF.} Check feasibility and efficiency, then calculate
+what must be sacrificed for the desired improvement.
+\end{itemize}
+\subsubsection*{Exercises}
+\begin{enumerate}
+\item (Slides.) Discuss opportunity-cost explanations for teenagers dating
+but rarely marrying; fewer stay-at-home mothers than 60 years ago;
+more Canadian births in September--October than February--March;
+and terminally ill patients trying unproven drugs. These are proposed
+applications, not facts established by the opportunity-cost principle alone.
+\end{enumerate}

@@ -1,265 +1,285 @@
 %!TEX root = ../note.tex
 % Source: ../chapter3_econ101_fall2026.pdf
-\section{Supply and producer choice}
-This chapter mirrors Chapter 2 with sellers in place of buyers.
+\section{Supply and Producer Choice}
+Supply describes sellers' quantity decisions at different prices.
+The marginal principle still applies, but the additional benefit is now
+revenue from selling, while the additional cost comes from production.
 
-\subsection{Individual supply}
-\begin{defi}
-  The \term{individual supply curve} of a seller $j$ is the function
-  $p \mapsto q_j^S(p)$ giving the quantity supplied at each price $p$,
-  ceteris paribus.
-\end{defi}
+\subsection{Individual Supply}
+\begin{definition}[Individual Supply Curve]\label[definition]{def:individual-supply}
+An \term{individual supply curve} shows the quantity a seller is willing
+and able to sell at each price, holding other conditions fixed. Quantity
+is measured over a specified period; price is on the vertical axis.
+\end{definition}
 
-\begin{eg}[Shell]\label{eg:shell}
-  Shell's supply of gas (millions of litres per day):
-  \[
-    q^S_{\text{Shell}}(p) =
-    \begin{cases}
-      0 & p < 1.60,\\
-      8 + 5(p - 1.60) & 1.60 \leq p \leq 2.40,
-    \end{cases}
-  \]
-  so $q^S(1.60) = 8$, $q^S(1.80) = 9$, $q^S(2.00) = 10$, $q^S(2.20) = 11$ and
-  $q^S(2.40) = 12$. Below \dollar{1.60} Shell stops supplying gas.
-\end{eg}
-
-\begin{law}[Law of supply]
-  Quantity supplied rises when the price rises, and vice versa:
-  \[
-    p_1 < p_2 \implies q^S(p_1) \leq q^S(p_2).
-  \]
-  That is, supply curves are \emph{upward sloping}.
-\end{law}
-
-\subsection{Perfect competition}
-\begin{defi}
-  A market is \term{perfectly competitive} if
-  \begin{enumerate}
-    \item there are many buyers and sellers, each small relative to the
-      market, and no barriers to entry or exit;
-    \item all firms sell an identical product;
-    \item there is perfect information;
-    \item mobility costs are zero: buyers can switch sellers for free.
-  \end{enumerate}
-  An agent is a \term{price taker} if it treats the market price $p$ as
-  given, as opposed to a \emph{price maker}.
-\end{defi}
-
-\begin{nprop}
-  In a perfectly competitive market every firm sells at the market price $p$.
-\end{nprop}
-\begin{proof}[Argument]
-  If a firm charges $p' > p$, then by (ii)--(iv) every buyer switches to a
-  rival at no cost, so it sells nothing. Suppose instead that selling at some
-  $p' < p$ were profitable. With perfect information and free entry, a
-  competitor would already have taken that opportunity, so this cannot hold in
-  a situation where nobody wants to change what they do. Hence $p$ is
-  exogenous to each firm.
-\end{proof}
-
-\begin{remark}
-  Perfectly competitive markets are rare in reality. The assumption is a
-  simplification that makes the analysis tractable.
-\end{remark}
-
-\subsection{The rational rule for sellers}
-\begin{defi}
-  A firm's total cost splits as
-  \[
-    \TC(q) = \FC + \VC(q),
-  \]
-  where the \term{fixed cost} $\FC$ does not depend on output (e.g.\
-  capital) and the \term{variable cost} $\VC(q)$ does (e.g.\ labour). The
-  \term{marginal cost} is $\MC(q) = \TC(q) - \TC(q-1)$, or $\TC'(q)$ in the
-  continuous case.
-\end{defi}
-
-\begin{nprop}
-  $\MC(q) = \VC(q) - \VC(q-1)$. In particular, fixed costs do not affect the
-  choice of quantity.
-\end{nprop}
-\begin{proof}
-  $\FC$ cancels in the difference. This is Proposition~\ref{prop:sunk} again.
-\end{proof}
-
-For a price taker, the marginal benefit of selling one more unit is the price
-$p$.
-
-\begin{nthm}[Rational rule for sellers]\label{thm:seller}
-  If $\MC$ is nondecreasing, the profit-maximising quantity at price $p$ is
-  \[
-    q^S(p) = \max\set{q \geq 0 : q = 0 \text{ or } \MC(q) \leq p}.
-  \]
-  At an interior optimum, $\text{price} = \text{marginal cost}$. So:
-  \emph{sell one more unit if $p \geq \MC$.}
-\end{nthm}
-\begin{proof}
-  Apply Theorem~\ref{thm:rational} with $\MB(q) = p$ constant.
-\end{proof}
-
-\begin{ncor}
-  Increasing marginal cost implies the law of supply, and the supply curve
-  \emph{is} the marginal cost curve.
-\end{ncor}
-\begin{proof}
-  If $p_1 < p_2$ then $\set{q : \MC(q) \leq p_1} \subseteq \set{q : \MC(q)
-  \leq p_2}$.
-\end{proof}
-
-\begin{remark}
-  The law of supply comes from two sources: \emph{diminishing marginal
-  product} (below) and \emph{rising input costs}.
-\end{remark}
-
-\subsection{Diminishing marginal product}
-\begin{defi}
-  A \term{production function} $Y = F(L, K)$ gives output from labour $L$
-  (variable input) and capital $K$ (fixed input). The \term{marginal
-  product of labour} is $\MP_L = \partial F / \partial L$, or
-  $F(L, K) - F(L-1, K)$ in discrete terms. There is \term{diminishing
-  marginal product} if $\MP_L$ decreases in $L$ for fixed $K$.
-\end{defi}
-
-\begin{nthm}[Diminishing marginal product $\Rightarrow$ rising marginal cost]
-  \label{thm:mpmc}
-  Let the wage be $w$ and $K$ fixed, and let $F(\cdot, K)$ be smooth and
-  strictly increasing, with inverse $L(Y)$ (the labour needed to make $Y$).
-  Then
-  \[
-    \MC(Y) = \frac{w}{\MP_L\bigl(L(Y)\bigr)}.
-  \]
-  Hence if $\MP_L$ is decreasing, $\MC$ is increasing.
-\end{nthm}
-\begin{proof}
-  $\TC(Y) = wL(Y) + \FC$, so by the inverse function rule
-  $\MC(Y) = wL'(Y) = w / F_L(L(Y), K)$. When $Y$ increases, $L(Y)$ increases,
-  so $\MP_L$ falls and $\MC$ rises.
-\end{proof}
-
-\begin{significant}
-  Each extra unit of output needs more and more labour, so each unit costs
-  more than the last.
-\end{significant}
-
-\begin{eg}
-  Take $Y = \sqrt{LK}$ with $K = 4$, so $Y = 2\sqrt{L}$ and
-  $\MP_L = \frac12\sqrt{K/L} = 1/\sqrt{L}$, which is decreasing. In discrete
-  terms:
-  \begin{center}
-    \begin{tabular}{cccccccc}
-      \toprule
-      $L$ & 0 & 1 & 2 & 3 & 4 & 5 & 6 \\
-      $Y$ & 0 & 2 & 2.83 & 3.46 & 4.00 & 4.47 & 4.90 \\
-      $\MP_L$ & --- & 2 & 0.83 & 0.64 & 0.54 & 0.47 & 0.43 \\
-      \bottomrule
-    \end{tabular}
-  \end{center}
-  Invert: $L = Y^2 / K = Y^2/4$. With $w = \dollar{15}$,
-  $\TC(Y) = 15 \cdot Y^2/4 = 3.75\,Y^2$ (ignoring the fixed cost of capital),
-  so
-  \[
-    \MC(Y) = \TC(Y) - \TC(Y-1) = 3.75\,(2Y - 1).
-  \]
-  \begin{center}
-    \begin{tabular}{cccccccc}
-      \toprule
-      $Y$ & 0 & 1 & 2 & 3 & 4 & 5 & 6 \\
-      $L$ & 0 & 0.25 & 1 & 2.25 & 4 & 6.25 & 9 \\
-      $\TC$ & 0 & 3.75 & 15 & 33.75 & 60 & 93.75 & 135 \\
-      $\MC$ & --- & 3.75 & 11.25 & 18.75 & 26.25 & 33.75 & 41.25 \\
-      \bottomrule
-    \end{tabular}
-  \end{center}
-  In the continuous version, $\MC(Y) = \TC'(Y) = 7.5\,Y$, which matches
-  Theorem~\ref{thm:mpmc}: $w / \MP_L(L(Y)) = 15\sqrt{Y^2/4} = 7.5\,Y$. Setting
-  $p = \MC$ gives the supply curve $q^S(p) = p / 7.5$, which is upward
-  sloping.
-\end{eg}
-\begin{remark}
-  The table's $L$ column assumes labour can be hired in fractions. $\MP_L$
-  and $\MC$ move in opposite directions, as Theorem~\ref{thm:mpmc} predicts.
-\end{remark}
-
-\subsection{Market supply}
-\begin{defi}
-  The \term{market supply curve} is the horizontal sum
-  $Q^S(p) = \sum_{j=1}^{M} q_j^S(p)$ over the $M$ sellers. If the sellers
-  are identical, $Q^S(p) = M\,q^S(p)$.
-\end{defi}
-
-\begin{eg}
-  With $M = 10$ identical firms:
-  \begin{center}
-    \begin{tabular}{cccccc}
-      \toprule
-      $p$ & 1.60 & 1.80 & 2.00 & 2.20 & 2.40 \\
-      $q^S(p)$ & 6 & 8 & 10 & 12 & 14 \\
-      $Q^S(p) = 10\,q^S(p)$ & 60 & 80 & 100 & 120 & 140 \\
-      \bottomrule
-    \end{tabular}
-  \end{center}
-  (millions of litres per day).
-\end{eg}
-
-A higher price raises market quantity supplied in two ways: existing firms
-expand output, and new firms enter.
-
-\subsection{Movements along versus shifts of supply}
-As with demand, write
-\[
-  Q^S = Q^S(p;\ w,\ A,\ p_{\text{rel}},\ e,\ M),
-\]
-where $w$ is input prices, $A$ productivity, $p_{\text{rel}}$ prices of
-related outputs, $e$ expectations and $M$ the number of sellers. A change in
-$p$ is a \term{movement along the supply curve} and changes the
-\term{quantity supplied}. A change in any other argument is a \term{shift
-of the supply curve}. An increase in supply is a shift to the right.
-
-\subsubsection*{The five supply shifters}
-\begin{enumerate}
-  \item \emph{Input prices.} Higher input prices raise $\MC$ at every $q$, so
-    supply shifts left.
-  \item \emph{Productivity and technology.} Producing more with the same
-    inputs (new machinery, better management or processes, learning by doing)
-    lowers $\MC$, so supply shifts right.
-  \item \emph{Prices of related outputs.}
-    \begin{defi}
-      Good $y$ is a \term{substitute-in-production} for $x$ if it is made
-      with the same inputs, and a \term{complement-in-production} if it is
-      made together with $x$. Then
-      \[
-        \frac{\partial Q^S_x}{\partial p_y} < 0 \text{ for substitutes},\qquad
-        \frac{\partial Q^S_x}{\partial p_y} > 0 \text{ for complements}.
-      \]
-    \end{defi}
-  \item \emph{Expectations.} If firms expect the price to rise, they store
-    output rather than sell it now, so supply today shifts left. This matters
-    more for non-perishable goods (gasoline) than perishable ones (fresh
-    fish).
-  \item \emph{Type and number of sellers.} Changing $M$ shifts the market
-    curve but no individual curve. For example, a Competition Bureau ruling on
-    a merger changes $M$.
-\end{enumerate}
-
-\begin{eg}
-  Crude oil is an input to gasoline. If its price rises, $\MC$ rises at every
-  output level, so the market supply of gasoline shifts \emph{left}: at every
-  price, less is supplied. On the slides, supply at \dollar{2.00} falls from
-  $100$ to $60$ million litres.
-\end{eg}
-
-\subsection*{Summary: buyers versus sellers}
+\begin{example}[Shell's Gasoline Supply]\label[example]{ex:shell}
+The first supply graph in the slides gives:
 \begin{center}
-  \begin{tabular}{lll}
-    \toprule
-    & Buyer & Seller \\
-    \midrule
-    Marginal benefit & $\MB(q)$ & $p$ \\
-    Marginal cost & $p$ & $\MC(q)$ \\
-    Rational rule & $p = \MB$ & $p = \MC$ \\
-    Law & demand slopes down & supply slopes up \\
-    Reason & diminishing $\MB$ & diminishing $\MP_L$, rising input costs \\
-    Market curve & $\sum_i q_i^D$ & $\sum_j q_j^S$ \\
-    \bottomrule
-  \end{tabular}
+\begin{tabular}{rrrrrr}
+\toprule
+Price (\$/litre)&1.60&1.80&2.00&2.20&2.40\\
+Quantity (millions of litres/day)&8&9&10&11&12\\
+\bottomrule
+\end{tabular}
 \end{center}
+Below \dollar{1.60}, the slides state that Shell supplies zero.
+\end{example}
+These data describe the example, but do not explain its jump from zero to
+eight million litres. They also do not establish quantities above
+\dollar{2.40}.
+
+\paragraph{The law of supply.}
+With other conditions fixed, a higher price weakly increases quantity
+supplied and a lower price weakly decreases it. ``Upward sloping'' allows
+unchanged quantities over some price ranges.
+
+\subsection{Perfect Competition and Price Taking}
+\begin{definition}[Perfect Competition]\label[definition]{def:competition}
+The slide model of \term{perfect competition} assumes:
+\leavevmode
+\begin{enumerate}
+\item many buyers and sellers, each small relative to the market, with no
+barriers to entry or exit;
+\item an identical product across firms;
+\item perfect information;
+\item zero costs for buyers to switch sellers.
+\end{enumerate}
+A \term{price taker} treats the market price as given when choosing output.
+\end{definition}
+With identical products and costless switching, charging more than other
+sellers loses buyers. A firm that can sell its chosen output at the going
+price has no reason to charge less for that output. The slides also appeal
+to free entry and competition to explain why profitable undercutting
+opportunities would not persist.
+
+We use price taking as the model's assumption, rather than treating this
+informal argument as a complete proof about every market. Perfectly
+competitive markets are uncommon in practice; the simplification lets us
+study output choice without also modelling a firm's influence on price.
+
+\subsection{The Rational Rule for Sellers}
+For a price taker, the marginal benefit of selling one more unit is the
+market price. Compare it with the additional cost of producing that unit.
+
+\begin{definition}[Fixed and Variable Costs]\label[definition]{def:fixed-variable}
+A \term{fixed cost} does not vary with the output level under consideration;
+a \term{variable cost} does. Total cost can be written as
+\[
+\TC(q)=F+\VC(q),
+\]
+where $F$ is fixed cost and $\VC(q)$ is variable cost.
+\end{definition}
+When the same $F$ is incurred at both quantities, it cancels in their
+comparison. Thus the marginal cost of the $k$-th unit is
+\[
+\MC(k)=\VC(k)-\VC(k-1).
+\]
+The relevant cost includes opportunity costs, not only explicit payments.
+\term{Profit}, measured as revenue minus these economic costs, is the
+producer's economic surplus.
+
+\paragraph{The seller's rule.}
+Sell another unit when its price is at least its marginal cost. If marginal
+cost is nondecreasing, units cease to be worthwhile once their marginal
+cost exceeds price; later units will not reverse that comparison.
+This explains the law of supply in this model: raising price makes more
+units worthwhile, while lowering it makes fewer worthwhile.
+
+For discrete units, the last produced unit can have marginal cost below
+price while the next has marginal cost above it. A unit with marginal
+cost equal to price adds zero profit. The slide's equality rule describes
+a smooth interior choice, rather than an equality every discrete answer
+must satisfy.
+
+\begin{remark}[Fixed Does Not Mean Sunk]
+Fixed and variable describe dependence on output. Sunk and avoidable
+describe whether a decision can change the payment. A fee paid only if the firm
+operates can affect whether it should produce at all, even if it does not
+vary with positive output. First find the best output if operating, then
+compare its profit with not operating. Ignore a fixed payment only when
+it is common to the options actually being compared.
+\end{remark}
+
+\subsection{Diminishing Marginal Product}
+\begin{definition}[Marginal Product]\label[definition]{def:marginal-product}
+A \term{production function} relates inputs to output. The \term{marginal
+product} of labour is the additional output from an additional unit of
+labour, with other inputs fixed. \term{Diminishing marginal product} means
+successive extra units of labour add smaller amounts of output.
+\end{definition}
+For example, adding workers while keeping kitchen equipment fixed can
+make each additional worker less productive. Total output may still rise;
+it is the increment that shrinks.
+
+If each extra worker costs the same wage but adds less output, the labour
+cost per additional output unit rises. The slides identify this as one
+reason marginal cost tends to increase. Rising input prices provide another
+reason. The argument keeps other conditions fixed; diminishing labour
+product by itself need not describe a firm's costs if it can change all
+inputs or improve technology.
+
+\Needspace{9\baselineskip}
+\subsection{The Production Example}
+\begin{example}[Labour with Fixed Capital]\label[example]{ex:production}
+The slides use $Y=\sqrt{LK}$, where $L$ is labour, $K$ is capital and $Y$
+is output. With capital fixed at $K=4$, this becomes $Y=2\sqrt L$.
+\begin{center}\small
+\begin{tabular}{rrrrrrrr}
+\toprule
+Labour $L$&0&1&2&3&4&5&6\\
+Output $Y$&0&2&2.83&3.46&4.00&4.47&4.90\\
+Marginal product&---&2&0.83&0.64&0.54&0.47&0.43\\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{example}
+The third labour unit adds $2\sqrt3-2\sqrt2\approx0.64$ output units.
+Subtracting rounded entries gives $3.46-2.83=0.63$, which differs because
+of rounding. Calculate the change from exact values before rounding.
+The table shows total output increasing while each additional labour unit
+adds less.
+
+To calculate the cost of a specified output, solve the same relation
+for labour: $L=Y^2/4$. At a wage of \dollar{15} per labour unit,
+the labour cost is $15L=3.75Y^2$. The slides' second table is:
+\begin{center}\small
+\begin{tabular}{rrrrrrrr}
+\toprule
+Output $Y$&0&1&2&3&4&5&6\\
+Labour $L$&0&0.25&1&2.25&4&6.25&9\\
+Cost (\$)&0&3.75&15&33.75&60&93.75&135\\
+Marginal cost (\$)&---&3.75&11.25&18.75&26.25&33.75&41.25\\
+\bottomrule
+\end{tabular}
+\end{center}
+Capital remains 4, and its cost is omitted from this table. Adding a
+common fixed capital cost would raise the cost totals but leave the
+marginal-cost row unchanged.
+
+The third output unit requires $2.25-1=1.25$ more labour units, costing
+$15\cdot1.25=\dollar{18.75}$. It costs more than the second output unit,
+which needs only $1-0.25=0.75$ more labour units and costs \dollar{11.25}.
+This is the link between diminishing marginal product and rising marginal cost.
+
+The two tables change different quantities: the first adds one labour
+unit at a time, while the second adds one output unit at a time and permits
+fractional labour. Their marginal rows therefore measure different things.
+For a seller at price \dollar{15} per output unit, the second unit is
+worth producing because its marginal cost is \dollar{11.25}; the third
+is not because it costs \dollar{18.75}. Within this table, two units
+maximise profit even though no marginal cost equals price.
+
+\subsection{Market Supply}
+\begin{definition}[Market Supply]\label[definition]{def:market-supply}
+\term{Market supply} adds all sellers' quantities at the same price.
+For $M$ sellers, $Q^S(p)=\sum_{j=1}^M q_j^S(p)$. For identical sellers,
+$Q^S(p)=Mq^S(p)$.
+\end{definition}
+This is a horizontal sum. If each seller supplies weakly more at a higher
+price, so does the sum. A higher price can also make previously inactive
+potential sellers supply a positive quantity.
+
+\begin{example}[Ten Identical Sellers]\label[example]{ex:market-supply}
+The aggregation slide gives:
+\begin{center}
+\begin{tabular}{rrrrrr}
+\toprule
+Price (\$/litre)&1.60&1.80&2.00&2.20&2.40\\
+Individual quantity&6&8&10&12&14\\
+Market quantity&60&80&100&120&140\\
+\bottomrule
+\end{tabular}
+\end{center}
+Quantities are millions of litres per day. For example, at \dollar{2.20},
+market quantity is $10\cdot12=120$ million litres.
+\end{example}
+This slide uses different individual quantities from Shell's first graph
+in \cref{ex:shell}. Treat it as a separate numerical illustration.
+
+\subsection{Movements Along Versus Shifts of Supply}
+\begin{definition}[Movement and Shift]\label[definition]{def:supply-shift}
+Changing a good's own price with other conditions fixed gives a
+\term{movement along the supply curve}, changing \term{quantity supplied}.
+Changing another relevant condition can \term{shift the supply curve},
+changing \term{supply}: a different quantity is supplied at the same price.
+An increase in supply shifts right; a decrease shifts left.
+\end{definition}
+On the original market curve, raising gasoline price from \dollar{1.80}
+to \dollar{2.20} raises quantity from 80 to 120 million litres per day.
+In the crude-oil example, gasoline price stays at \dollar{2.00}, but a
+higher input cost lowers supply from 100 to 60 million litres per day.
+The first is a movement; the second is a left shift.
+
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[width=0.7\linewidth,height=5.5cm,axis lines=left,
+ xmin=30,xmax=160,ymin=1.5,ymax=2.5,
+ xlabel={Quantity (millions of litres/day)},ylabel={Price (\$/litre)},
+ xtick={60,80,100,120,140}]
+\addplot[thick] coordinates {(60,1.6) (80,1.8) (100,2) (120,2.2) (140,2.4)};
+\addplot[thick,dashed] coordinates {(40,1.8) (60,2) (80,2.2) (100,2.4)};
+\addplot[only marks] coordinates {(60,2) (100,2)};
+\addplot[dotted] coordinates {(30,2) (100,2)};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+The dashed curve illustrates the slide's decrease in supply. The essential
+comparison is at the fixed gasoline price of \dollar{2.00}.
+
+\subsection{The Five Supply Shifters}
+\begin{enumerate}
+\item \textbf{Input prices.} Higher input prices raise marginal cost and
+reduce the units worth supplying at a given output price. Crude oil is an
+input to gasoline, so its price rise shifts gasoline supply left.
+\item \textbf{Productivity and technology.} Improvements that lower the cost
+of additional output shift supply right. Examples include new equipment,
+better management or production methods, and learning by doing.
+\item \textbf{Prices of related outputs.} \term{Substitutes in production}
+are alternative outputs made with the same inputs; a higher price for one
+encourages reallocating inputs to it, reducing supply of the other.
+\term{Complements in production} are produced together; a higher price
+for one can encourage joint production and increase supply of the other.
+These are production relationships, distinct from consumer substitutes
+and complements.
+\item \textbf{Expectations.} If output can be stored, an expected future
+price increase can encourage withholding it today. This is more relevant
+for nonperishable gasoline than fresh fish; storage costs also matter.
+\item \textbf{Type and number of sellers.} Adding sellers increases the
+market sum, holding existing individual curves fixed. A merger or
+Competition Bureau ruling can change the seller population and other
+market conditions, potentially affecting supply.
+\end{enumerate}
+The distinction between movement and shift depends on which price changes.
+Gasoline's own price is on its supply graph; the price of crude oil is a
+condition behind that graph.
+
+\subsection{Buyers and Sellers Compared}
+Both use the marginal principle. Buyers compare the value of another unit
+with its price; sellers compare its price with its additional production cost.
+\begin{center}\small
+\begin{tabular}{lll}
+\toprule
+&Buyer&Price-taking seller\\
+\midrule
+Marginal benefit&Value of extra unit&Price received\\
+Marginal cost&Price paid&Cost of extra production\\
+Take another unit if&$\MB\geq p$&$p\geq\MC$\\
+Usual quantity response&Falls as price rises&Rises as price rises\\
+Underlying explanation&Diminishing marginal benefit&Rising marginal cost\\
+Market curve&Sum of buyers' quantities&Sum of sellers' quantities\\
+\bottomrule
+\end{tabular}
+\end{center}
+These marginal stopping rules rely on the stated pattern of benefits or
+costs. The equality formulations are useful for smooth interior choices,
+but should not replace the comparisons in the slides' discrete tables.
+
+\subsubsection*{In practice}
+\begin{itemize}
+\item \textbf{Specify the decision.} Choosing output with costs already
+committed differs from deciding whether to operate. Cancel only common costs.
+\item \textbf{Keep the increment straight.} An extra worker and an extra
+unit of output are different changes; identify which the table measures.
+\item \textbf{Identify the price.} Own-price changes give movements along
+a curve; input prices and other conditions can shift it.
+\end{itemize}

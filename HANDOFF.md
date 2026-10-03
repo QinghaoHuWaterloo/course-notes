@@ -56,7 +56,7 @@ note chapter.
 | MATH 147 | `1a/math147/note-course/note.tex` | **`mixed`** | Read `note-course/handoff.md` first. A4, 11pt, one-sided, Latin Modern, `color`; local `idea` / `scratch` environments and `\insymbols` macro. |
 | CS 135 | `1a/cs135/note.tex` | — | Discontinued. Touch only if explicitly asked. |
 | ENGL 119 | `1a/ENGL119/` | `writing` | Syllabus only so far. |
-| ECON 101 | `1a/econ101/note/note.tex` | slides → math (`SLIDES-TO-NOTES.md`) | article, a4, one `chapters/cN.tex` per slide deck; reference preamble for new slide-based courses. |
+| ECON 101 | `1a/econ101/note/note.tex` | `computation` (explanatory adaptation) | `europe`, A4, 11pt Latin Modern; one `chapters/cN.tex` per PDF. See `1a/econ101/note/handoff.md`; owner requests precise prose, without extra mathematical formalisation. |
 
 Build (from the course directory):
 `latexmk -pdf -interaction=nonstopmode note.tex`.

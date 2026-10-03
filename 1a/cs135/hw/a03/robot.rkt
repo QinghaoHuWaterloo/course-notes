@@ -38,12 +38,12 @@
     [(symbol=? (get-direction state) 'South) (mk-state (get-x state) (- 1 (get-y state)) (get-direction state))]
     [(symbol=? (get-direction state) 'West) (mk-state (- 1 (get-x state)) (get-y state) (get-direction state))]))
 
-(define (robot-ctl state 'Command) 
+(define (robot-ctl state command) 
   (cond 
-    [(symbol=? 'command 'Forward) (forward state)]
-
-;; (define (robot-ctl state) (
-
+    [(symbol=? command 'Forward) (forward state)]
+    [(symbol=? command 'turn-left) (mk-state (get-x state) (get-y state) (update-direction-turn-left (get-direction state)))]
+    [(symbol=? command 'turn-right) (mk-state (get-x state) (get-y state) (update-direction-turn-right (get-direction state)))]
+  ))
 
 (define (odd-sum lon) 
   (cond 
